@@ -50004,8 +50004,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
