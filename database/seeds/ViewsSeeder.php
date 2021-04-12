@@ -18,7 +18,7 @@ class ViewsSeeder extends Seeder
             $newView = new View();
             $conteggioViews = Count(Apartment::all()->toArray());
             $newView->apartment_id = rand(1, $conteggioViews);
-            $newView->date = $faker->time();
+            $newView->date = $faker->dateTime();
             $newView->save();
         }        
     }
