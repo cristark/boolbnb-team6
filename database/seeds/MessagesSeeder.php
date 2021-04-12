@@ -20,7 +20,8 @@ class MessagesSeeder extends Seeder
         for ($i=0; $i < 10; $i++) {
 
             $new_message = new Message();
-            
+            $conteggioMessages = Count(Apartment::all()->toArray());
+            $new_message->apartment_id = rand(1, $conteggioMessages);
             
             $new_message->sender_name = $faker->name;
             $new_message->sender_mail = $faker->email;

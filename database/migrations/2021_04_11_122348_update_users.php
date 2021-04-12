@@ -14,9 +14,9 @@ class UpdateUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('lastname')->after('name');
-            $table->date('birth_date')->after('email');
-            $table->string('user_img')->nullable()->after('birth_date');
+            // $table->string('lastname')->after('name');
+            // $table->date('birth_date')->after('email');
+            // $table->string('user_img')->nullable()->after('birth_date');
         });
     }
 
@@ -28,9 +28,9 @@ class UpdateUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('lastname');
-            $table->dropColumn('birth_date');
-            $table->dropColumn('user_img');
+            // $table->dropColumn('lastname');
+            // $table->dropColumn('birth_date');
+            // $table->dropColumn('user_img');
         });
     }
 }
