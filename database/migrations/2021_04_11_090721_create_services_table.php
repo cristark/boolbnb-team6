@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('name');
             //default 0
+            // fanculo
             $table->boolean('visibility')->default(0);
             $table->timestamps();
         });
