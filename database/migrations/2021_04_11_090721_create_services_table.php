@@ -15,8 +15,10 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('visibility');
+            //add 100
+            $table->string('name',100);
+            //add default1?
+            $table->boolean('visibility')->default(1);
             $table->timestamps();
         });
     }
