@@ -13,7 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $this->call([
+<<<<<<< Updated upstream
             //UsersSeeder::class,
+=======
+            //UserSeeder::class,
+>>>>>>> Stashed changes
             ApartmentSeeder::class,
             ImageSeeder::class,
             MessageSeeder::class,
