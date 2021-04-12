@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Service;
 
 class ServicesSeeder extends Seeder
 {
@@ -11,6 +12,14 @@ class ServicesSeeder extends Seeder
      */
     public function run()
     {
-        
+        $services = ['wi-fi', 'posto auto', 'piscina', 'portineria', 'sauna', 'vista mare'];
+
+        foreach ($services as $service) {
+            $newService = new Service();
+            $newService->name = $service;
+            $newService->visibility = false;
+
+            $newService->save();
+        }
     }
 }

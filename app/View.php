@@ -11,7 +11,7 @@ class View extends Model
     ];
 
     //Relazioni
-    protected function apartments(){
+    protected function apartment(){
         return $this->belongsTo('App\Apartment');
     }
 }
