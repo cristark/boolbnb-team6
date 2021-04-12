@@ -14,12 +14,12 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         $this->call([
             //UsersSeeder::class,
-            ApartmentsSeeder::class,
-            ImagesSeeder::class,
-            MessagesSeeder::class,
-            ServicesSeeder::class,
-            SponsorsSeeder::class,
-            ViewsSeeder::class,
+            ApartmentSeeder::class,
+            ImageSeeder::class,
+            MessageSeeder::class,
+            ServiceSeeder::class,
+            SponsorSeeder::class,
+            ViewSeeder::class,
         ]);
     }
 }
