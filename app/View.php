@@ -9,4 +9,9 @@ class View extends Model
     protected $fillable = [
         'date'
     ];
+
+    //Relazioni
+    protected function apartments(){
+        return $this->belongsTo('App\Apartment');
+    }
 }
