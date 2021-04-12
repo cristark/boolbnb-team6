@@ -27,7 +27,7 @@ class ApartmentsSeeder extends Seeder
             $newApartment->user_id = 1;
 
             $newApartment->title = $faker->sentence(5);
-            $newApartment->num_room = $faker->randomDigit();
+            $newApartment->num_rooms = $faker->randomDigit();
             $newApartment->num_beds = $faker->numberBetween(0, 8);
             $newApartment->num_baths = $faker->numberBetween(0,6);
             $newApartment->mq = $faker->numberBetween(45, 500);

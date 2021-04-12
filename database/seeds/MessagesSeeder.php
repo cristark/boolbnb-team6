@@ -20,6 +20,7 @@ class MessagesSeeder extends Seeder
         for ($i=0; $i < 10; $i++) {
 
             $new_message = new Message();
+            //fk apartment_id
             $conteggioMessages = Count(Apartment::all()->toArray());
             $new_message->apartment_id = rand(1, $conteggioMessages);
             

@@ -20,7 +20,7 @@ class CreateApartmentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             //
             $table->string('title',150);
-            $table->tinyInteger('num_room');
+            $table->tinyInteger('num_rooms');
             $table->tinyInteger('num_beds');
             $table->tinyInteger('num_baths');
             $table->smallInteger('mq');
