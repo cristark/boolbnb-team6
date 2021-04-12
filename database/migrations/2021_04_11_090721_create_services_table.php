@@ -22,6 +22,7 @@ class CreateServicesTable extends Migration
             $table->boolean('visibility')->default(1);
 =======
             $table->string('name');
+            //default 0
             $table->boolean('visibility')->default(0);
 >>>>>>> main
             $table->timestamps();
