@@ -16,8 +16,10 @@ class CreateViewsTable extends Migration
         Schema::create('views', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            // $table->foreign('apartment_id')->references('id')->on('apartments');
-            // $table->unsignedBigInteger('apartment_id')->after('id');
+            
+            $table->unsignedBigInteger('apartment_id');
+            $table->foreign('apartment_id')->references('id')->on('apartments');
+            
             $table->timestamps();
         });
     }

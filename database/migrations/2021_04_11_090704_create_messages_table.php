@@ -17,7 +17,7 @@ class CreateMessagesTable extends Migration
             $table->id();
 
             $table->string('sender_name');
-            $table->id('sender_mail');
+            $table->string('sender_mail');
             $table->text('msg_txt');
             $table->boolean('status');
 

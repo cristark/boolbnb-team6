@@ -16,7 +16,7 @@ class CreateApartmentsTable extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             //chiave esterna
-            $table->unsignedBigInteger('user_id')->after('id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             //
             $table->string('title',150);
@@ -27,11 +27,11 @@ class CreateApartmentsTable extends Migration
             $table->string('city',150);
             $table->string('province',150);
             $table->string('state');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 10, 8);
+            $table->decimal('latitude',10,8);
+            $table->decimal('longitude',10,8);
             $table->text('description');
             $table->text('main_img')->nullable();
-            $table->decimal('price', 10,2);
+            $table->decimal('price',10,2);
             $table->boolean('active');
             $table->timestamps();
         });
