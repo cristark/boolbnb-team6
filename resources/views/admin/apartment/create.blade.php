@@ -79,17 +79,27 @@
                 <label for="InputFile">Carica un'immagine</label>
                 <input type="file" class="form-control-file" id="InputFile" name="main_img ">
             </div>
-            
-            <div class="check_container d-flex flex-wrap mb-4">
-                @foreach ($tags as $tag)
-                    <div class="form-check mr-4">
-                        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="defaultCheck" name="tags[]">
-                        <label class="form-check-label" for="defaultCheck">{{$tag->name}}</label>
-                    </div>
-                @endforeach
+
+            {{-- Riga singola con Latitudine - Longitudine --}}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="InputLatitude">Latitudine</label>
+                    <input type="text" class="form-control" id="InputLatitude" placeholder="Inserisci la Latitudine" name="latitude" value="{{old('latitude')}}">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="InputLongitude">Longitudine</label>
+                    <input type="text" class="form-control" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" value="{{old('longitude')}}">
+                </div>
             </div>
-            
-            <button type="submit" class="btn btn-primary">Modifica</button>
+
+            {{-- Prezzo Appartamento --}}
+            <div class="form-group">
+                <label for="InputPrice">Prezzo per notte</label>
+                <input type="number" class="form-control" id="InputPrice" placeholder="Inserisci il Prezzo" name="price" value="{{old('price')}}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>
     </div>
 @endsection

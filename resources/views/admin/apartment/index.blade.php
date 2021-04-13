@@ -30,23 +30,25 @@
         </thead>
 
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td><img src="" alt="Anteprima img appartamento"></td>
-                <td>Villa del Vento Ischia</td>
-                <td>Ischia</td>
-                <td>NA</td>
-                <td>Annuncio attivo</td>
-                <td><a href=""><button type="button" class="btn btn-info">Visualizza</button></a></td>
-                <td><a href=""><button type="button" class="btn btn-warning">Modifica</button></a></td>
-                <td>
-                    <form method="post" action="">
-                        @csrf
-                        @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Elimina</button>
-                    </form>
-                </td>
-            </tr>
+            @foreach ($apartments as $apartment)
+                <tr>
+                    <th scope="row">{{$apartment->id}}</th>
+                    <td><img src="" alt="Anteprima img appartamento"></td>
+                    <td>{{$apartment->title}}</td>
+                    <td>{{$apartment->city}}</td>
+                    <td>{{$apartment->province}}</td>
+                    <td>{{$apartment->active}}</td>
+                    <td><a href=""><button type="button" class="btn btn-info">Visualizza</button></a></td>
+                    <td><a href=""><button type="button" class="btn btn-warning">Modifica</button></a></td>
+                    <td>
+                        <form method="post" action="">
+                            @csrf
+                            @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Elimina</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
