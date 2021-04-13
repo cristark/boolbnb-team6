@@ -82,6 +82,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    <a href="{{ route('guest.apartment.index') }}">guest apartment</a>
                 </div>
 
                 <div class="links">

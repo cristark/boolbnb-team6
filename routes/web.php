@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('index');
 
+//rotta guest index
+Route::get('/apartment', 'ApartmentController@index')->name('guest.apartment.index');
+
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
