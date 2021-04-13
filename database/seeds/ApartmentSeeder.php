@@ -20,16 +20,19 @@ class ApartmentSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run(Faker $faker, User $users)
     {
         for($i = 0; $i < 10; $i++){
             $newApartment = new Apartment();
-            $newApartment->user_id = 1;
-
+            $users = Count(User::all()->toArray());
+            //dave parto da 0 fino al totale di User:all e ripasso come valore id
+            $newApartment->user_id = rand(1, $users);
+            // $newApartment->user_id = $users[rand(0, Count($users)-1)]["id"];
+            
             $newApartment->title = $faker->sentence(5);
             $newApartment->num_rooms = $faker->randomDigit();
-            $newApartment->num_beds = $faker->numberBetween(0, 8);
-            $newApartment->num_baths = $faker->numberBetween(0,6);
+            $newApartment->num_beds = $faker->numberBetween(1, 8);
+            $newApartment->num_baths = $faker->numberBetween(1,6);
             $newApartment->mq = $faker->numberBetween(45, 500);
             $newApartment->city = $faker->city();
             $newApartment->province = $faker->country();

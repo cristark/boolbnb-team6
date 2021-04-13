@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Sponsor;
+use App\Apartment;
 
 class SponsorSeeder extends Seeder
 {
@@ -36,7 +37,6 @@ class SponsorSeeder extends Seeder
             $newSponsor->price = $sponsor["price"];
             $newSponsor->duration = $sponsor["duration"];
             $newSponsor->description = $sponsor["description"];
-
             $newSponsor->save();
         }
     }
