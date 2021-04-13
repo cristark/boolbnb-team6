@@ -112,9 +112,16 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Apartment $apartment)
     {
-        //
+        $services = Service::all();
+
+        $data = [
+            'apartment' => $apartment,
+            'services' => $services
+        ];
+
+        return view('admin.apartment.edit', $data);
     }
 
     /**
@@ -124,9 +131,34 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+        $data = $request->all();
+        //modifica immagine         "main_images"=cartella
+        $main_img = Storage::put('main_images', $data['image']);
+        $data['main_img'] = $main_img;
+        //validation 
+        $request->validate([
+            "title" => "required|max:150",
+            "num_rooms" => "required",
+            "num_beds" => "required",
+            "num_baths" => "required",
+            "mq" => "required",
+            "city" => "required|max:150"
+            // "province" => "required|max:150",
+            // "state" => "required"
+        ]);
+        $apartment->update($data);
+
+
+        //PER TAB PONTE CON SERVICES
+        if(array_key_exists('services', $data)){
+                $apartment->services()->sync($data['services']);
+        }
+        //need riderect into update
+
+        //                          nome rotta a scelta
+        return redirect()->route('apartment.index', $apartment);
     }
 
     /**
@@ -135,8 +167,19 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Apartment $apartment)
     {
-        //
+        //prendi il messaggio dove la fk apartment id é uguale all apartment ID
+        $messages = Message::where('apartment_id', $apartment->id)->get();
+
+        //ricordarsi di includere la parte dei messaggi
+
+        //delete service and sponsor tab ponte
+        $apartment->services()->sync([]);
+        $apartment->sponsors()->sync([]);
+
+        $apartment->delete();
+                //scegliere dove ritornare una volta cancellato
+        return redirect()->route('apartment.index');
     }
 }
