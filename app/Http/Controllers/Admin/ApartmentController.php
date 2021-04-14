@@ -103,6 +103,10 @@ class ApartmentController extends Controller
 
         $newApartment->save();
 
+        if (isset($data['services'])) {
+            $newApartment->services()->sync($data['services']);
+        }
+
         // if (array_key_exists('services', $data)) {
         //     $newApartment->services()->sync($data['services']);
         // }
@@ -180,15 +184,15 @@ class ApartmentController extends Controller
             // "province" => "required|max:150",
             // "state" => "required"
         ]);
-        $apartment->update($data);
-
-
+        
+        
         //PER TAB PONTE CON SERVICES
         if(array_key_exists('services', $data)){
-                $apartment->services()->sync($data['services']);
+            $apartment->services()->sync($data['services']);
         }
         //need riderect into update
-
+        $apartment->update($data);
+        $apartment->save();
         //                          nome rotta a scelta
         return redirect()->route('apartment.index', $apartment);
     }
