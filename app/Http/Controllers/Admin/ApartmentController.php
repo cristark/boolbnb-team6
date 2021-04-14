@@ -99,6 +99,7 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        $apartment = Apartment::where('slug', $apartment)->firstOrFail();
         $data = [
             'apartment' => $apartment
         ];
@@ -114,6 +115,7 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
+        $apartment = Apartment::where('slug', $apartment)->firstOrFail();
         $services = Service::all();
 
         $data = [
