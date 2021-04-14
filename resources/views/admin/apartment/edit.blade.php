@@ -17,7 +17,7 @@
         @endif
 
         {{-- Form inserimento dati --}}
-        <form method="POST" action="{{route('apartment.update', $apartment->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('apartment.update', $apartment)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -84,8 +84,7 @@
                 <label for="InputFile">Carica un'immagine</label>
             @endif
             <div class="form-group">
-                <label for="InputFile">Carica un'immagine</label>
-                <input type="file" class="form-control-file" id="InputFile" name="main_img ">
+                <input type="file" class="form-control-file" id="InputFile" name="main_img">
             </div>
 
             {{-- Riga singola con Latitudine - Longitudine --}}
