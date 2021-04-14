@@ -88,12 +88,28 @@ class ApartmentController extends Controller
         // $data['main_img'] = $main_img;
         // $newApartment->main_img = $data['main_img'];
 
+        /**
+         * dd($data);
+         * $main_img = Storage::put('main_images', * $data['main_img']);
+         * $data['main_img'] = $main_img;
+         * $newApartment->main_img = $data  ['main_img'];
+         */
+
 
         $newApartment->save();
 
         if (array_key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
+
+        /**
+         * if (array_key_exists('services', $data)) {
+         *  dd($data['services']);
+         *  $newApartment->services()->sync($data['services']);
+         *  $newApartment->services()->sync($data['services']);
+         *  $newApartment->services()->sync($data['services']);
+         * }
+         */
 
         return redirect()->route('apartment.index');
     }
