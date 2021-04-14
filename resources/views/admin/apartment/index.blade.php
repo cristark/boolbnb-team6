@@ -38,7 +38,7 @@
                     <td>{{$apartment->city}}</td>
                     <td>{{$apartment->province}}</td>
                     <td>{{$apartment->active}}</td>
-                    <td><a href=""><button type="button" class="btn btn-info">Visualizza</button></a></td>
+                    <td><a href="{{route('admin.apartment.show', ['apartment' => $apartment->id])}}"><button type="button" class="btn btn-info">Visualizza</button></a></td>
                     <td><a href=""><button type="button" class="btn btn-warning">Modifica</button></a></td>
                     <td>
                         <form method="post" action="">
