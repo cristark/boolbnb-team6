@@ -209,8 +209,8 @@ class ApartmentController extends Controller
         // //ricordarsi di includere la parte dei messaggi
 
         // //delete service and sponsor tab ponte
-        // $apartment->services()->sync([]);
-        // $apartment->sponsors()->sync([]);
+        $apartment->services()->sync([]);
+        $apartment->sponsors()->sync([]);
 
         $apartment->delete();
                 //scegliere dove ritornare una volta cancellato

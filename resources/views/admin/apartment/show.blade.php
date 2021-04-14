@@ -6,7 +6,12 @@
     <div class="container">
 
         <div class="card mb-3">
-            <img class="card-img-top" src="{{ asset('storage/'.$apartment->main_img) }}" alt="{{$apartment->title}}">
+            @if(strpos($apartment->main_img, 'main_images'))
+                <img class="card-img-top" src="{{ asset('storage/'.$apartment->main_img) }}" alt="{{$apartment->title}}">
+            @else
+                <img class="card-img-top" src="{{ $apartment->main_img }}" alt="{{$apartment->title}}">
+            @endif
+
             <div class="card-body">
               <h5 class="card-title">{{$apartment->title}}</h5>
               <p class="card-text">{{$apartment->description}}</p>

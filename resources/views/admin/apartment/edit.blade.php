@@ -77,7 +77,7 @@
             {{-- Sezione caricamento immagine appartamento --}}
             @if ($apartment->main_img)
                 <p>Immagine inserita:</p>
-                <img class="d-block" style="height: 150px;" src="{{asset('storage/'.$apartment->main_img)}}" alt="{{$apartment->title}}">
+                <img class="d-block" style="height: 150px;" src="{{ asset('storage/'.$apartment->main_img) || $apartment->main_img }}" alt="{{$apartment->title}}">
                 <label for="InputFile">Sostituisci l'immagine</label>    
             @else
                 <p class="alert alert-dark">Immagine non inserita</p>
