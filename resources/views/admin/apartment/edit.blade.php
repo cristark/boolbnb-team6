@@ -17,7 +17,7 @@
         @endif
 
         {{-- Form inserimento dati --}}
-        <form method="post" action="{{route('apartment.update', $apartment->id)}}" enctype="multipart/form-data">
+        <form method="POST" action="{{route('apartment.update', $apartment->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -120,12 +120,9 @@
             <div class="form-group">
                 <label for="InputActive">Servizi disponibili</label>    
                 
-                @foreach ($services as $key => $service)
+                @foreach ($services as $service)
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{$key}}" id="services" name="services[]"
-                            @if ($key == $service->name)
-                                selected="selected"
-                            @endif>
+                        <input value="{{ $service->id }}" {{$apartment->services->contains($service->id) ? 'checked' : ''}} class="form-check-input" type="checkbox" id="services" name="services[]">
                         <label class="form-check-label" for="services">
                             {{$service->name}}
                         </label>

@@ -6,7 +6,7 @@
     <div class="container">
 
         <div class="card mb-3">
-            <img class="card-img-top" src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
+            <img class="card-img-top" src="{{ asset('storage/'.$apartment->main_img) }}" alt="{{$apartment->title}}">
             <div class="card-body">
               <h5 class="card-title">{{$apartment->title}}</h5>
               <p class="card-text">{{$apartment->description}}</p>

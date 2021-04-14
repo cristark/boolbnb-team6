@@ -63,6 +63,7 @@ class ApartmentController extends Controller
         $data = $request->all();
         // dd($data);
         $idUser = Auth::id();
+        $services = Service::all();
 
         $newApartment = new Apartment();
         
@@ -81,26 +82,30 @@ class ApartmentController extends Controller
         // $newApartment->price = $data['price'];
         // $newApartment->active = $data['active'];
 
-        $newApartment->fill($data);
         $newApartment->slug = Str::slug($data['title']);
 
         // $main_img = Storage::put('main_images', $data['image']);
+        // dd($main_img);
         // $data['main_img'] = $main_img;
         // $newApartment->main_img = $data['main_img'];
+        
+        $path = Storage::put('main_images', $data['main_img']);
+        // dd($main_img);
+        $data['main_img'] = $path;
+        $newApartment->main_img = $data  ['main_img'];
 
-        /**
-         * dd($data);
-         * $main_img = Storage::put('main_images', * $data['main_img']);
-         * $data['main_img'] = $main_img;
-         * $newApartment->main_img = $data  ['main_img'];
-         */
-
+        // if (isset($data['main_img'])) {
+        //     $path = $request->file('main_img')->store('main_images', 'public');
+        //     $newApartment->main_img = $path;
+        // }
+        
+        $newApartment->fill($data);
 
         $newApartment->save();
 
-        if (array_key_exists('services', $data)) {
-            $newApartment->services()->sync($data['services']);
-        }
+        // if (array_key_exists('services', $data)) {
+        //     $newApartment->services()->sync($data['services']);
+        // }
 
         /**
          * if (array_key_exists('services', $data)) {
@@ -162,8 +167,8 @@ class ApartmentController extends Controller
     {
         $data = $request->all();
         //modifica immagine         "main_images"=cartella
-        $main_img = Storage::put('main_images', $data['image']);
-        $data['main_img'] = $main_img;
+        $path = Storage::put('main_images', $data['main_img']);
+        $data['main_img'] = $path;
         //validation 
         $request->validate([
             "title" => "required|max:150",
