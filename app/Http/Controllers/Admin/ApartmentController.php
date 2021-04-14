@@ -65,33 +65,16 @@ class ApartmentController extends Controller
         $idUser = Auth::id();
         $services = Service::all();
 
-        $newApartment = new Apartment();
-        
+        $newApartment = new Apartment();        
         $newApartment->user_id =$idUser;
-        // $newApartment->title = $data['title'];
-        // $newApartment->num_rooms = $data['num_rooms'];
-        // $newApartment->num_beds = $data['num_beds'];
-        // $newApartment->num_baths = $data['num_baths'];
-        // $newApartment->mq = $data['mq'];
-        // $newApartment->city = $data['city'];
-        // $newApartment->province = $data['province'];
-        // $newApartment->state = $data['state'];
-        // $newApartment->latitude = $data['latitude'];
-        // $newApartment->longitude = $data['longitude'];
-        // $newApartment->description = $data['description'];
-        // $newApartment->price = $data['price'];
-        // $newApartment->active = $data['active'];
-
-        $newApartment->slug = Str::slug($data['title']);
-        
+        $newApartment->slug = Str::slug($data['title']);        
         $path = Storage::put('main_images', $data['main_img']);
         $data['main_img'] = $path;
-        $newApartment->main_img = $data['main_img'];
-        
+        $newApartment->main_img = $data['main_img'];        
         $newApartment->fill($data);
 
         $newApartment->save();
-
+        
         if (array_key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
@@ -147,9 +130,11 @@ class ApartmentController extends Controller
     {
         $data = $request->all();
         //modifica immagine         "main_images"=cartella
+        if(array_key_exists('main_img', $data)){
         $path = Storage::put('main_images', $data['main_img']);
         $data['main_img'] = $path;
         $apartment->main_img = $data['main_img'];
+        }
         //validation 
         $request->validate([
             "title" => "required|max:150",
@@ -158,8 +143,6 @@ class ApartmentController extends Controller
             "num_baths" => "required",
             "mq" => "required",
             "city" => "required|max:150"
-            // "province" => "required|max:150",
-            // "state" => "required"
         ]);
         //need riderect into update
         $apartment->update($data);
@@ -190,12 +173,10 @@ class ApartmentController extends Controller
         $apartment->sponsors()->sync([]);
 
         $apartment->messages()->delete();
-        // $apartment->user()->delete();
         $apartment->views()->delete();
         $apartment->images()->delete();
 
         $apartment->delete();
-                //scegliere dove ritornare una volta cancellato
         return redirect()->route('apartment.index');
     }
 }
