@@ -90,9 +90,8 @@ class ApartmentController extends Controller
         // $newApartment->main_img = $data['main_img'];
         
         $path = Storage::put('main_images', $data['main_img']);
-        // dd($main_img);
         $data['main_img'] = $path;
-        $newApartment->main_img = $data  ['main_img'];
+        $newApartment->main_img = $data['main_img'];
 
         // if (isset($data['main_img'])) {
         //     $path = $request->file('main_img')->store('main_images', 'public');
@@ -173,6 +172,7 @@ class ApartmentController extends Controller
         //modifica immagine         "main_images"=cartella
         $path = Storage::put('main_images', $data['main_img']);
         $data['main_img'] = $path;
+        $apartment->main_img = $data['main_img'];
         //validation 
         $request->validate([
             "title" => "required|max:150",
@@ -184,15 +184,13 @@ class ApartmentController extends Controller
             // "province" => "required|max:150",
             // "state" => "required"
         ]);
-        
+        //need riderect into update
+        $apartment->update($data);
         
         //PER TAB PONTE CON SERVICES
         if(array_key_exists('services', $data)){
             $apartment->services()->sync($data['services']);
         }
-        //need riderect into update
-        $apartment->update($data);
-        $apartment->save();
         //                          nome rotta a scelta
         return redirect()->route('apartment.index', $apartment);
     }
@@ -211,8 +209,8 @@ class ApartmentController extends Controller
         // //ricordarsi di includere la parte dei messaggi
 
         // //delete service and sponsor tab ponte
-        // $apartment->services()->sync([]);
-        // $apartment->sponsors()->sync([]);
+        $apartment->services()->sync([]);
+        $apartment->sponsors()->sync([]);
 
         $apartment->delete();
                 //scegliere dove ritornare una volta cancellato
