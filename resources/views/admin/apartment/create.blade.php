@@ -77,7 +77,7 @@
             {{-- Sezione caricamento immagine appartamento --}}
             <div class="form-group">
                 <label for="InputFile">Carica un'immagine</label>
-                <input type="file" class="form-control-file" id="InputFile" name="main_img ">
+                <input type="file" class="form-control-file" id="InputFile" name="main_img">
             </div>
 
             {{-- Riga singola con Latitudine - Longitudine --}}
