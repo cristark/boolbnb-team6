@@ -212,6 +212,11 @@ class ApartmentController extends Controller
         $apartment->services()->sync([]);
         $apartment->sponsors()->sync([]);
 
+        $apartment->messages()->delete();
+        // $apartment->user()->delete();
+        $apartment->views()->delete();
+        $apartment->images()->delete();
+
         $apartment->delete();
                 //scegliere dove ritornare una volta cancellato
         return redirect()->route('apartment.index');

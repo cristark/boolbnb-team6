@@ -33,7 +33,13 @@
             @foreach ($apartments as $apartment)
                 <tr>
                     <th scope="row">{{$apartment->id}}</th>
-                    <td><img style="height: 100px;" src="{{ asset('storage/'.$apartment->main_img) }}" alt="Anteprima img appartamento"></td>
+                    <td>
+                        @if (strpos($apartment->main_img, 'https') !== false)
+                        <img style="height: 100px;" src="{{ $apartment->main_img }}" alt="Anteprima img appartamento">
+                        @else
+                        <img style="height: 100px;" src="{{ asset('storage/'.$apartment->main_img) }}" alt="Anteprima img appartamento">
+                        @endif
+                    </td>
                     <td>{{$apartment->title}}</td>
                     <td>{{$apartment->city}}</td>
                     <td>{{$apartment->province}}</td>
