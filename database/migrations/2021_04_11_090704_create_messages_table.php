@@ -26,7 +26,7 @@ class CreateMessagesTable extends Migration
             $table->string('sender_mail');
 
             $table->text('msg_txt');
-            //add default
+            //add default*
             $table->boolean('status')->default(0);
 
 
