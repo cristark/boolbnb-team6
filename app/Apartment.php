@@ -9,7 +9,7 @@ use App\Sponsor;
 class Apartment extends Model
 {
     protected $fillable = [
-        'title','num_room','num_beds','num_baths','mq','city','province','state','latitude','longitude','description','main_img','price','active'
+        'title','slug','num_rooms','num_beds','num_baths','mq','city','province','state','latitude','longitude','description','main_img','price','active'
     ];
     //relation with user *
     public function user(){

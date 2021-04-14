@@ -24,7 +24,7 @@
           <div class="actions d-flex justify-content-between">
 
             <div class="action-1">
-                <a href="{{route('admin.apartment.index')}}"><button type="button" class="btn btn-primary">Torna Indietro</button></a>
+                <a href="{{route('apartment.index')}}"><button type="button" class="btn btn-primary">Torna Indietro</button></a>
             </div>
             
             <div class="action-2 d-flex">

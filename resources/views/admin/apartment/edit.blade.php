@@ -17,7 +17,7 @@
         @endif
 
         {{-- Form inserimento dati --}}
-        <form method="post" action="{{route('admin.apartment.update', $apartment->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('apartment.update', $apartment->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
