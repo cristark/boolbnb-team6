@@ -33,7 +33,7 @@
             @foreach ($apartments as $apartment)
                 <tr>
                     <th scope="row">{{$apartment->id}}</th>
-                    <td><img src="" alt="Anteprima img appartamento"></td>
+                    <td><img style="height: 100px;" src="{{ asset('storage/'.$apartment->main_img) }}" alt="Anteprima img appartamento"></td>
                     <td>{{$apartment->title}}</td>
                     <td>{{$apartment->city}}</td>
                     <td>{{$apartment->province}}</td>
