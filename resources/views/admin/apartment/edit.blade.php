@@ -99,6 +99,32 @@
                 <input type="number" class="form-control" id="InputPrice" placeholder="Inserisci il Prezzo" name="price" value="{{old('price')}}">
             </div>
 
+            {{-- Visibilita --}}
+            <div class="form-group">
+                <label for="InputActive">Vuoi rendere visibile il tuo l'appartamento</label>    
+                <select name="active" class="custom-select mb-2 mr-sm-2 mb-sm-0" >
+                    <option value="0">Non visibile </option>
+                    <option value="1">Visibile</option>
+                </select>
+            </div>
+
+            {{-- servizi --}}            
+            <div class="form-group">
+                <label for="InputActive">Servizi disponibili</label>    
+                
+                @foreach ($services as $key => $service)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{$key}}" id="services" name="services[]"
+                            @if ($key == old('services'))
+                                selected="selected"
+                            @endif>
+                        <label class="form-check-label" for="services">
+                            {{$service->name}}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+
             <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>
     </div>
