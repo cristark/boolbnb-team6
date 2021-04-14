@@ -83,41 +83,18 @@ class ApartmentController extends Controller
         // $newApartment->active = $data['active'];
 
         $newApartment->slug = Str::slug($data['title']);
-
-        // $main_img = Storage::put('main_images', $data['image']);
-        // dd($main_img);
-        // $data['main_img'] = $main_img;
-        // $newApartment->main_img = $data['main_img'];
         
         $path = Storage::put('main_images', $data['main_img']);
         $data['main_img'] = $path;
         $newApartment->main_img = $data['main_img'];
-
-        // if (isset($data['main_img'])) {
-        //     $path = $request->file('main_img')->store('main_images', 'public');
-        //     $newApartment->main_img = $path;
-        // }
         
         $newApartment->fill($data);
 
         $newApartment->save();
 
-        if (isset($data['services'])) {
+        if (array_key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
-
-        // if (array_key_exists('services', $data)) {
-        //     $newApartment->services()->sync($data['services']);
-        // }
-
-        /**
-         * if (array_key_exists('services', $data)) {
-         *  dd($data['services']);
-         *  $newApartment->services()->sync($data['services']);
-         *  $newApartment->services()->sync($data['services']);
-         *  $newApartment->services()->sync($data['services']);
-         * }
-         */
 
         return redirect()->route('apartment.index');
     }
