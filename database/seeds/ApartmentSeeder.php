@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 //ModelsBlade:
 use App\Apartment;
 use App\User;
@@ -30,6 +31,18 @@ class ApartmentSeeder extends Seeder
             // $newApartment->user_id = $users[rand(0, Count($users)-1)]["id"];
             
             $newApartment->title = $faker->sentence(5);
+
+            $slug = Str::slug($newApartment->title);
+            $slugIniziale = $slug;
+            $apartmentPresente = Apartment::where('slug', $slug)->first();
+            $contatore = 1;
+            while ($apartmentPresente) {
+                $slug = $slugIniziale . '-' . $contatore;
+                $apartmentPresente = Apartment::where('slug', $slug)->first();
+                $contatore++;
+            }
+            $newApartment->slug = $slug;
+
             $newApartment->num_rooms = $faker->randomDigit();
             $newApartment->num_beds = $faker->numberBetween(1, 8);
             $newApartment->num_baths = $faker->numberBetween(1,6);

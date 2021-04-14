@@ -76,6 +76,8 @@ class ApartmentController extends Controller
         // $newApartment->price = $data['price'];
         // $newApartment->active = $data['active'];
 
+        $newApartment->slug = Str::slug($data['title']);
+
         $main_img = Storage::put('main_images', $data['image']);
         $data['main_img'] = $main_img;
         $newApartment->main_img = $data['main_img'];
