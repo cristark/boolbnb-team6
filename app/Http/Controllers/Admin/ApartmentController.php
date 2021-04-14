@@ -25,9 +25,13 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all();
+        $sponsors = Sponsor::all();
+        $services = Service::all();
 
         $data = [
-            'apartments' => $apartments
+            'apartments' => $apartments,
+            'sponsors' => $sponsors,
+            'services' => $services
         ];
         return view('admin.apartment.index', $data);
     }
@@ -57,6 +61,7 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        // dd($data);
         $idUser = Auth::id();
 
         $newApartment = new Apartment();
@@ -76,13 +81,13 @@ class ApartmentController extends Controller
         // $newApartment->price = $data['price'];
         // $newApartment->active = $data['active'];
 
+        $newApartment->fill($data);
         $newApartment->slug = Str::slug($data['title']);
 
-        $main_img = Storage::put('main_images', $data['image']);
-        $data['main_img'] = $main_img;
-        $newApartment->main_img = $data['main_img'];
+        // $main_img = Storage::put('main_images', $data['image']);
+        // $data['main_img'] = $main_img;
+        // $newApartment->main_img = $data['main_img'];
 
-        $newApartment->fill($data);
 
         $newApartment->save();
 
@@ -99,13 +104,15 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Apartment $apartment)
+    public function show($slug)
     {
-        $apartment = Apartment::where('slug', $apartment)->firstOrFail();
+        $apartment = Apartment::where('slug', $slug)->firstOrFail();
+
         $data = [
             'apartment' => $apartment
         ];
 
+        
         return view('admin.apartment.show', $data);
     }
 
@@ -115,9 +122,9 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Apartment $apartment)
+    public function edit($slug)
     {
-        $apartment = Apartment::where('slug', $apartment)->firstOrFail();
+        $apartment = Apartment::where('slug', $slug)->firstOrFail();
         $services = Service::all();
 
         $data = [
@@ -174,13 +181,13 @@ class ApartmentController extends Controller
     public function destroy(Apartment $apartment)
     {
         //prendi il messaggio dove la fk apartment id é uguale all apartment ID
-        $messages = Message::where('apartment_id', $apartment->id)->get();
+        // $messages = Message::where('apartment_id', $apartment->id)->get();
 
-        //ricordarsi di includere la parte dei messaggi
+        // //ricordarsi di includere la parte dei messaggi
 
-        //delete service and sponsor tab ponte
-        $apartment->services()->sync([]);
-        $apartment->sponsors()->sync([]);
+        // //delete service and sponsor tab ponte
+        // $apartment->services()->sync([]);
+        // $apartment->sponsors()->sync([]);
 
         $apartment->delete();
                 //scegliere dove ritornare una volta cancellato

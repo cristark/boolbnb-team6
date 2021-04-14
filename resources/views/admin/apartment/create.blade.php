@@ -17,7 +17,7 @@
         @endif
 
         {{-- Form inserimento dati --}}
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="post" action="{{route('apartment.store')}}" enctype="multipart/form-data">
             @csrf
             @method('POST')
 
@@ -30,7 +30,7 @@
             {{-- Descrizione appartamento --}}
             <div class="form-group">
                 <label for="InputDescription">Testo</label>
-                <textarea class="form-control" id="InputDescription" placeholder="Inserisci la descrizione dell'appartamento" cols="30" rows="10" name="content">{{old('content')}}</textarea>
+                <textarea class="form-control" id="InputDescription" placeholder="Inserisci la descrizione dell'appartamento" cols="30" rows="10" name="description">{{old('description')}}</textarea>
             </div>
 
             {{-- Riga singola con Città - Regione - Stato --}}

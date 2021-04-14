@@ -33,7 +33,7 @@ class CreateApartmentsTable extends Migration
             $table->text('description');
             $table->text('main_img')->nullable();
             $table->decimal('price',10,2);
-            $table->boolean('active');
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@
 <div class="container">
 
     {{-- Pulsante creazione Nuovo Post --}}
-    <a href=""><button type="button" class="btn btn-primary mb-3">Aggiungi un nuovo appartamento</button></a>
+    <a href="{{route('apartment.create')}}"><button type="button" class="btn btn-primary mb-3">Aggiungi un nuovo appartamento</button></a>
 
     {{-- Notifica eliminazione post esistente --}}
     @if (session('status'))
@@ -38,10 +38,10 @@
                     <td>{{$apartment->city}}</td>
                     <td>{{$apartment->province}}</td>
                     <td>{{$apartment->active}}</td>
-                    <td><a href="{{route('admin.apartment.show', ['apartment' => $apartment->id])}}"><button type="button" class="btn btn-info">Visualizza</button></a></td>
-                    <td><a href=""><button type="button" class="btn btn-warning">Modifica</button></a></td>
+                    <td><a class="btn btn-info" href="{{route('apartment.show', $apartment->slug)}}">Visualizza</a></td>
+                    <td><a href="{{route('apartment.edit', $apartment->slug)}}"><button type="button" class="btn btn-warning">Modifica</button></a></td>
                     <td>
-                        <form method="post" action="">
+                        <form method="post" action="{{route('apartment.destroy', $apartment)}}">
                             @csrf
                             @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Elimina</button>
