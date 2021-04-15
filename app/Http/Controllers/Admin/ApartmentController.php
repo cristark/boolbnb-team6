@@ -65,7 +65,7 @@ class ApartmentController extends Controller
         $idUser = Auth::id();
         $services = Service::all();
 
-        $newApartment = new Apartment();        
+        $newApartment = new Apartment();
         $newApartment->user_id =$idUser;
         $newApartment->slug = Str::slug($data['title']);        
         $path = Storage::put('main_images', $data['main_img']);
@@ -129,11 +129,12 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment)
     {
         $data = $request->all();
+        $apartment->slug = Str::slug($data['title']);
         //modifica immagine         "main_images"=cartella
         if(array_key_exists('main_img', $data)){
-        $path = Storage::put('main_images', $data['main_img']);
-        $data['main_img'] = $path;
-        $apartment->main_img = $data['main_img'];
+            $path = Storage::put('main_images', $data['main_img']);
+            $data['main_img'] = $path;
+            $apartment->main_img = $data['main_img'];
         }
         //validation 
         $request->validate([

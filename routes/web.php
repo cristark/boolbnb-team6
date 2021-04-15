@@ -24,7 +24,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/contact', 'HomeController@contatto')->name('guest.message.create');
 
                                                         //rotta per il form action del file create.blade.php
-Route::post('/contatti', 'HomeController@sendcontact')->name('guest.message.sent');
+Route::post('/contatti', 'HomeController@sendMessage')->name('guest.message.sent');
 //rotta per esito messaggio
 Route::get('/inviato', 'HomeController@messaggioInviato')->name('validation');
 
@@ -46,5 +46,6 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::resource( '/apartment', 'ApartmentController');
+        Route::resource( '/message', 'MessageController');
         Route::get('/', 'HomeController@index')->name('home');
     });

@@ -29,7 +29,7 @@
 
             <div class="action-1">
                 <a href="{{ route( 'guest.apartment.index' ) }}"><button type="button" class="btn btn-primary">Torna Indietro</button></a>
-                <a href="{{ route( 'guest.message.create' ) }}">Richiedi Info</a>
+                <a href="{{ route( 'guest.message.create', $apartment ) }}">Richiedi Info</a>
             </div>
         </div>
     </div>
