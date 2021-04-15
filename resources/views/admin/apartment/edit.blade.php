@@ -114,8 +114,8 @@
             <div class="form-group">
                 <label for="InputActive">Vuoi rendere visibile il tuo l'appartamento</label>    
                 <select name="active" class="custom-select mb-2 mr-sm-2 mb-sm-0" >
-                    <option value="0">Non visibile </option>
-                    <option value="1">Visibile</option>
+                    <option value="0" {{$apartment->active == '0' ? ' selected' : '' }}>Non visibile </option>
+                    <option value="1" {{$apartment->active == '1' ? ' selected' : '' }}>Visibile</option>
                 </select>
             </div>
 

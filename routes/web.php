@@ -21,6 +21,9 @@ Route::get('/', 'HomeController@index')->name('index');
 
 //rotta guest index
 Route::get('/apartment', 'ApartmentController@index')->name('guest.apartment.index');
+//rotta guest show
+Route::get('/apartment/{slug}', 'ApartmentController@show')->name('guest.apartment.show');
+//Route::resource( '/apartment', 'ApartmentController');
 
 
 Auth::routes();

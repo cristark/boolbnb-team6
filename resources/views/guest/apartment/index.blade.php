@@ -13,7 +13,7 @@
                     <p class="card-text">{{$apartment->description}}</p>
                     <h5 class="card-title">{{$apartment->mq}}</h5>
                     <p></p>
-                    <a href="" class="btn btn-primary">Continua</a>
+                    <a href="{{route('guest.apartment.show', $apartment->slug)}}" class="btn btn-primary">Dettagli</a>
                 </div>
             </div>
         @endforeach
