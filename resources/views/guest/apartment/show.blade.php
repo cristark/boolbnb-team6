@@ -12,6 +12,7 @@
                 <img class="card-img-top" src="{{ asset('storage/'.$apartment->main_img) }}" alt="{{$apartment->title}}">
             @endif
             <div class="card-body">
+            <p class="card-text">{{$apartment->id}}</p>
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <p class="card-text">{{$apartment->description}}</p>
                 <p class="card-text">Stanze : {{$apartment->num_rooms}}</p>
@@ -29,7 +30,7 @@
 
             <div class="action-1">
                 <a href="{{ route( 'guest.apartment.index' ) }}"><button type="button" class="btn btn-primary">Torna Indietro</button></a>
-                <a href="{{ route( 'guest.message.create', $apartment ) }}">Richiedi Info</a>
+                <a href="{{ route( 'guest.message.create', $apartment_selected ) }}">Richiedi Info</a>
             </div>
         </div>
     </div>

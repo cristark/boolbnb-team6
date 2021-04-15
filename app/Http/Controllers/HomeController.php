@@ -29,25 +29,36 @@ class HomeController extends Controller
     }
 
 
-    public function contatto(){
-            return view('guest.message.create');
+    public function contatto($apartment_selected){
+
+        // $apartment_id = Apartment::all();
+        // $apartment_id = Apartment::where('id', $apartment)->firstOrFail();
+        // dd($apartment_selected);
+        $data = [
+            'apartment_id' => $apartment_selected
+        ];
+        dd($data);
+
+        return view('guest.message.create', $data);
     }
 
 
-    public function sendMessage(Request $request)
+    public function sendMessage(Request $request,Apartment $apartment)
     {   
         //a data passo tutto
         $data = $request->all();
         $newMessage = new Message();
 
-        $apartment_id = Apartment::id();
-        $newMessage->apartment_id = $apartment_id;
+        // $apartment_id = Apartment::all();
+        // $apartment_id = Apartment::where('id', $apartment)->firstOrFail();
+        // $newMessage->apartment_id = $apartment_id;
+        // $newMessage->apartment_id = 1;
 
         $newMessage->fill($data);
         dd($newMessage);
         $newMessage->save();
         
-        return redirect()->route('validation')->with('status', 'ok');
+        return redirect()->route('guest.message.inviato')->with('status', 'ok');
     }
 
 
