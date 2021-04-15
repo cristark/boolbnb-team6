@@ -79,7 +79,7 @@ class ApartmentController extends Controller
             $newApartment->services()->sync($data['services']);
         }
 
-        return redirect()->route('apartment.index');
+        return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato creato con successo');
     }
 
     /**
@@ -128,7 +128,6 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        $images_prev = Image::all();
 
         $data = $request->all();
         $apartment->slug = Str::slug($data['title']);
@@ -159,7 +158,9 @@ class ApartmentController extends Controller
 
         if(array_key_exists('images', $data))
         {
-
+            // da spostare dopo creazione del db
+            $images_prev = Image::all();
+            
             // cancella foto immagine //// not working
             foreach ($images_prev as $image) {
                 Storage::delete('', $image);
@@ -196,7 +197,7 @@ class ApartmentController extends Controller
             $apartment->services()->sync($data['services']);
         }
         //                          nome rotta a scelta
-        return redirect()->route('apartment.index', $apartment);
+        return redirect()->route('apartment.index', $apartment)->with("status",'L\'appartamento è stato aggiornato con successo');
     }
 
     /**
@@ -221,6 +222,6 @@ class ApartmentController extends Controller
         $apartment->images()->delete();
 
         $apartment->delete();
-        return redirect()->route('apartment.index');
+        return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato cancellato con successo');
     }
 }
