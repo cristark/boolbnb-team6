@@ -29,15 +29,15 @@ class HomeController extends Controller
     }
 
 
-    public function contatto($apartment_selected){
+    public function contatto($slug){
 
         // $apartment_id = Apartment::all();
-        // $apartment_id = Apartment::where('id', $apartment)->firstOrFail();
+        $apartment_id = Apartment::where('id', $slug)->firstOrFail();
         // dd($apartment_selected);
         $data = [
-            'apartment_id' => $apartment_selected
+            'apartment_id' => $apartment_id
         ];
-        dd($data);
+        // dd($data);
 
         return view('guest.message.create', $data);
     }
@@ -55,7 +55,7 @@ class HomeController extends Controller
         // $newMessage->apartment_id = 1;
 
         $newMessage->fill($data);
-        dd($newMessage);
+        // dd($newMessage);
         $newMessage->save();
         
         return redirect()->route('guest.message.inviato')->with('status', 'ok');
