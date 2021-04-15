@@ -32,7 +32,8 @@
             </div>
             
             <div class="action-2 d-flex">
-                <a class="mr-2" class="btn btn-warning" href="{{route('apartment.edit', $apartment->slug)}}">Modifica</a>
+                <a class="mr-2" href="{{route('apartment.edit', $apartment->slug)}}"><button type="button" class="btn btn-warning">Modifica</button></a>
+
                 <form method="post" action="{{route('apartment.destroy', $apartment)}}">
                     @csrf
                     @method('DELETE')
