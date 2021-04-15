@@ -74,9 +74,9 @@
                 </div>
             </div>
 
-            {{-- Sezione caricamento immagine appartamento --}}
+            {{-- Immagine principale --}}
             @if ($apartment->main_img)
-                <p>Immagine inserita:</p>
+                <p>Immagine principale:</p>
                     @if(strpos($apartment->main_img, 'https') !== false)
                     <img class="card-img-top" style="width: 150px;" src="{{ $apartment->main_img }}" alt="{{$apartment->title}}">
                     @else
@@ -90,6 +90,8 @@
             <div class="form-group">
                 <input type="file" class="form-control-file" id="InputFile" name="main_img">
             </div>
+
+            
 
             {{-- Riga singola con Latitudine - Longitudine --}}
             <div class="form-row">

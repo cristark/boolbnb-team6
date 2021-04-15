@@ -130,23 +130,35 @@ class ApartmentController extends Controller
     {
         $data = $request->all();
         $apartment->slug = Str::slug($data['title']);
-        //modifica immagine         "main_images"=cartella
-        if(array_key_exists('main_img', $data)){
+        
+        // immagini
+        if(array_key_exists('main_img', $data))
+        {
+            // salvataggio immagine
+            Storage::delete('main_images', $apartment->main_img);
+            $apartment->images()->delete();
+
+           
+            // salvataggio immagine
             $path = Storage::put('main_images', $data['main_img']);
+            
+            // percorso file
             $data['main_img'] = $path;
             $apartment->main_img = $data['main_img'];
+
+            // salva immagine sul database
+            $image = new Image();
+            $image->src = $path;
+            $image->img_description = 'Non disponibile';
+            
+            // crea nuova relazione
+            $apartment->images()->saveMany([$image]);
         }
         //validation 
-        $request->validate([
-            "title" => "required|max:150",
-            "num_rooms" => "required",
-            "num_beds" => "required",
-            "num_baths" => "required",
-            "mq" => "required",
-            "city" => "required|max:150"
-        ]);
+ 
         //need riderect into update
         $apartment->update($data);
+
         
         //PER TAB PONTE CON SERVICES
         if(array_key_exists('services', $data)){
