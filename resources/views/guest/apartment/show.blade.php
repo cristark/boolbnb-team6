@@ -12,7 +12,6 @@
                 <img class="card-img-top" src="{{ asset('storage/'.$apartment->main_img) }}" alt="{{$apartment->title}}">
             @endif
             <div class="card-body">
-            <p class="card-text">{{$apartment->id}}</p>
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <p class="card-text">{{$apartment->description}}</p>
                 <p class="card-text">Stanze : {{$apartment->num_rooms}}</p>

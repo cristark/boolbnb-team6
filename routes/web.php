@@ -19,20 +19,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('index');
 
-Route::get('/contact/{apartment_selected}', 'HomeController@contatto')->name('guest.message.create');
-//rotta per il form action del file create.blade.php
-Route::post('/contatti', 'HomeController@sendMessage')->name('guest.message.sent');
-//rotta per esito messaggio
-Route::get('/inviato', 'HomeController@messaggioInviato')->name('validation');
 //rotta guest index
 Route::get('/apartment', 'ApartmentController@index')->name('guest.apartment.index');
 //rotta guest show
 Route::get('/apartment/{slug}', 'ApartmentController@show')->name('guest.apartment.show');
-//Route::resource( '/apartment', 'ApartmentController');
+
+Route::get('/contact/{slug}', 'HomeController@contatto')->name('guest.message.create');
+//rotta per il form action del file create.blade.php
+Route::get('/contact', 'HomeController@sendMessage')->name('guest.message.sent');
+//rotta per esito messaggio
+Route::get('/inviato', 'HomeController@messaggioInviato')->name('validation');
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
