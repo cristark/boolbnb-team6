@@ -19,6 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('index');
 
+
+
+Route::get('/contact', 'HomeController@contatto')->name('guest.message.create');
+
+                                                        //rotta per il form action del file create.blade.php
+Route::post('/contatti', 'HomeController@sendcontact')->name('guest.message.sent');
+//rotta per esito messaggio
+Route::get('/inviato', 'HomeController@messaggioInviato')->name('validation');
+
+
+
 //rotta guest index
 Route::get('/apartment', 'ApartmentController@index')->name('guest.apartment.index');
 //rotta guest show

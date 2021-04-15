@@ -31,4 +31,6 @@ class ApartmentController extends Controller
             
             return view('guest.apartment.show', $data);
         }
+
+        
 }
