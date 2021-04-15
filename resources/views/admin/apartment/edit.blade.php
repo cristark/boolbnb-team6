@@ -87,11 +87,16 @@
                 <p class="alert alert-dark">Immagine non inserita</p>
                 <label for="InputFile">Carica un'immagine</label>
             @endif
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <input type="file" class="form-control-file" id="InputFile" name="main_img">
             </div>
 
+            {{-- Immagine principale --}}
+            <p>Carica immagini la galleria delle foto:</p>
             
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="InputFile" name="images[]" multiple>
+            </div>
 
             {{-- Riga singola con Latitudine - Longitudine --}}
             <div class="form-row">

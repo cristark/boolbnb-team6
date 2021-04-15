@@ -128,14 +128,16 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
+        $images_prev = Image::all();
+
         $data = $request->all();
         $apartment->slug = Str::slug($data['title']);
         
         // immagini
         if(array_key_exists('main_img', $data))
         {
-            // salvataggio immagine
-            Storage::delete('main_images', $apartment->main_img);
+            // cancella foto presistente immagine
+            Storage::delete('main_images', $Images_prev->src);
             $apartment->images()->delete();
 
            
@@ -154,6 +156,35 @@ class ApartmentController extends Controller
             // crea nuova relazione
             $apartment->images()->saveMany([$image]);
         }
+
+        if(array_key_exists('images', $data))
+        {
+
+            // cancella foto immagine //// not working
+            foreach ($images_prev as $image) {
+                Storage::delete('', $image);
+            }
+
+            $apartment->images()->delete();
+            
+            // salvataggio immagini
+            foreach ($data['images'] as $image) {
+                $path = Storage::put('image_gallery', $image);
+            
+                // salva immagine sul database
+                $image = new Image();
+                $image->src = $path;
+                $image->img_description = 'Non disponibile foto della galleria';
+                
+                // crea nuova relazione
+                $apartment->images()->saveMany([$image]);
+            }
+            
+
+            // dd($data['images']);
+            
+        }
+
         //validation 
  
         //need riderect into update
