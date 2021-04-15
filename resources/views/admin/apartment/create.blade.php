@@ -112,10 +112,10 @@
             <div class="form-group">
                 <label for="InputActive">Servizi disponibili</label>    
                 
-                @foreach ($services as $key => $service)
+                @foreach ($services as $service)
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{$key}}" id="services" name="services[]"
-                            @if ($key == old('services'))
+                        <input class="form-check-input" type="checkbox" value="{{$service->id}}" id="services" name="services[]"
+                            @if ($service->id == old('services'))
                                 selected="selected"
                             @endif>
                         <label class="form-check-label" for="services">
@@ -124,7 +124,6 @@
                     </div>
                 @endforeach
             </div>
-
 
             <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>

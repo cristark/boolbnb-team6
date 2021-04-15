@@ -23,12 +23,14 @@ class ApartmentController extends Controller
         public function show($slug) {
 
             $apartment = Apartment::where('slug', $slug)->firstOrFail();
-
+            $apartment_selected = $apartment->id;
             $data = [
                 'apartment' => $apartment
             ];
 
             
-            return view('guest.apartment.show', $data);
+            return view('guest.apartment.show', $data)->with('apartment_selected', $apartment_selected);
         }
+
+        
 }
