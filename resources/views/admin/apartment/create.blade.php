@@ -75,14 +75,14 @@
             </div>
 
             {{-- Immagine principale --}}
-           <label for="InputFile">Immagine principale</label>
+           <label for="InputFile">Immagine principale (obbligatoria)</label>
 
             <div class="form-group mt-3">
                 <input type="file" class="form-control-file" id="InputFile" name="main_img">
             </div>
 
             {{-- Foto galleria --}}
-            <p>Seleziona tutte le immagini per la galleria delle foto</p>
+            <p>Seleziona tutte le immagini per la galleria delle foto (facoltativa)</p>
 
             <div class="form-group mt-3 p-2">
                 <input type="file" class="form-control-file" id="InputFile" name="images[]" multiple>
