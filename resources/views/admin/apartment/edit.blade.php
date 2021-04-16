@@ -155,8 +155,8 @@
                 @endforeach
             </div>
 
-            <button type="submit" class="btn btn-primary">Aggiungi</button>
-            <a class="d-flex justify-content-end" href="{{route('apartment.index')}}"><button type="submit" class="btn btn-warning">Annulla</button></a>
+            <button type="submit" class="btn btn-primary">Salva le modifiche</button>
+            <a class="d-flex justify-content-end" href="{{route('apartment.index')}}"><button  class="btn btn-warning">Annulla</button></a>
         </form>
     </div>
 @endsection
