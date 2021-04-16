@@ -245,20 +245,34 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //prendi il messaggio dove la fk apartment id é uguale all apartment ID
-        // $messages = Message::where('apartment_id', $apartment->id)->get();
+        
+        // cancella foto principale
+        Storage::delete('main_images', $apartment->main_img);
+            
+        // cerca immagini associati
+        $images_prev = Image::where('apartment_id', $apartment->id)->get();
+            
+        // patch della alleria
+        $path =  "image_gallery/";
+            
+        // cancellazione tutte le immagini dal server
+        foreach ($images_prev as $image) {
+            $name_img = str_replace( $path, "",$image->src);
+            $name_img = str_replace( "[]", "",$image->src);
+            Storage::delete('main_images', $name_img);
+        }
 
-        // //ricordarsi di includere la parte dei messaggi
-
-        // //delete service and sponsor tab ponte
+        // delete service and sponsor tab ponte
         $apartment->services()->sync([]);
         $apartment->sponsors()->sync([]);
 
+        // cancellazioni relazioni model
         $apartment->messages()->delete();
         $apartment->views()->delete();
         $apartment->images()->delete();
 
         $apartment->delete();
+
         return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato cancellato con successo');
     }
 }
