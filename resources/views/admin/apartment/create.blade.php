@@ -30,7 +30,7 @@
             {{-- Descrizione appartamento --}}
             <div class="form-group">
                 <label for="InputDescription">Descrizione</label>
-                <textarea class="form-control" id="InputDescription" placeholder="Inserisci la descrizione dell'appartamento" cols="30" rows="10" name="content">{{old('content')}}</textarea>
+                <textarea class="form-control" id="InputDescription" placeholder="Inserisci la descrizione dell'appartamento" cols="30" rows="10" name="description">{{old('description')}}</textarea>
             </div>
 
             {{-- Riga singola con Città - Regione - Stato --}}
@@ -75,7 +75,7 @@
             </div>
 
             {{-- Immagine principale --}}
-           <label for="InputFile">Carica un'immagine (obbligatorio)</label>
+           <label for="InputFile">Immagine principale</label>
 
             <div class="form-group mt-3">
                 <input type="file" class="form-control-file" id="InputFile" name="main_img">

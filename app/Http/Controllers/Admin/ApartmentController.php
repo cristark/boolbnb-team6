@@ -61,24 +61,62 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // dd($data);
+        
+        // nuovo appartamento
+        $newApartment = new Apartment();
+        $newApartment->slug = Str::slug($data['title']);        
+
+        // array base        
         $idUser = Auth::id();
         $services = Service::all();
-
-        $newApartment = new Apartment();
-        $newApartment->user_id =$idUser;
-        $newApartment->slug = Str::slug($data['title']);        
-        $path = Storage::put('main_images', $data['main_img']);
-        $data['main_img'] = $path;
-        $newApartment->main_img = $data['main_img'];        
-        $newApartment->fill($data);
-
-        $newApartment->save();
+        $images = Image::all();
         
+        $newApartment->user_id =$idUser;
+        // dd('test');
+
+        // immagine principale
+        if(array_key_exists('main_img', $data))
+        {
+            // salvataggio immagine
+            $path = Storage::put('main_images', $data['main_img']);
+            
+            // percorso file
+            $data['main_img'] = $path;
+            $newApartment->main_img = $data['main_img'];
+
+        }
+
+        // salvataggio dati appartamento
+        $newApartment->fill($data);
+        $newApartment->save();
+
+        if(array_key_exists('images', $data))
+        {           
+            // salvataggio immagini
+            foreach ($data['images'] as $image) {
+                $path = Storage::put('image_gallery', $image);
+                
+                // salva immagine sul database
+                $image = new Image();
+                $image->src = $path.$image;
+                $image->src = str_replace( "[]", "",$image->src);
+                $image->img_description = 'Non disponibile descrizione della foto';
+                
+                // crea nuova relazione
+                $newApartment->images()->saveMany([$image]);
+            }
+            
+
+            // dd($data['images']);
+            
+        }
+
+        // salvaggio servizi
         if (array_key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
 
+        // ritorna view
         return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato creato con successo');
     }
 
