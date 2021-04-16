@@ -94,6 +94,7 @@
             {{-- Foto galleria --}}
             <p>Seleziona tutte le immagini per la galleria delle foto</p>
             <label>Immagini presenti della galleria:</label>
+            <h3>Da problemi solo se src è https</h3>
             <div class="d-flex flex-wrap ">
                 @if (isset($images))
                     @foreach ($images as $image)
