@@ -94,15 +94,17 @@
             {{-- Foto galleria --}}
             <p>Seleziona tutte le immagini per la galleria delle foto</p>
             <label>Immagini presenti della galleria:</label>
-            <h3>Da problemi solo se src è https</h3>
             <div class="d-flex flex-wrap ">
                 @if (isset($images))
                     @foreach ($images as $image)
-                    
+                        @if(strpos($apartment->main_img, 'https') !== false)
+                            <img class="card-img-top" style="width: 150px;" src="{{ $image->src }}" alt="{{$image->img_description}}">
+                        @else
+                            <div class="card col-2" >
+                                <img class="card-img" src="{{ asset('storage/'.$image->src) }}" alt="{{$image->img_description}}">
+                            </div>
+                        @endif
                         {{-- @php dd($image->src) @endphp  --}}
-                        <div class="card col-2" >
-                            <img class="card-img" src="{{ asset('storage/'.$image->src) }}" alt="{{$image->img_description}}">
-                        </div>
                     @endforeach
                 @else
                     <p>Non sono presenti foto della galleria per qiesto appartamento</p>
