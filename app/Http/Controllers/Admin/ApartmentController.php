@@ -109,11 +109,13 @@ class ApartmentController extends Controller
     public function edit($slug)
     {
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
+        $images_prev = Image::where('apartment_id', $apartment->id)->get();
         $services = Service::all();
 
         $data = [
             'apartment' => $apartment,
-            'services' => $services
+            'services' => $services,
+            'images' => $images_prev
         ];
 
         return view('admin.apartment.edit', $data);
@@ -168,10 +170,10 @@ class ApartmentController extends Controller
             // salvataggio immagini
             foreach ($data['images'] as $image) {
                 $path = Storage::put('image_gallery', $image);
-            
                 // salva immagine sul database
                 $image = new Image();
                 $image->src = $path.$image;
+                $image->src = str_replace( "[]", "",$image->src);
                 $image->img_description = 'Non disponibile descrizione della foto';
                 
                 // crea nuova relazione

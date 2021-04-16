@@ -91,10 +91,25 @@
                 <input type="file" class="form-control-file" id="InputFile" name="main_img">
             </div>
 
-            {{-- Immagine principale --}}
-            <p>Seleziona tutte le immagini per la galleria delle foto:</p>
+            {{-- Foto galleria --}}
+            <p>Seleziona tutte le immagini per la galleria delle foto</p>
+            <label>Immagini presenti della galleria:</label>
+            <div class="d-flex flex-wrap ">
+                @if (isset($images))
+                    @foreach ($images as $image)
+                    
+                        {{-- @php dd($image->src) @endphp  --}}
+                        <div class="card col-2" >
+                            <img class="card-img" src="{{ asset('storage/'.$image->src) }}" alt="{{$image->img_description}}">
+                        </div>
+                    @endforeach
+                @else
+                    <p>Non sono presenti foto della galleria per qiesto appartamento</p>
+                @endif
+            </div>
             
-            <div class="form-group">
+            <p class="mt-3">Se scegli di inserire almeno una foto, tutte quelle presenti precedemente verrano eliminate</p>
+            <div class="form-group mt-3 p-2">
                 <input type="file" class="form-control-file" id="InputFile" name="images[]" multiple>
             </div>
 
