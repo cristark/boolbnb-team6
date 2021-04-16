@@ -92,7 +92,7 @@
             </div>
 
             {{-- Immagine principale --}}
-            <p>Carica immagini la galleria delle foto:</p>
+            <p>Seleziona tutte le immagini per la galleria delle foto:</p>
             
             <div class="form-group">
                 <input type="file" class="form-control-file" id="InputFile" name="images[]" multiple>

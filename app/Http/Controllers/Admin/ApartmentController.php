@@ -136,9 +136,7 @@ class ApartmentController extends Controller
         if(array_key_exists('main_img', $data))
         {
             // cancella foto presistente immagine
-            Storage::delete('main_images', $Images_prev->src);
-            $apartment->images()->delete();
-
+            Storage::delete('main_images', $apartment->main_img);
            
             // salvataggio immagine
             $path = Storage::put('main_images', $data['main_img']);
@@ -147,23 +145,22 @@ class ApartmentController extends Controller
             $data['main_img'] = $path;
             $apartment->main_img = $data['main_img'];
 
-            // salva immagine sul database
-            $image = new Image();
-            $image->src = $path;
-            $image->img_description = 'Non disponibile';
-            
-            // crea nuova relazione
-            $apartment->images()->saveMany([$image]);
         }
 
         if(array_key_exists('images', $data))
         {
-            // da spostare dopo creazione del db
-            $images_prev = Image::all();
+            // prendo id del appartamento
+            $num = $apartment->id;
+            // cerca immagini associati
+            $images_prev = Image::where('apartment_id', $num)->get();
+            // patch della alleria
+            $path =  "image_gallery/";
             
-            // cancella foto immagine //// not working
+            // cancellazione tutte le immagini dal server
             foreach ($images_prev as $image) {
-                Storage::delete('', $image);
+                $name_img = str_replace( $path, "",$image->src);
+                $name_img = str_replace( "[]", "",$image->src);
+                Storage::delete('main_images', $name_img);
             }
 
             $apartment->images()->delete();
@@ -174,8 +171,8 @@ class ApartmentController extends Controller
             
                 // salva immagine sul database
                 $image = new Image();
-                $image->src = $path;
-                $image->img_description = 'Non disponibile foto della galleria';
+                $image->src = $path.$image;
+                $image->img_description = 'Non disponibile descrizione della foto';
                 
                 // crea nuova relazione
                 $apartment->images()->saveMany([$image]);
