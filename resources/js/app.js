@@ -33,7 +33,8 @@ const app = new Vue({
         ricerca: "",
         ricercaToUpper: "",
         nomeToUpper: "",
-        apartments: ,
+        apartments: ""
+    },
     methods: {
         filtro() {
             this.ricercaToUpper = this.ricerca.toUpperCase();

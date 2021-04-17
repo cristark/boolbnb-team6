@@ -49869,7 +49869,21 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    messaggio: 'ciao'
+    ricerca: "",
+    ricercaToUpper: "",
+    nomeToUpper: "",
+    apartments: ""
+  },
+  methods: {
+    filtro: function filtro() {
+      var _this = this;
+
+      this.ricercaToUpper = this.ricerca.toUpperCase();
+      this.apartments.forEach(function (items) {
+        _this.nomeToUpper = items.nome.toUpperCase();
+        _this.nomeToUpper.includes(_this.ricercaToUpper) ? items.status = true : items.status = false;
+      });
+    }
   }
 });
 
