@@ -22,10 +22,9 @@
                 <p class="card-text">Latitudine: {{$apartment->latitude}}</p>
                 <p class="card-text">Longitudine: {{$apartment->longitude}}</p>
                 <p class="card-text">Prezzo: {{$apartment->price}} €/notte</p>
-                </div>
             </div>
 
-            <div class="actions d-flex justify-content-between">
+            <a href="{{ route( 'guest.message.create', $apartment ) }}">Richiedi Info</a>
 
             <div class="action-1">
                 <a href="{{ route( 'apartment.index' ) }}"><button type="button" class="btn btn-primary">Torna Indietro</button></a>
