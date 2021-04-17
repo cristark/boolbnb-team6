@@ -24,9 +24,11 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        // $apartments = Apartment::all();
         $sponsors = Sponsor::all();
         $services = Service::all();
+        //paginate = quanti elementi voglio vedere... ho messo 2 come numero a caso
+        $apartments = Apartment::where('user_id', '=', Auth::id())->paginate();
 
         $data = [
             'apartments' => $apartments,
@@ -91,9 +93,11 @@ class ApartmentController extends Controller
     public function show($slug)
     {
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
-
+        $visitor = View::where('apartment_id', $slug)->count();
+        
         $data = [
-            'apartment' => $apartment
+            'apartment' => $apartment,
+            'visitor' => $visitor
         ];
 
         

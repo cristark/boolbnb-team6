@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Sponsor;
+use App\View;
 
 
 class Apartment extends Model
@@ -35,5 +36,13 @@ class Apartment extends Model
     //relation with images 1
     public function images(){
         return $this->hasMany('App\Image');
+    }
+
+    public function addView()
+    {
+        $visita = new View();                    
+        $visita->ip_address = Request()->ip();
+
+        return $this->views()->save( $visita );    
     }
 }
