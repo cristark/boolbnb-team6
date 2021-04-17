@@ -38,7 +38,8 @@ Route::prefix('admin')
     ->group(function () {
         Route::resource( '/apartment', 'ApartmentController');
         Route::resource( '/message', 'MessageController');
-        Route::resource('/statistic', 'ViewController');
+        // Route::resource('/statistic', 'ViewController');
+        Route::get('/statistic/{slug}', 'ViewController@show')->name('statistic.show');
         Route::get('/', 'HomeController@index')->name('home');
 
     });

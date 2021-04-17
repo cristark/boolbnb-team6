@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Apartment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\View;
 
 
 class ApartmentController extends Controller
@@ -20,10 +24,24 @@ class ApartmentController extends Controller
         return view('guest.apartment.index', $data);
         }
 
-        public function show($slug) {
+        public function show( $slug ) {
 
+
+            // $ip = Request()->ip();
             $apartment = Apartment::where('slug', $slug)->firstOrFail();
             $apartment_selected = $apartment->id;
+            
+            // dd(Auth::user());
+            if( !Auth::user() || Auth::user()->id != $apartment->user_id)
+            {
+                    
+                    $apartment->addView();
+                    // $visita = new View();                    
+                    // $visita->ip_address = Request()->ip();
+
+                    // $apartment->views()->save( $visita );                   
+            }
+
             $data = [
                 'apartment' => $apartment
             ];
