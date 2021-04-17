@@ -29,4 +29,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data:{
+        ricerca: "",
+        ricercaToUpper: "",
+        nomeToUpper: "",
+        apartments: ""
+    },
+    methods: {
+        filtro() {
+            this.ricercaToUpper = this.ricerca.toUpperCase();
+            this.apartments.forEach((items) => {
+                this.nomeToUpper = items.nome.toUpperCase();
+                (this.nomeToUpper.includes(this.ricercaToUpper)) ? items.status = true : items.status = false;
+            });
+        }
+    }
 });

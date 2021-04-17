@@ -7,6 +7,7 @@
 
     {{-- Pulsante creazione Nuovo Post --}}
     <a href="{{route('apartment.create')}}"><button type="button" class="btn btn-primary mb-3">Aggiungi un nuovo appartamento</button></a>
+    <a href="{{route('message.index')}}"><button type="button" class="btn btn-primary mb-3">I tuoi messaggi</button></a>
 
     {{-- Notifica eliminazione post esistente --}}
     @if (session('status'))
@@ -45,7 +46,9 @@
                     <td>{{$apartment->province}}</td>
                     <td>{{$apartment->active}}</td>
                     <td><a class="btn btn-info" href="{{route('apartment.show', $apartment->slug)}}">Visualizza</a></td>
-                    <td><a class="btn btn-info" href="{{route('statistic.index', $apartment->slug)}}">Statistiche</a></td>
+                    <td><a class="btn btn-info" href="{{route('statistic.show', $apartment->slug)}}">Statistiche</a></td>
+                    {{-- <td><a class="btn btn-info" href="{{route('{id}.show', $apartment->id)}}">Statistiche</a></td> --}}
+
 
                     <td><a href="{{route('apartment.edit', $apartment->slug)}}"><button type="button" class="btn btn-warning">Modifica</button></a></td>
                     <td>
