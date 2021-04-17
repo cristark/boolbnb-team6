@@ -74,9 +74,9 @@
                 </div>
             </div>
 
-            {{-- Sezione caricamento immagine appartamento --}}
+            {{-- Immagine principale --}}
             @if ($apartment->main_img)
-                <p>Immagine inserita:</p>
+                <p>Immagine principale:</p>
                     @if(strpos($apartment->main_img, 'https') !== false)
                     <img class="card-img-top" style="width: 150px;" src="{{ $apartment->main_img }}" alt="{{$apartment->title}}">
                     @else
@@ -87,8 +87,33 @@
                 <p class="alert alert-dark">Immagine non inserita</p>
                 <label for="InputFile">Carica un'immagine</label>
             @endif
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <input type="file" class="form-control-file" id="InputFile" name="main_img">
+            </div>
+
+            {{-- Foto galleria --}}
+            <p>Seleziona tutte le immagini per la galleria delle foto</p>
+            <label>Immagini presenti della galleria:</label>
+            <div class="d-flex flex-wrap ">
+                @if (isset($images))
+                    @foreach ($images as $image)
+                        @if(strpos($apartment->main_img, 'https') !== false)
+                            <img class="card-img-top" style="width: 150px;" src="{{ $image->src }}" alt="{{$image->img_description}}">
+                        @else
+                            <div class="card col-2" >
+                                <img class="card-img" src="{{ asset('storage/'.$image->src) }}" alt="{{$image->img_description}}">
+                            </div>
+                        @endif
+                        {{-- @php dd($image->src) @endphp  --}}
+                    @endforeach
+                @else
+                    <p>Non sono presenti foto della galleria per qiesto appartamento</p>
+                @endif
+            </div>
+            
+            <p class="mt-3">Se scegli di inserire almeno una foto, tutte quelle presenti precedemente verrano eliminate</p>
+            <div class="form-group mt-3 p-2">
+                <input type="file" class="form-control-file" id="InputFile" name="images[]" multiple>
             </div>
 
             {{-- Riga singola con Latitudine - Longitudine --}}
@@ -133,8 +158,8 @@
                 @endforeach
             </div>
 
-            <button type="submit" class="btn btn-primary">Aggiungi</button>
-            <a class="d-flex justify-content-end" href="{{route('apartment.index')}}"><button type="submit" class="btn btn-warning">Annulla</button></a>
+            <button type="submit" class="btn btn-primary">Salva le modifiche</button>
+            <a class="d-flex justify-content-end" href="{{route('apartment.index')}}"><button  class="btn btn-warning">Annulla</button></a>
         </form>
     </div>
 @endsection
