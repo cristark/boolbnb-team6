@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Message;
+use App\Apartment;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -15,11 +17,31 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
+        $idUser = Auth::id();
+        $apartments = Apartment::where('user_id',"=", $idUser)->get();
+        $messagesXapartment = [];
+        // $messages = Message::where('apartment_id',"=", $apartments->id)->get();
+        foreach ($apartments as $apartment) {
+            
+            $messages = Message::where('apartment_id',"=", $apartment->id)->get();
+            // dd($messages->apartment_id);
+            foreach ($messages as $key => $message) {
+                // dd($message['msg_txt']);
+                // $message->$idUser = $apartment->id;
+
+                // ... aggiungo un campo chiamato idUser con valore idUser(li vede differenti)
+                $message->idUser = $idUser;
+                array_push($messagesXapartment, $message);
+            }
+        }
+        
+        // dd($messagesXapartment);
 
         $data = [
-            'messages' => $messages
+            'messages' => $messagesXapartment,
+            'apartments' => $apartments
         ];
+        // dd($data);
         return view('admin.message.index', $data);
     }
 
@@ -50,12 +72,16 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($apartment_id)
+    public function show($message)
     {
-        $message = Message::where('apartment_id', $apartment_id)->firstOrFail();
+        $idUser = Auth::id();
+        $apartments = Apartment::where('user_id',"=", $idUser)->get();
+        $message_selected = Message::where('id', $message)->firstOrFail();
+        // $message_selected->status = 0;
 
         $data = [
-            'message' => $message
+            'message' => $message_selected,
+            'apartment' => $apartments
         ];
         
         return view('admin.message.show', $data);
@@ -92,8 +118,8 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        $message->messages()->delete();
+        $message->delete();
 
-        return redirect()->route('admin.message.index');
+        return redirect()->route('message.index');
     }
 }

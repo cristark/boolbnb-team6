@@ -43,11 +43,13 @@ class HomeController extends Controller
     }
 
 
-    public function sendMessage(Request $request,Apartment $apartment)
+    public function sendMessage(Request $request)
     {   
         //a data passo tutto
         $data = $request->all();
         $newMessage = new Message();
+
+        $newMessage->apartment_id = $data['apartment_id'];
 
         // $apartment_id = Apartment::all();
         // $apartment_id = Apartment::where('id', $apartment)->firstOrFail();

@@ -8,8 +8,10 @@
     <form action="{{ route('guest.message.sent') }}" method="post">
         @csrf
         @method('POST')
-        
-        <input type="hidden" name="apartment_selected" value="{{$apartment_selected}}">
+        <div class="form-group">
+            <input name="status" type="hidden" value="1">
+            <input name="apartment_id" type="hidden" value="{{$apartment_id->id}}">
+        </div>
 
         <div class="form-group">
             <label for="nomeUtente">NOME E COGNOME</label>

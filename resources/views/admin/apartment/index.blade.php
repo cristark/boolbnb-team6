@@ -7,6 +7,7 @@
 
     {{-- Pulsante creazione Nuovo Post --}}
     <a href="{{route('apartment.create')}}"><button type="button" class="btn btn-primary mb-3">Aggiungi un nuovo appartamento</button></a>
+    <a href="{{route('message.index')}}"><button type="button" class="btn btn-primary mb-3">I tuoi messaggi</button></a>
 
     {{-- Notifica eliminazione post esistente --}}
     @if (session('status'))
