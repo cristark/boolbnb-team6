@@ -228,7 +228,7 @@ class ApartmentController extends Controller
         }
 
         //validation 
- 
+    
         //need riderect into update
         $apartment->update($data);
 
