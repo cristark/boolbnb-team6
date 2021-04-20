@@ -25,9 +25,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-        mainMenu: false,
-        footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda']
     data: {
+        //cri
+        footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda'],
+        mainMenu: false,
+        //dave
         prova: 'ciao',
         ricerca: "",
         ricercaToUpper: "",
@@ -58,6 +60,11 @@ const app = new Vue({
         this.tomtom();
     },
     methods: {
+        // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
+        showMenu() {
+            this.mainMenu = !this.mainMenu;
+            console.log(this.mainMenu);
+        },
         tomtom()
         {
             axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?',
@@ -134,12 +141,7 @@ const app = new Vue({
                     }
                 }
             });
-        },
-        // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
-        showMenu() {
-            this.mainMenu = !this.mainMenu;
-            console.log(this.mainMenu);
-        }
+        }        
     }
 });
 
