@@ -22,3 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/statistiche/{slug}', 'Api\ViewController@show');
 
 Route::get('/statistiche', 'Api\ViewController@index');
+
+
+Route::get('/search', 'Api\SearchController@index');

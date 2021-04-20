@@ -1,9 +1,3 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 var Chart = require('chart.js');
 // const $ = require('jquery');
@@ -29,42 +23,56 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-
-
 const app = new Vue({
     el: '#app',
     data: {
+        prova: 'ciao',
         ricerca: "",
         ricercaToUpper: "",
         nomeToUpper: "",
         apartments: '',
         array_visite: [],
-        prova: '',
         currentUrl: window.location.pathname,
         myLocal: 'http://localhost:8000/api/statistiche/',
         lastItem: '',
-        risultato_mesi: []
+        risultato_mesi: [],
+        language: 'it-IT',
+        citta: '',
+        apiKey: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
+        array_tom: [],
+        json: '.json'
     },
     // created(){
     //     console.log(this.lastItem);
 
     // },
     mounted() {
-
+        console.log(this.citta);
 
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         // console.log(this.currentUrl);
         console.log(this.lastItem);
         this.loadVisitors();
-
+        this.tomtom();
     },
     methods: {
+        tomtom()
+        {
+            axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?',
+            {
+                params: {
+                    
+                    limit: 1,
+                    key: '581ptADhY1xisfyvdt8ITvz3d78O66H6'
+                    
+                }
+            })
+            .then(result => {
+                this.array_tom = result.data.results;
+                console.log(this.array_tom);
+
+            });
+        },
         filtro() {
             this.ricercaToUpper = this.ricerca.toUpperCase();
             this.apartments.forEach((items) => {
@@ -72,22 +80,22 @@ const app = new Vue({
                 (this.nomeToUpper.includes(this.ricercaToUpper)) ? items.status = true : items.status = false;
             });
         },
-        loadVisitors() {
-            axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
-                .then(result => {
-                    this.array_visite = result.data.numero_visite;
-                    console.log(this.array_visite);
-                    console.log(result.data.numero_visite);
-                    this.array_visite.forEach(element => {
-                        console.log(element.totale, 'sono element');
-                        console.log(element.numero_mese);
-                        this.risultato_mesi.push(element.numero_mese);
+        // loadVisitors() {
+        //     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
+        //         .then(result => {
+        //             this.array_visite = result.data.numero_visite;
+        //             console.log(this.array_visite);
+        //             console.log(result.data.numero_visite);
+        //             this.array_visite.forEach(element => {
+        //                 console.log(element.totale, 'sono element');
+        //                 console.log(element.numero_mese);
+        //                 this.risultato_mesi.push(element.numero_mese);
 
-                        console.log(this.risultato_mesi, 'sono risultato mesi');
-                    });
+        //                 console.log(this.risultato_mesi, 'sono risultato mesi');
+        //             });
 
-                });
-        },
+        //         });
+        // },
         createCanvas(){
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {

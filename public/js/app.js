@@ -62599,11 +62599,6 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var Chart = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js"); // const $ = require('jquery');
@@ -62628,63 +62623,73 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 var app = new Vue({
   el: '#app',
   data: {
+    prova: 'ciao',
     ricerca: "",
     ricercaToUpper: "",
     nomeToUpper: "",
     apartments: '',
     array_visite: [],
-    prova: '',
     currentUrl: window.location.pathname,
     myLocal: 'http://localhost:8000/api/statistiche/',
     lastItem: '',
-    risultato_mesi: []
+    risultato_mesi: [],
+    language: 'it-IT',
+    citta: '',
+    apiKey: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
+    array_tom: [],
+    json: '.json'
   },
   // created(){
   //     console.log(this.lastItem);
   // },
   mounted: function mounted() {
+    console.log(this.citta);
     this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1); // console.log(this.currentUrl);
 
     console.log(this.lastItem);
     this.loadVisitors();
+    this.tomtom();
   },
   methods: {
-    filtro: function filtro() {
+    tomtom: function tomtom() {
       var _this = this;
+
+      axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?', {
+        params: {
+          limit: 1,
+          key: '581ptADhY1xisfyvdt8ITvz3d78O66H6'
+        }
+      }).then(function (result) {
+        _this.array_tom = result.data.results;
+        console.log(_this.array_tom);
+      });
+    },
+    filtro: function filtro() {
+      var _this2 = this;
 
       this.ricercaToUpper = this.ricerca.toUpperCase();
       this.apartments.forEach(function (items) {
-        _this.nomeToUpper = items.nome.toUpperCase();
-        _this.nomeToUpper.includes(_this.ricercaToUpper) ? items.status = true : items.status = false;
+        _this2.nomeToUpper = items.nome.toUpperCase();
+        _this2.nomeToUpper.includes(_this2.ricercaToUpper) ? items.status = true : items.status = false;
       });
     },
-    loadVisitors: function loadVisitors() {
-      var _this2 = this;
-
-      axios.get('http://localhost:8000/api/statistiche/' + this.lastItem).then(function (result) {
-        _this2.array_visite = result.data.numero_visite;
-        console.log(_this2.array_visite);
-        console.log(result.data.numero_visite);
-
-        _this2.array_visite.forEach(function (element) {
-          console.log(element.totale, 'sono element');
-          console.log(element.numero_mese);
-
-          _this2.risultato_mesi.push(element.numero_mese);
-
-          console.log(_this2.risultato_mesi, 'sono risultato mesi');
-        });
-      });
-    },
+    // loadVisitors() {
+    //     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
+    //         .then(result => {
+    //             this.array_visite = result.data.numero_visite;
+    //             console.log(this.array_visite);
+    //             console.log(result.data.numero_visite);
+    //             this.array_visite.forEach(element => {
+    //                 console.log(element.totale, 'sono element');
+    //                 console.log(element.numero_mese);
+    //                 this.risultato_mesi.push(element.numero_mese);
+    //                 console.log(this.risultato_mesi, 'sono risultato mesi');
+    //             });
+    //         });
+    // },
     createCanvas: function createCanvas() {
       var ctx = document.getElementById('myChart').getContext('2d');
       var myChart = new Chart(ctx, {
@@ -62709,14 +62714,7 @@ var app = new Vue({
       });
     }
   }
-});
-var map = tt.map({
-  key: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
-  container: 'map',
-  dragPan: !isMobileOrTablet()
-});
-map.addControl(new tt.FullscreenControl());
-map.addControl(new tt.NavigationControl()); // var risultato_mesi = risultato_mesi;
+}); // var risultato_mesi = risultato_mesi;
 // var ctx = document.getElementById('myChart').getContext('2d');
 // var myChart = new Chart(ctx, {
 //     type: 'line',

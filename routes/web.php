@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+
+//rotta search testing 
+Route::get('/search', 'ApartmentController@search');
+
 Route::get('/', 'HomeController@index')->name('index');
 
 //rotta guest index
