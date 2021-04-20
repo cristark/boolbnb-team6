@@ -25,6 +25,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+        mainMenu: false,
+        footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda']
     data: {
         prova: 'ciao',
         ricerca: "",
@@ -132,6 +134,11 @@ const app = new Vue({
                     }
                 }
             });
+        },
+        // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
+        showMenu() {
+            this.mainMenu = !this.mainMenu;
+            console.log(this.mainMenu);
         }
     }
 });
