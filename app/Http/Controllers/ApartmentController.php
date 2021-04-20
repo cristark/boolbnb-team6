@@ -50,5 +50,13 @@ class ApartmentController extends Controller
             return view('guest.apartment.show', $data)->with('apartment_selected', $apartment_selected);
         }
 
-        
+                //inizio test search
+        public function search()
+        {
+            $search_text = $_GET['query'];
+            $apartments = Apartment::where('city','LIKE','%'. $search_text .'%')->get();
+
+            return view('guest.apartment.search', compact('apartments'));
+        }
+        //fine test search
 }

@@ -24,6 +24,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+        
         // $apartments = Apartment::all();
         $sponsors = Sponsor::all();
         $services = Service::all();
@@ -228,7 +229,7 @@ class ApartmentController extends Controller
         }
 
         //validation 
- 
+    
         //need riderect into update
         $apartment->update($data);
 

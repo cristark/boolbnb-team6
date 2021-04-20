@@ -136,5 +136,6 @@
             {{-- FOOTER --}}
             @include('partials.footer')
         </div>
+
     </body>
 </html>
