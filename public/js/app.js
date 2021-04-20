@@ -49869,10 +49869,17 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    ricerca: "",
-    ricercaToUpper: "",
-    nomeToUpper: "",
-    apartments: ""
+    prova: 'ciao',
+    ricerca: '',
+    ricercaToUpper: '',
+    nomeToUpper: '',
+    apartments: '',
+    mainMenu: false,
+    footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda'] // iconsFooterLink: ['']
+
+  },
+  mounted: function mounted() {
+    console.log(this.mainMenu);
   },
   methods: {
     filtro: function filtro() {
@@ -49883,6 +49890,11 @@ var app = new Vue({
         _this.nomeToUpper = items.nome.toUpperCase();
         _this.nomeToUpper.includes(_this.ricercaToUpper) ? items.status = true : items.status = false;
       });
+    },
+    // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
+    showMenu: function showMenu() {
+      this.mainMenu = !this.mainMenu;
+      console.log(this.mainMenu);
     }
   }
 });

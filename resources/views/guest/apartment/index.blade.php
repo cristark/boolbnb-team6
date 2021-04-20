@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
             <h1>Elenco Appartamenti</h1>
-            <h2>@{{messaggio}}</h2>
+            <h2>@{{prova}}</h2>
     
             @foreach ($apartments as $apartment)    
                 <div class="card mb-5">
