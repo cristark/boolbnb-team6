@@ -44,6 +44,7 @@ Route::prefix('admin')
         Route::resource( '/message', 'MessageController');
         // Route::resource('/statistic', 'ViewController');
         Route::get('/statistic/{slug}', 'ViewController@show')->name('statistic.show');
+        Route::get('/sponsor/{slug}', 'SponsorController@index')->name('sponsor.index');
         Route::get('/', 'HomeController@index')->name('home');
 
     });
