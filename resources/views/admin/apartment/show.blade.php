@@ -41,7 +41,7 @@
                     var longitudine = document.getElementById("dom-lon").textContent;
 
                     // centro della mappa
-                    var HQ = { lat: longitudine, lng: latitude }
+                    var HQ = { lat: latitude, lng: longitudine }
                     console.log(HQ);
 
                     // visualizzazione della mappa

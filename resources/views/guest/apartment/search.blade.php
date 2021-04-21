@@ -32,9 +32,53 @@
             </div>
     
             {{-- MAPPA --}}
-            <div class="map_box">
-    
-            </div>
+           <div id ="map" style="height:550px;width:550px;"></div> 
+                
+                {{-- questo solo per passaggio di valori --}}
+                <div id="dom-ap" style="display: none;">
+                    <?php
+                        echo $apartments; 
+                    ?>
+                </div>
+                <script>
+
+                    var apartments = document.getElementById("dom-ap").textContent;
+                
+                     // centro della mappa
+                    var HQ = { lat: 45.46428976336229, lng: 9.191959328863394 }
+
+                    // visualizzazione della mappa
+                    var map = tt.map({
+                        key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
+                        container: 'map',
+                        center: HQ,
+                        zoom: 10
+                    });
+
+                    // trasforma stringa a array json
+                    var apartments = JSON.parse(apartments);
+                    console.log(apartments);
+
+                    // crea maker per ogni posizioni (latitudine e longitudine)
+                    apartments.forEach( apartment => {
+                        
+                        // crea casella di testo di info con testo personalizzabile
+                        var popup = new tt.Popup({ anchor: 'top' }).setText(apartment.title);
+
+                        var position = { lat: apartment.latitude, lng: apartment.longitude }
+
+                        console.log(position);
+                        
+                        // aggiungi maker sulla mappa
+                        var marker = new tt.Marker().setLngLat(position).addTo(map);
+                        
+                        // testo descritivo del maker
+                        marker.setPopup(popup).togglePopup();
+
+                    });
+
+
+                </script>
         </div>
 
     </div>
