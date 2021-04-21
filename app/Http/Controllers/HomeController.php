@@ -47,6 +47,7 @@ class HomeController extends Controller
     {   
         //a data passo tutto
         $data = $request->all();
+        // dd($data);
         $newMessage = new Message();
 
         $newMessage->apartment_id = $data['apartment_id'];

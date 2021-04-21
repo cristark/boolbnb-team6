@@ -49844,6 +49844,12 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // var Chart = require('chart.js');
 // const $ = require('jquery');
 // window.axios = require('axios');
+//braintree
+// {
+//     "require" : {
+//         "braintree/braintree_php" : "5.5.0"
+//     }
+// }
 // const $ = require('./jquery');
 // 
 

@@ -3,6 +3,13 @@ require('./bootstrap');
 // const $ = require('jquery');
 // window.axios = require('axios');
 
+
+//braintree
+// {
+//     "require" : {
+//         "braintree/braintree_php" : "5.5.0"
+//     }
+// }
 // const $ = require('./jquery');
 // 
 const { default: axios } = require("axios");
@@ -72,7 +79,7 @@ const app = new Vue({
                 params: {
                     
                     limit: 1,
-                    key: '581ptADhY1xisfyvdt8ITvz3d78O66H6'
+                    key: '3ZJWFcBWKUg3rC731Tp0W3ytemg6tt3O'
                     
                 }
             })

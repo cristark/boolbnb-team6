@@ -18,10 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+//ok davide
 Route::get('/statistiche/{slug}', 'Api\ViewController@show');
-
 Route::get('/statistiche', 'Api\ViewController@index');
+//
+
+//prova api map
+Route::get('/map/{id}', 'Api\MapController@index');
+// Route::get('/map', 'Api\MapController@index');
 
 
-Route::get('/search', 'Api\SearchController@index');
+Route::get('/search', 'Api\SearchController@store');
