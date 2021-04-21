@@ -49841,12 +49841,22 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // var Chart = require('chart.js');
+// const $ = require('jquery');
+// window.axios = require('axios');
+//braintree
+// {
+//     "require" : {
+//         "braintree/braintree_php" : "5.5.0"
+//     }
+// }
+// const $ = require('./jquery');
+// 
+
+
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    axios = _require["default"]; // require('../../public/js/stat');
+
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
@@ -49860,32 +49870,142 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 var app = new Vue({
   el: '#app',
   data: {
+    //cri
+    footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda'],
+    mainMenu: false,
+    //dave
+    prova: 'ciao',
     ricerca: "",
     ricercaToUpper: "",
     nomeToUpper: "",
-    apartments: ""
+    apartments: '',
+    array_visite: [],
+    currentUrl: window.location.pathname,
+    myLocal: 'http://localhost:8000/api/statistiche/',
+    lastItem: '',
+    risultato_mesi: [],
+    language: 'it-IT',
+    citta: '',
+    apiKey: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
+    array_tom: [],
+    json: '.json'
+  },
+  // created(){
+  //     console.log(this.lastItem);
+  // },
+  mounted: function mounted() {
+    console.log(this.citta);
+    this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1); // console.log(this.currentUrl);
+
+    console.log(this.lastItem);
+    this.loadVisitors();
+    this.tomtom();
   },
   methods: {
-    filtro: function filtro() {
+    // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
+    showMenu: function showMenu() {
+      this.mainMenu = !this.mainMenu;
+      console.log(this.mainMenu);
+    },
+    tomtom: function tomtom() {
       var _this = this;
+
+      axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?', {
+        params: {
+          limit: 1,
+          key: '581ptADhY1xisfyvdt8ITvz3d78O66H6'
+        }
+      }).then(function (result) {
+        _this.array_tom = result.data.results;
+        console.log(_this.array_tom);
+      });
+    },
+    filtro: function filtro() {
+      var _this2 = this;
 
       this.ricercaToUpper = this.ricerca.toUpperCase();
       this.apartments.forEach(function (items) {
-        _this.nomeToUpper = items.nome.toUpperCase();
-        _this.nomeToUpper.includes(_this.ricercaToUpper) ? items.status = true : items.status = false;
+        _this2.nomeToUpper = items.nome.toUpperCase();
+        _this2.nomeToUpper.includes(_this2.ricercaToUpper) ? items.status = true : items.status = false;
+      });
+    },
+    // loadVisitors() {
+    //     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
+    //         .then(result => {
+    //             this.array_visite = result.data.numero_visite;
+    //             console.log(this.array_visite);
+    //             console.log(result.data.numero_visite);
+    //             this.array_visite.forEach(element => {
+    //                 console.log(element.totale, 'sono element');
+    //                 console.log(element.numero_mese);
+    //                 this.risultato_mesi.push(element.numero_mese);
+    //                 console.log(this.risultato_mesi, 'sono risultato mesi');
+    //             });
+    //         });
+    // },
+    createCanvas: function createCanvas() {
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
       });
     }
   }
-});
+}); // var risultato_mesi = risultato_mesi;
+// var ctx = document.getElementById('myChart').getContext('2d');
+// var myChart = new Chart(ctx, {
+//     type: 'line',
+//     data: {
+//         labels: [1,2,3,4],
+//         datasets: [{
+//             label: '# of Votes',
+//             data: [0, 1, 2, 3, 4],
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
+//                 'rgba(153, 102, 255, 0.2)',
+//                 'rgba(255, 159, 64, 0.2)'
+//             ],
+//             borderColor: [
+//                 'rgba(255, 99, 132, 1)',
+//                 'rgba(54, 162, 235, 1)',
+//                 'rgba(255, 206, 86, 1)',
+//                 'rgba(75, 192, 192, 1)',
+//                 'rgba(153, 102, 255, 1)',
+//                 'rgba(255, 159, 64, 1)'
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             y: {
+//                 beginAtZero: true
+//             }
+//         }
+//     },
+// });
 
 /***/ }),
 

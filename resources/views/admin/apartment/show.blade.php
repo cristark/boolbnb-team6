@@ -32,6 +32,7 @@
             
             <div class="action-2 d-flex">
                 <a class="mr-2" href="{{route('apartment.edit', $apartment->slug)}}"><button type="button" class="btn btn-warning">Modifica</button></a>
+                <a class="mr-2" href="{{route('sponsor.index', $apartment->slug)}}"><button type="button" class="btn btn-warning">Sponsorizza</button></a>
 
                 <form method="post" action="{{route('apartment.destroy', $apartment)}}">
                     @csrf

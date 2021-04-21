@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+
+//rotta search testing 
+Route::get('/search', 'ApartmentController@search');
+Route::get('/search2', 'ApartmentController@homeSearch');
+
+
 Route::get('/', 'HomeController@index')->name('index');
 
 //rotta guest index
@@ -40,6 +46,7 @@ Route::prefix('admin')
         Route::resource( '/message', 'MessageController');
         // Route::resource('/statistic', 'ViewController');
         Route::get('/statistic/{slug}', 'ViewController@show')->name('statistic.show');
+        Route::get('/sponsor/{slug}', 'SponsorController@index')->name('sponsor.index');
         Route::get('/', 'HomeController@index')->name('home');
-
-    });
+        Route::get('/payment', 'PaymentController@request') ;
+});

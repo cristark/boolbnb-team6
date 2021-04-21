@@ -1,0 +1,29 @@
+.back_btn {
+    @include flex(flex-start);
+    margin-bottom: 20px;
+
+    svg {
+        transform: scale(80%);
+    }
+
+    a {
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+}
+
+.main_search {
+    @include flex(space-between);
+    margin-bottom: 30px;
+
+    .search_box {
+        width: 40%;
+    }
+
+    .map_box {
+        width: 60%;
+        height: calc(100vh - 180px);
+        @include boxTest;
+    }
+}
