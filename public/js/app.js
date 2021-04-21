@@ -62603,6 +62603,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var Chart = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js"); // const $ = require('jquery');
 // window.axios = require('axios');
+//braintree
+// {
+//     "require" : {
+//         "braintree/braintree_php" : "5.5.0"
+//     }
+// }
 // const $ = require('./jquery');
 // 
 

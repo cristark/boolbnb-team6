@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 //rotta search testing 
 Route::get('/search', 'ApartmentController@search');
+Route::get('/search2', 'ApartmentController@homeSearch');
+
 
 Route::get('/', 'HomeController@index')->name('index');
 
@@ -45,5 +47,5 @@ Route::prefix('admin')
         // Route::resource('/statistic', 'ViewController');
         Route::get('/statistic/{slug}', 'ViewController@show')->name('statistic.show');
         Route::get('/', 'HomeController@index')->name('home');
-
-    });
+        Route::get('/payment', 'PaymentController@request') ;
+});

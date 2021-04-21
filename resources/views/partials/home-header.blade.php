@@ -57,7 +57,9 @@
 
         {{-- Barra di ricerca città --}}
         <div class="search_bar">
-            <input type="text"  v-model="citta" @keyup.enter="tomtom" placeholder="Scegli la tua Destinazione">
+            <form method="POST" type="post" action="{{ url('/search2') }}">
+                <input name="city" type="text"  v-model="citta" @keyup.enter="tomtom" placeholder="Scegli la tua Destinazione">
+            </form>
             {{-- Lente ingrandimento --}}
             <svg xmlns="http://www.w3.org/2000/svg" width="17.048" height="17.058" viewBox="0 0 17.048 17.058">
                 <path id="Tracciato_22" data-name="Tracciato 22" d="M15.5,14h-.79l-.28-.27a6.518,6.518,0,1,0-.7.7l.27.28v.79l4.25,4.25a1.054,1.054,0,0,0,1.49-1.49Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" transform="translate(-2.999 -2.999)"/>

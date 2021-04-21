@@ -3,6 +3,13 @@ var Chart = require('chart.js');
 // const $ = require('jquery');
 // window.axios = require('axios');
 
+
+//braintree
+// {
+//     "require" : {
+//         "braintree/braintree_php" : "5.5.0"
+//     }
+// }
 // const $ = require('./jquery');
 // 
 const { default: axios } = require("axios");

@@ -5,43 +5,90 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
-use Illuminate\Support\Facades\DB;
-
 
 class SearchController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $data = Apartment::all();
+        return $data;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         $data = $request->all();
+        $lat = $data['latitude'];
+        // $apartment_all = Apartment::all();
+        // $apartment_city = Apartment::where('city', $apartment_all->city)->get();
+        // $data['apartment'] = $apartment_all;
 
 
-        // $city = $data['city'];
-        // $lat = $data['latitude'];
-        // $lng = $data['longitude'];
-        // $now = Carbon::now();
+        return response()->json($data);
+    }
 
-        // //chiamata al database con calcolo radius
-        // $db = DB::table('apartments')->get();
-        // $apartment = DB::table('apartments')
-        // ->select("*"
-        //     ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
-        //     * cos(radians(apartments.lat)) 
-        //     * cos(radians(apartments.long) - radians(" . $lng . ")) 
-        //     + sin(radians(" .$lat. ")) 
-        //     * sin(radians(apartments.lat))) AS distance"))
-        //     ->having("distance", "<=", 20)
-        //     ->join('flat_addresses', 'apartments.id', '=', 'flat_addresses.flat_id')
-        //     ->where('flat_addresses.city', 'LIKE', '%'.$city.'%')
-        //     ->where('hidden', '=', 0)
-        //     ->where('promo_service_id', '=', null)
-        //     ->orWhere('end', '<=', $now)
-        //     ->get();
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
-            $result  = [
-                'apartments' => $apartments
-            ];
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
-            return response()->json($result);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
