@@ -29,7 +29,9 @@ class ApartmentController extends Controller
         $sponsors = Sponsor::all();
         $services = Service::all();
         //paginate = quanti elementi voglio vedere... ho messo 2 come numero a caso
-        $apartments = Apartment::where('user_id', '=', Auth::id())->paginate();
+        // $apartments = Apartment::where('user_id', '=', Auth::id());
+        $apartments = Apartment::all();
+        dd($apartments);
 
         $data = [
             'apartments' => $apartments,
