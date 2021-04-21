@@ -110,9 +110,38 @@
             </div>
         </section>
 
-        {{-- <div class="card-body">
-            <p class="card-text">Latitudine: {{$apartment->latitude}}</p>
-            <p class="card-text">Longitudine: {{$apartment->longitude}}</p>
-        </div> --}}
+        <div id ="map" style="height:90vh;"></div> 
+                
+                {{-- questo solo per passaggio di valori --}}
+                <div id="dom-lat" style="display: none;">
+                    <?php
+                        echo $lat = $apartment->latitude; 
+                    ?>
+                </div>
+                <div id="dom-lon" style="display: none;">
+                    <?php
+                        echo $lon = $apartment->longitude; 
+                    ?>
+                </div>
+                <script>
+
+                    var latitude = document.getElementById("dom-lat").textContent;
+                    var longitudine = document.getElementById("dom-lon").textContent;
+
+                    // centro della mappa
+                    var HQ = { lat: longitudine, lng: latitude }
+                    console.log(HQ);
+
+                    // visualizzazione della mappa
+                    var map = tt.map({
+                        key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
+                        container: 'map',
+                        center: HQ,
+                        zoom: 15
+                    });
+
+                    var marker = new tt.Marker().setLngLat(HQ).addTo(map);
+
+                </script>
     </div>
 @endsection
