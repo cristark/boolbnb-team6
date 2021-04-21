@@ -1,10 +1,14 @@
 .show_user_apt {
     .back_btn {
         @include flex(flex-start);
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+
+        svg {
+            transform: scale(80%);
+        }
 
         a {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             margin-left: 10px;
         }
@@ -40,7 +44,7 @@
                 margin: 40px 0;
                 .box {
                     @include flex(space-between);
-                    margin: 10px 0;
+                    margin: 15px 0;
 
                     .selector {
                         @include flex(space-between);
@@ -75,5 +79,22 @@
 
     .main_title {
         margin: 30px 0;
+    }
+
+    .details {
+        .detail_box {
+            margin: 30px 0;
+
+            h3 {
+                margin-bottom: 20px;
+            }
+
+            .map_box {
+                width: 100%;
+                height: 500px;
+                @include boxTest;
+                margin-bottom: 20px;
+            }
+        }
     }
 }

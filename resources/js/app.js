@@ -1,5 +1,5 @@
 require('./bootstrap');
-var Chart = require('chart.js');
+// var Chart = require('chart.js');
 // const $ = require('jquery');
 // window.axios = require('axios');
 

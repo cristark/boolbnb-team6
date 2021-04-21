@@ -113,6 +113,7 @@ header .main_container .auth_buttons .nav_dropdown .dropdown_menu {
 }
 header .main_container .auth_buttons .nav_dropdown .dropdown_menu.active {
   display: flex;
+  background: #fff;
 }
 header .main_container .auth_buttons .nav_dropdown .dropdown_menu a {
   margin-bottom: 10px;
@@ -412,14 +413,45 @@ main .host_cta .cta_box .overlay .box_test .btn {
   width: 140px;
   margin-top: 40px;
 }
+main .back_btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+main .back_btn svg {
+  transform: scale(80%);
+}
+main .back_btn a {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+main .main_search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+main .main_search .search_box {
+  width: 40%;
+}
+main .main_search .map_box {
+  width: 60%;
+  height: calc(100vh - 180px);
+  border: 1px solid #222222;
+}
 main .show_user_apt .back_btn {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+main .show_user_apt .back_btn svg {
+  transform: scale(80%);
 }
 main .show_user_apt .back_btn a {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin-left: 10px;
 }
@@ -453,7 +485,7 @@ main .show_user_apt .main_info .info_box .hosts_box .box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0;
+  margin: 15px 0;
 }
 main .show_user_apt .main_info .info_box .hosts_box .box .selector {
   display: flex;
@@ -484,6 +516,18 @@ main .show_user_apt .main_info .info_box .tot_price_box p {
 }
 main .show_user_apt .main_title {
   margin: 30px 0;
+}
+main .show_user_apt .details .detail_box {
+  margin: 30px 0;
+}
+main .show_user_apt .details .detail_box h3 {
+  margin-bottom: 20px;
+}
+main .show_user_apt .details .detail_box .map_box {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #222222;
+  margin-bottom: 20px;
 }
 
 footer {
