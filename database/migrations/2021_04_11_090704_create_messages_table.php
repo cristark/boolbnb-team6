@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             //Relazione 1 a molti
             $table->unsignedBigInteger('apartment_id');
             $table->foreign('apartment_id')->references('id')->on('apartments');
-
+            
             $table->string('sender_name');
             //id change con string
             // $table->id('sender_mail');

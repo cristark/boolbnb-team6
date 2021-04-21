@@ -24,9 +24,12 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        
+        // $apartments = Apartment::all();
         $sponsors = Sponsor::all();
         $services = Service::all();
+        //paginate = quanti elementi voglio vedere... ho messo 2 come numero a caso
+        $apartments = Apartment::where('user_id', '=', Auth::id())->paginate();
 
         $data = [
             'apartments' => $apartments,
@@ -61,25 +64,63 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // dd($data);
+        
+        // nuovo appartamento
+        $newApartment = new Apartment();
+        $newApartment->slug = Str::slug($data['title']);        
+
+        // array base        
         $idUser = Auth::id();
         $services = Service::all();
-
-        $newApartment = new Apartment();
-        $newApartment->user_id =$idUser;
-        $newApartment->slug = Str::slug($data['title']);        
-        $path = Storage::put('main_images', $data['main_img']);
-        $data['main_img'] = $path;
-        $newApartment->main_img = $data['main_img'];        
-        $newApartment->fill($data);
-
-        $newApartment->save();
+        $images = Image::all();
         
+        $newApartment->user_id =$idUser;
+        // dd('test');
+
+        // immagine principale
+        if(array_key_exists('main_img', $data))
+        {
+            // salvataggio immagine
+            $path = Storage::put('main_images', $data['main_img']);
+            
+            // percorso file
+            $data['main_img'] = $path;
+            $newApartment->main_img = $data['main_img'];
+
+        }
+
+        // salvataggio dati appartamento
+        $newApartment->fill($data);
+        $newApartment->save();
+
+        if(array_key_exists('images', $data))
+        {           
+            // salvataggio immagini
+            foreach ($data['images'] as $image) {
+                $path = Storage::put('image_gallery', $image);
+                
+                // salva immagine sul database
+                $image = new Image();
+                $image->src = $path.$image;
+                $image->src = str_replace( "[]", "",$image->src);
+                $image->img_description = 'Non disponibile descrizione della foto';
+                
+                // crea nuova relazione
+                $newApartment->images()->saveMany([$image]);
+            }
+            
+
+            // dd($data['images']);
+            
+        }
+
+        // salvaggio servizi
         if (array_key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
 
-        return redirect()->route('apartment.index');
+        // ritorna view
+        return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato creato con successo');
     }
 
     /**
@@ -91,9 +132,11 @@ class ApartmentController extends Controller
     public function show($slug)
     {
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
-
+        $visitor = View::where('apartment_id', $slug)->count();
+        
         $data = [
-            'apartment' => $apartment
+            'apartment' => $apartment,
+            'visitor' => $visitor
         ];
 
         
@@ -109,11 +152,13 @@ class ApartmentController extends Controller
     public function edit($slug)
     {
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
+        $images_prev = Image::where('apartment_id', $apartment->id)->get();
         $services = Service::all();
 
         $data = [
             'apartment' => $apartment,
-            'services' => $services
+            'services' => $services,
+            'images' => $images_prev
         ];
 
         return view('admin.apartment.edit', $data);
@@ -128,32 +173,73 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
+
         $data = $request->all();
         $apartment->slug = Str::slug($data['title']);
-        //modifica immagine         "main_images"=cartella
-        if(array_key_exists('main_img', $data)){
+        
+        // immagini
+        if(array_key_exists('main_img', $data))
+        {
+            // cancella foto presistente immagine
+            Storage::delete('main_images', $apartment->main_img);
+           
+            // salvataggio immagine
             $path = Storage::put('main_images', $data['main_img']);
+            
+            // percorso file
             $data['main_img'] = $path;
             $apartment->main_img = $data['main_img'];
+
         }
+
+        if(array_key_exists('images', $data))
+        {
+            // prendo id del appartamento
+            $num = $apartment->id;
+            // cerca immagini associati
+            $images_prev = Image::where('apartment_id', $num)->get();
+            // patch della alleria
+            $path =  "image_gallery/";
+            
+            // cancellazione tutte le immagini dal server
+            foreach ($images_prev as $image) {
+                $name_img = str_replace( $path, "",$image->src);
+                $name_img = str_replace( "[]", "",$image->src);
+                Storage::delete('main_images', $name_img);
+            }
+
+            $apartment->images()->delete();
+            
+            // salvataggio immagini
+            foreach ($data['images'] as $image) {
+                $path = Storage::put('image_gallery', $image);
+                // salva immagine sul database
+                $image = new Image();
+                $image->src = $path.$image;
+                $image->src = str_replace( "[]", "",$image->src);
+                $image->img_description = 'Non disponibile descrizione della foto';
+                
+                // crea nuova relazione
+                $apartment->images()->saveMany([$image]);
+            }
+            
+
+            // dd($data['images']);
+            
+        }
+
         //validation 
-        $request->validate([
-            "title" => "required|max:150",
-            "num_rooms" => "required",
-            "num_beds" => "required",
-            "num_baths" => "required",
-            "mq" => "required",
-            "city" => "required|max:150"
-        ]);
+    
         //need riderect into update
         $apartment->update($data);
+
         
         //PER TAB PONTE CON SERVICES
         if(array_key_exists('services', $data)){
             $apartment->services()->sync($data['services']);
         }
         //                          nome rotta a scelta
-        return redirect()->route('apartment.index', $apartment);
+        return redirect()->route('apartment.index', $apartment)->with("status",'L\'appartamento è stato aggiornato con successo');
     }
 
     /**
@@ -164,20 +250,34 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //prendi il messaggio dove la fk apartment id é uguale all apartment ID
-        // $messages = Message::where('apartment_id', $apartment->id)->get();
+        
+        // cancella foto principale
+        Storage::delete('main_images', $apartment->main_img);
+            
+        // cerca immagini associati
+        $images_prev = Image::where('apartment_id', $apartment->id)->get();
+            
+        // patch della alleria
+        $path =  "image_gallery/";
+            
+        // cancellazione tutte le immagini dal server
+        foreach ($images_prev as $image) {
+            $name_img = str_replace( $path, "",$image->src);
+            $name_img = str_replace( "[]", "",$image->src);
+            Storage::delete('main_images', $name_img);
+        }
 
-        // //ricordarsi di includere la parte dei messaggi
-
-        // //delete service and sponsor tab ponte
+        // delete service and sponsor tab ponte
         $apartment->services()->sync([]);
         $apartment->sponsors()->sync([]);
 
+        // cancellazioni relazioni model
         $apartment->messages()->delete();
         $apartment->views()->delete();
         $apartment->images()->delete();
 
         $apartment->delete();
-        return redirect()->route('apartment.index');
+
+        return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato cancellato con successo');
     }
 }

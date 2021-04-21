@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateViewsTable extends Migration
+class CreateApartmentAddressTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,15 @@ class CreateViewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('views', function (Blueprint $table) {
-            // $table->id();
-            // $table->date('date');
-            // $table->unsignedBigInteger('apartment_id');
-            // $table->foreign('apartment_id')->references('id')->on('apartments');
-            // $table->string('address_ip', 50);
-            // $table->increments('view_counter');
-            
-            // $table->timestamps();
-
+        Schema::create('apartment_address', function (Blueprint $table) {
+            $table->id();
             $table->bigIncrements('id');
             $table->unsignedBigInteger('apartment_id');
             $table->foreign('apartment_id')->references('id')->on('apartments')->onDelete('cascade');
-            $table->string('ip_address');
+            $table->string('street');
+            $table->integer('street_number');
+            $table->char('zip_code', 5);
+            $table->string('city');
             $table->timestamps();
         });
     }
@@ -38,6 +33,6 @@ class CreateViewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('views');
+        Schema::dropIfExists('apartment_address');
     }
 }

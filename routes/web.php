@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+
+//rotta search testing 
+Route::get('/search', 'ApartmentController@search');
+
 Route::get('/', 'HomeController@index')->name('index');
 
 //rotta guest index
@@ -26,9 +30,9 @@ Route::get('/apartment/{slug}', 'ApartmentController@show')->name('guest.apartme
 
 Route::get('/contact/{slug}', 'HomeController@contatto')->name('guest.message.create');
 //rotta per il form action del file create.blade.php
-Route::get('/contact', 'HomeController@sendMessage')->name('guest.message.sent');
+Route::post('/contact', 'HomeController@sendMessage')->name('guest.message.sent');
 //rotta per esito messaggio
-Route::get('/inviato', 'HomeController@messaggioInviato')->name('validation');
+Route::get('/inviato', 'HomeController@messaggioInviato')->name('guest.message.inviato');
 
 Auth::routes();
 
@@ -38,5 +42,9 @@ Route::prefix('admin')
     ->group(function () {
         Route::resource( '/apartment', 'ApartmentController');
         Route::resource( '/message', 'MessageController');
+        // Route::resource('/statistic', 'ViewController');
+        Route::get('/statistic/{slug}', 'ViewController@show')->name('statistic.show');
+        Route::get('/sponsor/{slug}', 'SponsorController@index')->name('sponsor.index');
         Route::get('/', 'HomeController@index')->name('home');
+
     });

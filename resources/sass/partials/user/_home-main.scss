@@ -1,0 +1,205 @@
+.jumbotron {
+    height: 100vh;
+    @include bgImg("../storage/main_images/home_bg1.jpg");
+    position: relative;
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        @include flex(flex-start);
+        background: rgba(53, 50, 65, 0.5);
+        color: #fff;
+
+        .jumb_text {
+            margin-left: 100px;
+
+            h1 {
+                font-size: 150px;
+            }
+
+            h2 {
+                font-size: 50px;
+            }
+        }
+    }
+}
+
+.sponsored_apts {
+    padding-top: 60px;
+
+    .title {
+        @include flex(space-between);
+        margin-bottom: 50px;
+
+        .btn {
+            @include mainBtn;
+        }
+    }
+
+    .apts {
+        .box {
+            width: 340px;
+            height: 640px;
+            border: 1px solid $mainBlack;
+            border-radius: 20px;
+            box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
+            position: relative;
+
+            .like_box {
+                width: 70px;
+                height: 40px;
+                position: absolute;
+                top: 20px;
+                @include flex(center);
+                background: black; //! CAMBIARE
+                border: 1px solid $mainBlack;
+                border-radius: 0px 5px 5px 0;
+
+                svg {
+                    transform: scale(150%);
+                }
+            }
+
+            .apt_text {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 10px;
+
+                .apt_title {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                .price_box {
+                    @include flex(space-between);
+                    margin-top: 20px;
+
+                    p {
+                        width: 50%;
+                        font-weight: lighter;
+                        font-size: 12px;
+                    }
+
+                    h3 {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    .apt_end {
+        @include flex(space-between);
+        margin-top: 40px;
+
+        .arrows {
+            .forward {
+                transform: rotate(180deg);
+                margin-left: 20px;
+            }
+        }
+    }
+}
+
+.cities {
+    padding-top: 60px;
+
+    .title {
+        @include flex(space-between);
+        margin-bottom: 50px;
+
+        .btn {
+            @include mainBtn;
+        }
+    }
+
+    .cities_box {
+        .box {
+            width: 450px;
+            height: 640px;
+            border: 1px solid $mainBlack;
+            border-radius: 20px;
+            box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
+            position: relative;
+
+            .cities_text {
+                position: absolute;
+                right: -120px;
+                top: 50%;
+                transform: rotate(-90deg);
+
+                h3 {
+                    font-size: 80px;
+                }
+
+                p {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+
+    .end_cities {
+        @include flex(flex-end);
+        margin-top: 40px;
+
+        .arrows {
+            .forward {
+                transform: rotate(180deg);
+                margin-left: 20px;
+            }
+        }
+    }
+}
+
+.host_cta {
+    padding-top: 60px;
+    margin-bottom: 80px;
+
+    .cta_box {
+        width: 100%;
+        height: 450px;
+        @include bgImg("../storage/main_images/host-cta.jpg");
+        background-position: 0 -290px;
+        border: 1px solid $mainBlack;
+        border-radius: 15px;
+
+        .overlay {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                29deg,
+                rgba(26, 26, 26, 1) 0%,
+                rgba(139, 139, 139, 0.1) 100%
+            );
+            border-radius: 15px;
+            @include flex(flex-start, center);
+
+            .box_test {
+                // flex-direction: column;
+                color: #fff;
+                padding-left: 50px;
+
+                h2 {
+                    font-size: 80px;
+                }
+
+                p {
+                    font-size: 30px;
+                    width: 70%;
+                }
+
+                .btn {
+                    @include mainBtn;
+                    background: #fff;
+                    color: $mainBlack;
+                    width: 140px;
+                    margin-top: 40px;
+                }
+            }
+        }
+    }
+}
