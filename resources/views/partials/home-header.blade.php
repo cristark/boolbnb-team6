@@ -5,9 +5,6 @@
             <?xml version="1.0" encoding="utf-8"?>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 318.1 80.8" style="enable-background:new 0 0 318.1 80.8;" xml:space="preserve">
-            <style type="text/css">
-                .st0{fill:#FF5A5F;}
-            </style>
             <path class="st0" d="M19.2,26.1"/>
             <g>
                 <path class="st0" d="M69.6,24.3C65.7,22.8,0,0,0,0l14,76c0,0,0.5,4.8,5.4,4.8c4.9,0,53.5,0,53.5,0V29.7
@@ -57,8 +54,9 @@
 
         {{-- Barra di ricerca città --}}
         <div class="search_bar">
-            <form method="POST" type="post" action="{{ url('/search2') }}">
-                <input name="city" type="text"  v-model="citta" @keyup.enter="tomtom" placeholder="Scegli la tua Destinazione">
+            <form  type="get" action="{{ url('/search') }}">
+                <input name="city" type="search"  v-model="citta" @keyup.enter="tomtom" placeholder="Scegli la tua Destinazione">
+                <button style="display: none;" type="submit" @keyup.enter="tomtom"></button>
             </form>
             {{-- Lente ingrandimento --}}
             <svg xmlns="http://www.w3.org/2000/svg" width="17.048" height="17.058" viewBox="0 0 17.048 17.058">
@@ -66,7 +64,6 @@
             </svg>
             
         </div>
-
         {{-- Autenticazione --}}
         <div class="auth_buttons">
             <ul>

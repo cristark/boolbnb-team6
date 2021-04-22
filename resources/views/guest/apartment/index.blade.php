@@ -45,7 +45,7 @@
                         <p class="card-text">{{$apartment->description}}</p>
                         <h5 class="card-title">{{$apartment->mq}}</h5>
                         <p></p>
-                        <a href="{{route('guest.apartment.show', $apartment->slug)}}" class="btn btn-primary">Dettagli</a>
+                        <a v-on:click="show_single_map" href="{{route('guest.apartment.show', $apartment->slug)}}" class="btn btn-primary">Dettagli</a>
                     </div>
                 </div>
             @endforeach

@@ -24,7 +24,7 @@ Route::get('/statistiche', 'Api\ViewController@index');
 //
 
 //prova api map
-Route::get('/map/{id}', 'Api\MapController@index');
+Route::get('/map/{slug}', 'Api\MapController@index');
 // Route::get('/map', 'Api\MapController@index');
 
 

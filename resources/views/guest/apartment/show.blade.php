@@ -110,4 +110,23 @@
             </div>
         </div>
     </div>
+    
+    
+    
+        
+
+        
+
+        <div class="flex-center position-ref full-height">
+
+            <div class="content">
+                <div class="title m-b-md">
+                    Esempio mappa con maker, provala con il mouse
+                </div>
+
+                {{-- ---------------------------------- --}}
+                <div id ="map" style="max-width: 800px; height:500px; margin: 0 auto;"></div> 
+                {{-- ------------------------------------- --}}
+            </div>
+        </div>
 @endsection

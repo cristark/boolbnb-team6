@@ -1,17 +1,8 @@
 require('./bootstrap');
-var Chart = require('chart.js');
+// var Chart = require('chart.js');
 // const $ = require('jquery');
-// window.axios = require('axios');
+window.axios = require('axios');
 
-
-//braintree
-// {
-//     "require" : {
-//         "braintree/braintree_php" : "5.5.0"
-//     }
-// }
-// const $ = require('./jquery');
-// 
 const { default: axios } = require("axios");
 
 // require('../../public/js/stat');
@@ -28,7 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
@@ -51,20 +42,27 @@ const app = new Vue({
         citta: '',
         apiKey: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
         array_tom: [],
-        json: '.json'
+        json: '.json',
+        array_map: []
     },
-    // created(){
-    //     console.log(this.lastItem);
+    created(){
+        // console.log(this.lastItem);
 
-    // },
+    },
     mounted() {
-        console.log(this.citta);
+        // console.log(this.citta);
 
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
+        // this.show_single_map();
+        // console.log(this.lastItem, 'sono last item');
         // console.log(this.currentUrl);
-        console.log(this.lastItem);
-        this.loadVisitors();
-        this.tomtom();
+        //statistiche
+        // this.loadVisitors();
+        //tomtom mappa singola
+        // this.tomtom() ;
+        //tomtom chiamata API
+
+        // console.log(this.array_map);
     },
     methods: {
         // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
@@ -72,23 +70,63 @@ const app = new Vue({
             this.mainMenu = !this.mainMenu;
             console.log(this.mainMenu);
         },
-        tomtom()
+        show_single_map()
         {
-            axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?',
-            {
-                params: {
-                    
-                    limit: 1,
-                    key: '3ZJWFcBWKUg3rC731Tp0W3ytemg6tt3O'
-                    
-                }
-            })
-            .then(result => {
-                this.array_tom = result.data.results;
-                console.log(this.array_tom);
+            //chiamata axios ad api MapController che rende long e latitude
+            axios.get('http://localhost:8000/api/map/kitty-corner-in-kelowna936')
+                    .then(result => {
+                        this.array_map = result.data.results;
+                        console.log(this.array_map);
+                    })
+            // centro della mappa
+            var HQ = { lat: 45.46428976336229, lng: 9.191959328863394 }
+            // visualizzazione della mappa
+            var map = tt.map({
+                key: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
+                container: 'map',
+                center: HQ,
+                zoom: 13
+            });
+            // maker singolo tramite  posizione (latitudine e longitudine)
+            var marker = new tt.Marker().setLngLat(HQ).addTo(map);
+            // lista array di posizioni (latitudine e longitudine)
+            var posizioni = [
+                { lat: 45.47063201520255, lng: 9.179320179007835 },
+            ];
 
+            count = 1;
+
+            // crea maker per ogni posizioni (latitudine e longitudine)
+            posizioni.forEach(posizione => {
+
+                // crea casella di testo di info con testo personalizzabile
+                var popup = new tt.Popup({ anchor: 'top' }).setText('appartamento ' + count + ' test');
+
+                // aggiungi maker sulla mappa
+                var marker = new tt.Marker().setLngLat(posizione).addTo(map);
+
+                // testo descritivo del maker
+                marker.setPopup(popup).togglePopup();
+                count++;
             });
         },
+        // tomtom()
+        // {
+        //     axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?',
+        //     {
+        //         params: {
+                    
+        //             limit: 1,
+        //             key: '3ZJWFcBWKUg3rC731Tp0W3ytemg6tt3O'
+                    
+        //         }
+        //     })
+        //     .then(result => {
+        //         this.array_tom = result.data.results;
+        //         console.log(this.array_tom);
+
+        //     });
+        // },
         filtro() {
             this.ricercaToUpper = this.ricerca.toUpperCase();
             this.apartments.forEach((items) => {
@@ -96,63 +134,63 @@ const app = new Vue({
                 (this.nomeToUpper.includes(this.ricercaToUpper)) ? items.status = true : items.status = false;
             });
         },
-        // loadVisitors() {
-        //     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
-        //         .then(result => {
-        //             this.array_visite = result.data.numero_visite;
-        //             console.log(this.array_visite);
-        //             console.log(result.data.numero_visite);
-        //             this.array_visite.forEach(element => {
-        //                 console.log(element.totale, 'sono element');
-        //                 console.log(element.numero_mese);
-        //                 this.risultato_mesi.push(element.numero_mese);
+        loadVisitors() {
+            axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
+                .then(result => {
+                    this.array_visite = result.data.numero_visite;
+                    console.log(this.array_visite);
+                    console.log(result.data.numero_visite);
+                    this.array_visite.forEach(element => {
+                        console.log(element.totale, 'sono element');
+                        console.log(element.numero_mese);
+                        this.risultato_mesi.push(element.numero_mese);
 
-        //                 console.log(this.risultato_mesi, 'sono risultato mesi');
-        //             });
+                        console.log(this.risultato_mesi, 'sono risultato mesi');
+                    });
 
-        //         });
-        // },
-        createCanvas(){
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }        
+                });
+        },
     }
 });
 
 
+// createCanvas(){
+//     var ctx = document.getElementById('myChart').getContext('2d');
+//     var myChart = new Chart(ctx, {
+//         type: 'bar',
+//         data: {
+//             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+//             datasets: [{
+//                 label: '# of Votes',
+//                 data: [12, 19, 3, 5, 2, 3],
+//                 backgroundColor: [
+//                     'rgba(255, 99, 132, 0.2)',
+//                     'rgba(54, 162, 235, 0.2)',
+//                     'rgba(255, 206, 86, 0.2)',
+//                     'rgba(75, 192, 192, 0.2)',
+//                     'rgba(153, 102, 255, 0.2)',
+//                     'rgba(255, 159, 64, 0.2)'
+//                 ],
+//                 borderColor: [
+//                     'rgba(255, 99, 132, 1)',
+//                     'rgba(54, 162, 235, 1)',
+//                     'rgba(255, 206, 86, 1)',
+//                     'rgba(75, 192, 192, 1)',
+//                     'rgba(153, 102, 255, 1)',
+//                     'rgba(255, 159, 64, 1)'
+//                 ],
+//                 borderWidth: 1
+//             }]
+//         },
+//         options: {
+//             scales: {
+//                 y: {
+//                     beginAtZero: true
+//                 }
+//             }
+//         }
+//     });
+// }        
 // var risultato_mesi = risultato_mesi;
 // var ctx = document.getElementById('myChart').getContext('2d');
 // var myChart = new Chart(ctx, {
