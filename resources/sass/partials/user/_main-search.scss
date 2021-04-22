@@ -14,16 +14,55 @@
 }
 
 .main_search {
-    @include flex(space-between);
+    @include flex(space-between, flex-start);
     margin-bottom: 30px;
+    height: calc(100vh - 221px);
 
     .search_box {
         width: 40%;
+        padding: 10px;
+        border-radius: 15px;
+        margin-right: 30px;
+        // @include boxTest;
+
+        .box {
+            @include flex(space-between);
+
+            .apt_img {
+                width: 30%;
+                img {
+                    width: 100%;
+                    border-radius: 15px;
+                }
+            }
+
+            .apt_description {
+                .rooms {
+                    margin: 20px 0 10px;
+                }
+
+                .price_box {
+                    @include flex(space-between);
+                    margin-top: 20px;
+
+                    p {
+                        width: 50%;
+                        font-weight: lighter;
+                        font-size: 12px;
+                    }
+
+                    h3 {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
     }
 
     .map_box {
-        width: 60%;
-        height: calc(100vh - 180px);
+        width: calc(60% - 30px);
+        height: 100%;
+        border-radius: 15px;
         @include boxTest;
     }
 }

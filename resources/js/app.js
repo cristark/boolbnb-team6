@@ -58,11 +58,11 @@ const app = new Vue({
 
     // },
     mounted() {
-        console.log(this.citta);
+        // console.log(this.citta);
 
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         // console.log(this.currentUrl);
-        console.log(this.lastItem);
+        // console.log(this.lastItem);
         this.loadVisitors();
         this.tomtom();
     },
@@ -71,6 +71,11 @@ const app = new Vue({
         showMenu() {
             this.mainMenu = !this.mainMenu;
             console.log(this.mainMenu);
+        },
+        // DISATTIVARE SCROLL PAGINA
+        disableScroll() {
+            document.body.style.overflow = 'hidden';
+            document.querySelector('html').scrollTop = window.scrollY;
         },
         tomtom()
         {

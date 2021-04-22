@@ -120,7 +120,7 @@
                         echo $lon = $apartment->longitude; 
                     ?>
                 </div>
-                <script>
+                <script type="application/javascript">
 
                     var latitude = document.getElementById("dom-lat").textContent;
                     var longitudine = document.getElementById("dom-lon").textContent;

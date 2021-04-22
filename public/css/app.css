@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
-body {
+@import url(https://fonts.googleapis.com/css?family=Nunito);body {
   font-family: sans-serif;
 }
 
@@ -22,7 +21,7 @@ a {
 }
 
 .main_container {
-  max-width: 1500px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -36,6 +35,11 @@ a {
 }
 .air_btn a {
   color: #fff;
+}
+
+p.views,
+p.rooms {
+  color: lightslategrey;
 }
 
 header {
@@ -224,6 +228,61 @@ header.home_header .main_container .auth_buttons .nav_dropdown .dropdown_menu hr
   margin-bottom: 10px;
 }
 
+main .login_box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(100vh - 150px);
+}
+main .login_box .auth_content {
+  margin-top: 50px;
+  border-radius: 15px;
+  padding: 20px 50px;
+  border: 1px solid #222222;
+}
+main .login_box .auth_content h2 {
+  color: #ff385c;
+  margin-bottom: 30px;
+}
+main .login_box .auth_content .auth_box .row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+}
+main .login_box .auth_content .auth_box .row label {
+  margin-bottom: 10px;
+}
+main .login_box .auth_content .auth_box .row .form-control {
+  width: 300px;
+  padding: 2px 4px;
+  border-radius: 5px;
+  border: 1px solid #222222;
+  outline: none;
+}
+main .login_box .auth_content .auth_box .row .form-area {
+  width: 550px;
+}
+main .login_box .auth_content .auth_box .row .forgot {
+  color: rgba(128, 128, 128, 0.5);
+  transition: all 0.2s linear;
+}
+main .login_box .auth_content .auth_box .row .forgot:hover {
+  color: #222222;
+}
+main .login_box .auth_content .auth_box button {
+  float: right;
+  background: #ff385c;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 main .jumbotron {
   height: 100vh;
   background-image: url("../storage/main_images/home_bg1.jpg");
@@ -431,15 +490,49 @@ main .back_btn a {
 main .main_search {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 30px;
+  height: calc(100vh - 221px);
 }
 main .main_search .search_box {
   width: 40%;
+  padding: 10px;
+  border-radius: 15px;
+  margin-right: 30px;
+}
+main .main_search .search_box .box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .main_search .search_box .box .apt_img {
+  width: 30%;
+}
+main .main_search .search_box .box .apt_img img {
+  width: 100%;
+  border-radius: 15px;
+}
+main .main_search .search_box .box .apt_description .rooms {
+  margin: 20px 0 10px;
+}
+main .main_search .search_box .box .apt_description .price_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+main .main_search .search_box .box .apt_description .price_box p {
+  width: 50%;
+  font-weight: lighter;
+  font-size: 12px;
+}
+main .main_search .search_box .box .apt_description .price_box h3 {
+  font-size: 30px;
 }
 main .main_search .map_box {
-  width: 60%;
-  height: calc(100vh - 180px);
+  width: calc(60% - 30px);
+  height: 100%;
+  border-radius: 15px;
   border: 1px solid #222222;
 }
 main .show_user_apt .back_btn {
@@ -470,14 +563,8 @@ main .show_user_apt .main_info .info_box {
   padding: 20px;
   box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
 }
-main .show_user_apt .main_info .info_box .views {
-  color: lightslategrey;
-}
 main .show_user_apt .main_info .info_box h3 {
   margin-top: 10px;
-}
-main .show_user_apt .main_info .info_box .rooms {
-  color: lightslategrey;
 }
 main .show_user_apt .main_info .info_box .hosts_box {
   margin: 40px 0;
