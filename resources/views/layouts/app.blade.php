@@ -24,6 +24,9 @@
 
     <!-- Link Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    {{-- axios link --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

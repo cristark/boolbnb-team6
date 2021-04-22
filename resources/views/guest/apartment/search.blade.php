@@ -40,42 +40,70 @@
                         echo $apartments; 
                     ?>
                 </div>
+                <p id="dom-city" style="display: none;">
+                    <?php
+                        echo $city; 
+                    ?>
+                </p>
                 <script>
 
                     var apartments = document.getElementById("dom-ap").textContent;
-                
-                     // centro della mappa
-                    var HQ = { lat: 45.46428976336229, lng: 9.191959328863394 }
+                    var city = document.getElementById("dom-city").textContent;
+                    console.log(city);
 
-                    // visualizzazione della mappa
-                    var map = tt.map({
-                        key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
-                        container: 'map',
-                        center: HQ,
-                        zoom: 10
-                    });
+                    // $.ajax(
+                    //     {
+                    //         url: "https://api.tomtom.com/search/2/geocode/milano.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla",
+                    //         method: "GET",
+                    //         success: function (data, stato) {
+                    //             console.log(data)
+                    //         },
+                    //         error: function (richiesta, stato, errori) {
+                    //             alert("E' avvenuto un errore. " + errore);
+                    //         }
+                    //     }
+                    // );
 
-                    // trasforma stringa a array json
-                    var apartments = JSON.parse(apartments);
-                    console.log(apartments);
+                    axios
+                        .get('https://api.tomtom.com/search/2/geocode/'+city+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
+                        .then(response => {
+                            console.log(response.data.results[0].position);
+                            
+                            // centro della mappa
+                            var HQ = response.data.results[0].position;
 
-                    // crea maker per ogni posizioni (latitudine e longitudine)
-                    apartments.forEach( apartment => {
-                        
-                        // crea casella di testo di info con testo personalizzabile
-                        var popup = new tt.Popup({ anchor: 'top' }).setText(apartment.title);
+                            // visualizzazione della mappa
+                            var map = tt.map({
+                                key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
+                                container: 'map',
+                                center: HQ,
+                                zoom: 10
+                            });
 
-                        var position = { lat: apartment.latitude, lng: apartment.longitude }
+                            // trasforma stringa a array json
+                            var apartments = JSON.parse(apartments);
+                            console.log(apartments);
 
-                        console.log(position);
-                        
-                        // aggiungi maker sulla mappa
-                        var marker = new tt.Marker().setLngLat(position).addTo(map);
-                        
-                        // testo descritivo del maker
-                        marker.setPopup(popup).togglePopup();
+                            // crea maker per ogni posizioni (latitudine e longitudine)
+                            apartments.forEach( apartment => {
+                                
+                                // crea casella di testo di info con testo personalizzabile
+                                var popup = new tt.Popup({ anchor: 'top' }).setText(apartment.title);
 
-                    });
+                                var position = { lat: apartment.latitude, lng: apartment.longitude }
+
+                                console.log(position);
+                                
+                                // aggiungi maker sulla mappa
+                                var marker = new tt.Marker().setLngLat(position).addTo(map);
+                                
+                                // testo descritivo del maker
+                                marker.setPopup(popup).togglePopup();
+
+                            });
+                        })
+                         .catch(error => console.error('error city', error));
+
 
 
                 </script>
