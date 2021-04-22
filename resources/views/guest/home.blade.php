@@ -82,8 +82,9 @@
                         </div>
                     </div>
                 </section>
-            
-                {{-- SEZIONE CITTA' --}}
+
+                {{-- commento --}}
+                {{-- SEZIONE CITTA'  --}}
                 <section class="cities">
                     <div class="main_container">
                         <div class="title">
