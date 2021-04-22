@@ -125,7 +125,7 @@
 
                 <div class="form-group col-md-6">
                     <label for="InputLongitude">Longitudine</label>
-                    <input type="text" class="form-control" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" value="{{$apartment->latitude}}">
+                    <input type="text" class="form-control" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" value="{{$apartment->longitude}}">
                 </div>
             </div>
 

@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 //rotta search testing 
 Route::get('/search', 'ApartmentController@search');
-Route::get('/search2', 'ApartmentController@homeSearch');
+Route::get('/search2', 'ApartmentController@homeSearch')->name('guest.apartment.search');
 
 
 Route::get('/', 'HomeController@index')->name('index');

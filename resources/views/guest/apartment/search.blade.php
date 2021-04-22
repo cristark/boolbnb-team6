@@ -32,9 +32,67 @@
             </div>
     
             {{-- MAPPA --}}
-            <div class="map_box">
+           <div id ="map" style="height:550px;width:550px;"></div> 
+                
+                {{-- questo solo per passaggio di valori --}}
+                <div id="dom-ap" style="display: none;">
+                    <?php
+                        echo $apartments; 
+                    ?>
+                </div>
+                <p id="dom-city" style="display: none;">
+                    <?php
+                        echo $city; 
+                    ?>
+                </p>
+                <script>
+
+                    var apartments = document.getElementById("dom-ap").textContent;
+                    var city = document.getElementById("dom-city").textContent;
+                    
+                    // console.log(city);
+
+                    // trasforma stringa a array json
+                    var apartments = JSON.parse(apartments);
+                    // console.log(apartments);
     
-            </div>
+                    axios
+                        .get('https://api.tomtom.com/search/2/geocode/'+city+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
+                        .then( response  => {
+                            // centro della mappa
+                            console.log(apartments);
+                            var HQ = response.data.results[0].position;
+
+                            // visualizzazione della mappa
+                            var map = tt.map({
+                                key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
+                                container: 'map',
+                                center: HQ,
+                                zoom: 10
+                            });
+
+
+                            // crea maker per ogni posizioni (latitudine e longitudine)
+                            apartments.forEach( apartment => {
+                                
+                                // crea casella di testo di info con testo personalizzabile
+                                var popup = new tt.Popup({ anchor: 'top' }).setText(apartment.title);
+
+                                var position = { lat: apartment.latitude, lng: apartment.longitude }
+
+                                console.log(position);
+                                
+                                // aggiungi maker sulla mappa
+                                var marker = new tt.Marker().setLngLat(position).addTo(map);
+                                
+                                // testo descritivo del maker
+                                marker.setPopup(popup).togglePopup();
+
+                            });
+                        })
+                         .catch(error => console.error('error city', error));
+
+                </script>
         </div>
 
     </div>
