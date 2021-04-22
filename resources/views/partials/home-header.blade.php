@@ -97,12 +97,12 @@
                             <a href="{{ url('/admin') }}">Il mio Account</a>
                             <a href="">Aggiungi un Appartamento</a>
                             <a href="">Assistenza</a>
-                            <a href="{{ route('logout') }}">
-                                {{ __('Logout') }}
-                            </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
+                                <button type="submit">test</button>
+                                {{ __('Logout') }}
+    
+
                             </form>
                         </div>
                     </li>

@@ -39,7 +39,7 @@ class ApartmentSeeder extends Seeder
                 '12.465',
                 '0',
                 'Italia',
-                '(ROMA)',
+                '(RO)',
                 'Roma'
             ],
             [
@@ -56,7 +56,7 @@ class ApartmentSeeder extends Seeder
                 '12.46557',
                 '0',
                 'Italia',
-                '(ROMA)',
+                '(RO)',
                 'Roma'
             ],
             [
@@ -73,7 +73,7 @@ class ApartmentSeeder extends Seeder
                 '12.46529',
                 '0',
                 'Italia',
-                '(ROMA)',
+                '(RO)',
                 'Roma'
             ],
             [
@@ -90,7 +90,7 @@ class ApartmentSeeder extends Seeder
                 '12.46378',
                 '0',
                 'Italia',
-                '(ROMA)',
+                '(RO)',
                 'Roma'
             ],
             [
@@ -193,6 +193,7 @@ class ApartmentSeeder extends Seeder
                 '14.26383',
                 '0',
                 'Italia',
+                '(NA)',
                 'Napoli'
             ],
             [
@@ -386,9 +387,8 @@ class ApartmentSeeder extends Seeder
             $newApartment->active = $apartment[11];
             $newApartment->state = $apartment[12];
             $newApartment->province = $apartment[13];
-            $newApartment->city = $apartment[13];
-
-
+            $newApartment->city = $apartment[14];
+            
             $newApartment->save();
         }
     }
