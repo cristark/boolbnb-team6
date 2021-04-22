@@ -49,27 +49,18 @@
 
                     var apartments = document.getElementById("dom-ap").textContent;
                     var city = document.getElementById("dom-city").textContent;
-                    console.log(city);
+                    
+                    // console.log(city);
 
-                    // $.ajax(
-                    //     {
-                    //         url: "https://api.tomtom.com/search/2/geocode/milano.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla",
-                    //         method: "GET",
-                    //         success: function (data, stato) {
-                    //             console.log(data)
-                    //         },
-                    //         error: function (richiesta, stato, errori) {
-                    //             alert("E' avvenuto un errore. " + errore);
-                    //         }
-                    //     }
-                    // );
-
+                    // trasforma stringa a array json
+                    var apartments = JSON.parse(apartments);
+                    // console.log(apartments);
+    
                     axios
                         .get('https://api.tomtom.com/search/2/geocode/'+city+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
-                        .then(response => {
-                            console.log(response.data.results[0].position);
-                            
+                        .then( response  => {
                             // centro della mappa
+                            console.log(apartments);
                             var HQ = response.data.results[0].position;
 
                             // visualizzazione della mappa
@@ -80,9 +71,6 @@
                                 zoom: 10
                             });
 
-                            // trasforma stringa a array json
-                            var apartments = JSON.parse(apartments);
-                            console.log(apartments);
 
                             // crea maker per ogni posizioni (latitudine e longitudine)
                             apartments.forEach( apartment => {
@@ -103,8 +91,6 @@
                             });
                         })
                          .catch(error => console.error('error city', error));
-
-
 
                 </script>
         </div>
