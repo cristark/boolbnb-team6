@@ -3,7 +3,7 @@
 @section('title', 'BoolBnB | Dettaglio appartamento')
 
 @section('content')
-    <div class="main_container show_user_apt">
+     <div class="main_container show_user_apt">
 
         <div class="back_btn">
             {{-- BACK --}}
@@ -87,46 +87,59 @@
         </section>
 
         <section class="details">
+
+            {{-- DESCRIZIONE APPARTAMENTO --}}
             <div class="detail_box">
                 <h3>Informazioni su questo spazio</h3>
-                <p>{{$apartment->description}}</p>
+                {{-- <p>{{$apartment->description}}</p> --}}
+                {{-- ! PROVVISORIO IN ATTESA DI DESCRIZIONE PRECISA - COMMENTO SOPRA RIGA 92 --}}
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tenetur error ratione nisi, iste iure ex fuga architecto officia quos aliquam dolorem? Ducimus alias officia, delectus tempora hic libero similique quos doloribus, fugit nam architecto maiores nobis quod, possimus quis quaerat esse aliquid eius reiciendis. Blanditiis quos modi nostrum consequatur sint quia quae accusamus ab dolorem et in quis fugit ducimus repellendus quisquam natus fuga, totam voluptates nesciunt cupiditate officia? Quam maiores nulla ipsa tenetur eveniet, quis neque nobis placeat, in ad, velit vero numquam dignissimos eos. Autem omnis maxime tenetur repudiandae tempora, repellendus amet? Eum, iure molestias impedit, beatae ipsa aliquam accusamus quam magnam dicta placeat consectetur cupiditate consequuntur. Corporis, iusto quae. Quae, dolorem doloribus cum labore, culpa tenetur enim optio aspernatur, quisquam perspiciatis distinctio vel possimus. In sed dignissimos similique perspiciatis perferendis, et ad modi architecto cupiditate minus aliquid eveniet dolorem nostrum accusantium praesentium velit necessitatibus harum laborum! Natus repudiandae non, iure dolor assumenda facilis qui quidem inventore rerum minima suscipit cumque impedit nihil. Iste nam aliquam ea in minima nemo eveniet iure quo. Ad quo quasi ullam asperiores maiores fugiat nam, porro obcaecati incidunt enim nesciunt repellendus cumque sapiente molestias, laudantium similique voluptas assumenda. Sunt, aut. Officia!</p>
             </div>
+
+            {{-- SERVIZI --}}
             <div class="detail_box services">
                 <h3>Servizi</h3>
                 <p style="color: red; font-weight:bolder;">SAUNA - RIVEDERE QUESTA PARTE COME COLLEGARE SERVIZI!!</p>
             </div>
+
+            {{-- POSIZIONE APPARTAMENTO --}}
             <div class="detail_box position">
                 <h3>Posizione</h3>
-                <div class="map_box"></div>
                 <p>{{$apartment->city}}, {{$apartment->province}}, {{$apartment->state}}</p>
-            </div>
-        </section>
-
-        <div class="card mb-3">
-            
-        <div class="card-body">
-            <p class="card-text">Latitudine: {{$apartment->latitude}}</p>
-            <p class="card-text">Longitudine: {{$apartment->longitude}}</p>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-        
-
-        
-
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Esempio mappa con maker, provala con il mouse
+                
+                <div id ="map" style="height:90vh;"></div> 
+                
+                {{-- questo solo per passaggio di valori --}}
+                <div id="dom-lat" style="display: none;">
+                    <?php
+                        echo $lat = $apartment->latitude; 
+                    ?>
+                </div>
+                <div id="dom-lon" style="display: none;">
+                    <?php
+                        echo $lon = $apartment->longitude; 
+                    ?>
                 </div>
 
-                {{-- ---------------------------------- --}}
-                <div id ="map" style="max-width: 800px; height:500px; margin: 0 auto;"></div> 
-                {{-- ------------------------------------- --}}
-            </div>
-        </div>
+
+            <script>
+
+                    var latitude = document.getElementById("dom-lat").textContent;
+                    var longitudine = document.getElementById("dom-lon").textContent;
+
+                    // centro della mappa
+                    var HQ = { lat: latitude, lng: longitudine }
+                    console.log(HQ);
+
+                    // visualizzazione della mappa
+                    var map = tt.map({
+                        key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
+                        container: 'map',
+                        center: HQ,
+                        zoom: 15
+                    });
+
+                    var marker = new tt.Marker().setLngLat(HQ).addTo(map);
+
+            </script>
 @endsection
