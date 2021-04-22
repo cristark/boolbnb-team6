@@ -16,6 +16,7 @@
         <div class="main_search">
             
             {{-- BOX RISULTATI RICERCA APPARTAMENTI --}}
+            {{-- commento --}}
             <div class="search_box">
         
                 @foreach ($apartments as $apartment)    
