@@ -68,11 +68,12 @@ class ApartmentController extends Controller
         {
             $search_text = $_GET['city'];
             $apartments = Apartment::where('city','LIKE','%'. $search_text .'%')->get();
-            // $data = [
-            //     'apartments' => $apartments
-            // ];
-            return view('guest.apartment.search', compact('apartments'));
-            // return view('guest.apartment.search', $data);
+             $data = [
+                'apartments' => $apartments,
+                'city' => $search_text
+            ];
+            // return view('guest.apartment.search', compact('apartments'));
+            return view('guest.apartment.search', $data);
 
         }
         //fine test search

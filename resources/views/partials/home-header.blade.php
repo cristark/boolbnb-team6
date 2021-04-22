@@ -57,8 +57,8 @@
 
         {{-- Barra di ricerca città --}}
         <div class="search_bar">
-            <form method="POST" type="post" action="{{ url('/search2') }}">
-                <input name="query" type="text"  v-model="citta" @keyup.enter="tomtom" placeholder="Scegli la tua Destinazione">
+            <form method="get" type="post" action="{{ url('/search2') }}">
+                <input name="city" type="text"  v-model="citta" @keyup.enter="tomtom" placeholder="Scegli la tua Destinazione">
             </form>
             {{-- Lente ingrandimento --}}
             <svg xmlns="http://www.w3.org/2000/svg" width="17.048" height="17.058" viewBox="0 0 17.048 17.058">
