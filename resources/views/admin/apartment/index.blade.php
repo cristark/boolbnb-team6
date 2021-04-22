@@ -3,65 +3,78 @@
 @section('title', 'BoolBnB | Dashboard Utente')
 
 @section('content')
-<div class="container">
-
-    {{-- Pulsante creazione Nuovo Post --}}
-    <a href="{{route('apartment.create')}}"><button type="button" class="btn btn-primary mb-3">Aggiungi un nuovo appartamento</button></a>
-    <a href="{{route('message.index')}}"><button type="button" class="btn btn-primary mb-3">I tuoi messaggi</button></a>
-
+<div class="main_container">
+    <span><h2>Account > </h2> <h1>I miei appartamenti</h1></span>
     {{-- Notifica eliminazione post esistente --}}
     @if (session('status'))
 	    <div class="alert alert-success">{{ session('status') }}</div>
     @endif
 
-    {{-- Tabella Post DataBase --}}
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Anteprima</th>
-                <th scope="col">Titolo</th>
-                <th scope="col">Città</th>
-                <th scope="col">Provincia</th>
-                <th scope="col">Attivo</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
+    <div class="main-index">
+        <section class="user-left">
+            @if (strpos($user->user_img, 'https') !== false)
+                <img style="height: 100px;" src="{{ $user->user_img }}" alt="Anteprima img user">
+            @else
+                <img style="height: 100px;" src="{{ asset('storage/'.$user->user_img) }}" alt="Anteprima img user">
+            @endif
+            <h2>ciao,</h2>
+            <h2>{{ $user->name ." ". $user->lastname }}</h2>
+            <p>
+                <span>Data di nascita:</span>
+                <span>{{ $user->birth_date }}</span>
+            </p>
+            <p>
+                <span>Mail:</span>
+                <span>{{ $user->email }}</span>
+            </p>
+            {{-- Pulsante creazione Nuovo Appartamento --}}
+            <a href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>
+        </section>
 
-        <tbody>
+        {{-- ELENCO APPARTAMENTI --}}
+        <section class="apartment-right">
             @foreach ($apartments as $apartment)
-                <tr>
-                    <th scope="row">{{$apartment->id}}</th>
-                    <td>
-                        @if (strpos($apartment->main_img, 'https') !== false)
-                        <img style="height: 100px;" src="{{ $apartment->main_img }}" alt="Anteprima img appartamento">
-                        @else
-                        <img style="height: 100px;" src="{{ asset('storage/'.$apartment->main_img) }}" alt="Anteprima img appartamento">
-                        @endif
-                    </td>
-                    <td>{{$apartment->title}}</td>
-                    <td>{{$apartment->city}}</td>
-                    <td>{{$apartment->province}}</td>
-                    <td>{{$apartment->active}}</td>
-                    <td><a class="btn btn-info" href="{{route('apartment.show', $apartment->slug)}}">Visualizza</a></td>
-                    <td><a class="btn btn-info" href="{{route('statistic.show', $apartment->slug)}}">Statistiche</a></td>
-                    {{-- <td><a class="btn btn-info" href="{{route('{id}.show', $apartment->id)}}">Statistiche</a></td> --}}
+                <div class="box-apartment">
+                    <section class="box-left">
+                        {{-- IMMAGINE APPARTAMENTO --}}
+                        <div class="box-ap-img">
+                            @if (strpos($apartment->main_img, 'https') !== false)
+                            <img src="{{ $apartment->main_img }}" alt="Anteprima img appartamento">
+                            @else
+                            <img src="{{ asset('storage/'.$apartment->main_img) }}" alt="Anteprima img appartamento">
+                            @endif
+                        </div>
+                        {{-- INFO APPARTAMENTO --}}
+                        <div class="box-ap-info">
+                            <h4>{{$apartment->title}}</h4>
+                            <p>Stanze: {{$apartment->num_rooms}} | Letti: {{$apartment->num_beds}} | Bagni: {{$apartment->num_baths}}</p>
+                            <p>Prezzo una notte: <strong>{{$apartment->price}}</strong>€</p>
+                        </div>
+                    </section>
 
-
-                    <td><a href="{{route('apartment.edit', $apartment->slug)}}"><button type="button" class="btn btn-warning">Modifica</button></a></td>
-                    <td>
-                        <form method="post" action="{{route('apartment.destroy', $apartment)}}">
-                            @csrf
-                            @method('DELETE')
+                    <section class="box-right">
+                        {{-- STATISTICHE E MESSAGGI APPARTAMENTO --}}
+                        <div class="box-ap-stat-msg">
+                            <a class="btn btn-info" href="{{route('statistic.show', $apartment->slug)}}"><button>Statistiche</button></a>
+                            <a href="{{route('message.index')}}"><button>Messaggi</button></a>
+                        </div>
+                        {{-- OPZIONI APPARTAMENTO --}}
+                        <div class="box-ap-button">
+                            <a class="btn btn-info" href="{{route('apartment.show', $apartment->slug)}}"><button>Visualizza</button></a>
+                            <a href="{{route('apartment.edit', $apartment->slug)}}"><button>Modifica</button></a>
+                            <form method="post" action="{{route('apartment.destroy', $apartment)}}">
+                                @csrf
+                                @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Elimina</button>
-                        </form>
-                    </td>
-                </tr>
+                            </form>
+                        </div>
+                    </section>
+                </div>
             @endforeach
-        </tbody>
-    </table>
+        </section>
+        {{-- ELENCO APPARTAMENTI --}}
+    </div>
 
+    
 </div>
 @endsection
