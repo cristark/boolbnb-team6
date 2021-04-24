@@ -82,14 +82,14 @@
                 @else
                     <li class="nav_dropdown">
                         <div class="menu_container">
-                            <a href="#">Menu</a>
+                            <a href="#" v-on:click="showMenu">Menu</a>
                             <div class="circle_user_img"></div>
                         </div>
                         {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a> --}}
 
-                        <div class="dropdown_menu">
+                        <div class="dropdown_menu" :class="(mainMenu == true) ? 'h_active' : ''">
                             <a href="">I miei Appartamenti</a>
                             <a href="">Casella Messaggi</a>
                             <a href="">Sponsorizzazioni</a>
@@ -97,13 +97,12 @@
                             <a href="{{ url('/admin') }}">Il mio Account</a>
                             <a href="">Aggiungi un Appartamento</a>
                             <a href="">Assistenza</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                                <button type="submit">test</button>
-                                {{ __('Logout') }}
-    
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
 
-                            </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                </form>
                         </div>
                     </li>
                 @endguest

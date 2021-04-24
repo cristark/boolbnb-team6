@@ -16,9 +16,30 @@
 
     .main_info {
         @include flex(space-between);
+        height: 480px;
 
         .img_box {
             width: 70%;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            @include flex(space-between);
+
+            .main_img {
+                width: 70%;
+                height: 100%;
+                img {
+                    height: 100%;
+                }
+            }
+
+            .apt_images {
+                height: 100%;
+
+                div[class*="img"] {
+                    @include boxTest;
+                }
+            }
         }
 
         .info_box {
