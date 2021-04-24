@@ -16,8 +16,7 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            //default 0
-            // fanculo
+            $table->string('image_link');
             $table->boolean('visibility')->default(0);
             $table->timestamps();
         });

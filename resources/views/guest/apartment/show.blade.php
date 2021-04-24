@@ -107,7 +107,31 @@
             {{-- SERVIZI --}}
             <div class="detail_box services">
                 <h3>Servizi</h3>
-                <p></p>
+                <p style="color: red; font-weight:bolder;">SAUNA - RIVEDERE QUESTA PARTE COME COLLEGARE SERVIZI!!</p>
+                
+                @foreach ($apartment->services as $service)
+                    <div style="border: 1px solid red;">
+                        <div> @php echo trim($service->image_link,'"') @endphp</div>
+                        <div>{{$service->name}}</div>
+
+                        codice uguale all'
+                    </div>
+                @endforeach
+                    
+
+
+
+
+
+
+
+
+                    
+          
+                        {{-- {{$apartment->sponsors[0]->pivot->status}} --}}
+                       
+
+
             </div>
 
             {{-- POSIZIONE APPARTAMENTO --}}
