@@ -68,7 +68,7 @@ class ApartmentController extends Controller
         {
             $search_text = $_GET['city'];
             $apartments = Apartment::where('city','LIKE','%'. $search_text .'%')->get();
-             $data = [
+            $data = [
                 'apartments' => $apartments,
                 'city' => $search_text
             ];

@@ -9,6 +9,9 @@ use App\Apartment;
 use App\View;
 use Illuminate\Support\Facades\DB;
 
+use Carbon\Carbon;
+
+
 class ViewController extends Controller
 {
     public function show($slug){
@@ -18,12 +21,12 @@ class ViewController extends Controller
         ->groupBy('numero_mese')
         ->orderBy('numero_mese', 'ASC')->get();
             
-        
-        // dd($visite);
+
         $data = [
             'apartment' => $apartment,
             'numero_visite' => $visite,
         ];
+        
         return view('admin.statistic.show', $data);
     }
 }

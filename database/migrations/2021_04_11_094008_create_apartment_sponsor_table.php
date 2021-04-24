@@ -24,8 +24,8 @@ class CreateApartmentSponsorTable extends Migration
             $table->primary(['apartment_id', 'sponsor_id']);
 
             $table->dateTime('end_date');
-            //def 0
-            $table->boolean('status')->default(0);
+            //def 1
+            $table->boolean('status')->default(1);
         });
     }
 
