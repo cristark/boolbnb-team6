@@ -11,12 +11,8 @@
     @endif
 
     <div class="main-index">
+        {{-- PROFILO UTENTE --}}
         <section class="user-left">
-            @if (strpos($user->user_img, 'https') !== false)
-                <img style="height: 100px;" src="{{ $user->user_img }}" alt="Anteprima img user">
-            @else
-                <img style="height: 100px;" src="{{ asset('storage/'.$user->user_img) }}" alt="Anteprima img user">
-            @endif
             <h2>ciao,</h2>
             <h2>{{ $user->name ." ". $user->lastname }}</h2>
             <p>
@@ -30,6 +26,7 @@
             {{-- Pulsante creazione Nuovo Appartamento --}}
             <a href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>
         </section>
+        {{-- PROFILO UTENTE --}}
 
         {{-- ELENCO APPARTAMENTI --}}
         <section class="apartment-right">

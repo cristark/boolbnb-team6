@@ -3,11 +3,11 @@
 @section('title', 'BoolBnB | Crea un nuovo appartamento')
 
 @section('content')
-    <div class="container">
+    <div class="main_container">
 
         {{-- Controllo errori --}}
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div class="error">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -17,123 +17,123 @@
         @endif
 
         {{-- Form inserimento dati --}}
-        <form method="post" action="{{route('apartment.store')}}" enctype="multipart/form-data">
+        <form class="form_box" method="post" action="{{route('apartment.store')}}" enctype="multipart/form-data">
             @csrf
             @method('POST')
 
             {{-- Titolo Appartamento --}}
-            <div class="form-group">
+            <section>
                 <label for="InputTitle">Titolo</label>
-                <input type="text" class="form-control" id="InputTitle" placeholder="Inserisci il titolo" name="title" value="{{old('title')}}">
-            </div>
+                <input type="text" id="InputTitle" placeholder="Inserisci il titolo" name="title" value="{{old('title')}}">
+            </section>
 
             {{-- Descrizione appartamento --}}
-            <div class="form-group">
+            <section>
                 <label for="InputDescription">Descrizione</label>
-                <textarea class="form-control" id="InputDescription" placeholder="Inserisci la descrizione dell'appartamento" cols="30" rows="10" name="description">{{old('description')}}</textarea>
-            </div>
+                <textarea class="input_text" id="InputDescription" placeholder="Inserisci la descrizione dell'appartamento" cols="30" rows="10" name="description">{{old('description')}}</textarea>
+            </section>
 
             {{-- Riga singola con Città - Regione - Stato --}}
-            <div class="form-row">
-                <div class="form-group col-md-6">
+            <section class="row_input">
+                <div>
                     <label for="InputCity">Città</label>
-                    <input type="text" class="form-control" id="InputCity" placeholder="Inserisci la Città" name="city" value="{{old('city')}}">
+                    <input type="text" id="InputCity" placeholder="Inserisci la Città" name="city" value="{{old('city')}}">
                 </div>
 
-                <div class="form-group col-md-4">
+                <div>
                     <label for="InputProvince">Provincia</label>
-                    <input type="text" class="form-control" id="InputProvince" placeholder="Inserisci la Provincia" name="province" >
+                    <input type="text" id="InputProvince" placeholder="Inserisci la Provincia" name="province" >
                 </div>
 
-                <div class="form-group col-md-2">
+                <div>
                     <label for="InputStato">Stato</label>
-                    <input type="text" class="form-control" id="InputStato" placeholder="Inserisci lo Stato" name="state">
+                    <input type="text" id="InputStato" placeholder="Inserisci lo Stato" name="state">
                 </div>
-            </div>
-
-            {{-- Riga singola con Num Stanze - Num Letti - Num Bagni - MQ --}}
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label for="NumRooms">Stanze</label>
-                    <input type="number" class="form-control" id="NumRooms" name="num_rooms" >
-                </div>
-
-                <div class="form-group col-md-3">
-                    <label for="NumBeds">Letti</label>
-                    <input type="number" class="form-control" id="NumBeds" name="num_beds" >
-                </div>
-
-                <div class="form-group col-md-3">
-                    <label for="NumBaths">Bagni</label>
-                    <input type="number" class="form-control" id="NumBaths" name="num_baths" >
-                </div>
-
-                <div class="form-group col-md-3">
-                    <label for="InputMq">Mq</label>
-                    <input type="number" class="form-control" id="InputMq" name="mq" >
-                </div>
-            </div>
-
-            {{-- Immagine principale --}}
-           <label for="InputFile">Immagine principale (obbligatoria)</label>
-
-            <div class="form-group mt-3">
-                <input type="file" class="form-control-file" id="InputFile" name="main_img">
-            </div>
-
-            {{-- Foto galleria --}}
-            <p>Seleziona tutte le immagini per la galleria delle foto (facoltativa)</p>
-
-            <div class="form-group mt-3 p-2">
-                <input type="file" class="form-control-file" id="InputFile" name="images[]" multiple>
-            </div>
+            </section>
 
             {{-- Riga singola con Latitudine - Longitudine --}}
-            <div class="form-row">
-                <div class="form-group col-md-6">
+            <section>
+                <div>
                     <label for="InputLatitude">Latitudine</label>
-                    <input type="text" class="form-control" id="InputLatitude" placeholder="Inserisci la Latitudine" name="latitude" >
+                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitudine" name="latitude" >
                 </div>
 
-                <div class="form-group col-md-6">
+                <div>
                     <label for="InputLongitude">Longitudine</label>
-                    <input type="text" class="form-control" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" >
+                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" >
                 </div>
-            </div>
+            </section>
 
+            {{-- Riga singola con Num Stanze - Num Letti - Num Bagni - MQ --}}
+            <section class="row_input">
+                <div>
+                    <label for="NumRooms">Stanze</label>
+                    <input type="number" id="NumRooms" name="num_rooms" placeholder="Numero Stanze">
+                </div>
+
+                <div>
+                    <label for="NumBeds">Letti</label>
+                    <input type="number" id="NumBeds" name="num_beds" placeholder="Numero Letti">
+                </div>
+
+                <div>
+                    <label for="NumBaths">Bagni</label>
+                    <input type="number" id="NumBaths" name="num_baths" placeholder="Numero Bagni">
+                </div>
+
+                <div>
+                    <label for="InputMq">Mq</label>
+                    <input type="number" id="InputMq" name="mq" placeholder="Metriquadri">
+                </div>
+            </section>
+
+            <section>
+            {{-- Immagine principale --}}
+                <div>
+                    <label for="InputFile">Immagine principale (obbligatoria)</label>
+                    <input type="file" id="InputFile" name="main_img">
+                </div>
+            {{-- Foto galleria --}}
+                <div class="gallery">
+                    <label>Carica le foto dell'appartamento (facoltativa)</p>
+                    <input type="file" id="InputFile" name="images[]" multiple>
+                </div>
+            </section>
+
+            <section>
             {{-- Prezzo Appartamento --}}
-            <div class="form-group">
-                <label for="InputPrice">Prezzo per notte</label>
-                <input type="number" class="form-control" id="InputPrice" placeholder="Inserisci il Prezzo" name="price">
-            </div>
-
+                <div>
+                    <label for="InputPrice">Prezzo per notte</label>
+                    <input type="number" id="InputPrice" placeholder="Inserisci il Prezzo" name="price">
+                </div>
             {{-- Visibilita --}}
-            <div class="form-group">
-                <label for="InputActive">Vuoi rendere visibile il tuo l'appartamento</label>    
-                <select name="active" class="custom-select mb-2 mr-sm-2 mb-sm-0" >
-                    <option value="0" {{old('active') == '0' ? ' selected' : '' }}>Non visibile </option>
-                    <option value="1" {{old('active') == '1' ? ' selected' : '' }}>Visibile</option>
-                </select>
-            </div>
+                <div>
+                    <label for="InputActive">Vuoi rendere visibile il tuo l'appartamento</label>    
+                    <select name="active">
+                        <option value="0" {{old('active') == '0' ? ' selected' : '' }}>Non visibile </option>
+                        <option value="1" {{old('active') == '1' ? ' selected' : '' }}>Visibile</option>
+                    </select>
+                </div>
+            </section>
 
             {{-- servizi --}}            
-            <div class="form-group">
-                <label for="InputActive">Servizi disponibili</label>    
+            <section>
+                <label for="InputActive">Servizi disponibili: </label>    
                 
                 @foreach ($services as $service)
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{$service->id}}" id="services" name="services[]"
+                    <div class="service_box">
+                        <label for="services">
+                            {{$service->name}}
+                        </label>
+                        <input type="checkbox" value="{{$service->id}}" id="services" name="services[]"
                             @if ($service->id == old('services'))
                                 selected="selected"
                             @endif>
-                        <label class="form-check-label" for="services">
-                            {{$service->name}}
-                        </label>
                     </div>
                 @endforeach
-            </div>
+            </section>
 
-            <button type="submit" class="btn btn-primary">Aggiungi</button>
+            <div class="bottone"><button type="submit">Aggiungi</button></div>
         </form>
     </div>
 @endsection
