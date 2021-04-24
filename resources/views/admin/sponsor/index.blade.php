@@ -19,7 +19,7 @@
                     <h2>Durata sponsorizzazione: {{$sponsor->duration}} ore</h2>
                     <h2>Costo: {{$sponsor->price}} €</h2>
                     <h4>{{$sponsor->description}}</h4>
-                    <a href="#" style="background-color: lightblue;">SPONSORIZZA</a>
+                    <a href="{{route('richiesta-pagamento', $apartment)}}" style="background-color: lightblue;">SPONSORIZZA</a>
                 </div>
             @endforeach
         </div>

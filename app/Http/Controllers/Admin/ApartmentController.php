@@ -120,6 +120,9 @@ class ApartmentController extends Controller
             $newApartment->services()->sync($data['services']);
         }
 
+        
+        
+
         // ritorna view
         return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato creato con successo');
     }
@@ -130,16 +133,23 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($slug )
     {
-        $apartment = Apartment::where('slug', $slug)->firstOrFail();
-        $visitor = View::where('apartment_id', $slug)->count();
         
+        $apartment = Apartment::where('slug', $slug)->firstOrFail();
+        
+        
+        $sponsors = Sponsor::all() ;
+        $visitor = View::where('apartment_id', $slug)->count();
+        // $pivot_app_spons = Sponsor::with('apartment_id');
         $data = [
             'apartment' => $apartment,
-            'visitor' => $visitor
+            'visitor' => $visitor,
+            'sponsors' => $sponsors,
+            // 'pivot' => $pivot_app_spons
         ];
 
+        // dd($pivot_app_spons) ;
         
         return view('admin.apartment.show', $data);
     }

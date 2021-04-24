@@ -81,43 +81,35 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/testmap.js":
-/*!*********************************!*\
-  !*** ./resources/js/testmap.js ***!
-  \*********************************/
+/***/ "./resources/js/stat.js":
+/*!******************************!*\
+  !*** ./resources/js/stat.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// centro della mappa
-var HQ = {
-  lat: 45.46428976336229,
-  lng: 9.191959328863394
-}; // visualizzazione della mappa
-
-var map = tt.map({
-  key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
-  container: 'map',
-  center: HQ,
-  zoom: 13
-}); // maker singolo tramite  posizione (latitudine e longitudine)
-
-var marker = new tt.Marker().setLngLat(HQ).addTo(map);
+var stat = new Vue({
+  el: '#stat',
+  data: {
+    messaggi: 'ciaoo uaooo'
+  }
+});
 
 /***/ }),
 
-/***/ 1:
-/*!***************************************!*\
-  !*** multi ./resources/js/testmap.js ***!
-  \***************************************/
+/***/ 2:
+/*!************************************!*\
+  !*** multi ./resources/js/stat.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\js\testmap.js */"./resources/js/testmap.js");
+module.exports = __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\js\stat.js */"./resources/js/stat.js");
 
 
 /***/ })

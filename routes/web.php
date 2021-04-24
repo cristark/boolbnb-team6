@@ -48,5 +48,8 @@ Route::prefix('admin')
         Route::get('/statistic/{slug}', 'ViewController@show')->name('statistic.show');
         Route::get('/sponsor/{slug}', 'SponsorController@index')->name('sponsor.index');
         Route::get('/', 'HomeController@index')->name('home');
-        Route::get('/payment', 'PaymentController@request') ;
+        Route::get('/payment/{apartment}', 'PaymentController@request')->name('richiesta-pagamento');
+        Route::post('/payment/{apartment}', 'PaymentController@payment')->name('dati-pagamento');
+        Route::get('/confirm', 'PaymentController@confirm')->name('conferma');
+
 });

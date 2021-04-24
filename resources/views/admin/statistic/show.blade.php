@@ -4,7 +4,8 @@
 
 @section('content')
 @php
-    
+    use Carbon\Carbon;
+    $now = Carbon::now()->month;
     $months = [
         1 => 'Gennaio',
         2 => 'Febbraio',
@@ -19,45 +20,35 @@
         11 => 'Novembre',
         12 => 'Dicembre'
     ];
-@endphp
-    {{-- ciaociao
-                {{-- <h1>{{$my_visitor->view_counter}}</h1> --}}
-    {{-- <div>
+
+
+    @endphp
+
+        <h1>Statistiche di {{ $apartment->title }}</h1>
+        <select id="month">
+                <option class="default" value="" hidden selected="">{{$months[$now]}}</option>
+                    @for ($i = 1; $i <= $now; $i++)
+                    @foreach ($months as $key => $month)
+                        @if ($key == $i)
+                        <option value="{{$key}}">{{$month}}</option>
+                        @endif
+                    @endforeach
+                    @endfor
+            </select>
+            <div style="width: 500px; height: 400px; margin-bottom: 500px;">
+                <canvas id="myChart"   width="200" height="200"></canvas>
+            </div>
+
+
         
-        @php echo json_encode($visitors); @endphp
-    </div> --}}
-    {{-- @foreach ($numero_visite as $visita) --}}
-    {{-- {{$months[$visita->numero_mese]}}
-    {{$visita->totale}}
-    {{$visita->numero_mese}}
-    --}}
-    {{-- @endforeach --}}
-    
-        <h2>Statistiche Mese:</h2>
-        nome: <h3>
-            {{$apartment->title}}
-            {{$apartment->slug}}
-        </h3>
-
-        {{-- <input type="hidden" v-model="messaggio" value="{{messaggio}}"> --}}
         
-
-        <?php echo json_encode($numero_visite);?>;
-        
-        @foreach ($numero_visite as $item)
-        {{$item->totale}}
-        {{-- {{$months[$numero_visite->numero_mese]}} --}}
-
-        @endforeach
-        {{-- <div id="app">
-        </div> --}}
-
-
-        <div v-for="element in array_visite">
-            @{{ element.totale }}
             
-        </div>
-            <canvas id="myChart" width="200" height="200"></canvas>
+        
+        
+        
+        
+        
+        
 
         
         

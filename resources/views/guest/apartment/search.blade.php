@@ -49,7 +49,7 @@
             </div>
     
             {{-- MAPPA --}}
-           <div id ="map" style="height:550px;width:550px;"></div> 
+            <div id ="map" style="height:550px;width:550px;"></div> 
                 
                 {{-- questo solo per passaggio di valori --}}
                 <div id="dom-ap" style="display: none;">
@@ -107,7 +107,7 @@
 
                             });
                         })
-                         .catch(error => console.error('error city', error));
+                        .catch(error => console.error('error city', error));
 
                 </script>
         </div>
