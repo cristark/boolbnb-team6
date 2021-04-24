@@ -101,7 +101,7 @@ const app = new Vue({
                 (this.nomeToUpper.includes(this.ricercaToUpper)) ? items.status = true : items.status = false;
             });
         },
-        // loadVisitors() {
+        loadVisitors() {
         //     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
         //         .then(result => {
         //             this.array_visite = result.data.numero_visite;
@@ -116,7 +116,7 @@ const app = new Vue({
         //             });
 
         //         });
-        // },
+        },
         createCanvas(){
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {

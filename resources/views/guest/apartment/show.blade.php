@@ -110,12 +110,12 @@
                 <div id ="map" style="height:90vh;"></div> 
                 
                 {{-- questo solo per passaggio di valori --}}
-                <div id="dom-lat" style="display: none;">
+                <div id="dom-lat">
                     <?php
                         echo $lat = $apartment->latitude; 
                     ?>
                 </div>
-                <div id="dom-lon" style="display: none;">
+                <div id="dom-lon">
                     <?php
                         echo $lon = $apartment->longitude; 
                     ?>
@@ -123,10 +123,19 @@
                 <script type="application/javascript">
 
                     var latitude = document.getElementById("dom-lat").textContent;
+                    latitude = latitude.replace(' ',"");
+                    latitude = parseFloat(latitude);
+
                     var longitudine = document.getElementById("dom-lon").textContent;
+                    longitude = longitudine.replace(' ',"");
+                    longitude = parseFloat(longitude);
+
+                    console.log(latitude);
+                    console.log(longitude);
 
                     // centro della mappa
-                    var HQ = { lat: latitude, lng: longitudine }
+                    // var HQ = { lat: latitude, lng: longitude }
+                    var HQ = { lat: 41.9071700, lng: 12.4650000}
                     console.log(HQ);
 
                     // visualizzazione della mappa

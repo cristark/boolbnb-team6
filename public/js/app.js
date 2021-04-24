@@ -49745,20 +49745,19 @@ var app = new Vue({
         _this2.nomeToUpper.includes(_this2.ricercaToUpper) ? items.status = true : items.status = false;
       });
     },
-    // loadVisitors() {
-    //     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
-    //         .then(result => {
-    //             this.array_visite = result.data.numero_visite;
-    //             console.log(this.array_visite);
-    //             console.log(result.data.numero_visite);
-    //             this.array_visite.forEach(element => {
-    //                 console.log(element.totale, 'sono element');
-    //                 console.log(element.numero_mese);
-    //                 this.risultato_mesi.push(element.numero_mese);
-    //                 console.log(this.risultato_mesi, 'sono risultato mesi');
-    //             });
-    //         });
-    // },
+    loadVisitors: function loadVisitors() {//     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
+      //         .then(result => {
+      //             this.array_visite = result.data.numero_visite;
+      //             console.log(this.array_visite);
+      //             console.log(result.data.numero_visite);
+      //             this.array_visite.forEach(element => {
+      //                 console.log(element.totale, 'sono element');
+      //                 console.log(element.numero_mese);
+      //                 this.risultato_mesi.push(element.numero_mese);
+      //                 console.log(this.risultato_mesi, 'sono risultato mesi');
+      //             });
+      //         });
+    },
     createCanvas: function createCanvas() {
       var ctx = document.getElementById('myChart').getContext('2d');
       var myChart = new Chart(ctx, {
