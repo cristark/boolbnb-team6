@@ -46,6 +46,7 @@ a {
 }
 
 p.views,
-p.rooms {
-    color: lightslategrey;
+p.rooms,
+.not_selected {
+    color: $mainGrey;
 }

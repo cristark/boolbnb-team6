@@ -35,6 +35,23 @@ const app = new Vue({
     data: {
         //cri
         footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda'],
+        citiesBox:[
+            {
+                city: 'Roma',
+                description: 'Città Eterna',
+                img: 'https://images.unsplash.com/photo-1569343051690-6dd6475dc776?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+            },
+            {
+                city: 'Milano',
+                description: 'Smart-City Life',
+                img: 'https://images.unsplash.com/photo-1530284610319-31ee7c55378e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+            },
+            {
+                city: 'Firenze',
+                description: 'Arte e Cultura Rinascimentale',
+                img: 'https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+            }
+        ],
         mainMenu: false,
         //dave
         prova: 'ciao',
@@ -61,16 +78,13 @@ const app = new Vue({
         // console.log(this.citta);
 
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
-        // console.log(this.currentUrl);
-        // console.log(this.lastItem);
-        this.loadVisitors();
+        // this.loadVisitors();
         this.tomtom();
     },
     methods: {
         // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
         showMenu() {
             this.mainMenu = !this.mainMenu;
-            console.log(this.mainMenu);
         },
         // DISATTIVARE SCROLL PAGINA
         disableScroll() {
@@ -102,20 +116,20 @@ const app = new Vue({
             });
         },
         loadVisitors() {
-        //     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
-        //         .then(result => {
-        //             this.array_visite = result.data.numero_visite;
-        //             console.log(this.array_visite);
-        //             console.log(result.data.numero_visite);
-        //             this.array_visite.forEach(element => {
-        //                 console.log(element.totale, 'sono element');
-        //                 console.log(element.numero_mese);
-        //                 this.risultato_mesi.push(element.numero_mese);
+            axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
+                .then(result => {
+                    this.array_visite = result.data.numero_visite;
+                    console.log(this.array_visite);
+                    console.log(result.data.numero_visite);
+                    this.array_visite.forEach(element => {
+                        console.log(element.totale, 'sono element');
+                        console.log(element.numero_mese);
+                        this.risultato_mesi.push(element.numero_mese);
 
-        //                 console.log(this.risultato_mesi, 'sono risultato mesi');
-        //             });
+                        console.log(this.risultato_mesi, 'sono risultato mesi');
+                    });
 
-        //         });
+                });
         },
         createCanvas(){
             var ctx = document.getElementById('myChart').getContext('2d');

@@ -49683,6 +49683,19 @@ var app = new Vue({
   data: {
     //cri
     footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda'],
+    citiesBox: [{
+      city: 'Roma',
+      description: 'Città Eterna',
+      img: 'https://images.unsplash.com/photo-1569343051690-6dd6475dc776?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+    }, {
+      city: 'Milano',
+      description: 'Smart-City Life',
+      img: 'https://images.unsplash.com/photo-1530284610319-31ee7c55378e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+    }, {
+      city: 'Firenze',
+      description: 'Arte e Cultura Rinascimentale',
+      img: 'https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+    }],
     mainMenu: false,
     //dave
     prova: 'ciao',
@@ -49706,17 +49719,14 @@ var app = new Vue({
   // },
   mounted: function mounted() {
     // console.log(this.citta);
-    this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1); // console.log(this.currentUrl);
-    // console.log(this.lastItem);
+    this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1); // this.loadVisitors();
 
-    this.loadVisitors();
     this.tomtom();
   },
   methods: {
     // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
     showMenu: function showMenu() {
       this.mainMenu = !this.mainMenu;
-      console.log(this.mainMenu);
     },
     // DISATTIVARE SCROLL PAGINA
     disableScroll: function disableScroll() {
@@ -49745,20 +49755,24 @@ var app = new Vue({
         _this2.nomeToUpper.includes(_this2.ricercaToUpper) ? items.status = true : items.status = false;
       });
     },
-    // loadVisitors() {
-    //     axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
-    //         .then(result => {
-    //             this.array_visite = result.data.numero_visite;
-    //             console.log(this.array_visite);
-    //             console.log(result.data.numero_visite);
-    //             this.array_visite.forEach(element => {
-    //                 console.log(element.totale, 'sono element');
-    //                 console.log(element.numero_mese);
-    //                 this.risultato_mesi.push(element.numero_mese);
-    //                 console.log(this.risultato_mesi, 'sono risultato mesi');
-    //             });
-    //         });
-    // },
+    loadVisitors: function loadVisitors() {
+      var _this3 = this;
+
+      axios.get('http://localhost:8000/api/statistiche/' + this.lastItem).then(function (result) {
+        _this3.array_visite = result.data.numero_visite;
+        console.log(_this3.array_visite);
+        console.log(result.data.numero_visite);
+
+        _this3.array_visite.forEach(function (element) {
+          console.log(element.totale, 'sono element');
+          console.log(element.numero_mese);
+
+          _this3.risultato_mesi.push(element.numero_mese);
+
+          console.log(_this3.risultato_mesi, 'sono risultato mesi');
+        });
+      });
+    },
     createCanvas: function createCanvas() {
       var ctx = document.getElementById('myChart').getContext('2d');
       var myChart = new Chart(ctx, {
@@ -49885,8 +49899,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
