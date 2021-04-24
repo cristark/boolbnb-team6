@@ -42,9 +42,19 @@ class ApartmentController extends Controller
                     // $apartment->views()->save( $visita );                   
             }
 
+            // dd($apartment->pivot->status);
+
+
+        //   dd($apartment->sponsors);
+            // foreach ($apartment->sponsors as $sponsor){
+            //     dd($sponsor->pivot->status);
+            // }
+
             $data = [
                 'apartment' => $apartment
             ];
+
+            // dd($slug);
 
             
             return view('guest.apartment.show', $data)->with('apartment_selected', $apartment_selected);
