@@ -53,14 +53,20 @@
 
             {{-- Riga singola con Latitudine - Longitudine --}}
             <section>
+
+                <div >
+                    <label for="InputLatitude">Inserisci l'indirizzo con questo modello: via milano 3, 20020 corsico MI</label>
+                    <input type="text" id="InputIndirizzo" placeholder="Inserisici nome della via" name="andress" v-model='indirizzo' v-on:input="getPosition">
+                </div>
+
                 <div>
                     <label for="InputLatitude">Latitudine</label>
-                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitudine" name="latitude" >
+                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude' style="display: none;">
                 </div>
 
                 <div>
                     <label for="InputLongitude">Longitudine</label>
-                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" >
+                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude' style="display: none;">
                 </div>
             </section>
 
@@ -135,6 +141,7 @@
 
             <div class="bottone"><button type="submit">Aggiungi</button></div>
         </form>
+        
     </div>
 @endsection
 

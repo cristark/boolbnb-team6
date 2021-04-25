@@ -118,16 +118,20 @@
 
             {{-- Riga singola con Latitudine - Longitudine --}}
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="InputLatitude">Latitudine</label>
-                    <input type="text" class="form-control" id="InputLatitude" placeholder="Inserisci la Latitudine" name="latitude" value="{{$apartment->latitude}}">
+               <div >
+                    <label for="InputLatitude">Inserisci l'indirizzo con questo modello: via milano 3, 20020 corsico MI</label>
+                    <input type="text" id="InputIndirizzo" placeholder="Inserisici nome della via" name="andress" v-model='indirizzo' v-on:input="getPosition" value="{{$apartment->latitude}}">
                 </div>
 
-                <div class="form-group col-md-6">
-                    <label for="InputLongitude">Longitudine</label>
-                    <input type="text" class="form-control" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" value="{{$apartment->longitude}}">
+                <div>
+                    <label for="InputLatitude">Latitudine</label>
+                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude'  value="{{$apartment->latitude}}" style="display: none;">
                 </div>
-            </div>
+
+                <div>
+                    <label for="InputLongitude">Longitudine</label>
+                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude'  value="{{$apartment->longitude}}" style="display: none;">
+                </div>
 
             {{-- Prezzo Appartamento --}}
             <div class="form-group">

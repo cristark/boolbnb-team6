@@ -24,23 +24,23 @@
 
         {{-- PANNELLO INFO UTENTE --}}
         <section class="user-left">
-            {{-- @if (strpos($users->user_img, 'https') !== false)
-                <img style="height: 100px;" src="{{ $users->user_img }}" alt="Anteprima img user">
+            {{-- @if (strpos($user->user_img, 'https') !== false)
+                <img style="height: 100px;" src="{{ $user->user_img }}" alt="Anteprima img user">
             @else
-                <img style="height: 100px;" src="{{ asset('storage/'.$users->user_img) }}" alt="Anteprima img user">
+                <img style="height: 100px;" src="{{ asset('storage/'.$user->user_img) }}" alt="Anteprima img user">
             @endif --}}
             <div class="user_img">
                 <i class="fas fa-user"></i>
             </div>
             <h2>Ciao,</h2>
-            <h2>{{ $users->name ." ". $users->lastname }}</h2>
+            <h2>{{ $user->name ." ". $user->lastname }}</h2>
             <p>
                 <span>Data di nascita:</span>
-                <span>{{ $users->birth_date }}</span>
+                <span>{{ $user->birth_date }}</span>
             </p>
             <p>
                 <span>Mail:</span>
-                <span>{{ $users->email }}</span>
+                <span>{{ $user->email }}</span>
             </p>
             {{-- Pulsante creazione Nuovo Appartamento --}}
             <a href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>

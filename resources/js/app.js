@@ -77,7 +77,10 @@ const app = new Vue({
         n_visite: [],
         search: 'All',
         array_completo: [],
-        months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile']
+        months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile'],
+        indirizzo:'',
+        latitude:0,
+        longitude:0
     },
     // created(){
     //     console.log(this.lastItem);
@@ -206,6 +209,26 @@ const app = new Vue({
 
                 });
         },
+        getPosition(){
+            // this.andress = 'Corso Galileo Ferraris, 35, 10121 Torino TO';
+            delete axios.defaults.headers.common['X-Requested-With'];
+            axios
+                axios.get('https://api.tomtom.com/search/2/search/' + this.indirizzo + '.json?',{
+                    params: {
+                        key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla'
+                    }
+                })
+                .then( response  => {
+
+                    // centro della mappa
+                    console.log(response);
+                    var point = response.data.results[0].position;
+                    console.log(point);
+                    this.latitude = point.lat;
+                    this.longitude = point.lon;
+                })
+                .catch(error => console.error('get position', error)); 
+        }
                 
     }
 });

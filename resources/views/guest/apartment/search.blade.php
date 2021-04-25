@@ -114,6 +114,50 @@
                         .catch(error => console.error('error city', error));
 
                 </script>
+
+                {{-- SCRIPT PER TESTING --}}
+                {{-- <script>
+
+                    var indirizzo = 'Corso Galileo Ferraris, 35, 10121 Torino TO';
+                    
+                    axios
+                        .get('https://api.tomtom.com/search/2/geocode/'+indirizzo+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
+                        .then( response  => {
+                            // centro della mappa
+                            console.log(response.data.results);
+                            
+                            var data = response.data.results
+                            var count = 0;
+                            var position = null;
+                            
+                            while(count < data.length){
+                                if(data[count].type == "Point Address"){
+                                     position = data[count].position;
+                                    //  return data[count].position;
+                                } else {
+                                    count++;
+                                }           
+                            }
+
+                            // return null;
+
+                            var HQ = position;
+                            console.log(position);
+
+                            // visualizzazione della mappa
+                            var map = tt.map({
+                                key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
+                                container: 'map',
+                                center: HQ,
+                                zoom: 16
+                            });
+
+                            var marker = new tt.Marker().setLngLat(position).addTo(map);
+
+                        })
+                        .catch(error => console.error('error city', error)); 
+
+                </script> --}}
         </div>
 
     </div>
