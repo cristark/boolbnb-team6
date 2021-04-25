@@ -38,6 +38,8 @@ Route::get('/inviato', 'HomeController@messaggioInviato')->name('guest.message.i
 
 Auth::routes();
 
+Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
+
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
