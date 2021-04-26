@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+
 use App\Apartment;
 use App\Image;
 use App\Message;
@@ -14,6 +16,7 @@ use App\Service;
 use App\Sponsor;
 use App\User;
 use App\View;
+use Carbon\Carbon;
 
 class ApartmentController extends Controller
 {
@@ -32,6 +35,8 @@ class ApartmentController extends Controller
         //paginate = quanti elementi voglio vedere... ho messo 2 come numero a caso
         $apartments = Apartment::where('user_id', '=', Auth::id())->get();
         // $apartments = Apartment::all();
+
+
 
         $data = [
             'apartments' => $apartments,
@@ -135,25 +140,48 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug )
+    public function show($slug)
     {
         
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
         
         
-        $sponsors = Sponsor::all() ;
         $visitor = View::where('apartment_id', $slug)->count();
-        // $pivot_app_spons = Sponsor::with('apartment_id');
-        $data = [
-            'apartment' => $apartment,
-            'visitor' => $visitor,
-            'sponsors' => $sponsors,
-            // 'pivot' => $pivot_app_spons
-        ];
 
-        // dd($pivot_app_spons) ;
+        $sponsor = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->latest('end_date')->first();
+
+
+
+        if( $sponsor != null )
+        {
+            ($sponsor->end_date > Carbon::now()) ? $sponsor = false : $sponsor = true ;
+        }
+        else 
+        {
+            $sponsor = true;
+        }
+
+        // if($sponsor){
+        //     $sponsored = 'sponsorizzato';
+        // }
+        // // else{
+        // //     dump('falso');
+        // // }
+
+        if(Auth::id() == $apartment->user_id ){
+
+            $data = [
+                'apartment' => $apartment,
+                'visitor' => $visitor,
+                'sponsor' => $sponsor
+    
+            ];
+            
+    
+            
+            return view('admin.apartment.show', $data);
+        }
         
-        return view('admin.apartment.show', $data);
     }
 
     /**
@@ -195,7 +223,7 @@ class ApartmentController extends Controller
         {
             // cancella foto presistente immagine
             Storage::delete('main_images', $apartment->main_img);
-           
+            
             // salvataggio immagine
             $path = Storage::put('main_images', $data['main_img']);
             
@@ -288,9 +316,7 @@ class ApartmentController extends Controller
         $apartment->messages()->delete();
         $apartment->views()->delete();
         $apartment->images()->delete();
-
         $apartment->delete();
-
         return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato cancellato con successo');
     }
 }

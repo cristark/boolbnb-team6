@@ -16,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- cdn braintree --}}
     <script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.min.js"></script>
-
     {{-- cdn    TOMTOM--}}
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.12.0/maps/maps.css'>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.12.0/maps/maps-web.min.js"></script>
@@ -26,6 +25,9 @@
 
     <!-- Link Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <!-- Link ChartJs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     {{-- axios link --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

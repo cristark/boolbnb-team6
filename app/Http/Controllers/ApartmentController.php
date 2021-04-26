@@ -17,6 +17,7 @@ class ApartmentController extends Controller
 
             $apartments = Apartment::all();
 
+            
             $data = [
                 'apartments' => $apartments
             ];
