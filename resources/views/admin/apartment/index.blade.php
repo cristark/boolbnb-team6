@@ -4,24 +4,43 @@
 
 @section('content')
 <div class="main_container">
-    <span><h2>Account > </h2> <h1>I miei appartamenti</h1></span>
+
+    {{-- SEZIONE BREADCUMB IN ALTO --}}
+    <div class="breadcumb">
+        <h3 class="not_selected">Account</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" viewBox="0 0 9 18">
+            <path id="Unione_1" data-name="Unione 1" d="M1997,8l-7-8,7,8-7,8Z" transform="translate(-1989 1)" fill="#222" stroke="#222" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"/>
+        </svg>
+        <h3>I miei appartamenti</h3>
+    </div>
+
     {{-- Notifica eliminazione post esistente --}}
     @if (session('status'))
-	    <div class="alert alert-success">{{ session('status') }}</div>
+        <div class="alert alert-success">{{ session('status') }}</div>
     @endif
 
+    {{-- SEZIONE PRINCIPALE --}}
     <div class="main-index">
-        {{-- PROFILO UTENTE --}}
+
+        {{-- PANNELLO INFO UTENTE --}}
         <section class="user-left">
-            <h2>ciao,</h2>
-            <h2>{{ $user->name ." ". $user->lastname }}</h2>
+            {{-- @if (strpos($users->user_img, 'https') !== false)
+                <img style="height: 100px;" src="{{ $users->user_img }}" alt="Anteprima img user">
+            @else
+                <img style="height: 100px;" src="{{ asset('storage/'.$users->user_img) }}" alt="Anteprima img user">
+            @endif --}}
+            <div class="user_img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2>Ciao,</h2>
+            <h2>{{ $users->name ." ". $users->lastname }}</h2>
             <p>
                 <span>Data di nascita:</span>
-                <span>{{ $user->birth_date }}</span>
+                <span>{{ $users->birth_date }}</span>
             </p>
             <p>
                 <span>Mail:</span>
-                <span>{{ $user->email }}</span>
+                <span>{{ $users->email }}</span>
             </p>
             {{-- Pulsante creazione Nuovo Appartamento --}}
             <a href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>
@@ -45,7 +64,10 @@
                         <div class="box-ap-info">
                             <h4>{{$apartment->title}}</h4>
                             <p>Stanze: {{$apartment->num_rooms}} | Letti: {{$apartment->num_beds}} | Bagni: {{$apartment->num_baths}}</p>
-                            <p>Prezzo una notte: <strong>{{$apartment->price}}</strong>€</p>
+                            <div class="price_box">
+                                <p>Prezzo di una notte in appartamento</p>
+                                <h3>{{$apartment->price}} €</h3>
+                            </div>
                         </div>
                     </section>
 
@@ -53,12 +75,13 @@
                         {{-- STATISTICHE E MESSAGGI APPARTAMENTO --}}
                         <div class="box-ap-stat-msg">
                             <a class="btn btn-info" href="{{route('statistic.show', $apartment->slug)}}"><button>Statistiche</button></a>
-                            <a href="{{route('message.index')}}"><button>Messaggi</button></a>
+                            <a class="middle_btn" href="{{route('message.index')}}"><button>Messaggi</button></a>
+                            <a href=""><button>Sponsorizza</button></a>
                         </div>
                         {{-- OPZIONI APPARTAMENTO --}}
                         <div class="box-ap-button">
                             <a class="btn btn-info" href="{{route('apartment.show', $apartment->slug)}}"><button>Visualizza</button></a>
-                            <a href="{{route('apartment.edit', $apartment->slug)}}"><button>Modifica</button></a>
+                            <a class="middle_btn" href="{{route('apartment.edit', $apartment->slug)}}"><button>Modifica</button></a>
                             <form method="post" action="{{route('apartment.destroy', $apartment)}}">
                                 @csrf
                                 @method('DELETE')

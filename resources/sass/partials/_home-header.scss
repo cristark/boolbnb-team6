@@ -88,6 +88,11 @@ header.home_header {
                     border-radius: 15px;
                     padding: 20px 20px 10px 20px;
                     @include boxTest;
+                    display: none;
+
+                    &.h_active {
+                        display: flex;
+                    }
 
                     a {
                         margin-bottom: 10px;

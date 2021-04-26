@@ -98,10 +98,10 @@
                         </div>
             
                         <div class="cities_box">
-                            <div class="box">
+                            <div v-for="city in citiesBox" class="box">
                                 <div class="cities_text">
-                                    <h3>Alberobello</h3>
-                                    <p>Grazie agli host puoi</p>
+                                    <h3>@{{city.city}}</h3>
+                                    <p>@{{city.description}}</p>
                                 </div>
                             </div>
                         </div>

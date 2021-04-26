@@ -38,8 +38,9 @@ a {
 }
 
 p.views,
-p.rooms {
-  color: lightslategrey;
+p.rooms,
+.not_selected {
+  color: rgba(128, 128, 128, 0.5);
 }
 
 header {
@@ -114,6 +115,7 @@ header .main_container .auth_buttons .nav_dropdown .dropdown_menu {
   border-radius: 15px;
   padding: 20px 20px 10px 20px;
   border: 1px solid #222222;
+  z-index: 1;
   display: none;
 }
 header .main_container .auth_buttons .nav_dropdown .dropdown_menu.active {
@@ -219,6 +221,10 @@ header.home_header .main_container .auth_buttons .nav_dropdown .dropdown_menu {
   border-radius: 15px;
   padding: 20px 20px 10px 20px;
   border: 1px solid #222222;
+  display: none;
+}
+header.home_header .main_container .auth_buttons .nav_dropdown .dropdown_menu.h_active {
+  display: flex;
 }
 header.home_header .main_container .auth_buttons .nav_dropdown .dropdown_menu a {
   margin-bottom: 10px;
@@ -451,6 +457,11 @@ main .cities .title .btn {
   padding: 10px 25px;
   cursor: pointer;
 }
+main .cities .cities_box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 main .cities .cities_box .box {
   width: 450px;
   height: 640px;
@@ -458,11 +469,12 @@ main .cities .cities_box .box {
   border-radius: 20px;
   box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
   position: relative;
+  margin-right: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 main .cities .cities_box .box .cities_text {
-  position: absolute;
-  right: -120px;
-  top: 50%;
   transform: rotate(-90deg);
 }
 main .cities .cities_box .box .cities_text h3 {
@@ -549,21 +561,42 @@ main .main_search {
 }
 main .main_search .search_box {
   width: 40%;
+  max-height: 100%;
   padding: 10px;
   border-radius: 15px;
   margin-right: 30px;
+  overflow: auto;
 }
 main .main_search .search_box .box {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  height: 125px;
+  margin-bottom: 20px;
 }
 main .main_search .search_box .box .apt_img {
   width: 30%;
+  height: 100%;
 }
 main .main_search .search_box .box .apt_img img {
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
+  height: 100%;
   border-radius: 15px;
+}
+main .main_search .search_box .box .divider {
+  margin: 0 30px;
+}
+main .main_search .search_box .box .apt_description {
+  width: 60%;
+}
+main .main_search .search_box .box .apt_description a {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  overflow: hidden;
 }
 main .main_search .search_box .box .apt_description .rooms {
   margin: 20px 0 10px;
@@ -580,13 +613,12 @@ main .main_search .search_box .box .apt_description .price_box p {
   font-size: 12px;
 }
 main .main_search .search_box .box .apt_description .price_box h3 {
-  font-size: 30px;
+  font-size: 25px;
 }
 main .main_search .map_box {
   width: calc(60% - 30px);
   height: 100%;
   border-radius: 15px;
-  border: 1px solid #222222;
 }
 main .show_user_apt .back_btn {
   display: flex;
@@ -606,9 +638,29 @@ main .show_user_apt .main_info {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 480px;
 }
 main .show_user_apt .main_info .img_box {
   width: 70%;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .show_user_apt .main_info .img_box .main_img {
+  width: 70%;
+  height: 100%;
+}
+main .show_user_apt .main_info .img_box .main_img img {
+  height: 100%;
+}
+main .show_user_apt .main_info .img_box .apt_images {
+  height: 100%;
+}
+main .show_user_apt .main_info .img_box .apt_images div[class*=img] {
+  border: 1px solid #222222;
 }
 main .show_user_apt .main_info .info_box {
   max-width: 30%;
@@ -670,31 +722,47 @@ main .show_user_apt .details .detail_box .map_box {
   border: 1px solid #222222;
   margin-bottom: 20px;
 }
-main span {
+main .breadcumb {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-main span h2 {
-  color: grey;
-  padding-right: 5px;
+main .breadcumb svg {
+  transform: scale(80%);
+  margin: 0 10px;
 }
 main .main-index {
+  height: calc(100vh - 175px);
   display: flex;
   flex-direction: row;
   padding: 30px 0;
 }
 main .main-index .user-left {
-  border: 2px solid darkgrey;
+  border: 1px solid #222222;
   border-radius: 20px;
   width: 35%;
-  height: 660px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-main .main-index .user-left h2, main .main-index .user-left p {
+main .main-index .user-left .user_img {
+  border: 1px solid #222222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  padding: 20px;
+  overflow: hidden;
+}
+main .main-index .user-left .user_img i {
+  font-size: 130px;
+  color: rgba(128, 128, 128, 0.5);
+}
+main .main-index .user-left h2,
+main .main-index .user-left p {
   padding-top: 20px;
 }
 main .main-index .user-left p {
@@ -708,73 +776,102 @@ main .main-index .user-left a {
   border-radius: 10px;
   padding: 10px 25px;
   cursor: pointer;
-  background-color: burlywood;
+  background: #ff385c;
   color: white;
+  font-weight: bold;
   border: none;
 }
 main .main-index .apartment-right {
   width: 65%;
-  height: 660px;
   display: flex;
   flex-direction: column;
   padding-left: 40px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 main .main-index .apartment-right .box-apartment {
   width: 100%;
-  height: 150px;
+  height: 200px;
   padding: 10px;
   margin-bottom: 20px;
-  border: 2px solid darkgrey;
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  border: 1px solid #222222;
 }
 main .main-index .apartment-right .box-apartment .box-left {
   width: 60%;
+  height: 100%;
   display: flex;
   flex-direction: row;
+}
+main .main-index .apartment-right .box-apartment .box-left .box-ap-img {
+  height: 100%;
+  margin-right: 20px;
+}
+main .main-index .apartment-right .box-apartment .box-left .box-ap-img img {
+  height: 100%;
+  width: 225px;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 main .main-index .apartment-right .box-apartment .box-right {
   display: flex;
   flex-direction: row;
 }
-main .main-index .apartment-right .box-apartment .box-ap-img {
-  text-align: center;
+main .main-index .apartment-right .box-apartment .box-right .middle_btn {
+  margin: 15px 0;
 }
-main .main-index .apartment-right .box-apartment .box-ap-img img {
-  height: 100%;
-  max-width: 225px;
-  border-radius: 10px;
-}
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg, main .main-index .apartment-right .box-apartment .box-ap-button, main .main-index .apartment-right .box-apartment .box-ap-info {
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg,
+main .main-index .apartment-right .box-apartment .box-ap-button,
+main .main-index .apartment-right .box-apartment .box-ap-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 0 10px;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg p, main .main-index .apartment-right .box-apartment .box-ap-button p, main .main-index .apartment-right .box-apartment .box-ap-info p {
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg p,
+main .main-index .apartment-right .box-apartment .box-ap-button p,
+main .main-index .apartment-right .box-apartment .box-ap-info p {
   color: grey;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg strong, main .main-index .apartment-right .box-apartment .box-ap-button strong, main .main-index .apartment-right .box-apartment .box-ap-info strong {
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg strong,
+main .main-index .apartment-right .box-apartment .box-ap-button strong,
+main .main-index .apartment-right .box-apartment .box-ap-info strong {
   color: black;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg button, main .main-index .apartment-right .box-apartment .box-ap-button button, main .main-index .apartment-right .box-apartment .box-ap-info button {
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg button,
+main .main-index .apartment-right .box-apartment .box-ap-button button,
+main .main-index .apartment-right .box-apartment .box-ap-info button {
   width: 125px;
   height: 35px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid black;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg button:hover, main .main-index .apartment-right .box-apartment .box-ap-button button:hover, main .main-index .apartment-right .box-apartment .box-ap-info button:hover {
-  background-color: lightgray;
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg .box-ap-info, main .main-index .apartment-right .box-apartment .box-ap-button .box-ap-info, main .main-index .apartment-right .box-apartment .box-ap-info .box-ap-info {
-  text-align: start;
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box p,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box p,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box p {
+  width: 150px;
+}
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box h3,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box h3,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box h3 {
+  font-size: 25px;
+}
+main .main-index .apartment-right .box-apartment .box-ap-info {
+  width: 350px;
 }
 main .error {
   background-color: #eea7a7;

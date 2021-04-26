@@ -16,20 +16,25 @@
         <div class="main_search">
             
             {{-- BOX RISULTATI RICERCA APPARTAMENTI --}}
-            {{-- commento --}}
             <div class="search_box">
                 @foreach ($apartments as $apartment)    
                     <div class="box">
+
+                        {{-- IMMAGINE APPARTAMENTO --}}
                         <div class="apt_img">
                             <a href="{{route('guest.apartment.show', $apartment->slug)}}">
                                 <img src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
                             </a>
                         </div>
+
+                        {{-- DIVIDER --}}
                         <div class="divider">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1" height="121" viewBox="0 0 1 121">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1" height="110" viewBox="0 0 1 121">
                                 <path id="Separator" d="M582,746.953v120" transform="translate(-581.5 -746.453)" fill="none" stroke="#909090" stroke-linecap="round" stroke-width="1" stroke-dasharray="0.5 12"/>
                             </svg>
                         </div>
+
+                        {{-- DESCRIZIONE APPARTAMENTO --}}
                         <div class="apt_description">
                             <a href="{{route('guest.apartment.show', $apartment->slug)}}">
                                 <h4>{{$apartment->title}}</h4>
@@ -42,14 +47,13 @@
                                 <p>Prezzo di una notte in appartamento</p>
                                 <h3>100€</h3>
                             </div>
-
                         </div>
                     </div>
                 @endforeach
             </div>
     
             {{-- MAPPA --}}
-            <div id ="map" style="height:550px;width:550px;"></div> 
+            <div id ="map" class="map_box"></div> 
                 
                 {{-- questo solo per passaggio di valori --}}
                 <div id="dom-ap" style="display: none;">
@@ -85,7 +89,7 @@
                                 key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
                                 container: 'map',
                                 center: HQ,
-                                zoom: 10
+                                zoom: 14
                             });
 
 
@@ -103,7 +107,7 @@
                                 var marker = new tt.Marker().setLngLat(position).addTo(map);
                                 
                                 // testo descritivo del maker
-                                marker.setPopup(popup).togglePopup();
+                                // marker.setPopup(popup).togglePopup();
 
                             });
                         })
