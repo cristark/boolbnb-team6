@@ -40,9 +40,11 @@
                         </div>
             
                         <div class="apts">
-            
+                            @foreach ($pivot as $element)
+                                
                             {{-- Inserire ciclo appartamenti sponsorizzati --}}
                             <div class="box">
+                                
             
                                 {{-- Pulsante like all'interno della foto --}}
                                 <div class="like_box">
@@ -50,8 +52,8 @@
                                     <svg class="heart" id="favorite-24px_3_" data-name="favorite-24px (3)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                         <path id="Tracciato_23" data-name="Tracciato 23" d="M0,0H16V16H0Z" fill="rgba(0,0,0,0)"/>
                                         <path id="Tracciato_24" data-name="Tracciato 24" d="M8.667,15.233l-.967-.88C4.267,11.24,2,9.187,2,6.667A3.631,3.631,0,0,1,5.667,3a3.992,3.992,0,0,1,3,1.393,3.992,3.992,0,0,1,3-1.393,3.631,3.631,0,0,1,3.667,3.667c0,2.52-2.267,4.573-5.7,7.693Z" transform="translate(-0.667 -1)" fill="none" stroke="#fff" stroke-width="1"/>
-                                        </svg>
-                                        
+                                    </svg>
+                                    
                                 </div>
             
                                 <div class="apt_text">
@@ -65,6 +67,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
             
                         <div class="apt_end">

@@ -35,7 +35,7 @@
                         echo $lon = $apartment->longitude; 
                     ?>
                 </div>
-                 
+                
                 </div> 
                 <p class="card-text">Prezzo: {{$apartment->price}} €/notte</p>
             </div>
@@ -48,7 +48,14 @@
             
             <div class="action-2 d-flex">
                 <a class="mr-2" href="{{route('apartment.edit', $apartment->slug)}}"><button type="button" class="btn btn-warning">Modifica</button></a>
-                    <a class="mr-2" href="{{route('sponsor.index', $apartment->slug)}}"><button type="button" class="btn btn-warning">Sponsorizza</button></a>
+                    
+                @if ($sponsor)
+                
+                <a class="mr-2" href="{{route('sponsor.index', $apartment->slug)}}"><button type="button" class="btn btn-warning">Sponsorizza</button></a>
+                
+                @else
+                    <h1>Il tuo appartmento é sponsorizzato</h1>
+                @endif
 
                 <form method="post" action="{{route('apartment.destroy', $apartment)}}">
                     @csrf

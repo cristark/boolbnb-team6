@@ -24,18 +24,21 @@
 
     @endphp
 
+
+        <h1>{{ $numero_visite}}</h1>
         <h1>Statistiche di {{ $apartment->title }}</h1>
         <select id="month">
                 <option class="default" value="" hidden selected="">{{$months[$now]}}</option>
                     @for ($i = 1; $i <= $now; $i++)
-                    @foreach ($months as $key => $month)
-                        @if ($key == $i)
-                        <option value="{{$key}}">{{$month}}</option>
-                        @endif
-                    @endforeach
+                        
+                        @foreach ($months as $key => $month)
+                            @if ($key == $i)
+                            <option value="{{$key}}">{{$month}}</option>
+                            @endif
+                        @endforeach
                     @endfor
             </select>
-            <div style="width: 500px; height: 400px; margin-bottom: 500px;">
+            <div style="width: 500px; height: 400px; margin-bottom: 500px; position: absolute; left: 40%;">
                 <canvas id="myChart"   width="200" height="200"></canvas>
             </div>
 @endsection

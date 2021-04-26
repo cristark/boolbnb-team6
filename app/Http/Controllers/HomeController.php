@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Message;
+use App\Sponsor;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -25,7 +28,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('guest.home');
+        $apartment = Apartment::all();
+        $pivot_sponsor_apartment = DB::table('apartment_sponsor')->latest('end_date')->get();
+
+        $data = [
+            'pivot' => $pivot_sponsor_apartment
+        ];
+        // dd($prova);
+        // $sponsor_apartment = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->latest('end_date')->first();
+        // dd($apartment);
+        return view('guest.home', $data);
     }
 
 
@@ -33,32 +45,19 @@ class HomeController extends Controller
 
         // $apartment_id = Apartment::all();
         $apartment_id = Apartment::where('id', $slug)->firstOrFail();
-        // dd($apartment_selected);
         $data = [
             'apartment_id' => $apartment_id
         ];
-        // dd($data);
-
         return view('guest.message.create', $data);
     }
 
 
     public function sendMessage(Request $request)
     {   
-        //a data passo tutto
         $data = $request->all();
-        // dd($data);
         $newMessage = new Message();
-
         $newMessage->apartment_id = $data['apartment_id'];
-
-        // $apartment_id = Apartment::all();
-        // $apartment_id = Apartment::where('id', $apartment)->firstOrFail();
-        // $newMessage->apartment_id = $apartment_id;
-        // $newMessage->apartment_id = 1;
-
         $newMessage->fill($data);
-        // dd($newMessage);
         $newMessage->save();
         
         return redirect()->route('guest.message.inviato')->with('status', 'ok');

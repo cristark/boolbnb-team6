@@ -36,7 +36,6 @@ window.Vue = require('vue');
 const app = new Vue({
     el: '#app',
     data: {
-        //cri
         footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda'],
         socialLinks: [
             {
@@ -83,7 +82,6 @@ const app = new Vue({
             }
         ],
         mainMenu: false,
-        //dave
         ricerca: "",
         ricercaToUpper: "",
         nomeToUpper: "",
@@ -97,14 +95,11 @@ const app = new Vue({
         apiKey: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
         array_tom: [],
         json: '.json',
-
-        //canvas d
         array_visite: '',
         mesi: [],
         n_visite: [],
-        search: 'All',
         array_completo: [],
-        months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile']
+        
     },
     // created(){
     //     console.log(this.lastItem);
@@ -115,7 +110,8 @@ const app = new Vue({
 
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         this.loadVisitors();
-        this.tomtom();
+        // this.tomtom();
+        this.prova();
     },
     methods: {
         prova(){
@@ -169,54 +165,51 @@ const app = new Vue({
                 .then(result => {
                     this.array_visite = result.data.numero_visite;
                     
-                    console.log(this.array_visite, 'ARRAY_VISITE');
                     this.array_visite.forEach(element => {
                         // console.log(element.totale, 'sono element');
-                        this.mesi.push(element.numero_mese, 'mese di');
-                        this.n_visite.push(element.totale, 'Array visite');
+                        console.log(element);
+                        this.mesi.push(element.numero_mese);
+                        this.n_visite.push(element.totale);
                         // console.log(this.n_visite);
                         
-
+                        
                         
                     });
+
                     
                     
-                
-                    this.array_completo = this.months.map((element) => {
-                        // const typeIndex = this.mesi.indexOf(element);
-                        // console.log(typeIndex, '????????????');
-                        return this.mesi
-                    })
-
-                    console.log(this.array_completo, '!!!!!!!!!!!!!!!');
-
+                    
                     var mesi = this.mesi;
-                    console.log(mesi, 'ciaoooooooooooo');
+                    
                     var n_visite = this.n_visite;
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            months: ['Gennaio', 'Febbraio'],
-                            labels: mesi,
+                            // labels: mesi,
+                            labels: ['January', 'February', 'March', 'April'],
+
+
                             datasets: [{
                                 label: 'Visite',
                                 data: n_visite,
                                 backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(255, 99, 132, 1)',
+
+                                    'rgba(12, 50, 22, 0.2)',
                                     'rgba(54, 162, 235, 0.2)',
                                     'rgba(255, 206, 86, 0.2)',
                                     'rgba(75, 192, 192, 0.2)',
                                     'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
                                 ],
                                 borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+
                                     'rgba(255, 99, 132, 1)',
                                     'rgba(54, 162, 235, 1)',
                                     'rgba(255, 206, 86, 1)',
                                     'rgba(75, 192, 192, 1)',
                                     'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
                                 ],
                                 borderWidth: 1
                             }]
@@ -225,6 +218,7 @@ const app = new Vue({
                             scales: {
                                 y: {
                                     beginAtZero: true
+                                    
                                 }
                             }
                         },
