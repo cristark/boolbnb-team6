@@ -807,7 +807,10 @@ main .main-index .apartment-right .box-apartment .box-left {
 }
 main .main-index .apartment-right .box-apartment .box-left .box-ap-img {
   height: 100%;
+<<<<<<< Updated upstream
   margin-right: 20px;
+=======
+>>>>>>> Stashed changes
 }
 main .main-index .apartment-right .box-apartment .box-left .box-ap-img img {
   height: 100%;
@@ -815,6 +818,7 @@ main .main-index .apartment-right .box-apartment .box-left .box-ap-img img {
   border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
+<<<<<<< Updated upstream
 }
 main .main-index .apartment-right .box-apartment .box-right {
   display: flex;
@@ -823,6 +827,13 @@ main .main-index .apartment-right .box-apartment .box-right {
 main .main-index .apartment-right .box-apartment .box-right .middle_btn {
   margin: 15px 0;
 }
+=======
+}
+main .main-index .apartment-right .box-apartment .box-right {
+  display: flex;
+  flex-direction: row;
+}
+>>>>>>> Stashed changes
 main .main-index .apartment-right .box-apartment .box-ap-stat-msg,
 main .main-index .apartment-right .box-apartment .box-ap-button,
 main .main-index .apartment-right .box-apartment .box-ap-info {
@@ -853,6 +864,7 @@ main .main-index .apartment-right .box-apartment .box-ap-info button {
   font-weight: bold;
   cursor: pointer;
 }
+<<<<<<< Updated upstream
 main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box,
 main .main-index .apartment-right .box-apartment .box-ap-button .price_box,
 main .main-index .apartment-right .box-apartment .box-ap-info .price_box {
@@ -945,6 +957,12 @@ main .form_box button {
   border: none;
   border-radius: 10px;
   font-size: larger;
+=======
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg .box-ap-info,
+main .main-index .apartment-right .box-apartment .box-ap-button .box-ap-info,
+main .main-index .apartment-right .box-apartment .box-ap-info .box-ap-info {
+  text-align: start;
+>>>>>>> Stashed changes
 }
 
 footer {

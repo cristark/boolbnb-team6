@@ -89,7 +89,7 @@
                                 key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
                                 container: 'map',
                                 center: HQ,
-                                zoom: 14
+                                zoom: 12
                             });
 
 

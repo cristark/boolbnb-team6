@@ -26,7 +26,7 @@ class ApartmentController extends Controller
     {
         
         // $apartments = Apartment::all();
-        $user = User::where('id', Auth::id())->firstOrFail();
+        $users = User::where('id', Auth::id())->firstOrFail();
         $sponsors = Sponsor::all();
         $services = Service::all();
         //paginate = quanti elementi voglio vedere... ho messo 2 come numero a caso
@@ -37,7 +37,7 @@ class ApartmentController extends Controller
             'apartments' => $apartments,
             'sponsors' => $sponsors,
             'services' => $services,
-            'user' => $user
+            'users' => $users
         ];
         return view('admin.apartment.index', $data);
     }
