@@ -93,7 +93,7 @@
                             <a href="">Casella Messaggi</a>
                             <a href="">Sponsorizzazioni</a>
                             <hr>
-                            <a href="{{ url('/admin') }}">Il mio Account</a>
+                            <a href="{{ url('/admin/apartment') }}">Il mio Account</a>
                             <a href="{{route('apartment.create')}}">Aggiungi un Appartamento</a>
                             <a href="">Assistenza</a>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();

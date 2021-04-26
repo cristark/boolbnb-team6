@@ -90,12 +90,12 @@
                         </a> --}}
 
                         <div class="dropdown_menu" :class="(mainMenu == true) ? 'h_active' : ''">
-                            <a href="">I miei Appartamenti</a>
+                            <a href="{{route('apartment.index')}}">I miei Appartamenti</a>
                             <a href="">Casella Messaggi</a>
                             <a href="">Sponsorizzazioni</a>
                             <hr>
-                            <a href="{{ url('/admin') }}">Il mio Account</a>
-                            <a href="">Aggiungi un Appartamento</a>
+                            <a href="{{ url('/admin/apartment') }}">Il mio Account</a>
+                            <a href="{{route('apartment.create')}}">Aggiungi un Appartamento</a>
                             <a href="">Assistenza</a>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

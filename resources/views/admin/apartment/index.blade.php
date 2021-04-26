@@ -8,7 +8,7 @@
     {{-- SEZIONE BREADCUMB IN ALTO --}}
     <div class="breadcumb">
         <h3 class="not_selected">Account</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" viewBox="0 0 9 18">
+        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 18">
             <path id="Unione_1" data-name="Unione 1" d="M1997,8l-7-8,7,8-7,8Z" transform="translate(-1989 1)" fill="#222" stroke="#222" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"/>
         </svg>
         <h3>I miei appartamenti</h3>

@@ -10,7 +10,17 @@
                     </li>
                 </ul>
             </div>
-            <div class="social_link"></div>
+            <div class="social_link">
+                <div class="underline_text">
+                    <a href="#">Italiano(IT)</a>
+                    <a href="#">EUR</a>
+                </div>
+                <div class="social">
+                    <a v-for="item in socialLinks" href="#">
+                        <i :class="item.icon" :title="item.name"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

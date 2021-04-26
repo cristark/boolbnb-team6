@@ -38,6 +38,28 @@ const app = new Vue({
     data: {
         //cri
         footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda'],
+        socialLinks: [
+            {
+                name: 'GitHub',
+                icon: 'fab fa-github'
+            },
+            {
+                name: 'Linkedin',
+                icon: 'fab fa-linkedin-in'
+            },
+            {
+                name: 'Instagram',
+                icon: 'fab fa-instagram'
+            },
+            {
+                name: 'Twitter',
+                icon: 'fab fa-twitter'
+            },
+            {
+                name: 'Facebook',
+                icon: 'fab fa-facebook-f'
+            }
+        ],
         citiesBox:[
             {
                 city: 'Roma',
