@@ -107,10 +107,6 @@ var map = tt.map({
 }); // maker singolo tramite  posizione (latitudine e longitudine)
 
 var marker = new tt.Marker().setLngLat(HQ).addTo(map);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ramo_cris
 
 /***/ }),
 
@@ -121,25 +117,9 @@ var marker = new tt.Marker().setLngLat(HQ).addTo(map);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\js\testmap.js */"./resources/js/testmap.js");
-=======
-module.exports = __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\js\testmap.js */"./resources/js/testmap.js");
->>>>>>> ramo_davide2
-=======
-module.exports = __webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\js\testmap.js */"./resources/js/testmap.js");
->>>>>>> ramo_cris
+module.exports = __webpack_require__(/*! C:\Users\Daniel\Documents\Github\boolbnb-team6\resources\js\testmap.js */"./resources/js/testmap.js");
 
 
 /***/ })
 
-<<<<<<< HEAD
 /******/ });
-=======
-/******/ })()
-;
->>>>>>> main
-=======
-/******/ });
->>>>>>> ramo_cris

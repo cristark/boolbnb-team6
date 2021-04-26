@@ -78,7 +78,7 @@ class ApartmentController extends Controller
         $images = Image::all();
         
         $newApartment->user_id =$idUser;
-        // dd('test');
+        // dd($data);
 
         // immagine principale
         if(array_key_exists('main_img', $data))
@@ -121,9 +121,6 @@ class ApartmentController extends Controller
         if (array_key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
-
-        
-        
 
         // ritorna view
         return redirect()->route('apartment.index')->with("status",'L\'appartamento è stato creato con successo');
@@ -189,7 +186,7 @@ class ApartmentController extends Controller
 
         $data = $request->all();
         $apartment->slug = Str::slug($data['title']);
-        
+
         // immagini
         if(array_key_exists('main_img', $data))
         {

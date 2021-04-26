@@ -211,7 +211,7 @@ const app = new Vue({
         },
         getPosition(){
             // this.andress = 'Corso Galileo Ferraris, 35, 10121 Torino TO';
-            delete axios.defaults.headers.common['X-Requested-With'];
+            // axios.defaults.headers.common['X-Requested-With'];
             axios
                 axios.get('https://api.tomtom.com/search/2/search/' + this.indirizzo + '.json?',{
                     params: {
@@ -228,6 +228,9 @@ const app = new Vue({
                     this.longitude = point.lon;
                 })
                 .catch(error => console.error('get position', error)); 
+        },
+        setIndirizzo(andress){
+            this.indirizzo = andress;
         }
                 
     }
