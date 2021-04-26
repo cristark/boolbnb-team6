@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\View;
+use App\Service;
 
 
 class ApartmentController extends Controller
@@ -25,8 +26,6 @@ class ApartmentController extends Controller
         }
 
         public function show( $slug ) {
-
-
             // $ip = Request()->ip();
             $apartment = Apartment::where('slug', $slug)->firstOrFail();
             $apartment_selected = $apartment->id;
@@ -45,10 +44,7 @@ class ApartmentController extends Controller
             // dd($apartment->pivot->status);
 
 
-        //   dd($apartment->sponsors);
-            // foreach ($apartment->sponsors as $sponsor){
-            //     dd($sponsor->pivot->status);
-            // }
+
 
             $data = [
                 'apartment' => $apartment
@@ -63,11 +59,14 @@ class ApartmentController extends Controller
         //inizio test search
         public function search()
         {
+            $services = Service::all();
+
             $search_text = $_GET['query'];
             $apartments = Apartment::where('city','LIKE','%'. $search_text .'%')->get();
             $data = [
                 'apartments' => $apartments,
-                'city' => $search_text
+                'city' => $search_text,
+                'services' => $services
             ];
             // return view('guest.apartment.search', compact('apartments'));
             return view('guest.apartment.search', $data);
@@ -76,11 +75,16 @@ class ApartmentController extends Controller
 
         public function homeSearch()
         {
+            
+            $services = Service::all();
+
             $search_text = $_GET['city'];
             $apartments = Apartment::where('city','LIKE','%'. $search_text .'%')->get();
+
             $data = [
                 'apartments' => $apartments,
-                'city' => $search_text
+                'city' => $search_text,
+                'services' => $services
             ];
             // return view('guest.apartment.search', compact('apartments'));
             return view('guest.apartment.search', $data);

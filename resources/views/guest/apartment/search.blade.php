@@ -17,6 +17,55 @@
             
             {{-- BOX RISULTATI RICERCA APPARTAMENTI --}}
             <div class="search_box">
+
+                <div>
+                    <p>Ricerca avanzata</p>
+                    <form action="{{ route('searchAvanced') }}" method="GET">
+                @csrf
+                @method('GET')
+
+                <p><strong>Caratteristiche minime stanze</strong></p>
+
+                <div class="row">
+                    <label for="num_beds">Numero letti minimo</label>
+                    <input name="num_beds" type="number" class="form-control" id="num_beds" value="1">
+                </div>
+
+                <div class="row">
+                    <label for="num_rooms">Numero stanze minimo</label>
+                    <input name="num_rooms" type="number" class="form-control" id="num_rooms" value="1">
+                </div>
+
+                <div class="row">
+                    <label for="num_baths">Numero bagni minimo</label>
+                    <input name="num_baths" type="number" class="form-control" id="num_baths" value="1">
+                </div>
+
+                 <div class="row">
+                    <label for="num_mq">metri quadrati minimo</label>
+                    <input name="num_mq" type="number" class="form-control" id="num_mq" value="1">
+                </div>
+
+                <div class="row">
+                    <label for="city">city (nasconsto)</label>
+                    <input type="text" name="city" value="{{$city}}">
+                </div>
+
+                <p><strong>Servizi minimi</strong></p>
+                @foreach ($services as $service)
+                    <div class="form-check">
+                        <input value="{{ $service->id }}" class="form-check-input" type="checkbox" id="services" name="services[]">
+                        <label class="form-check-label" for="services">
+                            {{$service->name}}
+                        </label>
+                    </div>
+                @endforeach
+
+                
+
+                <button type="submit">Ricarca avanzata</button>
+            </form>
+                </div>
                 @foreach ($apartments as $apartment)    
                     <div class="box">
 
