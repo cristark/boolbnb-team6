@@ -27,9 +27,13 @@
                     @endif
                 </div>
                 {{-- IMMAGINI SECONDARIE PIù PICCOLE --}}
-                <div class="apt_images">
-                    <div class="second_img"></div>
-                    <div class="third_img"></div>
+                <div class="apartment-images">
+                    <div class="second_img">
+                        <img src="" alt="seconda immagine appartamento">
+                    </div>
+                    <div class="third_img">
+                        <img src="" alt="terza immagine appartamento">
+                    </div>
                 </div>
             </div>
 

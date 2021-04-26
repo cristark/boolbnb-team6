@@ -38,22 +38,6 @@
             <div style="width: 500px; height: 400px; margin-bottom: 500px;">
                 <canvas id="myChart"   width="200" height="200"></canvas>
             </div>
-
-
-        
-        
-            
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
-        {{-- <script src="{{asset("js/app.js")}}"></script> --}}
 @endsection
             
 

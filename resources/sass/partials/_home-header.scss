@@ -35,6 +35,11 @@ header.home_header {
                 font-weight: bold;
                 position: relative;
                 outline: none;
+                @include smoothT(0.2s);
+
+                &:focus {
+                    background: rgba(255, 255, 255, 0.35);
+                }
             }
 
             ::placeholder {

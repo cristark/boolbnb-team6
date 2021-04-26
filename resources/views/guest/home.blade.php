@@ -24,8 +24,8 @@
                 <div class="jumbotron">
                     <div class="overlay">
                         <div class="jumb_text">
-                            <h1>Trova</h1>
-                            <h2>una casa ovunque nel mondo</h2>
+                            <h1>Scopri</h1>
+                            <h2>nuove destinazioni intorno a te</h2>
                         </div>
                     </div>
                 </div>
@@ -80,6 +80,7 @@
                                 </svg>
                             </div>
                         </div>
+                        <hr>
                     </div>
                 </section>
 
@@ -95,26 +96,49 @@
                         </div>
             
                         <div class="cities_box">
-                            <div v-for="city in citiesBox" class="box">
+                            {{-- Roma --}}
+                            <a href="{{ url('/search?query=roma') }}" class="box rome">
                                 <div class="cities_text">
-                                    <h3>@{{city.city}}</h3>
-                                    <p>@{{city.description}}</p>
+                                    <h3>Roma</h3>
+                                    <p>Città eterna</p>
                                 </div>
-                            </div>
+                            </a>
+                            {{-- Firenze --}}
+                            <a href="{{ url('/search?query=firenze') }}" class="box florence">
+                                <div class="cities_text">
+                                    <h3>Firenze</h3>
+                                    <p>Arte e cultura rinascimentale</p>
+                                </div>
+                            </a>
+                            {{-- Milano --}}
+                            <a href="{{ url('/search?query=milano') }}" class="box milan">
+                                <div class="cities_text">
+                                    <h3>Milano</h3>
+                                    <p>Smart City-Life</p>
+                                </div>
+                            </a>
+                            {{-- Napoli --}}
+                            <a href="{{ url('/search?query=napoli') }}" class="box naples">
+                                <div class="cities_text">
+                                    <h3>Napoli</h3>
+                                    <p>Folclore partenopeo</p>
+                                </div>
+                            </a>
                         </div>
             
                         <div class="end_cities">
                             <div class="arrows">
                                 {{-- BACK --}}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
                                     <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/>
-                                </svg>
+                                </svg> --}}
                                 {{-- FORWARD --}}
-                                <svg class="forward" xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
+                                {{-- <svg class="forward" xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
                                     <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/>
-                                </svg>
+                                </svg> --}}
                             </div>
                         </div>
+                        <hr>
                     </div>
                 </section>
             

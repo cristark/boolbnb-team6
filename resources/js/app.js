@@ -4,7 +4,7 @@ require('./bootstrap');
 // const $ = require('jquery');
 // window.axios = require('axios');
 import Vue from 'vue';
-import Chart from 'chart.js/auto';
+// import Chart from 'chart.js/auto';
 import axios from 'axios';
 
 
@@ -52,6 +52,11 @@ const app = new Vue({
             {
                 city: 'Firenze',
                 description: 'Arte e Cultura Rinascimentale',
+                img: 'https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+            },
+            {
+                city: 'Napoli',
+                description: 'Folclore partenopeo',
                 img: 'https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
             }
         ],

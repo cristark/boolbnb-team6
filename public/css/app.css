@@ -71,8 +71,24 @@ header .main_container .search_bar input {
   text-align: center;
   background: rgba(128, 128, 128, 0.15);
   color: #222222;
+  font-weight: bold;
   position: relative;
   outline: none;
+}
+header .main_container .search_bar ::-moz-placeholder {
+  color: #222222;
+  font-weight: normal;
+  opacity: 0.4;
+}
+header .main_container .search_bar :-ms-input-placeholder {
+  color: #222222;
+  font-weight: normal;
+  opacity: 0.4;
+}
+header .main_container .search_bar ::placeholder {
+  color: #222222;
+  font-weight: normal;
+  opacity: 0.4;
 }
 header .main_container .search_bar svg {
   position: absolute;
@@ -166,6 +182,10 @@ header.home_header .main_container .search_bar input {
   font-weight: bold;
   position: relative;
   outline: none;
+  transition: all 0.2s linear;
+}
+header.home_header .main_container .search_bar input:focus {
+  background: rgba(255, 255, 255, 0.35);
 }
 header.home_header .main_container .search_bar ::-moz-placeholder {
   color: #fff;
@@ -344,7 +364,7 @@ main .login_box .auth_content .auth_box button {
 }
 main .jumbotron {
   height: 100vh;
-  background-image: url("../storage/main_images/home_bg1.jpg");
+  background-image: url("../storage/main_images/home_bg2.png");
   background-size: cover;
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -377,6 +397,10 @@ main .sponsored_apts .title {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
+}
+main .sponsored_apts .title h2 {
+  color: #ff385c;
+  font-size: 30px;
 }
 main .sponsored_apts .title .btn {
   border: 1px solid #222222;
@@ -437,6 +461,7 @@ main .sponsored_apts .apt_end {
   justify-content: space-between;
   align-items: center;
   margin-top: 40px;
+  padding-bottom: 30px;
 }
 main .sponsored_apts .apt_end .arrows .forward {
   transform: rotate(180deg);
@@ -451,6 +476,10 @@ main .cities .title {
   align-items: center;
   margin-bottom: 50px;
 }
+main .cities .title h2 {
+  color: #ff385c;
+  font-size: 30px;
+}
 main .cities .title .btn {
   border: 1px solid #222222;
   border-radius: 10px;
@@ -463,19 +492,49 @@ main .cities .cities_box {
   align-items: center;
 }
 main .cities .cities_box .box {
-  width: 450px;
+  width: calc(100% / 4 - 20px);
   height: 640px;
-  border: 1px solid #222222;
   border-radius: 20px;
   box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
   position: relative;
+  cursor: pointer;
+}
+main .cities .cities_box .box:not(:last-child) {
   margin-right: 30px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+}
+main .cities .cities_box .box.rome {
+  background-image: url("https://images.unsplash.com/photo-1529260830199-42c24126f198?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1510&q=80");
+  background-size: cover;
+  background-position: -530px 0;
+  background-repeat: no-repeat;
+}
+main .cities .cities_box .box.florence {
+  background-image: url("https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
+  background-size: cover;
+  background-position: -40px 0;
+  background-repeat: no-repeat;
+}
+main .cities .cities_box .box.milan {
+  background-image: url("https://images.unsplash.com/photo-1530284610319-31ee7c55378e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
+  background-size: cover;
+  background-position: -40px 0;
+  background-repeat: no-repeat;
+}
+main .cities .cities_box .box.naples {
+  background-image: url("https://images.unsplash.com/photo-1564863974814-6a7bdc156046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80");
+  background-size: cover;
+  background-position: -40px 0;
+  background-repeat: no-repeat;
 }
 main .cities .cities_box .box .cities_text {
-  transform: rotate(-90deg);
+  transform: rotate(-90deg) translate(-45%, -100%);
+  transform-origin: top;
+  width: 640px;
+  color: #fff;
+  text-shadow: 1px 1px #222222;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 main .cities .cities_box .box .cities_text h3 {
   font-size: 80px;
@@ -505,7 +564,6 @@ main .host_cta .cta_box {
   background-position: 0 0;
   background-repeat: no-repeat;
   background-position: 0 -290px;
-  border: 1px solid #222222;
   border-radius: 15px;
 }
 main .host_cta .cta_box .overlay {
@@ -535,7 +593,7 @@ main .host_cta .cta_box .overlay .box_test .btn {
   cursor: pointer;
   background: #fff;
   color: #222222;
-  width: 140px;
+  width: 150px;
   margin-top: 40px;
 }
 main .back_btn {
@@ -646,24 +704,33 @@ main .show_user_apt .main_info .img_box {
   border-radius: 15px;
   overflow: hidden;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 main .show_user_apt .main_info .img_box .main_img {
-  width: 70%;
+  max-width: 70%;
   height: 100%;
 }
 main .show_user_apt .main_info .img_box .main_img img {
   height: 100%;
+  padding: 5px;
 }
-main .show_user_apt .main_info .img_box .apt_images {
+main .show_user_apt .main_info .img_box .apartment-images {
+  min-width: 30%;
   height: 100%;
 }
-main .show_user_apt .main_info .img_box .apt_images div[class*=img] {
+main .show_user_apt .main_info .img_box .apartment-images div {
+  padding: 5px;
+  width: 100%;
+  height: 50%;
   border: 1px solid #222222;
+  border-radius: 15px;
+}
+main .show_user_apt .main_info .img_box .apartment-images div img {
+  padding: 5px;
 }
 main .show_user_apt .main_info .info_box {
-  max-width: 30%;
+  width: 25%;
   border-radius: 20px;
   padding: 20px;
   box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
@@ -807,10 +874,7 @@ main .main-index .apartment-right .box-apartment .box-left {
 }
 main .main-index .apartment-right .box-apartment .box-left .box-ap-img {
   height: 100%;
-<<<<<<< Updated upstream
   margin-right: 20px;
-=======
->>>>>>> Stashed changes
 }
 main .main-index .apartment-right .box-apartment .box-left .box-ap-img img {
   height: 100%;
@@ -818,7 +882,6 @@ main .main-index .apartment-right .box-apartment .box-left .box-ap-img img {
   border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
-<<<<<<< Updated upstream
 }
 main .main-index .apartment-right .box-apartment .box-right {
   display: flex;
@@ -827,13 +890,6 @@ main .main-index .apartment-right .box-apartment .box-right {
 main .main-index .apartment-right .box-apartment .box-right .middle_btn {
   margin: 15px 0;
 }
-=======
-}
-main .main-index .apartment-right .box-apartment .box-right {
-  display: flex;
-  flex-direction: row;
-}
->>>>>>> Stashed changes
 main .main-index .apartment-right .box-apartment .box-ap-stat-msg,
 main .main-index .apartment-right .box-apartment .box-ap-button,
 main .main-index .apartment-right .box-apartment .box-ap-info {
@@ -864,7 +920,6 @@ main .main-index .apartment-right .box-apartment .box-ap-info button {
   font-weight: bold;
   cursor: pointer;
 }
-<<<<<<< Updated upstream
 main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box,
 main .main-index .apartment-right .box-apartment .box-ap-button .price_box,
 main .main-index .apartment-right .box-apartment .box-ap-info .price_box {
@@ -957,12 +1012,6 @@ main .form_box button {
   border: none;
   border-radius: 10px;
   font-size: larger;
-=======
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg .box-ap-info,
-main .main-index .apartment-right .box-apartment .box-ap-button .box-ap-info,
-main .main-index .apartment-right .box-apartment .box-ap-info .box-ap-info {
-  text-align: start;
->>>>>>> Stashed changes
 }
 
 footer {
