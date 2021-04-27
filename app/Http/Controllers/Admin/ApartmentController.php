@@ -42,7 +42,7 @@ class ApartmentController extends Controller
             'apartments' => $apartments,
             'sponsors' => $sponsors,
             'services' => $services,
-            'users' => $users
+            'user' => $users
         ];
         return view('admin.apartment.index', $data);
     }

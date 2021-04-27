@@ -33,11 +33,11 @@
             <h2>{{ $user->name ." ". $user->lastname }}</h2>
             <p>
                 <span>Data di nascita:</span>
-                <span>{{ $users->birth_date }}</span>
+                <span>{{ $user->birth_date }}</span>
             </p>
             <p>
                 <span>Mail:</span>
-                <span>{{ $users->email }}</span>
+                <span>{{ $user->email }}</span>
             </p>
             {{-- Pulsante creazione Nuovo Appartamento --}}
             <a href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>

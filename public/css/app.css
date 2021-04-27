@@ -373,7 +373,7 @@ main .login_box .auth_content .auth_box button {
 }
 main .jumbotron {
   height: 100vh;
-  background-image: url("../storage/main_images/home_bg2.png");
+  background-image: url("../storage/main_images/home_bg2.jpg");
   background-size: cover;
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -821,13 +821,6 @@ main .main-index .user-left {
   align-items: center;
   justify-content: center;
 }
-<<<<<<< HEAD
-main .main-index .user-left img {
-  height: 200px;
-  border-radius: 25%;
-}
-main .main-index .user-left h2, main .main-index .user-left p {
-=======
 main .main-index .user-left .user_img {
   border: 1px solid #222222;
   display: flex;
@@ -845,7 +838,6 @@ main .main-index .user-left .user_img i {
 }
 main .main-index .user-left h2,
 main .main-index .user-left p {
->>>>>>> main
   padding-top: 20px;
 }
 main .main-index .user-left p {
