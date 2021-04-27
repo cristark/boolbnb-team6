@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Service;
+
 class ServiceSeeder extends Seeder
 {
     /**
@@ -9,7 +10,6 @@ class ServiceSeeder extends Seeder
      *
      * @return void
      */
-        
     public function run()
     {
 

@@ -19,11 +19,14 @@ class MessageController extends Controller
     {
         $idUser = Auth::id();
         $apartments = Apartment::where('user_id',"=", $idUser)->get();
+        $apartmentsAll = Apartment::all();
         $messagesXapartment = [];
         // $messages = Message::where('apartment_id',"=", $apartments->id)->get();
+        // dd($apartments);
         foreach ($apartments as $apartment) {
             
             $messages = Message::where('apartment_id',"=", $apartment->id)->get();
+            // dd($messages);
             // dd($messages->apartment_id);
             foreach ($messages as $key => $message) {
                 // dd($message['msg_txt']);
@@ -35,11 +38,12 @@ class MessageController extends Controller
             }
         }
         
+        // dd($apartments);
         // dd($messagesXapartment);
-
         $data = [
             'messages' => $messagesXapartment,
-            'apartments' => $apartments
+            'apartments' => $apartments,
+            'apartmentsAll' => $apartmentsAll
         ];
         // dd($data);
         return view('admin.message.index', $data);
@@ -76,12 +80,14 @@ class MessageController extends Controller
     {
         $idUser = Auth::id();
         $apartments = Apartment::where('user_id',"=", $idUser)->get();
+        $apartmentsAll = Apartment::all();
         $message_selected = Message::where('id', $message)->firstOrFail();
         // $message_selected->status = 0;
 
         $data = [
             'message' => $message_selected,
-            'apartment' => $apartments
+            'apartment' => $apartments,
+            'apartmentsAll' => $apartmentsAll
         ];
         
         return view('admin.message.show', $data);
