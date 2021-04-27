@@ -140,6 +140,7 @@ class ApartmentController extends Controller
     public function show($slug)
     {
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
+        $users = User::where('id', Auth::id())->firstOrFail();
         $messages = Message::where('apartment_id', $apartment->id)->get();
         // $sponsors = Sponsor::all();
         $images = Image::where('apartment_id', $apartment->id)->get();
@@ -182,6 +183,7 @@ class ApartmentController extends Controller
                 'sponsor' => $sponsor,
                 'images' => $images,
                 'messages' => $messages,
+                'user' => $users
                 // 'pivot' => $pivot_app_spons
             ];
             

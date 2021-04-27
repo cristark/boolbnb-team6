@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\Message;
 use App\Sponsor;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 
@@ -29,10 +31,12 @@ class HomeController extends Controller
     public function index()
     {
         $apartment = Apartment::all();
+        $users = User::where('id', Auth::id())->firstOrFail();
         $pivot_sponsor_apartment = DB::table('apartment_sponsor')->latest('end_date')->get();
 
         $data = [
-            'pivot' => $pivot_sponsor_apartment
+            'pivot' => $pivot_sponsor_apartment,
+            'user' => $users
         ];
         // dd($prova);
         // $sponsor_apartment = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->latest('end_date')->first();

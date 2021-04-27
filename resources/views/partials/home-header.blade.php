@@ -83,7 +83,7 @@
                     <li class="nav_dropdown">
                         <div class="menu_container">
                             <a href="#" v-on:click="showMenu">Menu</a>
-                            <div class="circle_user_img"></div>
+                            <img src="{{ $user->user_img }}" alt="{{ $user->name }}" class="circle_user_img">
                         </div>
                         {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}

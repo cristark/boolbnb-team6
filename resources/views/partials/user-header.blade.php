@@ -82,6 +82,7 @@
                     <li class="nav_dropdown">
                         <div class="menu_container">
                             <a href="#"  v-on:click="showMenu">Menu</a>
+                            {{-- <img src="{{ $user->user_img }}" alt="{{ $user->name }}" class="circle_user_img"> --}}
                             <div class="circle_user_img"></div>
                         </div>
                         {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

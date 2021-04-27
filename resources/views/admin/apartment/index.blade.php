@@ -25,11 +25,11 @@
         {{-- PANNELLO INFO UTENTE --}}
         <section class="user-left">
             @if(strpos($user->user_img, 'https') !== false)
-                <img style="height: 200px;" src="{{ $user->user_img }}" alt="immagine user">
+                <img src="{{ $user->user_img }}" alt="immagine user">
             @else
-                <img style="height: 200px;" src="{{ asset('storage/'.$user->user_img) }}" alt="immagine user">
+                <img src="{{ asset('storage/'.$user->user_img) }}" alt="immagine user">
             @endif
-            <h2>ciao,</h2>
+            <h2>Ciao,</h2>
             <h2>{{ $user->name ." ". $user->lastname }}</h2>
             <p>
                 <span>Data di nascita:</span>
@@ -40,8 +40,8 @@
                 <span>{{ $user->email }}</span>
             </p>
             {{-- Pulsante creazione Nuovo Appartamento --}}
-            <a href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>
-            <a href="{{route('message.index')}}"><button>Messaggi</button></a>
+            <a class="add" href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>
+            <a href="{{route('message.index')}}">Casella Messaggi</a>
         </section>
         {{-- PROFILO UTENTE --}}
 

@@ -3,10 +3,6 @@
         @include flex(flex-start);
         margin-bottom: 20px;
 
-        svg {
-            transform: scale(80%);
-        }
-
         a {
             font-size: 18px;
             font-weight: bold;
@@ -21,7 +17,6 @@
         .img_box {
             width: 70%;
             height: 100%;
-            border-radius: 15px;
             overflow: hidden;
             @include flex(flex-start);
 
@@ -30,8 +25,10 @@
                 height: 100%;
 
                 img {
+                    width: 100%;
                     height: 100%;
                     padding: 5px;
+                    object-fit: cover;
                 }
             }
 
@@ -40,13 +37,14 @@
                 height: 100%;
 
                 div {
-                    padding: 5px;
                     width: 100%;
                     height: 50%;
-                    @include boxTest;
                     border-radius: 15px;
 
                     img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
                         padding: 5px;
                     }
                 }
@@ -57,14 +55,14 @@
             width: 25%;
             border-radius: 20px;
             padding: 20px;
-            box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
+            @include boxShadow;
 
             h3 {
                 margin-top: 10px;
             }
 
             .hosts_box {
-                margin: 40px 0;
+                margin: 35px 0;
                 .box {
                     @include flex(space-between);
                     margin: 15px 0;
@@ -100,8 +98,42 @@
         }
     }
 
-    .main_title {
-        margin: 30px 0;
+    .title_container {
+        @include flex(space-between);
+
+        .main_title {
+            margin: 30px 0;
+        }
+
+        .share_buttons {
+            @include flex(flex-start);
+
+            .share_box {
+                text-align: center;
+                border-radius: 10px;
+                padding: 10px;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    svg {
+                        color: $mainBlack;
+                    }
+                }
+
+                &.border {
+                    border: 1px solid $mainGrey;
+                    margin-left: 10px;
+                }
+
+                svg {
+                    font-size: 20px;
+                    color: $mainGrey;
+                    margin-bottom: 10px;
+                    @include smoothT(0.2s);
+                }
+            }
+        }
     }
 
     .details {
@@ -112,11 +144,29 @@
                 margin-bottom: 20px;
             }
 
+            .services_container {
+                @include flex(flex-start);
+                flex-wrap: wrap;
+
+                .service_box {
+                    @include flex(flex-start);
+                    width: calc(100% / 4);
+                    margin-bottom: 40px;
+
+                    svg {
+                        margin-right: 20px;
+                        font-size: 25px;
+                        color: $mainBlack;
+                    }
+                }
+            }
+
             .map_box {
                 width: 100%;
                 height: 500px;
-                @include boxTest;
+                border-radius: 15px;
                 margin-bottom: 20px;
+                @include boxShadow;
             }
         }
     }

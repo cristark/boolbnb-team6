@@ -21,20 +21,23 @@
         align-items: center;
         justify-content: center;
 
-        .user_img {
-            @include boxTest;
-            @include flex(center);
-            width: 150px;
-            height: 150px;
+        img {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            padding: 20px;
-            overflow: hidden;
-
-            i {
-                font-size: 130px;
-                color: $mainGrey;
-            }
+            @include boxTest;
+            padding: 10px;
         }
+
+        // .user_img {
+        //     @include flex(center);
+        //     overflow: hidden;
+
+        //     i {
+        //         font-size: 130px;
+        //         color: $mainGrey;
+        //     }
+        // }
 
         h2,
         p {
@@ -47,8 +50,13 @@
             justify-content: space-between;
         }
 
+        & a.add {
+            margin: 20px 0;
+        }
+
         a {
-            margin-top: 30px;
+            width: 230px;
+            text-align: center;
             @include mainBtn;
             background: $mainColor;
             color: white;
