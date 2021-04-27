@@ -85,12 +85,17 @@ class SearchController extends Controller
             // conteggio servizi trovati
             $trovati = 0;
 
-            // cerca servizi corrispodenti
-            foreach ($servizi_apartment as $service) {
-                if (in_array($service->service_id, $data['services'])) {
-                    $trovati++;
+            // se ha selezionato servizi
+            if(count($data['services']) != 0){
+
+                // cerca servizi corrispodenti
+                foreach ($servizi_apartment as $service) {
+                    if (in_array($service->service_id, $data['services'])) {
+                        $trovati++;
+                    }
                 }
             }
+
 
             if( $trovati == count($data['services']) ){
                 array_push($apartment_ok, $apartment);
