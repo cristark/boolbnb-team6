@@ -80,17 +80,25 @@
                 <div class="box_sponsor">
                     <h2>Sponsorizzazioni</h2>
                     <div>
-                        <div>
+                        {{-- <div>
                             <h4>Informazioni</h4>
-                            <p>{{ ($pivot == 1) ? "Su questo appartamento è attiva una sponsorizzazione" : "Su questo appartamento non è attiva una sponsorizzazione" }}</p>
+                            <p>{{ ($sponsor == 1) ? "Su questo appartamento è attiva una sponsorizzazione" : "Su questo appartamento non è attiva una sponsorizzazione" }}</p>
                         </div>
-                        @if($pivot == 0)
+                        @if($sponsor == 0)
                         <a href="{{route('sponsor.index', $apartment->slug)}}"><button type="button">Sponsorizza</button></a>
+                        @endif --}}
+
+                        @if ($sponsor)
+                        <a class="mr-2" href="{{route('sponsor.index', $apartment->slug)}}"><button type="button" class="btn btn-warning">Sponsorizza</button></a>
+                        @else
+                            <h1>Il tuo appartmento é sponsorizzato</h1>
                         @endif
+
+
                     </div>
                     
                     <!-- DATI SPONSOR -->
-                    @if($pivot == 1)
+                    {{-- @if($pivot == 1)
                     <div class="box_dati_sponsor">
                         <div>
                             <h4>Tipo</h4>
@@ -109,7 +117,7 @@
                             <p>{{ date("Y-m-d h:i:s", $sponsors[$apartment->sponsors[0]->pivot->sponsor_id]->end_date) }}</p>
                         </div>
                     </div>
-                    @endif
+                    @endif --}}
                 </div>
 
                 <div class="box_msg">
