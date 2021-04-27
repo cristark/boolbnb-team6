@@ -142,11 +142,30 @@ class ApartmentController extends Controller
      */
     public function show($slug)
     {
-        
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
-        
-        
+        $messages = Message::where('apartment_id', $apartment->id)->get();
+        $sponsors = Sponsor::all();
+        $images = Image::where('apartment_id', $apartment->id)->get();
+        // dd($apartment->sponsors);
+        if(count($apartment->sponsors) == 0){
+            // dd('appartamento non sponsorizzato');
+            $pivot_app_spons = 0;
+        } else {
+            // dd('appartamento sponsorizzato');
+            $pivot_app_spons = $apartment->sponsors[0]->pivot->status;
+        }
         $visitor = View::where('apartment_id', $slug)->count();
+        // $pivot_app_spons = Sponsor::with('apartment_id');
+        // $duration = $apartment->sponsors[0]->pivot->duration;
+        // dd( date("Y-m-d h:i:s", strtotime('-($duration) hours', $sponsors[$apartment->sponsors[0]->pivot->sponsor_id]->end_date)));
+        $data = [
+            'apartment' => $apartment,
+            'visitor' => $visitor,
+            'sponsors' => $sponsors,
+            'images' => $images,
+            'messages' => $messages,
+            'pivot' => $pivot_app_spons
+        ];
 
         $sponsor = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->latest('end_date')->first();
 

@@ -4,7 +4,7 @@
 <div class="reg_container">
     <div class="reg-box">
         <h2>{{ __('Register') }}</h2>
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
             <div>
                 <div>

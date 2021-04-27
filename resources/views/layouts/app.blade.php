@@ -32,6 +32,9 @@
     <!-- Link ChartJs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    {{-- Link CDN Chart.js --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     {{-- axios link --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     

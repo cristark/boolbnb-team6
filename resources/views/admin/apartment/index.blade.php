@@ -24,16 +24,13 @@
 
         {{-- PANNELLO INFO UTENTE --}}
         <section class="user-left">
-            {{-- @if (strpos($users->user_img, 'https') !== false)
-                <img style="height: 100px;" src="{{ $users->user_img }}" alt="Anteprima img user">
+            @if(strpos($user->user_img, 'https') !== false)
+                <img style="height: 200px;" src="{{ $user->user_img }}" alt="immagine user">
             @else
-                <img style="height: 100px;" src="{{ asset('storage/'.$users->user_img) }}" alt="Anteprima img user">
-            @endif --}}
-            <div class="user_img">
-                <i class="fas fa-user"></i>
-            </div>
-            <h2>Ciao,</h2>
-            <h2>{{ $users->name ." ". $users->lastname }}</h2>
+                <img style="height: 200px;" src="{{ asset('storage/'.$user->user_img) }}" alt="immagine user">
+            @endif
+            <h2>ciao,</h2>
+            <h2>{{ $user->name ." ". $user->lastname }}</h2>
             <p>
                 <span>Data di nascita:</span>
                 <span>{{ $users->birth_date }}</span>
@@ -44,6 +41,7 @@
             </p>
             {{-- Pulsante creazione Nuovo Appartamento --}}
             <a href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>
+            <a href="{{route('message.index')}}"><button>Messaggi</button></a>
         </section>
         {{-- PROFILO UTENTE --}}
 
@@ -75,13 +73,12 @@
                         {{-- STATISTICHE E MESSAGGI APPARTAMENTO --}}
                         <div class="box-ap-stat-msg">
                             <a class="btn btn-info" href="{{route('statistic.show', $apartment->slug)}}"><button>Statistiche</button></a>
-                            <a class="middle_btn" href="{{route('message.index')}}"><button>Messaggi</button></a>
                             <a href=""><button>Sponsorizza</button></a>
                         </div>
                         {{-- OPZIONI APPARTAMENTO --}}
                         <div class="box-ap-button">
-                            <a class="btn btn-info" href="{{route('apartment.show', $apartment->slug)}}"><button>Visualizza</button></a>
-                            <a class="middle_btn" href="{{route('apartment.edit', $apartment->slug)}}"><button>Modifica</button></a>
+                            <a href="{{route('apartment.show', $apartment->slug)}}"><button>Visualizza</button></a>
+                            <a href="{{route('apartment.edit', $apartment->slug)}}"><button>Modifica</button></a>
                             <form method="post" action="{{route('apartment.destroy', $apartment)}}">
                                 @csrf
                                 @method('DELETE')
