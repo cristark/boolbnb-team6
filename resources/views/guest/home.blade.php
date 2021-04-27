@@ -24,8 +24,8 @@
                 <div class="jumbotron">
                     <div class="overlay">
                         <div class="jumb_text">
-                            <h1>Trova</h1>
-                            <h2>una casa ovunque nel mondo</h2>
+                            <h1>Scopri</h1>
+                            <h2>nuove destinazioni intorno a te</h2>
                         </div>
                     </div>
                 </div>
@@ -40,9 +40,11 @@
                         </div>
             
                         <div class="apts">
-            
+                            @foreach ($pivot as $element)
+                                
                             {{-- Inserire ciclo appartamenti sponsorizzati --}}
                             <div class="box">
+                                
             
                                 {{-- Pulsante like all'interno della foto --}}
                                 <div class="like_box">
@@ -50,8 +52,8 @@
                                     <svg class="heart" id="favorite-24px_3_" data-name="favorite-24px (3)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                         <path id="Tracciato_23" data-name="Tracciato 23" d="M0,0H16V16H0Z" fill="rgba(0,0,0,0)"/>
                                         <path id="Tracciato_24" data-name="Tracciato 24" d="M8.667,15.233l-.967-.88C4.267,11.24,2,9.187,2,6.667A3.631,3.631,0,0,1,5.667,3a3.992,3.992,0,0,1,3,1.393,3.992,3.992,0,0,1,3-1.393,3.631,3.631,0,0,1,3.667,3.667c0,2.52-2.267,4.573-5.7,7.693Z" transform="translate(-0.667 -1)" fill="none" stroke="#fff" stroke-width="1"/>
-                                        </svg>
-                                        
+                                    </svg>
+                                    
                                 </div>
             
                                 <div class="apt_text">
@@ -65,6 +67,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
             
                         <div class="apt_end">
@@ -80,6 +83,7 @@
                                 </svg>
                             </div>
                         </div>
+                        <hr>
                     </div>
                 </section>
 
@@ -95,26 +99,49 @@
                         </div>
             
                         <div class="cities_box">
-                            <div class="box">
+                            {{-- Roma --}}
+                            <a href="{{ url('/search?query=roma') }}" class="box rome">
                                 <div class="cities_text">
-                                    <h3>Alberobello</h3>
-                                    <p>Grazie agli host puoi</p>
+                                    <h3>Roma</h3>
+                                    <p>Città eterna</p>
                                 </div>
-                            </div>
+                            </a>
+                            {{-- Firenze --}}
+                            <a href="{{ url('/search?query=firenze') }}" class="box florence">
+                                <div class="cities_text">
+                                    <h3>Firenze</h3>
+                                    <p>Arte e cultura rinascimentale</p>
+                                </div>
+                            </a>
+                            {{-- Milano --}}
+                            <a href="{{ url('/search?query=milano') }}" class="box milan">
+                                <div class="cities_text">
+                                    <h3>Milano</h3>
+                                    <p>Smart City-Life</p>
+                                </div>
+                            </a>
+                            {{-- Napoli --}}
+                            <a href="{{ url('/search?query=napoli') }}" class="box naples">
+                                <div class="cities_text">
+                                    <h3>Napoli</h3>
+                                    <p>Folclore partenopeo</p>
+                                </div>
+                            </a>
                         </div>
             
                         <div class="end_cities">
                             <div class="arrows">
                                 {{-- BACK --}}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
                                     <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/>
-                                </svg>
+                                </svg> --}}
                                 {{-- FORWARD --}}
-                                <svg class="forward" xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
+                                {{-- <svg class="forward" xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
                                     <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/>
-                                </svg>
+                                </svg> --}}
                             </div>
                         </div>
+                        <hr>
                     </div>
                 </section>
             

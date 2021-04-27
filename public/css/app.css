@@ -8,6 +8,15 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
+}
+
 ul {
   list-style-type: none;
 }
@@ -38,8 +47,9 @@ a {
 }
 
 p.views,
-p.rooms {
-  color: lightslategrey;
+p.rooms,
+.not_selected {
+  color: rgba(128, 128, 128, 0.5);
 }
 
 header {
@@ -70,8 +80,24 @@ header .main_container .search_bar input {
   text-align: center;
   background: rgba(128, 128, 128, 0.15);
   color: #222222;
+  font-weight: bold;
   position: relative;
   outline: none;
+}
+header .main_container .search_bar ::-moz-placeholder {
+  color: #222222;
+  font-weight: normal;
+  opacity: 0.4;
+}
+header .main_container .search_bar :-ms-input-placeholder {
+  color: #222222;
+  font-weight: normal;
+  opacity: 0.4;
+}
+header .main_container .search_bar ::placeholder {
+  color: #222222;
+  font-weight: normal;
+  opacity: 0.4;
 }
 header .main_container .search_bar svg {
   position: absolute;
@@ -114,6 +140,7 @@ header .main_container .auth_buttons .nav_dropdown .dropdown_menu {
   border-radius: 15px;
   padding: 20px 20px 10px 20px;
   border: 1px solid #222222;
+  z-index: 1;
   display: none;
 }
 header .main_container .auth_buttons .nav_dropdown .dropdown_menu.active {
@@ -164,6 +191,10 @@ header.home_header .main_container .search_bar input {
   font-weight: bold;
   position: relative;
   outline: none;
+  transition: all 0.2s linear;
+}
+header.home_header .main_container .search_bar input:focus {
+  background: rgba(255, 255, 255, 0.35);
 }
 header.home_header .main_container .search_bar ::-moz-placeholder {
   color: #fff;
@@ -219,6 +250,10 @@ header.home_header .main_container .auth_buttons .nav_dropdown .dropdown_menu {
   border-radius: 15px;
   padding: 20px 20px 10px 20px;
   border: 1px solid #222222;
+  display: none;
+}
+header.home_header .main_container .auth_buttons .nav_dropdown .dropdown_menu.h_active {
+  display: flex;
 }
 header.home_header .main_container .auth_buttons .nav_dropdown .dropdown_menu a {
   margin-bottom: 10px;
@@ -338,7 +373,7 @@ main .login_box .auth_content .auth_box button {
 }
 main .jumbotron {
   height: 100vh;
-  background-image: url("../storage/main_images/home_bg1.jpg");
+  background-image: url("../storage/main_images/home_bg2.png");
   background-size: cover;
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -371,6 +406,10 @@ main .sponsored_apts .title {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
+}
+main .sponsored_apts .title h2 {
+  color: #ff385c;
+  font-size: 30px;
 }
 main .sponsored_apts .title .btn {
   border: 1px solid #222222;
@@ -431,6 +470,7 @@ main .sponsored_apts .apt_end {
   justify-content: space-between;
   align-items: center;
   margin-top: 40px;
+  padding-bottom: 30px;
 }
 main .sponsored_apts .apt_end .arrows .forward {
   transform: rotate(180deg);
@@ -445,25 +485,65 @@ main .cities .title {
   align-items: center;
   margin-bottom: 50px;
 }
+main .cities .title h2 {
+  color: #ff385c;
+  font-size: 30px;
+}
 main .cities .title .btn {
   border: 1px solid #222222;
   border-radius: 10px;
   padding: 10px 25px;
   cursor: pointer;
 }
+main .cities .cities_box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 main .cities .cities_box .box {
-  width: 450px;
+  width: calc(100% / 4 - 20px);
   height: 640px;
-  border: 1px solid #222222;
   border-radius: 20px;
   box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
   position: relative;
+  cursor: pointer;
+}
+main .cities .cities_box .box:not(:last-child) {
+  margin-right: 30px;
+}
+main .cities .cities_box .box.rome {
+  background-image: url("https://images.unsplash.com/photo-1529260830199-42c24126f198?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1510&q=80");
+  background-size: cover;
+  background-position: -530px 0;
+  background-repeat: no-repeat;
+}
+main .cities .cities_box .box.florence {
+  background-image: url("https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
+  background-size: cover;
+  background-position: -40px 0;
+  background-repeat: no-repeat;
+}
+main .cities .cities_box .box.milan {
+  background-image: url("https://images.unsplash.com/photo-1530284610319-31ee7c55378e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
+  background-size: cover;
+  background-position: -40px 0;
+  background-repeat: no-repeat;
+}
+main .cities .cities_box .box.naples {
+  background-image: url("https://images.unsplash.com/photo-1564863974814-6a7bdc156046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80");
+  background-size: cover;
+  background-position: -40px 0;
+  background-repeat: no-repeat;
 }
 main .cities .cities_box .box .cities_text {
+  transform: rotate(-90deg) translate(-45%, -100%);
+  transform-origin: top;
+  width: 640px;
+  color: #fff;
+  text-shadow: 1px 1px #222222;
   position: absolute;
-  right: -120px;
-  top: 50%;
-  transform: rotate(-90deg);
+  top: 0;
+  left: 0;
 }
 main .cities .cities_box .box .cities_text h3 {
   font-size: 80px;
@@ -493,7 +573,6 @@ main .host_cta .cta_box {
   background-position: 0 0;
   background-repeat: no-repeat;
   background-position: 0 -290px;
-  border: 1px solid #222222;
   border-radius: 15px;
 }
 main .host_cta .cta_box .overlay {
@@ -523,7 +602,7 @@ main .host_cta .cta_box .overlay .box_test .btn {
   cursor: pointer;
   background: #fff;
   color: #222222;
-  width: 140px;
+  width: 150px;
   margin-top: 40px;
 }
 main .back_btn {
@@ -549,21 +628,42 @@ main .main_search {
 }
 main .main_search .search_box {
   width: 40%;
+  max-height: 100%;
   padding: 10px;
   border-radius: 15px;
   margin-right: 30px;
+  overflow: auto;
 }
 main .main_search .search_box .box {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  height: 125px;
+  margin-bottom: 20px;
 }
 main .main_search .search_box .box .apt_img {
   width: 30%;
+  height: 100%;
 }
 main .main_search .search_box .box .apt_img img {
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
+  height: 100%;
   border-radius: 15px;
+}
+main .main_search .search_box .box .divider {
+  margin: 0 30px;
+}
+main .main_search .search_box .box .apt_description {
+  width: 60%;
+}
+main .main_search .search_box .box .apt_description a {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  overflow: hidden;
 }
 main .main_search .search_box .box .apt_description .rooms {
   margin: 20px 0 10px;
@@ -580,13 +680,12 @@ main .main_search .search_box .box .apt_description .price_box p {
   font-size: 12px;
 }
 main .main_search .search_box .box .apt_description .price_box h3 {
-  font-size: 30px;
+  font-size: 25px;
 }
 main .main_search .map_box {
   width: calc(60% - 30px);
   height: 100%;
   border-radius: 15px;
-  border: 1px solid #222222;
 }
 main .show_user_apt .back_btn {
   display: flex;
@@ -606,12 +705,41 @@ main .show_user_apt .main_info {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 480px;
 }
 main .show_user_apt .main_info .img_box {
   width: 70%;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+main .show_user_apt .main_info .img_box .main_img {
+  max-width: 70%;
+  height: 100%;
+}
+main .show_user_apt .main_info .img_box .main_img img {
+  height: 100%;
+  padding: 5px;
+}
+main .show_user_apt .main_info .img_box .apartment-images {
+  min-width: 30%;
+  height: 100%;
+}
+main .show_user_apt .main_info .img_box .apartment-images div {
+  padding: 5px;
+  width: 100%;
+  height: 50%;
+  border: 1px solid #222222;
+  border-radius: 15px;
+}
+main .show_user_apt .main_info .img_box .apartment-images div img {
+  padding: 5px;
 }
 main .show_user_apt .main_info .info_box {
-  max-width: 30%;
+  width: 25%;
   border-radius: 20px;
   padding: 20px;
   box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
@@ -670,35 +798,54 @@ main .show_user_apt .details .detail_box .map_box {
   border: 1px solid #222222;
   margin-bottom: 20px;
 }
-main span {
+main .breadcumb {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-main span h2 {
-  color: grey;
-  padding-right: 5px;
+main .breadcumb svg {
+  margin: 0 10px;
 }
 main .main-index {
+  height: calc(100vh - 175px);
   display: flex;
   flex-direction: row;
   padding: 30px 0;
 }
 main .main-index .user-left {
-  border: 2px solid darkgrey;
+  border: 1px solid #222222;
   border-radius: 20px;
   width: 35%;
-  height: 660px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+<<<<<<< HEAD
 main .main-index .user-left img {
   height: 200px;
   border-radius: 25%;
 }
 main .main-index .user-left h2, main .main-index .user-left p {
+=======
+main .main-index .user-left .user_img {
+  border: 1px solid #222222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  padding: 20px;
+  overflow: hidden;
+}
+main .main-index .user-left .user_img i {
+  font-size: 130px;
+  color: rgba(128, 128, 128, 0.5);
+}
+main .main-index .user-left h2,
+main .main-index .user-left p {
+>>>>>>> main
   padding-top: 20px;
 }
 main .main-index .user-left p {
@@ -712,72 +859,103 @@ main .main-index .user-left a {
   border-radius: 10px;
   padding: 10px 25px;
   cursor: pointer;
-  background-color: burlywood;
+  background: #ff385c;
   color: white;
+  font-weight: bold;
   border: none;
 }
 main .main-index .apartment-right {
   width: 65%;
-  height: 660px;
   display: flex;
   flex-direction: column;
   padding-left: 40px;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+main .main-index .apartment-right .box-apartment:not(:last-child) {
+  margin-bottom: 18px;
 }
 main .main-index .apartment-right .box-apartment {
   width: 100%;
-  height: 150px;
+  height: 200px;
   padding: 10px;
-  margin-bottom: 20px;
-  border: 2px solid darkgrey;
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  border: 1px solid #222222;
 }
 main .main-index .apartment-right .box-apartment .box-left {
   width: 60%;
+  height: 100%;
   display: flex;
   flex-direction: row;
+}
+main .main-index .apartment-right .box-apartment .box-left .box-ap-img {
+  height: 100%;
+  margin-right: 20px;
+}
+main .main-index .apartment-right .box-apartment .box-left .box-ap-img img {
+  height: 100%;
+  width: 225px;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 main .main-index .apartment-right .box-apartment .box-right {
   display: flex;
   flex-direction: row;
 }
-main .main-index .apartment-right .box-apartment .box-ap-img {
-  text-align: center;
+main .main-index .apartment-right .box-apartment .box-right .middle_btn {
+  margin: 15px 0;
 }
-main .main-index .apartment-right .box-apartment .box-ap-img img {
-  height: 100%;
-  max-width: 225px;
-  border-radius: 10px;
-}
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg, main .main-index .apartment-right .box-apartment .box-ap-button, main .main-index .apartment-right .box-apartment .box-ap-info {
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg,
+main .main-index .apartment-right .box-apartment .box-ap-button,
+main .main-index .apartment-right .box-apartment .box-ap-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 0 10px;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg p, main .main-index .apartment-right .box-apartment .box-ap-button p, main .main-index .apartment-right .box-apartment .box-ap-info p {
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg p,
+main .main-index .apartment-right .box-apartment .box-ap-button p,
+main .main-index .apartment-right .box-apartment .box-ap-info p {
   color: grey;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg strong, main .main-index .apartment-right .box-apartment .box-ap-button strong, main .main-index .apartment-right .box-apartment .box-ap-info strong {
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg strong,
+main .main-index .apartment-right .box-apartment .box-ap-button strong,
+main .main-index .apartment-right .box-apartment .box-ap-info strong {
   color: black;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg button, main .main-index .apartment-right .box-apartment .box-ap-button button, main .main-index .apartment-right .box-apartment .box-ap-info button {
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg button,
+main .main-index .apartment-right .box-apartment .box-ap-button button,
+main .main-index .apartment-right .box-apartment .box-ap-info button {
   width: 125px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid black;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg button:hover, main .main-index .apartment-right .box-apartment .box-ap-button button:hover, main .main-index .apartment-right .box-apartment .box-ap-info button:hover {
-  background-color: lightgray;
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg .box-ap-info, main .main-index .apartment-right .box-apartment .box-ap-button .box-ap-info, main .main-index .apartment-right .box-apartment .box-ap-info .box-ap-info {
-  text-align: start;
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box p,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box p,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box p {
+  width: 150px;
+}
+main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box h3,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box h3,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box h3 {
+  font-size: 25px;
+}
+main .main-index .apartment-right .box-apartment .box-ap-info {
+  width: 350px;
 }
 main .error {
   background-color: #eea7a7;
@@ -1063,6 +1241,30 @@ footer {
 footer .footer_line {
   margin-bottom: 10px;
 }
+footer .footer_links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 footer .footer_links .site_link ul li {
   margin-right: 15px;
+}
+footer .footer_links .social_link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .footer_links .social_link .underline_text {
+  margin-right: 20px;
+}
+footer .footer_links .social_link .underline_text a {
+  text-decoration: underline;
+  font-weight: bold;
+  margin-right: 10px;
+}
+footer .footer_links .social_link .social a {
+  margin-right: 20px;
+}
+footer .footer_links .social_link .social a i {
+  font-size: 18px;
 }

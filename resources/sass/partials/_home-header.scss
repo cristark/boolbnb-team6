@@ -35,6 +35,11 @@ header.home_header {
                 font-weight: bold;
                 position: relative;
                 outline: none;
+                @include smoothT(0.2s);
+
+                &:focus {
+                    background: rgba(255, 255, 255, 0.35);
+                }
             }
 
             ::placeholder {
@@ -88,6 +93,11 @@ header.home_header {
                     border-radius: 15px;
                     padding: 20px 20px 10px 20px;
                     @include boxTest;
+                    display: none;
+
+                    &.h_active {
+                        display: flex;
+                    }
 
                     a {
                         margin-bottom: 10px;

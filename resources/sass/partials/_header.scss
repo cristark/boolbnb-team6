@@ -26,8 +26,15 @@ header {
                 text-align: center;
                 background: rgba(128, 128, 128, 0.15);
                 color: $mainBlack;
+                font-weight: bold;
                 position: relative;
                 outline: none;
+            }
+
+            ::placeholder {
+                color: $mainBlack;
+                font-weight: normal;
+                opacity: 0.4;
             }
 
             svg {
@@ -75,6 +82,7 @@ header {
                     border-radius: 15px;
                     padding: 20px 20px 10px 20px;
                     @include boxTest;
+                    z-index: 1;
                     display: none;
 
                     &.active {

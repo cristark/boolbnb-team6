@@ -49688,10 +49688,41 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: {
-    //cri
     footerLinks: ['© 2021 BoolBnb Inc. - All rights reserved', 'Privacy', 'Termini', 'Mappa del sito', 'Dettagli dell\'azienda'],
+    socialLinks: [{
+      name: 'GitHub',
+      icon: 'fab fa-github'
+    }, {
+      name: 'Linkedin',
+      icon: 'fab fa-linkedin-in'
+    }, {
+      name: 'Instagram',
+      icon: 'fab fa-instagram'
+    }, {
+      name: 'Twitter',
+      icon: 'fab fa-twitter'
+    }, {
+      name: 'Facebook',
+      icon: 'fab fa-facebook-f'
+    }],
+    citiesBox: [{
+      city: 'Roma',
+      description: 'Città Eterna',
+      img: 'https://images.unsplash.com/photo-1569343051690-6dd6475dc776?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+    }, {
+      city: 'Milano',
+      description: 'Smart-City Life',
+      img: 'https://images.unsplash.com/photo-1530284610319-31ee7c55378e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+    }, {
+      city: 'Firenze',
+      description: 'Arte e Cultura Rinascimentale',
+      img: 'https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+    }, {
+      city: 'Napoli',
+      description: 'Folclore partenopeo',
+      img: 'https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
+    }],
     mainMenu: false,
-    //dave
     ricerca: "",
     ricercaToUpper: "",
     nomeToUpper: "",
@@ -49705,13 +49736,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     apiKey: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
     array_tom: [],
     json: '.json',
-    //canvas d
     array_visite: '',
     mesi: [],
     n_visite: [],
-    search: 'All',
-    array_completo: [],
-    months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile']
+    array_completo: []
   },
   // created(){
   //     console.log(this.lastItem);
@@ -49719,10 +49747,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   mounted: function mounted() {
     // console.log(this.citta);
     this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
-    console.log(this.currentUrl);
-    console.log(this.lastItem);
     this.loadVisitors(); // this.tomtom();
-    // this.prova();
+
+    this.prova();
   },
   methods: {
     prova: function prova() {
@@ -49746,7 +49773,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
     showMenu: function showMenu() {
       this.mainMenu = !this.mainMenu;
-      console.log(this.mainMenu);
     },
     // DISATTIVARE SCROLL PAGINA
     disableScroll: function disableScroll() {
@@ -49771,36 +49797,30 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/statistiche/' + this.lastItem).then(function (result) {
         _this2.array_visite = result.data.numero_visite;
-        console.log(_this2.array_visite, 'ARRAY_VISITE');
 
         _this2.array_visite.forEach(function (element) {
           // console.log(element.totale, 'sono element');
-          _this2.mesi.push(element.numero_mese, 'mese di');
+          console.log(element);
 
-          _this2.n_visite.push(element.totale, 'Array visite'); // console.log(this.n_visite);
+          _this2.mesi.push(element.numero_mese);
+
+          _this2.n_visite.push(element.totale); // console.log(this.n_visite);
 
         });
 
-        _this2.array_completo = _this2.months.map(function (element) {
-          // const typeIndex = this.mesi.indexOf(element);
-          // console.log(typeIndex, '????????????');
-          return _this2.mesi;
-        });
-        console.log(_this2.array_completo, '!!!!!!!!!!!!!!!');
         var mesi = _this2.mesi;
-        console.log(mesi, 'ciaoooooooooooo');
         var n_visite = _this2.n_visite;
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            months: ['Gennaio', 'Febbraio'],
-            labels: mesi,
+            // labels: mesi,
+            labels: ['January', 'February', 'March', 'April'],
             datasets: [{
               label: 'Visite',
               data: n_visite,
-              backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
-              borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+              backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(12, 50, 22, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+              borderColor: ['rgba(255, 99, 132, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
               borderWidth: 1
             }]
           },
@@ -49882,8 +49902,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> main
 
 
 /***/ })

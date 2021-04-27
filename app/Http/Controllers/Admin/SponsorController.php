@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\Sponsor;
-use App\Service;
 
 class SponsorController extends Controller
 {
@@ -26,7 +24,6 @@ class SponsorController extends Controller
             'apartment' => $apartment,
             'sponsors' => $sponsors
         ];
-
-        return view('admin.sponsor.index', $data);
+        return view( 'admin.sponsor.index', $data );
     }
 }

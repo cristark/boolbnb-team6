@@ -18,18 +18,30 @@
 
             {{-- SEZIONE FOTO APPARTAMENTO --}}
             <div class="img_box">
-                @if(strpos($apartment->main_img, 'https') !== false)
-                <img src="{{ $apartment->main_img }}" alt="{{$apartment->title}}">
-                @else
-                    <img src="{{ asset('storage/'.$apartment->main_img) }}" alt="{{$apartment->title}}">
-                @endif
+                {{-- IMMAGINE PRINCIPALE GRANDE --}}
+                <div class="main_img">
+                    @if(strpos($apartment->main_img, 'https') !== false)
+                    <img src="{{ $apartment->main_img }}" alt="{{$apartment->title}}">
+                    @else
+                        <img src="{{ asset('storage/'.$apartment->main_img) }}" alt="{{$apartment->title}}">
+                    @endif
+                </div>
+                {{-- IMMAGINI SECONDARIE PIù PICCOLE --}}
+                <div class="apartment-images">
+                    <div class="second_img">
+                        <img src="" alt="seconda immagine appartamento">
+                    </div>
+                    <div class="third_img">
+                        <img src="" alt="terza immagine appartamento">
+                    </div>
+                </div>
             </div>
 
             {{-- SEZIONE INFO PRINCIPALI --}}
             <div class="info_box">
                 <p class="views">32 visualizzazioni</p>
                 <h3>{{$apartment->title}}</h3>
-                <p class="rooms">{{$apartment->num_rooms}} stanze - {{$apartment->num_beds}} letti - {{$apartment->num_baths}} bagni</p>
+                <p class="rooms">{{$apartment->num_rooms}} stanze | {{$apartment->num_beds}} letti | {{$apartment->num_baths}} bagni</p>
 
                 <div class="hosts_box">
                     <div class="box nights">
@@ -99,7 +111,7 @@
             {{-- SERVIZI --}}
             <div class="detail_box services">
                 <h3>Servizi</h3>
-                <p style="color: red; font-weight:bolder;">SAUNA - RIVEDERE QUESTA PARTE COME COLLEGARE SERVIZI!!</p>
+                <p></p>
             </div>
 
             {{-- POSIZIONE APPARTAMENTO --}}

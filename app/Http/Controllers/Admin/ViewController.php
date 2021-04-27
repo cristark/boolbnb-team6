@@ -20,13 +20,16 @@ class ViewController extends Controller
         ->where('apartment_id',$apartment->id )
         ->groupBy('numero_mese')
         ->orderBy('numero_mese', 'ASC')->get();
-            
+
+        // $visite = View::select( DB::raw('COUNT(*) as totale'), DB::raw('MONTHNAME(created_at) as numero_mese') )
+        // ->where('apartment_id',$apartment->id )
+        // ->groupBy('numero_mese')
+        // ->orderBy('numero_mese', 'ASC')->get();
 
         $data = [
             'apartment' => $apartment,
             'numero_visite' => $visite,
         ];
-        
         return view('admin.statistic.show', $data);
     }
 }

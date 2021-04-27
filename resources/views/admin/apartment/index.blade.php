@@ -4,14 +4,25 @@
 
 @section('content')
 <div class="main_container">
-    <span><h2>Account > </h2> <h1>I miei appartamenti</h1></span>
+
+    {{-- SEZIONE BREADCUMB IN ALTO --}}
+    <div class="breadcumb">
+        <h3 class="not_selected">Account</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 18">
+            <path id="Unione_1" data-name="Unione 1" d="M1997,8l-7-8,7,8-7,8Z" transform="translate(-1989 1)" fill="#222" stroke="#222" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"/>
+        </svg>
+        <h3>I miei appartamenti</h3>
+    </div>
+
     {{-- Notifica eliminazione post esistente --}}
     @if (session('status'))
-	    <div class="alert alert-success">{{ session('status') }}</div>
+        <div class="alert alert-success">{{ session('status') }}</div>
     @endif
 
+    {{-- SEZIONE PRINCIPALE --}}
     <div class="main-index">
-        {{-- PROFILO UTENTE --}}
+
+        {{-- PANNELLO INFO UTENTE --}}
         <section class="user-left">
             @if(strpos($user->user_img, 'https') !== false)
                 <img style="height: 200px;" src="{{ $user->user_img }}" alt="immagine user">
@@ -22,11 +33,11 @@
             <h2>{{ $user->name ." ". $user->lastname }}</h2>
             <p>
                 <span>Data di nascita:</span>
-                <span>{{ $user->birth_date }}</span>
+                <span>{{ $users->birth_date }}</span>
             </p>
             <p>
                 <span>Mail:</span>
-                <span>{{ $user->email }}</span>
+                <span>{{ $users->email }}</span>
             </p>
             {{-- Pulsante creazione Nuovo Appartamento --}}
             <a href="{{route('apartment.create')}}">Aggiungi un nuovo appartamento</a>
@@ -51,7 +62,10 @@
                         <div class="box-ap-info">
                             <h4>{{$apartment->title}}</h4>
                             <p>Stanze: {{$apartment->num_rooms}} | Letti: {{$apartment->num_beds}} | Bagni: {{$apartment->num_baths}}</p>
-                            <p>Prezzo una notte: <strong>{{$apartment->price}}</strong>€</p>
+                            <div class="price_box">
+                                <p>Prezzo di una notte in appartamento</p>
+                                <h3>{{$apartment->price}} €</h3>
+                            </div>
                         </div>
                     </section>
 
@@ -59,6 +73,7 @@
                         {{-- STATISTICHE E MESSAGGI APPARTAMENTO --}}
                         <div class="box-ap-stat-msg">
                             <a class="btn btn-info" href="{{route('statistic.show', $apartment->slug)}}"><button>Statistiche</button></a>
+                            <a href=""><button>Sponsorizza</button></a>
                         </div>
                         {{-- OPZIONI APPARTAMENTO --}}
                         <div class="box-ap-button">

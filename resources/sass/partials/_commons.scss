@@ -15,6 +15,15 @@ body {
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgrey;
+}
+
 ul {
     list-style-type: none;
     li {
@@ -46,6 +55,7 @@ a {
 }
 
 p.views,
-p.rooms {
-    color: lightslategrey;
+p.rooms,
+.not_selected {
+    color: $mainGrey;
 }

@@ -16,14 +16,45 @@
 
     .main_info {
         @include flex(space-between);
+        height: 480px;
 
         .img_box {
             width: 70%;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            @include flex(flex-start);
+
+            .main_img {
+                max-width: 70%;
+                height: 100%;
+
+                img {
+                    height: 100%;
+                    padding: 5px;
+                }
+            }
+
+            .apartment-images {
+                min-width: 30%;
+                height: 100%;
+
+                div {
+                    padding: 5px;
+                    width: 100%;
+                    height: 50%;
+                    @include boxTest;
+                    border-radius: 15px;
+
+                    img {
+                        padding: 5px;
+                    }
+                }
+            }
         }
 
         .info_box {
-            max-width: 30%;
-            // @include boxTest;
+            width: 25%;
             border-radius: 20px;
             padding: 20px;
             box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
