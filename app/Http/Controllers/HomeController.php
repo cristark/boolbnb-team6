@@ -31,12 +31,13 @@ class HomeController extends Controller
     public function index()
     {
         $apartment = Apartment::all();
-        $users = User::where('id', Auth::id())->firstOrFail();
+        // NON FUNZIONA BENE
+        // $users = User::where('id', Auth::id())->firstOrFail();
         $pivot_sponsor_apartment = DB::table('apartment_sponsor')->latest('end_date')->get();
 
         $data = [
-            'pivot' => $pivot_sponsor_apartment,
-            'user' => $users
+            'pivot' => $pivot_sponsor_apartment
+            // 'user' => $users
         ];
         // dd($prova);
         // $sponsor_apartment = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->latest('end_date')->first();

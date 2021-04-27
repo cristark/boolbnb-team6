@@ -540,7 +540,7 @@ main .cities .cities_box .box.naples {
   background-repeat: no-repeat;
 }
 main .cities .cities_box .box .cities_text {
-  transform: rotate(-90deg) translate(-45%, -100%);
+  transform: rotate(-90deg) translate(-45%, -105%);
   transform-origin: top;
   width: 640px;
   color: #fff;

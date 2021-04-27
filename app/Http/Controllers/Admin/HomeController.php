@@ -17,15 +17,15 @@ class HomeController extends Controller
     {
         // $apartments = Apartment::all();
         $apartments = Apartment::where('user_id', '=', Auth::id())->paginate(2);
-        $users = User::where('id', Auth::id())->firstOrFail();
+        // $users = User::where('id', Auth::id())->firstOrFail();
         $sponsors = Sponsor::all();
         $services = Service::all();
 
         $data = [
             'apartments' => $apartments,
             'sponsors' => $sponsors,
-            'services' => $services,
-            'user' => $users
+            'services' => $services
+            // 'user' => $users
         ];
 
         return view('admin.apartment.index', $data);

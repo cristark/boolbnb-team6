@@ -14,8 +14,8 @@ use App\Image;
 use App\Message;
 use App\Service;
 use App\Sponsor;
-use App\User;
 use App\View;
+use App\User;
 use Carbon\Carbon;
 
 class ApartmentController extends Controller
@@ -29,11 +29,11 @@ class ApartmentController extends Controller
     {
         
         // $apartments = Apartment::all();
-        $users = User::where('id', Auth::id())->firstOrFail();
         $sponsors = Sponsor::all();
         $services = Service::all();
         //paginate = quanti elementi voglio vedere... ho messo 2 come numero a caso
         $apartments = Apartment::where('user_id', '=', Auth::id())->get();
+        $users = User::where('id', Auth::id())->firstOrFail();
         // $apartments = Apartment::all();
 
 
