@@ -114,5 +114,7 @@ class SearchController extends Controller
         return view('guest.apartment.search', $data);
 
         // return response()->json($apartment_ok);
+
+        // commento
     }
 }
