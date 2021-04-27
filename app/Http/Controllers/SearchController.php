@@ -43,6 +43,7 @@ class SearchController extends Controller
     {       
         // data input inseriti
         $data = $request->all();
+        // dd($data);
         
         // da vedere se mi serve
         $services = Service::all();
@@ -96,7 +97,7 @@ class SearchController extends Controller
             }
         }
 
-        // dd($apartment_ok);
+        dd($apartment_ok);
 
         return response()->json($apartment_ok);
     }

@@ -51,6 +51,16 @@
                     <input type="text" name="city" value="{{$city}}">
                 </div>
 
+                <div class="row">
+                    <label for="lat">lat (nasconsto)</label>
+                    <input type="text" name="lat" id="point_lat">
+                </div>
+
+                <div class="row">
+                    <label for="lon">lon (nasconsto)</label>
+                    <input type="text" name="lon" id="point_lon">
+                </div>
+
                 <p><strong>Servizi minimi</strong></p>
                 @foreach ($services as $service)
                     <div class="form-check">
@@ -132,6 +142,7 @@
                             // centro della mappa
                             console.log(apartments);
                             var HQ = response.data.results[0].position;
+                            
 
                             // visualizzazione della mappa
                             var map = tt.map({
