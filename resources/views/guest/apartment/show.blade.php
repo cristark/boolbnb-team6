@@ -29,10 +29,12 @@
                 {{-- IMMAGINI SECONDARIE PIù PICCOLE --}}
                 <div class="apartment-images">
                     <div class="second_img">
-                        <img src="" alt="seconda immagine appartamento">
+                        {{-- <img src="{{ array_key_exists(0, $images) ? asset('storage/' . $images[0]["src"]) : asset('storage/image_gallery/pronto.png')}}"> --}}
+
+                        <img style="width: 100%;" src="{{ $images[0]['src'] }}" alt="seconda immagine appartamento">
                     </div>
                     <div class="third_img">
-                        <img src="" alt="terza immagine appartamento">
+                        <img style="width: 100%;" src="{{ $images[1]['src'] }}" alt="terza immagine appartamento">
                     </div>
                 </div>
             </div>
@@ -115,7 +117,7 @@
                 
                 @foreach ($apartment->services as $service)
                     <div style="border: 1px solid red;">
-                        <div> @php echo trim($service->image_link,'"') @endphp</div>
+                        {{-- <div> @php echo trim($service->image_link,'"') @endphp</div> --}}
                         <div>{{$service->name}}</div>
 
                         codice uguale all'
@@ -131,9 +133,9 @@
 
 
                     
-          
+            
                         {{-- {{$apartment->sponsors[0]->pivot->status}} --}}
-                       
+                        
 
 
             </div>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\View;
 use App\Service;
+use App\Image;
 
 
 class ApartmentController extends Controller
@@ -28,9 +29,19 @@ class ApartmentController extends Controller
 
         public function show( $slug ) {
             // $ip = Request()->ip();
+            $prova = Apartment::all();
+
             $apartment = Apartment::where('slug', $slug)->firstOrFail();
             $apartment_selected = $apartment->id;
-            
+
+            $img = Image::where('apartment_id', $apartment_selected)->get()->toArray();
+            // dd($img_apartment);
+            // dd($img);
+            // $images = Image::all();
+
+            // $selected = Image::where();
+
+
             // dd(Auth::user());
             if( !Auth::user() || Auth::user()->id != $apartment->user_id)
             {
@@ -48,10 +59,10 @@ class ApartmentController extends Controller
 
 
             $data = [
-                'apartment' => $apartment
+                'apartment' => $apartment,
+                'images' => $img
             ];
 
-            // dd($slug);
 
             
             return view('guest.apartment.show', $data)->with('apartment_selected', $apartment_selected);

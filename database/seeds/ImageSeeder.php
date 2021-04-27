@@ -14,16 +14,19 @@ class ImageSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // for($i = 0; $i < 10; $i++) {
-        //     $new_image = new Image();
+        for($i = 0; $i < 10; $i++) {
+            $newImage = new Image();
         
-        //     $conteggioImages = Count(Apartment::all()->toArray());
-        //     $new_image->apartment_id = rand(1, $conteggioImages);
+            // $conteggioImages = Count(Apartment::all()->toArray());
+            // $new_image->apartment_id = rand(1, $conteggioImages);
+            $newImage->src = $faker->imageUrl(640, 480, 'animals', true);
 
-        //     $new_image->src = $faker->imageUrl(640, 480, 'animals', true);
-        //     $new_image->img_description = $faker->text(15);
+            $apartments = Apartment::all()->toArray();
+            $newImage->apartment_id = $apartments[rand(0, Count($apartments)-1)]["id"];
+            // $new_image->src = $faker->imageUrl(640, 480, 'animals', true);
+            // $new_image->img_description = $faker->text(15);
         
-        //     $new_image->save();
-        // }
+            $newImage->save();
+        }
     }
 }

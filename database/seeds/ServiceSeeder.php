@@ -9,8 +9,11 @@ class ServiceSeeder extends Seeder
      *
      * @return void
      */
+        
     public function run()
     {
+
+
         $services = ['wi-fi', 'posto auto', 'piscina', 'portineria', 'sauna', 'vista mare'];
 
         $links = [
@@ -22,12 +25,13 @@ class ServiceSeeder extends Seeder
             '<i class="fas fa-water"></i>'
         ];
 
+        
         foreach ($services as $key => $service) {
             $newService = new Service();
+            
             $newService->name = $service;
             $newService->image_link = $links[$key];
             $newService->visibility = false;
-
             $newService->save();
         }
     }

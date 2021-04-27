@@ -391,6 +391,13 @@ class ApartmentSeeder extends Seeder
             $newApartment->andress = null;
             
             $newApartment->save();
+
+            // $sponsors = Sponsor::inRandomOrder()->limit(3)->get();
+            // $newApartment->sponsors()->attach($sponsors);
+
+
+            $services = Service::inRandomOrder()->get();
+            $newApartment->services()->attach($services);
         }
     }
 }

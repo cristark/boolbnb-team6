@@ -21,7 +21,7 @@ class CreateImagesTable extends Migration
             $table->foreign('apartment_id')->references('id')->on('apartments');
             
             $table->text('src');
-            $table->text('img_description');
+            // $table->text('img_description');
 
 
             
