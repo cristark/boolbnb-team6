@@ -4,7 +4,7 @@ require('./bootstrap');
 // const $ = require('jquery');
 // window.axios = require('axios');
 import Vue from 'vue';
-import Chart from 'chart.js/auto';
+// import Chart from 'chart.js/auto';
 import axios from 'axios';
 
 

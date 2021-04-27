@@ -19,6 +19,10 @@ span{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        img{
+            height: 200px;
+            border-radius: 25%;
+        }
         h2, p{
             padding-top: 20px;
         }
@@ -83,7 +87,6 @@ span{
                 }
                 button{
                     width: 125px;
-                    height: 35px;
                     background-color: white;
                     border-radius: 15px;
                     border: 1px solid black;

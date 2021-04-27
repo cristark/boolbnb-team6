@@ -73,7 +73,19 @@ class RegisterController extends Controller
         //     $path = Storage::put('main_images', $data['user_img']);
         //     // percorso file
         //     $data['user_img'] = $path;
+        //     $user->main_img = $data['user_img'];
         // }
+
+        if(array_key_exists('user_img', $data)){
+            // cancella foto presistente immagine
+            // salvataggio immagine
+            $path = Storage::put('main_images', $data['user_img']);
+            
+            // percorso file
+            $data['user_img'] = $path;
+            // dd($data['user_img']);
+        }
+
         $data = User::create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
@@ -81,7 +93,6 @@ class RegisterController extends Controller
             'birth_date' => $data['birth_day'],
             'password' => Hash::make($data['password']),
             'user_img' => $data['user_img']
-            // 'user_img' => Storage::put('main_images', $data['user_img'])
         ]);
 
         return $data;

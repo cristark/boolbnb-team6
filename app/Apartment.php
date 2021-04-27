@@ -31,7 +31,7 @@ class Apartment extends Model
     }
     //relation with sponsor{BRIDGE}
     public function sponsors(){
-        return $this->belongsToMany('App\Sponsor');
+        return $this->belongsToMany('App\Sponsor')->withPivot('end_date', 'status');
     }
     //relation with images 1
     public function images(){
