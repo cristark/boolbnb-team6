@@ -3,37 +3,25 @@
 @section('title', 'BoolBnB | Messaggi Utente')
 
 @section('content')
-<div class="container">
-    {{-- Tabella Post DataBase --}}
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Anteprima</th>
-                <th scope="col">Appartamento</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Mail</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        
-        
-        <tbody>
-            @foreach($messages as $message)
-                <tr>
-                    <td>
-                        @if (strpos($apartments[$message->apartment_id]->main_img, 'https') !== false)
-                        <img style="height: 100px;" src="{{ $apartments[$message->apartment_id]->main_img }}" alt="Anteprima img appartamento">
-                        @else
-                        <img style="height: 100px;" src="{{ asset('storage/'.$apartments[$message->apartment_id]->main_img) }}" alt="Anteprima img appartamento">
-                        @endif
-                    </td>
-                    <td>{{$apartments[$message->apartment_id]->title}}</td>
-                    <td>{{ $message->sender_name }}</td>
-                    <td>{{ $message->sender_mail }}</td>
-                    <td><a class="btn btn-info" href="{{route('message.show', $message)}}">Visualizza</a></td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+<div class="msg_container">
+
+    @foreach($messages as $message)
+    <section class="t_body">
+        <div class="msg-img">
+            <h4>Immagine appartamento: </h4>
+            @if (strpos($apartments[$message->apartment_id]->main_img, 'https') !== false)
+            <img src="{{ $apartments[$message->apartment_id]->main_img }}" alt="Anteprima img appartamento">
+            @else
+            <img src="{{ asset('storage/'.$apartments[$message->apartment_id]->main_img) }}" alt="Anteprima img appartamento">
+            @endif
+        </div>
+        <div class="msg-title"><h4>Nome Appartamento: </h4><p>{{$apartments[$message->apartment_id]->title}}</p></div>
+        <div class="msg-name"><h4>Nominativo Messaggio: </h4><p>{{ $message->sender_name }}</p></div>
+        <div class="msg-mail"><h4>Mail Messaggio: </h4><p>{{ $message->sender_mail }}</p></div>
+        <div class="msg-txt"><h4>Testo Messaggio</h4><p>{{ $message->msg_txt }}</p></div>
+        <!-- <a class="msg-bottone" href="{{route('message.show', $message)}}">Visualizza</a> -->
+    </section>
+    @endforeach
+
 </div>
 @endsection

@@ -30,7 +30,7 @@ a {
 }
 
 .main_container {
-  max-width: 90%;
+  max-width: 80%;
   margin: 0 auto;
 }
 
@@ -1225,6 +1225,52 @@ main .mid_container .down {
 main .mid_container .down form > button {
   background-color: #ff385c;
   color: white;
+}
+main .msg_container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+main .msg_container img {
+  width: 100%;
+  border-radius: 10px;
+}
+main .msg_container .t_body {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+main .msg_container .t_body h4 {
+  padding-bottom: 10px;
+  height: 50px;
+  text-align: 50px;
+}
+main .msg_container .t_body div {
+  display: flex;
+  flex-direction: column;
+}
+main .msg_container .t_body .msg-img {
+  width: 10%;
+  padding: 0 5px;
+}
+main .msg_container .t_body .msg-title {
+  width: 10%;
+  padding: 0 5px;
+}
+main .msg_container .t_body .msg-name {
+  width: 10%;
+  padding: 0 5px;
+}
+main .msg_container .t_body .msg-mail {
+  width: 20%;
+  padding: 0 5px;
+}
+main .msg_container .t_body .msg-txt {
+  width: 50%;
+  padding: 0 5px;
 }
 
 footer {
