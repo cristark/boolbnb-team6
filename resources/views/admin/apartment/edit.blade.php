@@ -125,18 +125,23 @@
                         <input type="text" id="InputLatitude" placeholder="Inserisci la Latitudine" name="latitude" value="{{$apartment->latitude}}">
                     </div>
 
-                    <div>
-                        <label for="InputLongitude">Longitudine</label>
-                        <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" value="{{$apartment->longitude}}">
-                    </div>
-                </section>
+            {{-- Riga singola con Latitudine - Longitudine --}}
+            <div class="form-row">
+                <div >
+                    <p>Per favore reinserire l'indirizzo manualmente ancora (obbligatorio).</p>
+                    <label for="InputLatitude">Esempio modello: via milano 3, 20020 corsico MI </label>
+                    <input type="text" id="InputIndirizzo" placeholder="Inserisici nome della via" name="andress" v-model='indirizzo' v-on:input="getPosition" value="{{old('andress')}}">
+                </div>
 
-                <section>
-                    {{-- Prezzo Appartamento --}}
-                    <div>section
-                        <label for="InputPrice">Prezzo per notte</label>
-                        <input type="number" id="InputPrice" placeholder="Inserisci il Prezzo" name="price" value="{{$apartment->price}}">
-                    </div>
+                <div>
+                    <label for="InputLatitude">Latitudine</label>
+                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude' style="">
+                </div>
+
+                <div>
+                    <label for="InputLongitude">Longitudine</label>
+                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude' style="">
+                </div>
 
                     {{-- Visibilita --}}
                     <div>

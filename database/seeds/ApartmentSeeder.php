@@ -388,6 +388,7 @@ class ApartmentSeeder extends Seeder
             $newApartment->state = $apartment[12];
             $newApartment->province = $apartment[13];
             $newApartment->city = $apartment[14];
+            $newApartment->andress = null;
             
             $newApartment->save();
         }

@@ -17,6 +17,65 @@
             
             {{-- BOX RISULTATI RICERCA APPARTAMENTI --}}
             <div class="search_box">
+
+                <div>
+                    <p>Ricerca avanzata</p>
+                    <form action="{{ route('searchAvanced') }}" method="GET">
+                @csrf
+                @method('GET')
+
+                <p><strong>Caratteristiche minime stanze</strong></p>
+
+                <div class="row">
+                    <label for="num_beds">Numero letti minimo</label>
+                    <input name="num_beds" type="number" class="form-control" id="num_beds" value="1">
+                </div>
+
+                <div class="row">
+                    <label for="num_rooms">Numero stanze minimo</label>
+                    <input name="num_rooms" type="number" class="form-control" id="num_rooms" value="1">
+                </div>
+
+                <div class="row">
+                    <label for="num_baths">Numero bagni minimo</label>
+                    <input name="num_baths" type="number" class="form-control" id="num_baths" value="1">
+                </div>
+
+                 <div class="row">
+                    <label for="num_mq">metri quadrati minimo</label>
+                    <input name="num_mq" type="number" class="form-control" id="num_mq" value="1">
+                </div>
+
+                <div class="row">
+                    <label for="city">city (nasconsto)</label>
+                    <input type="text" name="city" value="{{$city}}">
+                </div>
+
+                <div class="row">
+                    <label for="lat">lat (nasconsto)</label>
+                    <input type="text" name="lat" id="point_lat">
+                </div>
+
+                <div class="row">
+                    <label for="lon">lon (nasconsto)</label>
+                    <input type="text" name="lon" id="point_lon">
+                </div>
+
+                <p><strong>Servizi minimi</strong></p>
+                @foreach ($services as $service)
+                    <div class="form-check">
+                        <input value="{{ $service->id }}" class="form-check-input" type="checkbox" id="services" name="services[]">
+                        <label class="form-check-label" for="services">
+                            {{$service->name}}
+                        </label>
+                    </div>
+                @endforeach
+
+                
+
+                <button type="submit">Ricarca avanzata</button>
+            </form>
+                </div>
                 @foreach ($apartments as $apartment)    
                     <div class="box">
 
@@ -55,10 +114,13 @@
             {{-- MAPPA --}}
             <div id ="map" class="map_box"></div> 
                 
+                @php
+                    // dd($apartments);
+                @endphp
                 {{-- questo solo per passaggio di valori --}}
                 <div id="dom-ap" style="display: none;">
                     <?php
-                        echo $apartments; 
+                        echo json_encode ( $apartments);
                     ?>
                 </div>
                 <p id="dom-city" style="display: none;">
@@ -83,6 +145,7 @@
                             // centro della mappa
                             console.log(apartments);
                             var HQ = response.data.results[0].position;
+                            
 
                             // visualizzazione della mappa
                             var map = tt.map({
@@ -114,6 +177,50 @@
                         .catch(error => console.error('error city', error));
 
                 </script>
+
+                {{-- SCRIPT PER TESTING --}}
+                {{-- <script>
+
+                    var indirizzo = 'Corso Galileo Ferraris, 35, 10121 Torino TO';
+                    
+                    axios
+                        .get('https://api.tomtom.com/search/2/geocode/'+indirizzo+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
+                        .then( response  => {
+                            // centro della mappa
+                            console.log(response.data.results);
+                            
+                            var data = response.data.results
+                            var count = 0;
+                            var position = null;
+                            
+                            while(count < data.length){
+                                if(data[count].type == "Point Address"){
+                                     position = data[count].position;
+                                    //  return data[count].position;
+                                } else {
+                                    count++;
+                                }           
+                            }
+
+                            // return null;
+
+                            var HQ = position;
+                            console.log(position);
+
+                            // visualizzazione della mappa
+                            var map = tt.map({
+                                key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
+                                container: 'map',
+                                center: HQ,
+                                zoom: 16
+                            });
+
+                            var marker = new tt.Marker().setLngLat(position).addTo(map);
+
+                        })
+                        .catch(error => console.error('error city', error)); 
+
+                </script> --}}
         </div>
 
     </div>

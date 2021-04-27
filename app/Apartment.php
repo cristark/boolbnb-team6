@@ -10,7 +10,7 @@ use App\View;
 class Apartment extends Model
 {
     protected $fillable = [
-        'title','slug','num_rooms','num_beds','num_baths','mq','city','province','state','latitude','longitude','description','main_img','price','active'
+        'title','slug','num_rooms','num_beds','num_baths','mq','city','province','state','latitude','longitude','description','main_img','price','active','andress'
     ];
     //relation with user *
     public function user(){

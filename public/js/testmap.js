@@ -117,7 +117,11 @@ var marker = new tt.Marker().setLngLat(HQ).addTo(map);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\js\testmap.js */"./resources/js/testmap.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Daniel\Documents\Github\boolbnb-team6\resources\js\testmap.js */"./resources/js/testmap.js");
+>>>>>>> ricercaDinamica
 
 
 /***/ })
