@@ -97,8 +97,17 @@ class SearchController extends Controller
             }
         }
 
-        dd($apartment_ok);
+        // dd($apartment_ok);
+        
+        $data = [
+            'apartments' => $apartment_ok,
+            'city' => $search_city,
+            'services' => $services
+        ];
+        
+        // return view('guest.apartment.search', compact('apartments'));
+        return view('guest.apartment.search', $data);
 
-        return response()->json($apartment_ok);
+        // return response()->json($apartment_ok);
     }
 }

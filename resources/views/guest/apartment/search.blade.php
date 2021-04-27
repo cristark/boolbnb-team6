@@ -114,10 +114,13 @@
             {{-- MAPPA --}}
             <div id ="map" class="map_box"></div> 
                 
+                @php
+                    // dd($apartments);
+                @endphp
                 {{-- questo solo per passaggio di valori --}}
                 <div id="dom-ap" style="display: none;">
                     <?php
-                        echo $apartments; 
+                        echo json_encode ( $apartments);
                     ?>
                 </div>
                 <p id="dom-city" style="display: none;">
