@@ -52,11 +52,11 @@ class SearchController extends Controller
         $search_city = $data['city'];
 
         // test
-        $data['num_beds'] = 2;
-        $data['num_rooms'] = 2;
-        $data['num_baths'] = 2;
-        $data['mq'] = 2;
-        $data['services'] = array_values($data['services']);
+        // $data['num_beds'] = 2;
+        // $data['num_rooms'] = 2;
+        // $data['num_baths'] = 2;
+        // $data['mq'] = 2;
+        // $data['services'] = array_values($data['services']);
 
         // array appartamenti ok
         $apartment_ok = [];
@@ -67,7 +67,7 @@ class SearchController extends Controller
             ['num_beds', '>=', $data['num_beds']],
             ['num_rooms', '>=', $data['num_rooms']],
             ['num_baths', '>=', $data['num_baths']],
-            ['mq','>=', $data['mq']],
+            ['mq','>=', $data['num_mq']],
             ['active', 0]
         ])->get();
         
