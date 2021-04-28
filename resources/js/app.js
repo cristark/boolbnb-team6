@@ -106,7 +106,10 @@ const app = new Vue({
         array_slider: [],
         pippo: 0,
         route: '/apartment/',
-        contatore: 0
+        contatore: 0,
+        advancedSearch: false,
+        // Controlli prezzo appartamento con ospiti
+
     },
     // created(){
     //     console.log(this.lastItem);
@@ -114,11 +117,9 @@ const app = new Vue({
     // },
     mounted() {
         this.slider();
-        // this.aptLink();
-        // console.log(this.route);
-        // this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
-        // this.loadVisitors();
-        // this.prova();
+        this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
+        this.loadVisitors();
+        this.prova();
     },
     methods: {
         prova(){
@@ -268,7 +269,6 @@ const app = new Vue({
             //     console.log('ciao');
             // }
             window.location.href = '/apartment/' + this.array_slider[index].slug;
-            console.log(window.location.href);
         },
 
 
@@ -344,74 +344,6 @@ const app = new Vue({
             console.log(this.pippo, 'io sono pippo');
             console.log(container, 'container');
         }
-        
-
-        // nextImg() {
-        //     var blocco = true;
-
-
-        //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
-        //     console.log(larghezzaImg);
-        //     const container = document.getElementsByClassName('invisibile')[0];
-        //     console.log(container);
-
-        //     const larghezzaContenitore = container.offsetWidth;
-        //     console.log(larghezzaContenitore);
-
-        //     const scrollLeft = Math.abs(container.style.left.replace('px', ''));
-        //     console.log(scrollLeft);
-
-        //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
-        //     console.log(larghezzaInner);
-
-
-        //     if (scrollLeft > (larghezzaContenitore - larghezzaInner - larghezzaImg)) {
-        //         return blocco = false;
-
-        //     }
-
-        //     this.pippo -= larghezzaImg + 80;
-        //     console.log(scrollLeft, 'io sono scroll left');
-
-        //     console.log(this.pippo, 'io sono pippo');
-        //     console.log(container, 'container');
-
-
-        // },
-        // prevImg() {
-        //     var blocco = true;
-
-        //     this.countImg--;
-        //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
-        //     console.log(larghezzaImg);
-        //     const container = document.getElementsByClassName('invisibile')[0];
-        //     console.log(container);
-
-        //     const larghezzaContenitore = container.offsetWidth;
-        //     console.log(larghezzaContenitore);
-
-        //     const scrollRight = Math.abs(container.style.left.replace('px', ''));
-        //     console.log(scrollRight);
-
-        //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
-        //     console.log(larghezzaInner);
-
-
-        //     if (this.pippo <= 300) {
-        //         return blocco = false;
-        //     }
-
-        //     if (scrollRight > (larghezzaContenitore + larghezzaInner + larghezzaImg)) {
-        //         console.log(scrollRight);
-        //         return;
-        //     }
-        //     this.pippo += larghezzaImg;
-        //     console.log(scrollRight, 'Io sono scrollRight');
-
-        //     console.log(this.pippo, 'io sono pippo');
-        //     console.log(container, 'container');
-        // }
-                
     }
 });
 

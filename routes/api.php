@@ -32,3 +32,5 @@ Route::get('/search', 'Api\SearchController@store');
 
 
 Route::get('/slider' , 'Api\SliderController@index');
+
+Route::get('/prezzo/{slug}' , 'Api\ShowPrice@mostraPrezzo');

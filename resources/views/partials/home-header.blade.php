@@ -91,12 +91,12 @@
                         </a> --}}
 
                         <div class="dropdown_menu" :class="(mainMenu == true) ? 'h_active' : ''">
-                            <a href="{{route('apartment.index')}}">I miei Appartamenti</a>
-                            <a href="">Casella Messaggi</a>
+                            <a href="{{url('/')}}">Torna alla Home</a>
+                            <a href="{{route('apartment.create')}}">Aggiungi un Appartamento</a>
                             <a href="">Sponsorizzazioni</a>
                             <hr>
-                            <a href="{{ url('/admin/apartment') }}">Il mio Account</a>
-                            <a href="{{route('apartment.create')}}">Aggiungi un Appartamento</a>
+                            <a href="{{ url('/admin/apartment') }}">I miei Appartamenti</a>
+                            <a href="{{route('message.index')}}">Casella Messaggi</a>
                             <a href="">Assistenza</a>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

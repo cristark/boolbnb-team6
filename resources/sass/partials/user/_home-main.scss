@@ -26,7 +26,8 @@
 }
 
 .sponsored_apts {
-        padding-top: 60px;
+    padding-top: 60px;
+
     .title {
         @include flex(space-between);
         margin-bottom: 50px;
@@ -41,61 +42,126 @@
         }
     }
 
-    .apts {
-        @include flex(space-between);
+    .template-img {
+        // overflow-x: hidden;
+        // width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        // flex-wrap: wrap;
+        // border: 1px solid black;
 
-        .box {
-            width: 340px;
-            height: 640px;
-            border: 1px solid $mainBlack;
-            border-radius: 20px;
-            box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
+        .img-array {
+            overflow: hidden;
+            display: flex;
+            width: 100%;
+            max-width: 80%;
+            margin: 0 auto;
+            flex-shrink: 0;
             position: relative;
+            left: 0px;
 
-                    
+            .invisibile {
+                position: relative;
+                left: 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                transition: 300ms ease all;
+                display: flex;
 
-            .like_box {
-                width: 70px;
-                height: 40px;
-                position: absolute;
-                top: 20px;
-                @include flex(center);
-                background: black; //! CAMBIARE
-                border: 1px solid $mainBlack;
-                border-radius: 0px 5px 5px 0;
+                .container-img {
+                    width: 320px;
+                    height: 600px;
+                    border-radius: 20px;
+                    position: relative;
+                    margin-right: 21px;
+                    background-size: cover;
+                    background-position: 0 0;
+                    background-repeat: no-repeat;
+                    overflow: hidden;
 
-                svg {
-                    transform: scale(150%);
+                    .overlay {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        @include flex(flex-start);
+                        border-radius: 20px;
+                        background: linear-gradient(
+                            0deg,
+                            #212121b0 0%,
+                            rgba(139, 139, 139, 0.1) 100%
+                        );
+                        color: #fff;
+
+                        .like_box {
+                            width: 70px;
+                            height: 40px;
+                            position: absolute;
+                            top: 20px;
+                            @include flex(center);
+                            background: rgba(255, 255, 255, 0.1);
+                            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                            backdrop-filter: blur(4.5px);
+                            -webkit-backdrop-filter: blur(4.5px);
+                            border: 1px solid rgba(255, 255, 255, 0.18);
+                            border-radius: 0px 5px 5px 0;
+                            @include smoothT(0.2s);
+                            cursor: pointer;
+
+                            &:hover {
+                                svg.heart {
+                                    @include smoothT(0.2s);
+
+                                    #Tracciato_24 {
+                                        fill: $mainColor;
+                                        stroke: $mainColor;
+                                    }
+                                }
+                            }
+
+                            svg.heart {
+                                transform: scale(150%);
+                            }
+                        }
+
+                        .apt_text {
+                            width: 95%;
+                            position: absolute;
+                            bottom: 20px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            padding: 10px;
+                            color: #fff;
+                            text-shadow: 1px 1px $mainBlack;
+
+                            .apt_title {
+                                font-size: 20px;
+                                font-weight: bold;
+                            }
+
+                            .price_box {
+                                @include flex(space-between);
+                                margin-top: 20px;
+
+                                p {
+                                    width: 50%;
+                                    font-weight: lighter;
+                                    font-size: 12px;
+                                    color: rgba(128, 128, 128, 1);
+                                }
+
+                                h3 {
+                                    font-size: 30px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
+        }
 
-            .apt_text {
-                position: absolute;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                padding: 10px;
-
-                .apt_title {
-                    font-size: 20px;
-                    font-weight: bold;
-                }
-
-                .price_box {
-                    @include flex(space-between);
-                    margin-top: 20px;
-
-                    p {
-                        width: 50%;
-                        font-weight: lighter;
-                        font-size: 12px;
-                    }
-
-                    h3 {
-                        font-size: 30px;
-                    }
-                }
-            }
+        .apts {
+            @include flex(space-between);
         }
     }
 
@@ -215,7 +281,7 @@
         width: 100%;
         height: 450px;
         @include bgImg("../storage/main_images/host-cta.jpg");
-        background-position: 0 -290px;
+        background-position: 0 -240px;
         border-radius: 15px;
 
         .overlay {
@@ -244,9 +310,15 @@
                 }
 
                 .btn {
-                    @include mainBtn;
-                    background: #fff;
-                    color: $mainBlack;
+                    border: 1px solid rgba(255, 255, 255, 0.18);
+                    border-radius: 10px;
+                    padding: 10px 25px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    background: rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                    backdrop-filter: blur(4.5px);
+                    -webkit-backdrop-filter: blur(4.5px);
                     width: 150px;
                     margin-top: 40px;
                 }
@@ -255,88 +327,7 @@
     }
 }
 
-
-
-
-// .template-img{
-//     width: 100vw;
-//     display: flex;
-//     justify-content: space-around;
-//     flex-wrap: wrap;
-//     height: 800px;
-// }
-// .container-img{
-//     width: 340px;
-//     height: 640px;
-//     border: 1px solid $mainBlack;
-//     border-radius: 20px;
-//     box-shadow: -2px 5px 10px rgba(53, 50, 65, 0.15);
-//     position: relative;
-//     margin: 20px;
-
-//     // margin-right: 80px;
-//     // width: 200px;
-//     // // height: 200px;
-    
-//     // width: 340px;
-//     // height: 640px;
-//     // position: relative;
-    
-//     // padding: 20px;
-// }
-
-
-
-// // .prev,
-// // .next{
-
-// //     display: flex;
-// //     align-items: center;
-// // }
-
-
-// .img-array{
-//     overflow: hidden;
-//     display: flex;
-//     justify-content: space-around;
-//     width: 100%;
-//     max-width: 80%;
-//     margin: 0 auto;
-//     flex-shrink: 0;
-//     position: relative;
-//     left: 0px;
-//     border: 2px solid red;
-// }
-// /*giacomo aveva messo left 0 a img array*/
-// /*e solo il position relative senza left a invisibile */
-// .invisibile{
-//     position: relative;
-//     left: 0;
-//     display: flex;
-//     justify-content: space-around;
-//     align-items: center;
-//     transition: 400ms ease all;
-//     display: flex;
-// }
-
-
-.template-img{
-    // overflow-x: hidden;
-    width: 100vw;
-    display: flex;
-    justify-content: space-around;
-    // flex-wrap: wrap;
-    // border: 1px solid black;
-}
-.container-img{
-    width: 380px;
-    height: 640px;
-    border-radius: 20px;
-    border: 10px solid white;
-    position: relative;
-}
-
-.flash{
+.flash {
     position: absolute;
     right: 0;
     top: 3%;
@@ -346,41 +337,16 @@
     width: 90%;
     background-color: $mainColor;
     @include flex(space-around, center);
-    h4{
+    h4 {
         color: white;
         font-size: 20px;
     }
-    i{
+    i {
         color: gold;
     }
 }
 
-
-
-.img-array{
-    overflow: hidden;
-    display: flex;
-    width: 100%;
-    max-width: 1520px;
-    margin: 0 auto;
-    flex-shrink: 0;
-    position: relative;
-    left: 0px;
-}
-
-.invisibile{
-    position: relative;
-    left: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    transition: 300ms ease all;
-    display: flex;
-    
-}
-
-
-.sponsors_head{
+.sponsors_head {
     margin: 40px auto;
     border-radius: 20px;
     background-color: white;
@@ -389,19 +355,17 @@
     @include flex(space-around, center);
 }
 
-h2.title_sponsor{
+h2.title_sponsor {
     text-align: center;
     color: $mainColor;
-
 }
 
 #next,
-#prev{
+#prev {
     color: white;
-
 }
 
-div.circle{
+div.circle {
     width: 35px;
     height: 35px;
     border-radius: 50%;

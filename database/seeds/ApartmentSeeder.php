@@ -222,7 +222,7 @@ class ApartmentSeeder extends Seeder
                 '2',
                 '73',
                 '88',
-                'images/flat-12.jpg',
+                'https://a0.muscache.com/im/pictures/miso/Hosting-9019674/original/4bc77968-ed4c-4e0c-81c6-c41ce9966346.jpeg?im_w=1200',
                 '44.06469',
                 '12.58184',
                 '0',
