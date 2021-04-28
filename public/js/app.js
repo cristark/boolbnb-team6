@@ -49743,7 +49743,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile'],
     indirizzo: '',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    advancedSearch: false
   },
   // created(){
   //     console.log(this.lastItem);
@@ -49782,6 +49783,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     disableScroll: function disableScroll() {
       document.body.style.overflow = 'hidden';
       document.querySelector('html').scrollTop = window.scrollY;
+    },
+    // ATTIVO DROPDOWN RICERCA AVANZATA
+    showSrc: function showSrc() {
+      this.advancedSearch = !this.advancedSearch;
     },
     tomtom: function tomtom() {
       var _this = this;

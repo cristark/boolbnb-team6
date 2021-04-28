@@ -71,10 +71,10 @@
 
                     <section class="box-right">
                         {{-- STATISTICHE E MESSAGGI APPARTAMENTO --}}
-                        <div class="box-ap-stat-msg">
+                        {{-- <div class="box-ap-stat-msg">
                             <a class="btn btn-info" href="{{route('statistic.show', $apartment->slug)}}"><button>Statistiche</button></a>
                             <a href=""><button>Sponsorizza</button></a>
-                        </div>
+                        </div> --}}
                         {{-- OPZIONI APPARTAMENTO --}}
                         <div class="box-ap-button">
                             <a href="{{route('apartment.show', $apartment->slug)}}"><button>Visualizza</button></a>

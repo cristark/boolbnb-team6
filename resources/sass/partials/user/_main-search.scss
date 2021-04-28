@@ -27,9 +27,27 @@
         overflow: auto;
 
         .adv_search {
+            height: 30px;
+            border-right: 1px solid $mainBlack;
+            border-bottom: 1px solid $mainBlack;
+            border-left: 1px solid $mainBlack;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            padding: 0 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            @include smoothT(0.5s);
+
+            &.clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
             h3 {
                 text-align: center;
                 margin-bottom: 10px;
+                cursor: pointer;
             }
 
             h4 {
@@ -53,11 +71,26 @@
                 }
             }
 
-            .src_btn {
-                border: 1px solid $mainBlack;
-                border-radius: 10px;
-                padding: 5px 10px;
+            hr {
+                margin-bottom: 10px;
+                outline: none;
             }
+
+            .src_btn {
+                border: none;
+                border-radius: 10px;
+                background: $mainColor;
+                color: #fff;
+                font-weight: bold;
+                padding: 5px 10px;
+                margin-top: 10px;
+                float: right;
+                cursor: pointer;
+            }
+        }
+
+        .adv_search.active {
+            height: 240px;
         }
 
         .box {

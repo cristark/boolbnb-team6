@@ -102,7 +102,8 @@ const app = new Vue({
         months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile'],
         indirizzo:'',
         latitude:0,
-        longitude:0
+        longitude:0,
+        advancedSearch: false
     },
     // created(){
     //     console.log(this.lastItem);
@@ -145,6 +146,10 @@ const app = new Vue({
         disableScroll() {
             document.body.style.overflow = 'hidden';
             document.querySelector('html').scrollTop = window.scrollY;
+        },
+        // ATTIVO DROPDOWN RICERCA AVANZATA
+        showSrc() {
+            this.advancedSearch = !this.advancedSearch;
         },
         tomtom()
         {

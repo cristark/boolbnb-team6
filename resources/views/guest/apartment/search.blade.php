@@ -18,8 +18,8 @@
             {{-- BOX RISULTATI RICERCA APPARTAMENTI --}}
             <div class="search_box">
 
-                <div class="adv_search">
-                    <h3>Ricerca avanzata</h3>
+                <div class="adv_search clearfix" :class="(advancedSearch == true) ? 'active' : ''">
+                    <h3 v-on:click="showSrc">Ricerca avanzata</h3>
                     <form action="{{ route('searchAvanced') }}" method="GET">
                         @csrf
                         @method('GET')
@@ -27,7 +27,6 @@
                         <h4>Caratteristiche minime stanze</h4>
 
                         <div class="src_box">
-
                             <div class="row">
                                 <label for="SrcBeds">Numero letti</label>
                                 <input name="num_beds" type="number" id="SrcBeds" value="1" min="1">
@@ -40,7 +39,6 @@
                         </div>
 
                         <div class="src_box">
-
                             <div class="row">
                                 <label for="SrcBaths">Numero bagni</label>
                                 <input name="num_baths" type="number" id="SrcBaths" value="1" min="1">
@@ -50,10 +48,16 @@
                                 <label for="SrcMq">Metri quadrati</label>
                                 <input name="num_mq" type="number" id="SrcMq" value="1" min="1">
                             </div>
+
+                            <div class="row">
+                                <input name="city" type="hidden" value="1">
+                            </div>
                         </div>
 
+                        <hr>
+
                         <h4>Servizi disponibili</h4>
-                        <div class="src_box">
+                        <div class="src_box services">
                             @foreach ($services as $service)
                                 <div class="form-check">
                                     <input value="{{ $service->id }}" type="checkbox" id="services" name="services[]">
@@ -143,7 +147,7 @@
                                 key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
                                 container: 'map',
                                 center: HQ,
-                                zoom: 12
+                                zoom: 14
                             });
 
 
