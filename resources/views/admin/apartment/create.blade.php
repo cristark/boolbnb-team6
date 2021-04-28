@@ -61,12 +61,12 @@
 
                 <div>
                     <label for="InputLatitude">Latitudine</label>
-                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude' style="">
+                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude'>
                 </div>
 
                 <div>
                     <label for="InputLongitude">Longitudine</label>
-                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude' style="">
+                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude'>
                 </div>
             </section>
 

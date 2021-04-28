@@ -20,6 +20,17 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        a{
+            border-radius: 10px;
+            button{
+                padding: 5px 30px;
+                width: 100%;
+                background: $mainColor;
+                color: white;
+                font-weight: bold;
+                border: none;
+            }
+        }
 
         .user_img {
             @include boxTest;
@@ -29,15 +40,12 @@
             border-radius: 50%;
             padding: 20px;
             overflow: hidden;
-
             i {
                 font-size: 130px;
                 color: $mainGrey;
             }
         }
-
-        h2,
-        p {
+        h2, p{
             padding-top: 20px;
         }
 
@@ -49,7 +57,6 @@
 
         a {
             margin-top: 30px;
-            @include mainBtn;
             background: $mainColor;
             color: white;
             font-weight: bold;
@@ -95,11 +102,16 @@
                 }
             }
             .box-right {
+                height: 100%;
                 display: flex;
-                flex-direction: row;
-
-                .middle_btn {
-                    margin: 15px 0;
+                flex-direction: column;
+                justify-content: space-around;
+                a{
+                    margin-bottom: 10px;
+                }
+                button{
+                    padding: 5px 15px;
+                    width: 100%;
                 }
             }
             .box-ap-stat-msg,
@@ -123,10 +135,6 @@
                     font-size: 15px;
                     font-weight: bold;
                     cursor: pointer;
-
-                    // &:hover {
-                    //     background-color: lightgray;
-                    // }
                 }
 
                 .price_box {
@@ -144,6 +152,123 @@
 
             .box-ap-info {
                 width: 350px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1200px) {
+    .main-index{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+        .user-left {
+            padding: 10px;
+            @include boxTest;
+            border-radius: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .user_img {
+                @include boxTest;
+                @include flex(center);
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                padding: 10px;
+                overflow: hidden;
+                i {
+                    font-size: 130px;
+                    color: $mainGrey;
+                }
+            }
+            h2, p{
+                padding-top: 10px;
+            }
+            p {
+                display: flex;
+                justify-content: space-between;
+            }
+            a {
+                margin-top: 10px;
+                background: $mainColor;
+                color: white;
+                border: none;
+            }
+        }
+        .apartment-right {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-top: 10px;
+            padding-left: 0px;
+            .box-apartment:not(:last-child) {
+                margin-bottom: 18px;
+            }
+            .box-apartment {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 100%;
+                padding: 10px;
+                border-radius: 10px;
+                @include boxTest;
+                .box-left {
+                    width: 60%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    .box-ap-img {
+                        width: 100%;
+                        margin-right: 20px;
+                        img {
+                            width: 100%;
+                            border-radius: 10px;
+                            object-fit: cover;
+                        }
+                    }
+                    .box-ap-info {
+                        width: 100%;
+                    }
+                }
+                .box-right {
+                    width: 100%;
+                    padding: 10px 0;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                }
+                .box-ap-stat-msg,
+                .box-ap-button,
+                .box-ap-info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    padding: 0 10px;
+                    p {
+                        color: grey;
+                    }
+                    strong {
+                        color: black;
+                    }
+                    button {
+                        background-color: white;
+                        border-radius: 10px;
+                        border: 1px solid black;
+                        font-size: 15px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                    .price_box {
+                        @include flex(space-between);
+                        p {
+                            width: 150px;
+                        }
+                        h3 {
+                            font-size: 25px;
+                        }
+                    }
+                }
             }
         }
     }

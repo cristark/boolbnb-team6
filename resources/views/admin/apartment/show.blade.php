@@ -93,8 +93,6 @@
                         @else
                             <h1>Il tuo appartmento é sponsorizzato</h1>
                         @endif
-
-
                     </div>
                     
                     <!-- DATI SPONSOR -->
@@ -121,25 +119,25 @@
                 </div>
 
                 <div class="box_msg">
-                    <h2>Messaggi</h2>
                     <div>
+                        <h2>Messaggi</h2>
                         <div>
                             <h4>Informazioni</h4>
                             <p>Hai {{ count($messages) }} messaggi</p>
                         </div>
-                        <a href="{{route('message.index')}}"><button type="button">I tuoi messaggi</button></a>
                     </div>
+                    <a href="{{route('message.index')}}"><button type="button">I tuoi messaggi</button></a>
                 </div>
 
                 <div class="box_view">
-                    <h2>Statistiche</h2>
                     <div>
+                        <h2>Statistiche</h2>
                         <div>
                             <h4>Informazioni</h4>
                             <p>visualizzazioni da mettere!!!!!!!!!!</p>
                         </div>
-                        <a href="{{route('statistic.show', $apartment->slug)}}"><button type="button">Statistiche</button></a>
                     </div>
+                    <a href="{{route('statistic.show', $apartment->slug)}}"><button type="button">Statistiche</button></a>
                 </div>
                 
                 <!-- <div id="map" style="height:90vh;">

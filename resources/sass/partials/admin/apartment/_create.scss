@@ -14,6 +14,7 @@
     section{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         border-bottom: 1px solid $mainColor;
         border-radius: 10px;
@@ -70,5 +71,39 @@
         border: none;
         border-radius: 10px;
         font-size: larger;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .form_box{
+        section{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .row_input{
+            display: flex;
+            flex-direction: column;
+        }
+        .service_box{
+            padding: 5px 0;
+            label{
+                padding-left: 0px;
+            }
+            input{
+                margin-left: 5px;
+                transform: scale(2);
+                &:checked{
+                    background-color: $mainColor;
+                }
+            }
+        }
     }
 }
