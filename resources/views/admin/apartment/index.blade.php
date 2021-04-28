@@ -29,7 +29,7 @@
             @else
                 <img src="{{ asset('storage/'.$user->user_img) }}" alt="immagine user">
             @endif
-            <h2>ciao,</h2>
+            <h2>Ciao,</h2>
             <h2>{{ $user->name ." ". $user->lastname }}</h2>
             <p>
                 <span>Data di nascita:</span>

@@ -12,15 +12,17 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        $services = ['wi-fi', 'posto auto', 'piscina', 'portineria', 'sauna', 'vista mare'];
+
+
+        $services = ['Wi-fi', 'Posto auto', 'Piscina', 'Portineria', 'Sauna', 'Vista mare'];
 
         $links = [
-            '<i class="fas fa-wifi"></i>', 
-            '<i class="fas fa-parking"></i>', 
-            '<i class="fas fa-swimming-pool"></i>', 
-            '<i class="fas fa-concierge-bell"></i>', 
-            '<i class="fas fa-cloud"></i>', 
-            '<i class="fas fa-water"></i>'
+            'fas fa-wifi', 
+            'fas fa-parking', 
+            'fas fa-swimming-pool', 
+            'fas fa-concierge-bell', 
+            'fas fa-cloud', 
+            'fas fa-water'
         ];
 
         

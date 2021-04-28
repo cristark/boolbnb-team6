@@ -14,8 +14,8 @@ use App\Image;
 use App\Message;
 use App\Service;
 use App\Sponsor;
-use App\User;
 use App\View;
+use App\User;
 use Carbon\Carbon;
 
 class ApartmentController extends Controller
@@ -29,11 +29,11 @@ class ApartmentController extends Controller
     {
         
         // $apartments = Apartment::all();
-        $users = User::where('id', Auth::id())->firstOrFail();
         $sponsors = Sponsor::all();
         $services = Service::all();
         //paginate = quanti elementi voglio vedere... ho messo 2 come numero a caso
         $apartments = Apartment::where('user_id', '=', Auth::id())->get();
+        $users = User::where('id', Auth::id())->firstOrFail();
         // $apartments = Apartment::all();
 
 
@@ -140,6 +140,7 @@ class ApartmentController extends Controller
     public function show($slug)
     {
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
+        $users = User::where('id', Auth::id())->firstOrFail();
         $messages = Message::where('apartment_id', $apartment->id)->get();
         // $sponsors = Sponsor::all();
         $images = Image::where('apartment_id', $apartment->id)->get();
@@ -174,7 +175,7 @@ class ApartmentController extends Controller
             $sponsor = true;
         }
 
-        if(Auth::id() == $apartment->user_id ){
+        if( Auth::id() == $apartment->user_id ){
 
             $data = [
                 'apartment' => $apartment,
@@ -182,6 +183,7 @@ class ApartmentController extends Controller
                 'sponsor' => $sponsor,
                 'images' => $images,
                 'messages' => $messages,
+                'user' => $users
                 // 'pivot' => $pivot_app_spons
             ];
             
