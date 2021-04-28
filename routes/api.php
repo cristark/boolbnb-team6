@@ -29,3 +29,6 @@ Route::get('/map/{id}', 'Api\MapController@index');
 
 
 Route::get('/search', 'Api\SearchController@store');
+
+
+Route::get('/slider' , 'Api\SliderController@index');

@@ -49744,17 +49744,20 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     indirizzo: '',
     latitude: 0,
     longitude: 0,
-    advancedSearch: false
+    array_slider: [],
+    pippo: 0,
+    route: '/apartment/',
+    contatore: 0
   },
   // created(){
   //     console.log(this.lastItem);
   // },
   mounted: function mounted() {
-    // console.log(this.citta);
-    this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
-    this.loadVisitors(); // this.tomtom();
-
-    this.prova();
+    this.slider(); // this.aptLink();
+    // console.log(this.route);
+    // this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
+    // this.loadVisitors();
+    // this.prova();
   },
   methods: {
     prova: function prova() {
@@ -49866,7 +49869,117 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     },
     setIndirizzo: function setIndirizzo(andress) {
       this.indirizzo = andress;
-    }
+    },
+    aptLink: function aptLink(index) {
+      // console.log(index,'lo prendi il click');
+      // if(index == this.array_slider[this.contatore]){
+      //     console.log('ciao');
+      // }
+      window.location.href = '/apartment/' + this.array_slider[index].slug;
+      console.log(window.location.href);
+    },
+    slider: function slider() {
+      var _this4 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/slider').then(function (response) {
+        _this4.array_slider = response.data.apartmentSponsored;
+        console.log(_this4.array_slider[0]);
+      });
+    },
+    nextImg: function nextImg() {
+      var larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
+      console.log(larghezzaImg);
+      var container = document.getElementsByClassName('invisibile')[0];
+      console.log(container);
+      var larghezzaContenitore = container.offsetWidth;
+      console.log(larghezzaContenitore);
+      var scrollLeft = Math.abs(container.style.left.replace('px', ''));
+      console.log(scrollLeft);
+      var larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
+      console.log(larghezzaInner);
+
+      if (scrollLeft > larghezzaContenitore - larghezzaInner - larghezzaImg) {
+        return;
+      }
+
+      this.pippo -= larghezzaImg;
+      console.log(scrollLeft, 'io sono scroll left');
+      console.log(this.pippo, 'io sono pippo');
+      console.log(container, 'container');
+    },
+    prevImg: function prevImg() {
+      var blocco = true;
+      this.countImg--;
+      var larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
+      console.log(larghezzaImg);
+      var container = document.getElementsByClassName('invisibile')[0];
+      console.log(container);
+      var larghezzaContenitore = container.offsetWidth;
+      console.log(larghezzaContenitore);
+      var scrollRight = Math.abs(container.style.left.replace('px', ''));
+      console.log(scrollRight);
+      var larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
+      console.log(larghezzaInner);
+
+      if (this.pippo == 0) {
+        return blocco = false;
+      }
+
+      if (scrollRight > larghezzaContenitore + larghezzaInner + larghezzaImg) {
+        console.log(scrollRight);
+        return;
+      }
+
+      this.pippo += larghezzaImg;
+      console.log(scrollRight, 'Io sono scrollRight');
+      console.log(this.pippo, 'io sono pippo');
+      console.log(container, 'container');
+    } // nextImg() {
+    //     var blocco = true;
+    //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
+    //     console.log(larghezzaImg);
+    //     const container = document.getElementsByClassName('invisibile')[0];
+    //     console.log(container);
+    //     const larghezzaContenitore = container.offsetWidth;
+    //     console.log(larghezzaContenitore);
+    //     const scrollLeft = Math.abs(container.style.left.replace('px', ''));
+    //     console.log(scrollLeft);
+    //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
+    //     console.log(larghezzaInner);
+    //     if (scrollLeft > (larghezzaContenitore - larghezzaInner - larghezzaImg)) {
+    //         return blocco = false;
+    //     }
+    //     this.pippo -= larghezzaImg + 80;
+    //     console.log(scrollLeft, 'io sono scroll left');
+    //     console.log(this.pippo, 'io sono pippo');
+    //     console.log(container, 'container');
+    // },
+    // prevImg() {
+    //     var blocco = true;
+    //     this.countImg--;
+    //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
+    //     console.log(larghezzaImg);
+    //     const container = document.getElementsByClassName('invisibile')[0];
+    //     console.log(container);
+    //     const larghezzaContenitore = container.offsetWidth;
+    //     console.log(larghezzaContenitore);
+    //     const scrollRight = Math.abs(container.style.left.replace('px', ''));
+    //     console.log(scrollRight);
+    //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
+    //     console.log(larghezzaInner);
+    //     if (this.pippo <= 300) {
+    //         return blocco = false;
+    //     }
+    //     if (scrollRight > (larghezzaContenitore + larghezzaInner + larghezzaImg)) {
+    //         console.log(scrollRight);
+    //         return;
+    //     }
+    //     this.pippo += larghezzaImg;
+    //     console.log(scrollRight, 'Io sono scrollRight');
+    //     console.log(this.pippo, 'io sono pippo');
+    //     console.log(container, 'container');
+    // }
+
   }
 });
 

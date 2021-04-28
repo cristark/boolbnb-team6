@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -67,63 +68,103 @@
                         </div>
                     </div>
                 </div>
-            
-                <section class="sponsored_apts">
-                    <div class="main_container">
-                        <div class="title">
-                            <h2>Appartamenti in primo piano</h2>
-                            <div class="btn">
-                                Scopri tutti gli appartamenti
-                            </div>
-                        </div>
-            
-                        <div class="apts">
-                            @foreach ($pivot as $element)
-                                
-                            {{-- Inserire ciclo appartamenti sponsorizzati --}}
-                            <div class="box">
-                                
-            
-                                {{-- Pulsante like all'interno della foto --}}
-                                <div class="like_box">
-                                    {{-- SVG Cuore --}}
-                                    <svg class="heart" id="favorite-24px_3_" data-name="favorite-24px (3)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                        <path id="Tracciato_23" data-name="Tracciato 23" d="M0,0H16V16H0Z" fill="rgba(0,0,0,0)"/>
-                                        <path id="Tracciato_24" data-name="Tracciato 24" d="M8.667,15.233l-.967-.88C4.267,11.24,2,9.187,2,6.667A3.631,3.631,0,0,1,5.667,3a3.992,3.992,0,0,1,3,1.393,3.992,3.992,0,0,1,3-1.393,3.631,3.631,0,0,1,3.667,3.667c0,2.52-2.267,4.573-5.7,7.693Z" transform="translate(-0.667 -1)" fill="none" stroke="#fff" stroke-width="1"/>
-                                    </svg>
-                                    
-                                </div>
-            
-                                <div class="apt_text">
-                                    <p class="apt_title">Milano Studio Smart</p>
-                                    <svg class="dot_line" xmlns="http://www.w3.org/2000/svg" width="311" height="1" viewBox="0 0 311 1">
-                                        <path id="Separator" d="M582,746.953v310" transform="translate(1057.453 -581.5) rotate(90)" fill="none" stroke="#909090" stroke-linecap="round" stroke-width="1" stroke-dasharray="0.5 12"/>
-                                    </svg>
-                                    <div class="price_box">
-                                        <p>Prezzo di una notte in appartamento</p>
-                                        <h3>100€</h3>
+                
+
+
+                <div class="sponsors_head">
+                    <div  @@click='prevImg' class="circle">
+                        <i id="prev" class="fas fa-arrow-left"></i>    
+
+                    </div>
+                    <h2 class="title_sponsor"> 
+                        Apartment Sponsored
+                    </h2>
+                    <div @@click='nextImg' class="circle">
+                        <i  id="next" class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="template-img">
+                        <!-- posso anche fare due incrementi diversi -->
+                        <div class="img-array" style='align-items: center;'>
+                            <div :style='`left: ${pippo}px`' class="invisibile">
+                                    <!--qua gli sto dicendo stampami tanti container-img quanti sono quelli contenuti nell'array Img e dai il bcg di ogni elemento-->
+                                    <div v-for='(item, index) in array_slider'  class="container-img"  :style='`background-image: url(${item.main_img})`'>
+                                        <a @@click="aptLink(index)">
+    
+                                            <div class="flash">
+                                                    <h4>@{{item.slug}}</h4>
+                                                    <i class="fas fa-star"></i>
+                                            </div>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            
+                            
+                            
                         </div>
-            
-                        <div class="apt_end">
-                            <h3>Su BoolBnB ci sono migliaia di host che ti aiutano a scoprire il mondo in un modo diverso</h3>
-                            <div class="arrows">
-                                {{-- BACK --}}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
-                                    <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/>
-                                </svg>
-                                {{-- FORWARD --}}
-                                <svg class="forward" xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
-                                    <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/>
-                                </svg>
+
+                {{-- template-img --}}
+                {{-- <section class="sponsored_apts">
+                            <div class="main_container">
+                                <div class="title">
+                                    <h2>Appartamenti in primo piano</h2>
+                                    <div class="btn">
+                                        Scopri tutti gli appartamenti
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="apts">                                        
+                                    {{-- Inserire ciclo appartamenti sponsorizzati --}}
+                                    {{-- <div class="box"> --}}
+                                
+                                        
+                                        {{-- Pulsante like all'interno della foto --}}
+                                        {{-- <div class="like_box"> --}}
+                                            {{-- SVG Cuore --}}
+                                            {{-- <svg class="heart" id="favorite-24px_3_" data-name="favorite-24px (3)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                                <path id="Tracciato_23" data-name="Tracciato 23" d="M0,0H16V16H0Z" fill="rgba(0,0,0,0)"/>
+                                                <path id="Tracciato_24" data-name="Tracciato 24" d="M8.667,15.233l-.967-.88C4.267,11.24,2,9.187,2,6.667A3.631,3.631,0,0,1,5.667,3a3.992,3.992,0,0,1,3,1.393,3.992,3.992,0,0,1,3-1.393,3.631,3.631,0,0,1,3.667,3.667c0,2.52-2.267,4.573-5.7,7.693Z" transform="translate(-0.667 -1)" fill="none" stroke="#fff" stroke-width="1"/>
+                                            </svg>
+                                            
+                                        </div> --}}
+{{--                     
+                                        <div class="apt_text">
+                                            <p class="apt_title">Milano</p>
+                                            <svg class="dot_line" xmlns="http://www.w3.org/2000/svg" width="311" height="1" viewBox="0 0 311 1">
+                                                <path id="Separator" d="M582,746.953v310" transform="translate(1057.453 -581.5) rotate(90)" fill="none" stroke="#909090" stroke-linecap="round" stroke-width="1" stroke-dasharray="0.5 12"/>
+                                            </svg>
+                                            <div class="price_box">
+                                                <p>Prezzo di una notte in appartamento</p>
+                                                <h3>100€</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                    
+                                {{-- <div class="apt_end" style="background: red"> --}}
+                                    {{-- <h3>Su BoolBnB ci sono migliaia di host che ti aiutano a scoprire il mondo in un modo diverso</h3> --}}
+                                    {{-- <div class="arrows"> --}}
+                                        {{-- BACK --}}
+                                        {{-- <svg xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792"> --}}
+                                            {{-- <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/> --}}
+                                        {{-- </svg> --}}
+                                        {{-- FORWARD --}}
+                                        {{-- <svg class="forward" xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
+                                            <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/> --}}
+                                        {{-- </svg>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                         <hr>
-                    </div>
-                </section>
+                </section> --}}
+
+
+
+
+
 
                 {{-- commento --}}
                 {{-- SEZIONE CITTA'  --}}
