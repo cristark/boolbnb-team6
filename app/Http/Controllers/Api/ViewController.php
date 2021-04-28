@@ -17,7 +17,7 @@ class ViewController extends Controller
         // ->where('apartment_id',$apartment->id )
         // ->groupBy('numero_mese')
         // ->orderBy('numero_mese', 'ASC')->get();
-            
+        
         // dd($apartment);
         // dd($visite);
         $visite = View::select( DB::raw('COUNT(*) as totale'), DB::raw('MONTHNAME(created_at) as numero_mese') )

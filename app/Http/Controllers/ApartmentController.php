@@ -58,12 +58,14 @@ class ApartmentController extends Controller
 
             // dd($apartment->pivot->status);
 
-
+            $contatore = View::where('apartment_id', $apartment->id)->count('id');
+            
 
 
             $data = [
                 'apartment' => $apartment,
-                'images' => $img
+                'images' => $img,
+                'visite_totali' => $contatore
             ];
 
 

@@ -49737,6 +49737,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     array_tom: [],
     json: '.json',
     array_visite: '',
+    array_visite_appartmenti: '',
     mesi: [],
     n_visite: [],
     array_completo: [],
@@ -49755,9 +49756,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   mounted: function mounted() {
     this.slider(); // this.aptLink();
     // console.log(this.route);
-    // this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
-    // this.loadVisitors();
-    // this.prova();
+
+    this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
+    this.loadVisitors();
+    this.prova();
   },
   methods: {
     prova: function prova() {
@@ -49805,6 +49807,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/statistiche/' + this.lastItem).then(function (result) {
         _this2.array_visite = result.data.numero_visite;
+        _this2.array_visite_appartmenti = result.data.apartment;
 
         _this2.array_visite.forEach(function (element) {
           // console.log(element.totale, 'sono element');
@@ -49825,7 +49828,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
             // labels: mesi,
             labels: ['January', 'February', 'March', 'April'],
             datasets: [{
-              label: 'Visite',
+              label: 'Le tue visite mensili',
               data: n_visite,
               backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(12, 50, 22, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
               borderColor: ['rgba(255, 99, 132, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
@@ -49930,52 +49933,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       console.log(scrollRight, 'Io sono scrollRight');
       console.log(this.pippo, 'io sono pippo');
       console.log(container, 'container');
-    } // nextImg() {
-    //     var blocco = true;
-    //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
-    //     console.log(larghezzaImg);
-    //     const container = document.getElementsByClassName('invisibile')[0];
-    //     console.log(container);
-    //     const larghezzaContenitore = container.offsetWidth;
-    //     console.log(larghezzaContenitore);
-    //     const scrollLeft = Math.abs(container.style.left.replace('px', ''));
-    //     console.log(scrollLeft);
-    //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
-    //     console.log(larghezzaInner);
-    //     if (scrollLeft > (larghezzaContenitore - larghezzaInner - larghezzaImg)) {
-    //         return blocco = false;
-    //     }
-    //     this.pippo -= larghezzaImg + 80;
-    //     console.log(scrollLeft, 'io sono scroll left');
-    //     console.log(this.pippo, 'io sono pippo');
-    //     console.log(container, 'container');
-    // },
-    // prevImg() {
-    //     var blocco = true;
-    //     this.countImg--;
-    //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
-    //     console.log(larghezzaImg);
-    //     const container = document.getElementsByClassName('invisibile')[0];
-    //     console.log(container);
-    //     const larghezzaContenitore = container.offsetWidth;
-    //     console.log(larghezzaContenitore);
-    //     const scrollRight = Math.abs(container.style.left.replace('px', ''));
-    //     console.log(scrollRight);
-    //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
-    //     console.log(larghezzaInner);
-    //     if (this.pippo <= 300) {
-    //         return blocco = false;
-    //     }
-    //     if (scrollRight > (larghezzaContenitore + larghezzaInner + larghezzaImg)) {
-    //         console.log(scrollRight);
-    //         return;
-    //     }
-    //     this.pippo += larghezzaImg;
-    //     console.log(scrollRight, 'Io sono scrollRight');
-    //     console.log(this.pippo, 'io sono pippo');
-    //     console.log(container, 'container');
-    // }
-
+    }
   }
 });
 
@@ -50044,13 +50002,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> main
 
 
 /***/ })

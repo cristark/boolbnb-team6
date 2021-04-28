@@ -1428,6 +1428,60 @@ main .msg_container .t_body .msg-txt {
   width: 50%;
   padding: 0 5px;
 }
+main .img_stat {
+  width: 400px;
+  height: 360px;
+  border-radius: 20px;
+}
+main .stat-margin {
+  margin: 50px auto;
+}
+main div.container-stat {
+  position: relative;
+  height: 600px;
+  border-radius: 20px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+main div.container-stat .app_stat {
+  color: black;
+  margin-bottom: 50px;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+main div.container-stat #borderDemo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ececec;
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  border: 8px inset rgba(28, 110, 164, 0.08);
+  border-radius: 0px 120px 120px 0px;
+}
+main div.container-stat .canvas_3d {
+  width: 450px;
+  height: 380px;
+}
+main div.container-stat .circle-tot {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ff385c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+main div.container-stat .circle-tot #eye {
+  font-size: px;
+}
 
 footer {
   margin-bottom: 20px;

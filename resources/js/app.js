@@ -96,6 +96,7 @@ const app = new Vue({
         array_tom: [],
         json: '.json',
         array_visite: '',
+        array_visite_appartmenti: '',
         mesi: [],
         n_visite: [],
         array_completo: [],
@@ -116,9 +117,9 @@ const app = new Vue({
         this.slider();
         // this.aptLink();
         // console.log(this.route);
-        // this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
-        // this.loadVisitors();
-        // this.prova();
+        this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
+        this.loadVisitors();
+        this.prova();
     },
     methods: {
         prova(){
@@ -172,6 +173,7 @@ const app = new Vue({
             axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
                 .then(result => {
                     this.array_visite = result.data.numero_visite;
+                    this.array_visite_appartmenti = result.data.apartment;
                     
                     this.array_visite.forEach(element => {
                         // console.log(element.totale, 'sono element');
@@ -183,6 +185,7 @@ const app = new Vue({
                         
                         
                     });
+
 
                     
                     
@@ -199,7 +202,7 @@ const app = new Vue({
 
 
                             datasets: [{
-                                label: 'Visite',
+                                label: 'Le tue visite mensili',
                                 data: n_visite,
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 1)',
@@ -341,73 +344,7 @@ const app = new Vue({
             console.log(container, 'container');
         }
         
-
-        // nextImg() {
-        //     var blocco = true;
-
-
-        //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
-        //     console.log(larghezzaImg);
-        //     const container = document.getElementsByClassName('invisibile')[0];
-        //     console.log(container);
-
-        //     const larghezzaContenitore = container.offsetWidth;
-        //     console.log(larghezzaContenitore);
-
-        //     const scrollLeft = Math.abs(container.style.left.replace('px', ''));
-        //     console.log(scrollLeft);
-
-        //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
-        //     console.log(larghezzaInner);
-
-
-        //     if (scrollLeft > (larghezzaContenitore - larghezzaInner - larghezzaImg)) {
-        //         return blocco = false;
-
-        //     }
-
-        //     this.pippo -= larghezzaImg + 80;
-        //     console.log(scrollLeft, 'io sono scroll left');
-
-        //     console.log(this.pippo, 'io sono pippo');
-        //     console.log(container, 'container');
-
-
-        // },
-        // prevImg() {
-        //     var blocco = true;
-
-        //     this.countImg--;
-        //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
-        //     console.log(larghezzaImg);
-        //     const container = document.getElementsByClassName('invisibile')[0];
-        //     console.log(container);
-
-        //     const larghezzaContenitore = container.offsetWidth;
-        //     console.log(larghezzaContenitore);
-
-        //     const scrollRight = Math.abs(container.style.left.replace('px', ''));
-        //     console.log(scrollRight);
-
-        //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
-        //     console.log(larghezzaInner);
-
-
-        //     if (this.pippo <= 300) {
-        //         return blocco = false;
-        //     }
-
-        //     if (scrollRight > (larghezzaContenitore + larghezzaInner + larghezzaImg)) {
-        //         console.log(scrollRight);
-        //         return;
-        //     }
-        //     this.pippo += larghezzaImg;
-        //     console.log(scrollRight, 'Io sono scrollRight');
-
-        //     console.log(this.pippo, 'io sono pippo');
-        //     console.log(container, 'container');
-        // }
-                
+            
     }
 });
 

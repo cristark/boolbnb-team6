@@ -41,7 +41,7 @@
 
             {{-- SEZIONE INFO PRINCIPALI --}}
             <div class="info_box">
-                <p class="views">32 visualizzazioni</p>
+                <p class="views">{{$visite_totali}} visualizzazioni</p>
                 <h3>{{$apartment->title}}</h3>
                 <p class="rooms">{{$apartment->num_rooms}} stanze | {{$apartment->num_beds}} letti | {{$apartment->num_baths}} bagni</p>
 
