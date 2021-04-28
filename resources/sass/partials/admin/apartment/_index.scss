@@ -22,13 +22,15 @@
         justify-content: center;
         a{
             border-radius: 10px;
+            margin: 10px 0;
             button{
-                padding: 5px 30px;
-                width: 100%;
+                border-radius: 10px;
+                padding: 10px 30px;
                 background: $mainColor;
                 color: white;
                 font-weight: bold;
                 border: none;
+                cursor: pointer;
             }
         }
 
@@ -40,16 +42,6 @@
             padding: 10px;
         }
 
-        // .user_img {
-        //     @include flex(center);
-        //     overflow: hidden;
-
-        //     i {
-        //         font-size: 130px;
-        //         color: $mainGrey;
-        //     }
-        // }
-
         h2,
         p {
             padding-top: 20px;
@@ -59,20 +51,6 @@
             width: 60%;
             display: flex;
             justify-content: space-between;
-        }
-
-        & a.add {
-            margin: 20px 0;
-        }
-
-        a {
-            width: 230px;
-            text-align: center;
-            @include mainBtn;
-            background: $mainColor;
-            color: white;
-            font-weight: bold;
-            border: none;
         }
     }
 
@@ -118,12 +96,14 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
-                a{
-                    margin-bottom: 10px;
-                }
                 button{
-                    padding: 5px 15px;
                     width: 100%;
+                    padding: 10px 30px;
+                    margin: 5px 0;
+                    border-radius: 10px;
+                    border: 1px solid $mainColor;
+                    cursor: pointer;
+                    font-size: larger;
                 }
             }
             .box-ap-stat-msg,
@@ -138,15 +118,6 @@
                 }
                 strong {
                     color: black;
-                }
-                button {
-                    width: 125px;
-                    background-color: white;
-                    border-radius: 10px;
-                    border: 1px solid black;
-                    font-size: 15px;
-                    font-weight: bold;
-                    cursor: pointer;
                 }
 
                 .price_box {

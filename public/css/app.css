@@ -1020,6 +1020,19 @@ main .main-index .user-left {
   align-items: center;
   justify-content: center;
 }
+main .main-index .user-left a {
+  border-radius: 10px;
+  margin: 10px 0;
+}
+main .main-index .user-left a button {
+  border-radius: 10px;
+  padding: 10px 30px;
+  background: #ff385c;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
 main .main-index .user-left img {
   width: 200px;
   height: 200px;
@@ -1035,21 +1048,6 @@ main .main-index .user-left p {
   width: 60%;
   display: flex;
   justify-content: space-between;
-}
-main .main-index .user-left a.add {
-  margin: 20px 0;
-}
-main .main-index .user-left a {
-  width: 230px;
-  text-align: center;
-  border: 1px solid #222222;
-  border-radius: 10px;
-  padding: 10px 25px;
-  cursor: pointer;
-  background: #ff385c;
-  color: white;
-  font-weight: bold;
-  border: none;
 }
 main .main-index .apartment-right {
   width: 65%;
@@ -1089,11 +1087,19 @@ main .main-index .apartment-right .box-apartment .box-left .box-ap-img img {
      object-fit: cover;
 }
 main .main-index .apartment-right .box-apartment .box-right {
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
 }
-main .main-index .apartment-right .box-apartment .box-right .middle_btn {
-  margin: 15px 0;
+main .main-index .apartment-right .box-apartment .box-right button {
+  width: 100%;
+  padding: 10px 30px;
+  margin: 5px 0;
+  border-radius: 10px;
+  border: 1px solid #ff385c;
+  cursor: pointer;
+  font-size: larger;
 }
 main .main-index .apartment-right .box-apartment .box-ap-stat-msg,
 main .main-index .apartment-right .box-apartment .box-ap-button,
@@ -1112,17 +1118,6 @@ main .main-index .apartment-right .box-apartment .box-ap-stat-msg strong,
 main .main-index .apartment-right .box-apartment .box-ap-button strong,
 main .main-index .apartment-right .box-apartment .box-ap-info strong {
   color: black;
-}
-main .main-index .apartment-right .box-apartment .box-ap-stat-msg button,
-main .main-index .apartment-right .box-apartment .box-ap-button button,
-main .main-index .apartment-right .box-apartment .box-ap-info button {
-  width: 125px;
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid black;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
 }
 main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box,
 main .main-index .apartment-right .box-apartment .box-ap-button .price_box,
@@ -1144,6 +1139,140 @@ main .main-index .apartment-right .box-apartment .box-ap-info .price_box h3 {
 main .main-index .apartment-right .box-apartment .box-ap-info {
   width: 350px;
 }
+@media screen and (max-width: 1200px) {
+  main .main-index {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+  main .main-index .user-left {
+    padding: 10px;
+    border: 1px solid #222222;
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  main .main-index .user-left .user_img {
+    border: 1px solid #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding: 10px;
+    overflow: hidden;
+  }
+  main .main-index .user-left .user_img i {
+    font-size: 130px;
+    color: rgba(128, 128, 128, 0.5);
+  }
+  main .main-index .user-left h2, main .main-index .user-left p {
+    padding-top: 10px;
+  }
+  main .main-index .user-left p {
+    display: flex;
+    justify-content: space-between;
+  }
+  main .main-index .user-left a {
+    margin-top: 10px;
+    background: #ff385c;
+    color: white;
+    border: none;
+  }
+  main .main-index .apartment-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 0px;
+  }
+  main .main-index .apartment-right .box-apartment:not(:last-child) {
+    margin-bottom: 18px;
+  }
+  main .main-index .apartment-right .box-apartment {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #222222;
+  }
+  main .main-index .apartment-right .box-apartment .box-left {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  main .main-index .apartment-right .box-apartment .box-left .box-ap-img {
+    width: 100%;
+    margin-right: 20px;
+  }
+  main .main-index .apartment-right .box-apartment .box-left .box-ap-img img {
+    width: 100%;
+    border-radius: 10px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  main .main-index .apartment-right .box-apartment .box-left .box-ap-info {
+    width: 100%;
+  }
+  main .main-index .apartment-right .box-apartment .box-right {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  main .main-index .apartment-right .box-apartment .box-ap-stat-msg,
+main .main-index .apartment-right .box-apartment .box-ap-button,
+main .main-index .apartment-right .box-apartment .box-ap-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 10px;
+  }
+  main .main-index .apartment-right .box-apartment .box-ap-stat-msg p,
+main .main-index .apartment-right .box-apartment .box-ap-button p,
+main .main-index .apartment-right .box-apartment .box-ap-info p {
+    color: grey;
+  }
+  main .main-index .apartment-right .box-apartment .box-ap-stat-msg strong,
+main .main-index .apartment-right .box-apartment .box-ap-button strong,
+main .main-index .apartment-right .box-apartment .box-ap-info strong {
+    color: black;
+  }
+  main .main-index .apartment-right .box-apartment .box-ap-stat-msg button,
+main .main-index .apartment-right .box-apartment .box-ap-button button,
+main .main-index .apartment-right .box-apartment .box-ap-info button {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box p,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box p,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box p {
+    width: 150px;
+  }
+  main .main-index .apartment-right .box-apartment .box-ap-stat-msg .price_box h3,
+main .main-index .apartment-right .box-apartment .box-ap-button .price_box h3,
+main .main-index .apartment-right .box-apartment .box-ap-info .price_box h3 {
+    font-size: 25px;
+  }
+}
 main .error {
   background-color: #eea7a7;
   border: 1px solid darkred;
@@ -1160,6 +1289,7 @@ main .form_box {
 main .form_box section {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   border-bottom: 1px solid #ff385c;
   border-radius: 10px;
@@ -1217,6 +1347,37 @@ main .form_box button {
   border-radius: 10px;
   font-size: larger;
 }
+@media screen and (max-width: 1200px) {
+  main .form_box section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  main .form_box div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  main .form_box .row_input {
+    display: flex;
+    flex-direction: column;
+  }
+  main .form_box .service_box {
+    padding: 5px 0;
+  }
+  main .form_box .service_box label {
+    padding-left: 0px;
+  }
+  main .form_box .service_box input {
+    margin-left: 5px;
+    transform: scale(2);
+  }
+  main .form_box .service_box input:checked {
+    background-color: #ff385c;
+  }
+}
 main .error {
   background-color: #eea7a7;
   border: 1px solid darkred;
@@ -1257,6 +1418,7 @@ main .form_box_edit .info_right {
 main .form_box_edit .info_right section {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   border-bottom: 1px solid #ff385c;
   border-radius: 10px;
@@ -1290,7 +1452,7 @@ main .form_box_edit .info_right section .service_box label {
 }
 main .form_box_edit .info_right section .service_box input {
   margin-left: 5px;
-  transform: scale(2);
+  transform: scale(1.5);
 }
 main .form_box_edit .info_right section .service_box input:checked {
   background-color: #ff385c;
@@ -1303,14 +1465,104 @@ main .form_box_edit .bottone_edit {
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 main .form_box_edit .bottone_edit button {
   padding: 10px 30px;
+  margin-bottom: 10px;
   background-color: #ff385c;
   color: white;
   border: none;
   border-radius: 10px;
+}
+@media screen and (max-width: 1200px) {
+  main .main_container {
+    max-width: 90%;
+  }
+  main .form_box_edit {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  main .form_box_edit button {
+    padding: 5px 15px;
+    background-color: #ff385c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+  }
+  main .form_box_edit .images_left {
+    width: 25%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  main .form_box_edit .images_left img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  main .form_box_edit .info_right {
+    width: 75%;
+    padding: 20px;
+  }
+  main .form_box_edit .info_right section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid #ff385c;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 15px 10px;
+  }
+  main .form_box_edit .info_right section div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px 0;
+  }
+  main .form_box_edit .info_right section label {
+    padding-right: 5px;
+    font-weight: bold;
+  }
+  main .form_box_edit .info_right section input {
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+  }
+  main .form_box_edit .info_right section .input_text {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+  }
+  main .form_box_edit .info_right section .service_box {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5px;
+  }
+  main .form_box_edit .info_right section .service_box label {
+    padding-left: 0px;
+  }
+  main .form_box_edit .info_right section .service_box input {
+    margin-left: 5px;
+    transform: scale(1.5);
+  }
+  main .form_box_edit .info_right section .service_box input:checked {
+    background-color: #ff385c;
+  }
+  main .form_box_edit .info_right .row_input {
+    display: flex;
+    flex-direction: column;
+  }
 }
 main .up_container {
   display: flex;
@@ -1322,6 +1574,18 @@ main .up_container h5 {
   color: gray;
   padding-right: 5px;
 }
+main .up_container a {
+  border-radius: 10px;
+  margin: 10px 0;
+}
+main .up_container a button {
+  width: 200px;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: larger;
+  border: 1px solid #ff385c;
+  cursor: pointer;
+}
 main .mid_container {
   margin-top: 20px;
   padding: 40px;
@@ -1330,6 +1594,18 @@ main .mid_container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+main .mid_container a {
+  border-radius: 10px;
+  margin: 10px 0;
+}
+main .mid_container a button {
+  width: 200px;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: larger;
+  border: 1px solid #ff385c;
+  cursor: pointer;
 }
 main .mid_container .images_left {
   width: 25%;
@@ -1378,26 +1654,19 @@ main .mid_container .info_right .box_servizi p:last-child {
 main .mid_container .info_right .box_posizione p {
   padding-bottom: 15px;
 }
-main .mid_container .info_right .box_sponsor > div {
-  margin-top: 10px;
+main .mid_container .info_right .box_sponsor, main .mid_container .info_right .box_msg, main .mid_container .info_right .box_view {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-}
-main .mid_container .info_right .box_sponsor button {
-  margin-top: 10px;
-}
-main .mid_container .info_right .box_msg > div {
-  display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
-main .mid_container .info_right .box_view > div {
+main .mid_container .info_right .box_sponsor > div, main .mid_container .info_right .box_msg > div, main .mid_container .info_right .box_view > div {
+  margin-top: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
 main .mid_container .down {
   width: 100%;
@@ -1410,8 +1679,60 @@ main .mid_container .down {
   margin-top: 30px;
 }
 main .mid_container .down form > button {
-  background-color: #ff385c;
+  margin: 10px 5px;
+  background-color: red;
   color: white;
+  width: 200px;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: larger;
+  border: 1px solid black;
+  cursor: pointer;
+}
+@media screen and (max-width: 700px) {
+  main .mid_container {
+    padding: 10px;
+  }
+  main .mid_container .info_right {
+    padding: 10px;
+  }
+  main .mid_container .info_right .box_dati {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  main .mid_container .info_right .box_dati p {
+    padding-top: 0px;
+    padding-bottom: 10px;
+  }
+  main .mid_container .info_right .box_sponsor, main .mid_container .info_right .box_msg, main .mid_container .info_right .box_view {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  main .mid_container .info_right .box_sponsor > div, main .mid_container .info_right .box_msg > div, main .mid_container .info_right .box_view > div {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  main .mid_container .down {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    margin-top: 30px;
+  }
+  main .mid_container .down form > button {
+    background-color: #ff385c;
+    color: white;
+  }
 }
 main .msg_container {
   max-width: 80%;
@@ -1431,9 +1752,7 @@ main .msg_container .t_body {
   flex-direction: row;
 }
 main .msg_container .t_body h4 {
-  padding-bottom: 10px;
-  height: 50px;
-  text-align: 50px;
+  padding-bottom: 5px;
 }
 main .msg_container .t_body div {
   display: flex;
@@ -1458,6 +1777,95 @@ main .msg_container .t_body .msg-mail {
 main .msg_container .t_body .msg-txt {
   width: 50%;
   padding: 0 5px;
+}
+@media screen and (max-width: 1500px) {
+  main .msg_container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  main .msg_container img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  main .msg_container .t_body {
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  main .msg_container .t_body h4 {
+    padding-bottom: 5px;
+  }
+  main .msg_container .t_body div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  main .msg_container .t_body .msg-img {
+    width: 100%;
+    padding: 0 5px;
+  }
+  main .msg_container .t_body .msg-title {
+    width: 100%;
+    padding: 0 5px;
+  }
+  main .msg_container .t_body .msg-name {
+    width: 100%;
+    padding: 0 5px;
+  }
+  main .msg_container .t_body .msg-mail {
+    width: 100%;
+    padding: 0 5px;
+  }
+  main .msg_container .t_body .msg-txt {
+    width: 100%;
+    padding: 0 5px;
+  }
+}
+main .main_container .box_ap_spons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+main .main_container .box_ap_spons img {
+  width: 30%;
+  margin: 20px 0;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px gray;
+}
+main .main_container .container_sponsor {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+main .main_container .container_sponsor .box_sponsor_type {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+main .main_container .container_sponsor .box_sponsor_type * {
+  padding: 5px 0;
+}
+main .main_container .container_sponsor .box_sponsor_type a {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #ff385c;
+  color: white;
+  text-align: center;
 }
 
 footer {
