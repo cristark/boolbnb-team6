@@ -33,42 +33,50 @@
                 <textarea class="input_text" id="InputDescription" placeholder="Inserisci la descrizione dell'appartamento" cols="30" rows="10" name="description">{{old('description')}}</textarea>
             </section>
 
-            {{-- Riga singola con Città - Regione - Stato --}}
+            <!-- QUELLO DELLA CHAT DI DANIEL E FUNZIONA-->
             <section class="row_input">
                 <div>
-                    <label for="InputCity">Città</label>
-                    <input type="text" id="InputCity" placeholder="Inserisci la Città" name="city" value="{{old('city')}}">
+                    <label for="InputVia">Via/Piazza</label>
+                    <input type="text" id="InputVia" placeholder="Inserisci cap" name="via" value="{{old('via')}}" v-model='via' v-on:input="getPosition">
                 </div>
-
+                <div>
+                    <label for="InputVia">Numero civico</label>
+                    <input type="text" id="InputVia" placeholder="Inserisci il numero civico" name="numero_civico" value="{{old('numero_civico')}}" v-model='numero_civico' v-on:input="getPosition">
+                </div>
+                <div>
+                    <label for="InputVia">CAP</label>
+                    <input type="number" id="InputVia" placeholder="Inserisci il numero civico" name="cap" value="{{old('cap')}}" v-model='CAP' v-on:input="getPosition">
+                </div>
+                <div>
+                    <label for="InputCity">Città</label>
+                    <input type="text" id="InputCity" placeholder="Inserisci la Città" name="city" value="{{old('city')}}" v-model='citta' v-on:input="getPosition">
+                </div>
                 <div>
                     <label for="InputProvince">Provincia</label>
-                    <input type="text" id="InputProvince" placeholder="Inserisci la Provincia" name="province" >
+                        <input type="text" id="InputProvince" placeholder="Inserisci la Provincia" name="provincia" value="{{old('provincia')}}" v-model='provincia' v-on:input="getPosition">
                 </div>
-
                 <div>
                     <label for="InputStato">Stato</label>
-                    <input type="text" id="InputStato" placeholder="Inserisci lo Stato" name="state">
+                    <input type="text" id="InputStato" placeholder="Inserisci lo Stato" name="state" value="{{old('provincia','Italia')}}" v-model='stato' v-on:input="getPosition">
                 </div>
             </section>
 
             {{-- Riga singola con Latitudine - Longitudine --}}
             <section>
-
-                <div >
-                    <label for="InputLatitude">Inserisci l'indirizzo con questo modello: via milano 3, 20020 corsico MI</label>
-                    <input type="text" id="InputIndirizzo" placeholder="Inserisici nome della via" name="andress" v-model='indirizzo' v-on:input="getPosition" value="{{old('andress')}}">
-                </div>
-
                 <div>
                     <label for="InputLatitude">Latitudine</label>
-                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude' style="">
+                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude'>
                 </div>
-
                 <div>
                     <label for="InputLongitude">Longitudine</label>
-                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude' style="">
+                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude'>
+                </div>
+                <div>
+                    <label for="Input indirizzo">Indirizzo</label>
+                    <input type="text" id="Input indirizzo" placeholder="Inserisci l'indirizzo" name="indirizzo" v-model='indirizzo'>
                 </div>
             </section>
+            <!-- QUELLO DELLA CHAT DI DANIEL E FUNZIONA-->
 
             {{-- Riga singola con Num Stanze - Num Letti - Num Bagni - MQ --}}
             <section class="row_input">
@@ -94,12 +102,12 @@
             </section>
 
             <section>
-            {{-- Immagine principale --}}
+                {{-- Immagine principale --}}
                 <div>
                     <label for="InputFile">Immagine principale (obbligatoria)</label>
                     <input type="file" id="InputFile" name="main_img">
                 </div>
-            {{-- Foto galleria --}}
+                {{-- Foto galleria --}}
                 <div class="gallery">
                     <label>Carica le foto dell'appartamento (facoltativa)</p>
                     <input type="file" id="InputFile" name="images[]" multiple>
@@ -107,12 +115,12 @@
             </section>
 
             <section>
-            {{-- Prezzo Appartamento --}}
+                {{-- Prezzo Appartamento --}}
                 <div>
                     <label for="InputPrice">Prezzo per notte</label>
                     <input type="number" id="InputPrice" placeholder="Inserisci il Prezzo" name="price">
                 </div>
-            {{-- Visibilita --}}
+                {{-- Visibilita --}}
                 <div>
                     <label for="InputActive">Vuoi rendere visibile il tuo l'appartamento</label>    
                     <select name="active">

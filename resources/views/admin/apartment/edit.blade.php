@@ -119,29 +119,29 @@
                 </section>
 
                 {{-- Riga singola con Latitudine - Longitudine --}}
-                <section>
-                    <div>
+                    <!-- <div>
                         <label for="InputLatitude">Latitudine</label>
                         <input type="text" id="InputLatitude" placeholder="Inserisci la Latitudine" name="latitude" value="{{$apartment->latitude}}">
-                    </div>
+                    </div> -->
 
             {{-- Riga singola con Latitudine - Longitudine --}}
             <div class="form-row">
-                <div >
-                    <p>Per favore reinserire l'indirizzo manualmente ancora (obbligatorio).</p>
-                    <label for="InputLatitude">Esempio modello: via milano 3, 20020 corsico MI </label>
-                    <input type="text" id="InputIndirizzo" placeholder="Inserisici nome della via" name="andress" v-model='indirizzo' v-on:input="getPosition" value="{{old('andress')}}">
-                </div>
+                <section>
+                    <div>
+                        <p>Per favore reinserire l'indirizzo manualmente ancora (obbligatorio).</p>
+                        <label for="InputLatitude">Esempio modello: via milano 3, 20020 corsico MI </label>
+                        <input type="text" id="InputIndirizzo" placeholder="Inserisici nome della via" name="andress" v-model='indirizzo' v-on:input="getPosition" value="{{old('andress')}}">
+                    </div>
 
-                <div>
-                    <label for="InputLatitude">Latitudine</label>
-                    <input type="text" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude' style="">
-                </div>
+                    <div>
+                        <!-- <label for="InputLatitude">Latitudine</label> -->
+                        <input type="hidden" id="InputLatitude" placeholder="Inserisci la Latitude" name="latitude" v-model='latitude'>
+                    </div>
 
-                <div>
-                    <label for="InputLongitude">Longitudine</label>
-                    <input type="text" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude' style="">
-                </div>
+                    <div>
+                        <!-- <label for="InputLongitude">Longitudine</label> -->
+                        <input type="hidden" id="InputLongitude" placeholder="Inserisci la Longitudine" name="longitude" v-model='longitude'>
+                    </div>
 
                     {{-- Visibilita --}}
                     <div>

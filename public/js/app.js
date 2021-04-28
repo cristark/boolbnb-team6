@@ -49732,7 +49732,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     lastItem: '',
     risultato_mesi: [],
     language: 'it-IT',
-    citta: '',
     apiKey: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
     array_tom: [],
     json: '.json',
@@ -49748,15 +49747,25 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     array_slider: [],
     pippo: 0,
     route: '/apartment/',
-    contatore: 0
+    contatore: 0,
+    via: '',
+    numero_civico: 1,
+    CAP: 1,
+    citta: '',
+    provincia: '',
+    stato: 'Italia'
   },
   // created(){
   //     console.log(this.lastItem);
   // },
   mounted: function mounted() {
+<<<<<<< HEAD
     this.slider(); // this.aptLink();
     // console.log(this.route);
 
+=======
+    this.slider();
+>>>>>>> main
     this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
     this.loadVisitors();
     this.prova();
@@ -49788,6 +49797,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     disableScroll: function disableScroll() {
       document.body.style.overflow = 'hidden';
       document.querySelector('html').scrollTop = window.scrollY;
+    },
+    // ATTIVO DROPDOWN RICERCA AVANZATA
+    showSrc: function showSrc() {
+      this.advancedSearch = !this.advancedSearch;
     },
     tomtom: function tomtom() {
       var _this = this;
@@ -49850,6 +49863,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
       // this.andress = 'Corso Galileo Ferraris, 35, 10121 Torino TO';
       // axios.defaults.headers.common['X-Requested-With'];
+      this.indirizzo = this.via + ' ' + this.numero_civico + ', ' + this.CAP + ' ' + this.citta + '' + this.provincia;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://api.tomtom.com/search/2/search/' + this.indirizzo + '.json?', {
         params: {
@@ -49875,7 +49889,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       //     console.log('ciao');
       // }
       window.location.href = '/apartment/' + this.array_slider[index].slug;
-      console.log(window.location.href);
     },
     slider: function slider() {
       var _this4 = this;
@@ -50002,8 +50015,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> main
 
 
 /***/ })

@@ -15,6 +15,18 @@
         color: gray;
         padding-right: 5px;
     }
+    a{
+        border-radius: 10px;
+        margin: 10px 0;
+        button{
+            width: 200px;
+            border-radius: 10px;
+            padding: 10px 30px;
+            font-size: larger;
+            border: 1px solid $mainColor;
+            cursor: pointer;
+        }
+    }
 }
 .mid_container {
     margin-top: 20px;
@@ -24,6 +36,18 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    a{
+        border-radius: 10px;
+        margin: 10px 0;
+        button{
+            width: 200px;
+            border-radius: 10px;
+            padding: 10px 30px;
+            font-size: larger;
+            border: 1px solid $mainColor;
+            cursor: pointer;
+        }
+    }
     .images_left {
         width: 25%;
         max-height: 80vh;
@@ -74,31 +98,18 @@
                 padding-bottom: 15px;
             }
         }
-        .box_sponsor {
-            > div {
+        .box_sponsor, .box_msg, .box_view{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            >div{
                 margin-top: 10px;
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
-            }
-            button {
-                margin-top: 10px;
-            }
-        }
-        .box_msg {
-            > div {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-        .box_view {
-            > div {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
             }
         }
     }
@@ -112,8 +123,69 @@
         border-radius: 20px;
         margin-top: 30px;
         form > button {
-            background-color: $mainColor;
+            margin: 10px 5px;
+            background-color: red;
             color: white;
+            width: 200px;
+            border-radius: 10px;
+            padding: 10px 30px;
+            font-size: larger;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    // button{
+    //     padding: 5px 10px;
+    //     border-radius: 10px;
+    //     border: 1px solid black;
+    //     cursor: pointer;
+    //     font-size: 20px;
+    //     width: 150px;
+    // }
+    .mid_container{
+        padding: 10px;
+        .info_right{
+            padding: 10px;
+            .box_dati{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                p{
+                    padding-top: 0px;
+                    padding-bottom: 10px;
+                }
+            }
+            .box_sponsor, .box_msg, .box_view{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                >div{
+                    margin-top: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+            }
+        }
+        .down{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 20px;
+            border: 1px solid gray;
+            border-radius: 20px;
+            margin-top: 30px;
+            form>button{
+                background-color: $mainColor;
+                color: white;
+            }
         }
     }
 }

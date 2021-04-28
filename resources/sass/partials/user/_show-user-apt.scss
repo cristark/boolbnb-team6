@@ -29,12 +29,26 @@
                     height: 100%;
                     padding: 5px;
                     object-fit: cover;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
                 }
             }
 
             .apartment-images {
                 min-width: 30%;
                 height: 100%;
+
+                .second_img {
+                    img {
+                        border-top-right-radius: 20px;
+                    }
+                }
+
+                .third_img {
+                    img {
+                        border-bottom-right-radius: 20px;
+                    }
+                }
 
                 div {
                     width: 100%;

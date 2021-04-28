@@ -8,8 +8,7 @@ class Image extends Model
 {
     protected $fillable = [
 
-        'src',
-        'img_description',
+        'src'
 
     ];
 

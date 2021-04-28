@@ -19,7 +19,7 @@
         <div class="msg-name"><h4>Nominativo Messaggio: </h4><p>{{ $message->sender_name }}</p></div>
         <div class="msg-mail"><h4>Mail Messaggio: </h4><p>{{ $message->sender_mail }}</p></div>
         <div class="msg-txt"><h4>Testo Messaggio</h4><p>{{ $message->msg_txt }}</p></div>
-        <a class="msg-bottone" href="{{route('message.show', $message)}}">Visualizza</a>
+        <!-- <a class="msg-bottone" href="{{route('message.show', $message)}}">Visualizza</a> -->
     </section>
     @endforeach
 
