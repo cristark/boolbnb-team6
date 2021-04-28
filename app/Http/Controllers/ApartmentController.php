@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\View;
 use App\Service;
 use App\Image;
+use App\User;
 
 
 class ApartmentController extends Controller
@@ -18,10 +19,12 @@ class ApartmentController extends Controller
         public function index(){
 
             $apartments = Apartment::all();
+            $users = User::where('id', Auth::id())->firstOrFail();
 
             
             $data = [
-                'apartments' => $apartments
+                'apartments' => $apartments,
+                'user' => $users
             ];
 
         return view('guest.apartment.index', $data);

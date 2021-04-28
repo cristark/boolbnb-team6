@@ -7,10 +7,10 @@
 
         <div class="back_btn">
             {{-- BACK --}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="26.845" height="18.792" viewBox="0 0 26.845 18.792">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26.845" height="15" viewBox="0 0 26.845 18.792">
                 <path id="Tracciato_29" data-name="Tracciato 29" d="M11.4,23.792,13.288,21.9,7.141,15.738h21.7V13.054H7.141L13.3,6.893,11.4,5,2,14.4Z" transform="translate(-2 -5)" fill="#222"/>
             </svg>
-            <a href="{{ route( 'guest.apartment.index' ) }}">Torna Indietro</a>
+            <a href="{{url('/')}}">Torna Indietro</a>
         </div>
 
         {{-- SEZIONE CON FOTO APPARTAMENTO E INFO PRINCIPALI --}}
@@ -31,10 +31,10 @@
                     <div class="second_img">
                         {{-- <img src="{{ array_key_exists(0, $images) ? asset('storage/' . $images[0]["src"]) : asset('storage/image_gallery/pronto.png')}}"> --}}
 
-                        {{-- <img style="width: 100%;" src="{{ $images[0]['src'] }}" alt="seconda immagine appartamento"> --}}
+                        <img src="{{ $images[0]['src'] }}" alt="seconda immagine appartamento">
                     </div>
                     <div class="third_img">
-                        {{-- <img style="width: 100%;" src="{{ $images[1]['src'] }}" alt="terza immagine appartamento"> --}}
+                        <img src="{{ $images[1]['src'] }}" alt="terza immagine appartamento">
                     </div>
                 </div>
             </div>
@@ -95,9 +95,21 @@
             </div>
         </section>
 
-        <section class="main_title">
-            <h2>{{$apartment->title}}</h2>
-            <p class="rooms">{{$apartment->mq}} mq - {{$apartment->num_rooms}} stanze - {{$apartment->num_beds}} letti - {{$apartment->num_baths}} bagni</p>
+        <section class="title_container">
+            <div class="main_title">
+                <h2>{{$apartment->title}}</h2>
+                <p class="rooms">{{$apartment->mq}} mq - {{$apartment->num_rooms}} stanze - {{$apartment->num_beds}} letti - {{$apartment->num_baths}} bagni</p>
+            </div>
+            <div class="share_buttons">
+                <div class="share_box">
+                    <i class="fas fa-share-alt"></i>
+                    <p>Share</p>
+                </div>
+                <div class="share_box border">
+                    <i class="fas fa-heart"></i>
+                    <p>Save</p>
+                </div>
+            </div>
         </section>
 
         <section class="details">
@@ -113,47 +125,32 @@
             {{-- SERVIZI --}}
             <div class="detail_box services">
                 <h3>Servizi</h3>
-                <p style="color: red; font-weight:bolder;">SAUNA - RIVEDERE QUESTA PARTE COME COLLEGARE SERVIZI!!</p>
                 
-                @foreach ($apartment->services as $service)
-                    <div style="border: 1px solid red;">
-                        {{-- <div> @php echo trim($service->image_link,'"') @endphp</div> --}}
-                        <div>{{$service->name}}</div>
-
-                        codice uguale all'
-                    </div>
-                @endforeach
-                    
-
-
-
-
-
-
-
-
-                    
-            
-                        {{-- {{$apartment->sponsors[0]->pivot->status}} --}}
-                        
-
-
+                <div class="services_container">
+                    @foreach ($apartment->services as $service)
+                        <div class="service_box">
+                            <i class="{{$service->image_link}}"></i>
+                            <p>{{$service->name}}</p>
+                        </div>
+                    @endforeach
+                </div>
             </div>
 
             {{-- POSIZIONE APPARTAMENTO --}}
             <div class="detail_box position">
                 <h3>Posizione</h3>
-                <p>{{$apartment->city}}, {{$apartment->province}}, {{$apartment->state}}</p>
                 
-                <div id ="map" style="height:90vh;"></div> 
+                <div class="map_box" id ="map"></div> 
+                
+                <h4>{{$apartment->city}} - {{$apartment->province}} | {{$apartment->state}}</h4>
                 
                 {{-- questo solo per passaggio di valori --}}
-                <div id="dom-lat">
+                <div id="dom-lat" class="hidden">
                     <?php
                         echo $lat = $apartment->latitude; 
                     ?>
                 </div>
-                <div id="dom-lon">
+                <div id="dom-lon" class="hidden">
                     <?php
                         echo $lon = $apartment->longitude; 
                     ?>

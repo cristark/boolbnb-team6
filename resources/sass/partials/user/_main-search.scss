@@ -26,6 +26,40 @@
         margin-right: 30px;
         overflow: auto;
 
+        .adv_search {
+            h3 {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                margin-bottom: 10px;
+            }
+
+            .src_box {
+                @include flex(space-evenly);
+
+                .row {
+                    @include flex(space-between);
+                    margin-bottom: 10px;
+
+                    input {
+                        width: 100px;
+                        border-radius: 5px;
+                        margin-left: 20px;
+                        padding: 5px;
+                        border: 1px solid $mainBlack;
+                    }
+                }
+            }
+
+            .src_btn {
+                border: 1px solid $mainBlack;
+                border-radius: 10px;
+                padding: 5px 10px;
+            }
+        }
+
         .box {
             @include flex(flex-start);
             height: 125px;
