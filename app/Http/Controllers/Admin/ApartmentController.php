@@ -72,11 +72,15 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        // dd($data);
         
         // nuovo appartamento
         $newApartment = new Apartment();
-        $newApartment->slug = Str::slug($data['title']);        
+        $newApartment->slug = Str::slug($data['title']);
 
+        $newApartment->province = $data['provincia'];
+        $newApartment->andress = $data['indirizzo'];
+        
         // array base        
         $idUser = Auth::id();
         $services = Service::all();
@@ -111,7 +115,6 @@ class ApartmentController extends Controller
                 $image = new Image();
                 $image->src = $path.$image;
                 $image->src = str_replace( "[]", "",$image->src);
-                $image->img_description = 'Non disponibile descrizione della foto';
                 
                 // crea nuova relazione
                 $newApartment->images()->saveMany([$image]);
@@ -266,7 +269,6 @@ class ApartmentController extends Controller
                 $image = new Image();
                 $image->src = $path.$image;
                 $image->src = str_replace( "[]", "",$image->src);
-                $image->img_description = 'Non disponibile descrizione della foto';
                 
                 // crea nuova relazione
                 $apartment->images()->saveMany([$image]);

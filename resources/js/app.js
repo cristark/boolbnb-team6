@@ -91,7 +91,6 @@ const app = new Vue({
         lastItem: '',
         risultato_mesi: [],
         language: 'it-IT',
-        citta: '',
         apiKey: '581ptADhY1xisfyvdt8ITvz3d78O66H6',
         array_tom: [],
         json: '.json',
@@ -107,9 +106,12 @@ const app = new Vue({
         pippo: 0,
         route: '/apartment/',
         contatore: 0,
-        advancedSearch: false,
-        // Controlli prezzo appartamento con ospiti
-
+        via: '',
+        numero_civico:1,
+        CAP: 1,
+        citta: '',
+        provincia: '',
+        stato:'Italia'
     },
     // created(){
     //     console.log(this.lastItem);
@@ -243,6 +245,7 @@ const app = new Vue({
         getPosition(){
             // this.andress = 'Corso Galileo Ferraris, 35, 10121 Torino TO';
             // axios.defaults.headers.common['X-Requested-With'];
+            this.indirizzo = this.via + ' ' + this.numero_civico + ', ' + this.CAP + ' ' + this.citta + '' + this.provincia;
             axios
                 axios.get('https://api.tomtom.com/search/2/search/' + this.indirizzo + '.json?',{
                     params: {
