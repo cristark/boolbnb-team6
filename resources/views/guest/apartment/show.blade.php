@@ -31,10 +31,10 @@
                     <div class="second_img">
                         {{-- <img src="{{ array_key_exists(0, $images) ? asset('storage/' . $images[0]["src"]) : asset('storage/image_gallery/pronto.png')}}"> --}}
 
-                        <img style="width: 100%;" src="{{ $images[0]['src'] }}" alt="seconda immagine appartamento">
+                        {{-- <img style="width: 100%;" src="{{ $images[0]['src'] }}" alt="seconda immagine appartamento"> --}}
                     </div>
                     <div class="third_img">
-                        <img style="width: 100%;" src="{{ $images[1]['src'] }}" alt="terza immagine appartamento">
+                        {{-- <img style="width: 100%;" src="{{ $images[1]['src'] }}" alt="terza immagine appartamento"> --}}
                     </div>
                 </div>
             </div>

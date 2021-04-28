@@ -174,7 +174,7 @@ class ApartmentController extends Controller
             $sponsor = true;
         }
 
-        if(Auth::id() == $apartment->user_id ){
+        if( Auth::id() == $apartment->user_id ){
 
             $data = [
                 'apartment' => $apartment,

@@ -102,19 +102,23 @@ const app = new Vue({
         months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile'],
         indirizzo:'',
         latitude:0,
-        longitude:0
+        longitude:0,
+        array_slider: [],
+        pippo: 0,
+        route: '/apartment/',
+        contatore: 0
     },
     // created(){
     //     console.log(this.lastItem);
 
     // },
     mounted() {
-        // console.log(this.citta);
-
-        this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
-        this.loadVisitors();
-        // this.tomtom();
-        this.prova();
+        this.slider();
+        // this.aptLink();
+        // console.log(this.route);
+        // this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
+        // this.loadVisitors();
+        // this.prova();
     },
     methods: {
         prova(){
@@ -158,6 +162,7 @@ const app = new Vue({
                 }
             })
             .then(result => {
+
                 this.array_tom = result.data.results;
                 console.log(this.array_tom);
 
@@ -252,7 +257,156 @@ const app = new Vue({
         },
         setIndirizzo(andress){
             this.indirizzo = andress;
+        },
+        aptLink(index) {
+            // console.log(index,'lo prendi il click');
+            // if(index == this.array_slider[this.contatore]){
+            //     console.log('ciao');
+            // }
+            window.location.href = '/apartment/' + this.array_slider[index].slug;
+            console.log(window.location.href);
+        },
+
+
+        slider(){
+            
+            axios.get('http://localhost:8000/api/slider')
+            .then( response => {
+                this.array_slider = response.data.apartmentSponsored;
+                console.log(this.array_slider[0]);
+            })
+        }, 
+        nextImg() {
+
+
+            let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
+            console.log(larghezzaImg);
+            const container = document.getElementsByClassName('invisibile')[0];
+            console.log(container);
+
+            const larghezzaContenitore = container.offsetWidth;
+            console.log(larghezzaContenitore);
+
+            const scrollLeft = Math.abs(container.style.left.replace('px', ''));
+            console.log(scrollLeft);
+
+            const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
+            console.log(larghezzaInner);
+
+
+            if (scrollLeft > (larghezzaContenitore - larghezzaInner - larghezzaImg)) {
+                return;
+
+            }
+
+            this.pippo -= larghezzaImg;
+            console.log(scrollLeft, 'io sono scroll left');
+
+            console.log(this.pippo, 'io sono pippo');
+            console.log(container, 'container');
+
+
+        },
+        prevImg() {
+            var blocco = true;
+
+            this.countImg--;
+            let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
+            console.log(larghezzaImg);
+            const container = document.getElementsByClassName('invisibile')[0];
+            console.log(container);
+
+            const larghezzaContenitore = container.offsetWidth;
+            console.log(larghezzaContenitore);
+
+            const scrollRight = Math.abs(container.style.left.replace('px', ''));
+            console.log(scrollRight);
+
+            const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
+            console.log(larghezzaInner);
+
+
+            if (this.pippo == 0) {
+                return blocco = false;
+            }
+
+            if (scrollRight > (larghezzaContenitore + larghezzaInner + larghezzaImg)) {
+                console.log(scrollRight);
+                return;
+            }
+            this.pippo += larghezzaImg;
+            console.log(scrollRight, 'Io sono scrollRight');
+
+            console.log(this.pippo, 'io sono pippo');
+            console.log(container, 'container');
         }
+        
+
+        // nextImg() {
+        //     var blocco = true;
+
+
+        //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
+        //     console.log(larghezzaImg);
+        //     const container = document.getElementsByClassName('invisibile')[0];
+        //     console.log(container);
+
+        //     const larghezzaContenitore = container.offsetWidth;
+        //     console.log(larghezzaContenitore);
+
+        //     const scrollLeft = Math.abs(container.style.left.replace('px', ''));
+        //     console.log(scrollLeft);
+
+        //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
+        //     console.log(larghezzaInner);
+
+
+        //     if (scrollLeft > (larghezzaContenitore - larghezzaInner - larghezzaImg)) {
+        //         return blocco = false;
+
+        //     }
+
+        //     this.pippo -= larghezzaImg + 80;
+        //     console.log(scrollLeft, 'io sono scroll left');
+
+        //     console.log(this.pippo, 'io sono pippo');
+        //     console.log(container, 'container');
+
+
+        // },
+        // prevImg() {
+        //     var blocco = true;
+
+        //     this.countImg--;
+        //     let larghezzaImg = document.getElementsByClassName('container-img')[0].offsetWidth;
+        //     console.log(larghezzaImg);
+        //     const container = document.getElementsByClassName('invisibile')[0];
+        //     console.log(container);
+
+        //     const larghezzaContenitore = container.offsetWidth;
+        //     console.log(larghezzaContenitore);
+
+        //     const scrollRight = Math.abs(container.style.left.replace('px', ''));
+        //     console.log(scrollRight);
+
+        //     const larghezzaInner = document.getElementsByClassName('img-array')[0].offsetWidth;
+        //     console.log(larghezzaInner);
+
+
+        //     if (this.pippo <= 300) {
+        //         return blocco = false;
+        //     }
+
+        //     if (scrollRight > (larghezzaContenitore + larghezzaInner + larghezzaImg)) {
+        //         console.log(scrollRight);
+        //         return;
+        //     }
+        //     this.pippo += larghezzaImg;
+        //     console.log(scrollRight, 'Io sono scrollRight');
+
+        //     console.log(this.pippo, 'io sono pippo');
+        //     console.log(container, 'container');
+        // }
                 
     }
 });
