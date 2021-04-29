@@ -403,7 +403,7 @@ main .jumbotron .overlay {
   color: #fff;
 }
 main .jumbotron .overlay .jumb_text {
-  margin-left: 100px;
+  margin-left: 160px;
 }
 main .jumbotron .overlay .jumb_text h1 {
   font-size: 150px;
@@ -679,53 +679,28 @@ main .host_cta .cta_box .overlay .box_test .btn {
   width: 150px;
   margin-top: 40px;
 }
-main .flash {
-  position: absolute;
-  right: 0;
-  top: 3%;
-  height: 50px;
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 20px;
-  width: 90%;
-  background-color: #ff385c;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+@media screen and (max-width: 1200px) {
+  main .sponsored_apts .title.main_container {
+    max-width: 80%;
+  }
+  main .apt_end.main_container {
+    max-width: 80%;
+  }
 }
-main .flash h4 {
-  color: white;
-  font-size: 20px;
-}
-main .flash i {
-  color: gold;
-}
-main .sponsors_head {
-  margin: 40px auto;
-  border-radius: 20px;
-  background-color: white;
-  height: 80px;
-  max-width: 30%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-main h2.title_sponsor {
-  text-align: center;
-  color: #ff385c;
-}
-main #next,
-main #prev {
-  color: white;
-}
-main div.circle {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: #ff385c;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (max-width: 970px) {
+  main .jumbotron {
+    height: 670px;
+    background-position: center;
+  }
+  main .jumbotron .overlay .jumb_text {
+    margin-left: 100px;
+  }
+  main .jumbotron .overlay .jumb_text h1 {
+    font-size: 100px;
+  }
+  main .jumbotron .overlay .jumb_text h2 {
+    font-size: 35px;
+  }
 }
 main .back_btn {
   display: flex;

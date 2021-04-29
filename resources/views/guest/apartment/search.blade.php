@@ -99,7 +99,7 @@
 
                             <div class="price_box">
                                 <p>Prezzo di una notte in appartamento</p>
-                                <h3>100€</h3>
+                                <h3>{{intval($apartment->price)}} €</h3>
                             </div>
                         </div>
                     </div>

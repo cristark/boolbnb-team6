@@ -88,7 +88,7 @@ class SearchController extends Controller
 
         }
 
-        if(isset($data['services'])){
+        if(!isset($data['services'])){
 
             $apartment_ok = $apartments;
         }

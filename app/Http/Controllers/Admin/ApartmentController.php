@@ -94,7 +94,7 @@ class ApartmentController extends Controller
         {
             // salvataggio immagine
             $path = Storage::put('main_images', $data['main_img']);
-            
+            // dd($path);
             // percorso file
             $data['main_img'] = $path;
             $newApartment->main_img = $data['main_img'];
@@ -168,6 +168,8 @@ class ApartmentController extends Controller
         //     'pivot' => $pivot_app_spons
         // ];
 
+        $contatore = View::where('apartment_id', $apartment->id)->count('id');
+
         $sponsor = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->latest('end_date')->first();
         if( $sponsor != null )
         {
@@ -186,7 +188,8 @@ class ApartmentController extends Controller
                 'sponsor' => $sponsor,
                 'images' => $images,
                 'messages' => $messages,
-                'user' => $users
+                'user' => $users,
+                'visite_totali' => $contatore
                 // 'pivot' => $pivot_app_spons
             ];
             

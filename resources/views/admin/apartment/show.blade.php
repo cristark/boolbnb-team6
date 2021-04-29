@@ -134,7 +134,7 @@
                         <h2>Statistiche</h2>
                         <div>
                             <h4>Informazioni</h4>
-                            <p>visualizzazioni da mettere!!!!!!!!!!</p>
+                            <p>{{$visite_totali}} visualizzazioni</p>
                         </div>
                     </div>
                     <a href="{{route('statistic.show', $apartment->slug)}}"><button type="button">Statistiche</button></a>

@@ -64,7 +64,7 @@
                             <p>Stanze: {{$apartment->num_rooms}} | Letti: {{$apartment->num_beds}} | Bagni: {{$apartment->num_baths}}</p>
                             <div class="price_box">
                                 <p>Prezzo di una notte in appartamento</p>
-                                <h3>{{$apartment->price}} €</h3>
+                                <h3>{{intval($apartment->price)}} €</h3>
                             </div>
                         </div>
                     </section>
