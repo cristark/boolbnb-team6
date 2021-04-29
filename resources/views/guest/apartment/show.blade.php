@@ -52,32 +52,32 @@
                     <div class="box nights">
                         <h5>Notti</h5>
                         <div class="selector">
-                            <i class="fas fa-minus"></i>
-                            <p>2</p>
-                            <i class="fas fa-plus"></i>
+                            <a v-on:click="(nights > 1) ? nights-- : ''"><i class="fas fa-minus"></i></a>
+                            <p>@{{nights}}</p>
+                            <a v-on:click="nights++"><i class="fas fa-plus"></i></a>
                         </div>
                     </div>
                     <div class="box adults">
                         <h5>Adulti</h5>
                         <div class="selector">
-                            <i class="fas fa-minus"></i>
-                            <p>2</p>
-                            <i class="fas fa-plus"></i>
+                            <a v-on:click="(adults > 1) ? adults-- : ''"><i class="fas fa-minus"></i></a>
+                            <p>@{{adults}}</p>
+                            <a v-on:click="adults++"><i class="fas fa-plus"></i></a>
                         </div>
                     </div>
                     <div class="box childrens">
                         <h5>Bambini</h5>
                         <div class="selector">
-                            <i class="fas fa-minus"></i>
-                            <p>0</p>
-                            <i class="fas fa-plus"></i>
+                            <a v-on:click="(childrens > 0) ? childrens-- : ''"><i class="fas fa-minus"></i></a>
+                            <p>@{{childrens}}</p>
+                            <a v-on:click="childrens++"><i class="fas fa-plus"></i></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="price_box">
-                    <p>{{$apartment->price}} € x 2 notti</p>
-                    <p>240 €</p>
+                    <p>@{{Math.floor(nightPrice)}} € x @{{nights}} notti</p>
+                    <p>@{{nightPrice * nights}} €</p>
                 </div>
                 <div class="price_box">
                     <p>Pulizie</p>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="tot_price_box">
                     <p>Totale</p>
-                    <h3>400 €</h3>
+                    <h3>@{{(nightPrice * nights) + 160}} €</h3>
                 </div>
 
                 <div class="air_btn">

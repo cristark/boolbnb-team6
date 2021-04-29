@@ -84,7 +84,7 @@
                     .selector {
                         @include flex(space-between);
 
-                        i {
+                        a {
                             cursor: pointer;
                         }
 

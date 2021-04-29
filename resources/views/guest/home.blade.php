@@ -85,7 +85,7 @@
                                 <!--qua gli sto dicendo stampami tanti container-img quanti sono quelli contenuti nell'array Img e dai il bcg di ogni elemento-->
                                 <div v-for='(item, index) in array_slider'  class="container-img"  :style='`background-image: url(${item.main_img})`' v-on:click="aptLink(index)">
 
-                                    <div class="overlay">
+                                    <div class="willoby">
                                         {{-- Pulsante like all'interno della foto --}}
                                         <div class="like_box">
                                             {{-- SVG Cuore --}}

@@ -464,7 +464,7 @@ main .sponsored_apts .template-img .img-array .invisibile .container-img {
   background-repeat: no-repeat;
   overflow: hidden;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -475,7 +475,7 @@ main .sponsored_apts .template-img .img-array .invisibile .container-img .overla
   background: linear-gradient(0deg, #212121b0 0%, rgba(139, 139, 139, 0.1) 100%);
   color: #fff;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .like_box {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .like_box {
   width: 70px;
   height: 40px;
   position: absolute;
@@ -492,17 +492,17 @@ main .sponsored_apts .template-img .img-array .invisibile .container-img .overla
   transition: all 0.2s linear;
   cursor: pointer;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .like_box:hover svg.heart {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .like_box:hover svg.heart {
   transition: all 0.2s linear;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .like_box:hover svg.heart #Tracciato_24 {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .like_box:hover svg.heart #Tracciato_24 {
   fill: #ff385c;
   stroke: #ff385c;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .like_box svg.heart {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .like_box svg.heart {
   transform: scale(150%);
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .apt_text {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .apt_text {
   width: 95%;
   position: absolute;
   bottom: 20px;
@@ -512,23 +512,23 @@ main .sponsored_apts .template-img .img-array .invisibile .container-img .overla
   color: #fff;
   text-shadow: 1px 1px #222222;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .apt_text .apt_title {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .apt_text .apt_title {
   font-size: 20px;
   font-weight: bold;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .apt_text .price_box {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .apt_text .price_box {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .apt_text .price_box p {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .apt_text .price_box p {
   width: 50%;
   font-weight: lighter;
   font-size: 12px;
   color: gray;
 }
-main .sponsored_apts .template-img .img-array .invisibile .container-img .overlay .apt_text .price_box h3 {
+main .sponsored_apts .template-img .img-array .invisibile .container-img .willoby .apt_text .price_box h3 {
   font-size: 30px;
 }
 main .sponsored_apts .template-img .apts {
@@ -954,7 +954,7 @@ main .show_user_apt .main_info .info_box .hosts_box .box .selector {
   justify-content: space-between;
   align-items: center;
 }
-main .show_user_apt .main_info .info_box .hosts_box .box .selector i {
+main .show_user_apt .main_info .info_box .hosts_box .box .selector a {
   cursor: pointer;
 }
 main .show_user_apt .main_info .info_box .hosts_box .box .selector p {
@@ -1821,7 +1821,54 @@ main .msg_container .t_body .msg-txt {
   width: 50%;
   padding: 0 5px;
 }
-<<<<<<< HEAD
+@media screen and (max-width: 1500px) {
+  main .msg_container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  main .msg_container img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  main .msg_container .t_body {
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  main .msg_container .t_body h4 {
+    padding-bottom: 5px;
+  }
+  main .msg_container .t_body div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  main .msg_container .t_body .msg-img {
+    width: 100%;
+    padding: 0 5px;
+  }
+  main .msg_container .t_body .msg-title {
+    width: 100%;
+    padding: 0 5px;
+  }
+  main .msg_container .t_body .msg-name {
+    width: 100%;
+    padding: 0 5px;
+  }
+  main .msg_container .t_body .msg-mail {
+    width: 100%;
+    padding: 0 5px;
+  }
+  main .msg_container .t_body .msg-txt {
+    width: 100%;
+    padding: 0 5px;
+  }
+}
 main .img_stat {
   width: 400px;
   height: 360px;
@@ -1875,54 +1922,6 @@ main div.container-stat .circle-tot {
 }
 main div.container-stat .circle-tot #eye {
   font-size: px;
-=======
-@media screen and (max-width: 1500px) {
-  main .msg_container {
-    max-width: 80%;
-    margin: 0 auto;
-  }
-  main .msg_container img {
-    width: 100%;
-    border-radius: 10px;
-  }
-  main .msg_container .t_body {
-    border: 1px solid gray;
-    border-radius: 10px;
-    margin: 10px 0;
-    padding: 5px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  main .msg_container .t_body h4 {
-    padding-bottom: 5px;
-  }
-  main .msg_container .t_body div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-  }
-  main .msg_container .t_body .msg-img {
-    width: 100%;
-    padding: 0 5px;
-  }
-  main .msg_container .t_body .msg-title {
-    width: 100%;
-    padding: 0 5px;
-  }
-  main .msg_container .t_body .msg-name {
-    width: 100%;
-    padding: 0 5px;
-  }
-  main .msg_container .t_body .msg-mail {
-    width: 100%;
-    padding: 0 5px;
-  }
-  main .msg_container .t_body .msg-txt {
-    width: 100%;
-    padding: 0 5px;
-  }
 }
 main .main_container .box_ap_spons {
   display: flex;
@@ -1964,7 +1963,6 @@ main .main_container .container_sponsor .box_sponsor_type a {
   background-color: #ff385c;
   color: white;
   text-align: center;
->>>>>>> main
 }
 
 footer {

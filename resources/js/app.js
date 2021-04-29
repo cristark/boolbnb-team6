@@ -112,7 +112,13 @@ const app = new Vue({
         CAP: 1,
         citta: '',
         provincia: '',
-        stato:'Italia'
+        stato:'Italia',
+        advancedSearch: false,
+        nightPrice: '',
+        nights: 1,
+        adults: 1,
+        childrens: 0
+
     },
     // created(){
     //     console.log(this.lastItem);
@@ -123,6 +129,8 @@ const app = new Vue({
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         this.loadVisitors();
         this.prova();
+        this.showPrice();
+        console.log(this.nights);
     },
     methods: {
         prova(){
@@ -176,6 +184,12 @@ const app = new Vue({
 
             });
         },
+        showPrice() {
+            axios.get('http://localhost:8000/api/prezzo/' + this.lastItem)
+                .then(result => {
+                    this.nightPrice = result.data.apartment.price;
+                })
+        },
         loadVisitors() {
             axios.get('http://localhost:8000/api/statistiche/' + this.lastItem)
                 .then(result => {
@@ -184,7 +198,7 @@ const app = new Vue({
                     
                     this.array_visite.forEach(element => {
                         // console.log(element.totale, 'sono element');
-                        console.log(element);
+                        // console.log(element);
                         this.mesi.push(element.numero_mese);
                         this.n_visite.push(element.totale);
                         // console.log(this.n_visite);
@@ -258,9 +272,9 @@ const app = new Vue({
                 .then( response  => {
 
                     // centro della mappa
-                    console.log(response);
+                    // console.log(response);
                     var point = response.data.results[0].position;
-                    console.log(point);
+                    // console.log(point);
                     this.latitude = point.lat;
                     this.longitude = point.lon;
                 })
