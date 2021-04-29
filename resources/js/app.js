@@ -112,7 +112,8 @@ const app = new Vue({
         CAP: 1,
         citta: '',
         provincia: '',
-        stato:'Italia'
+        stato:'Italia',
+        advancedSearch: false
     },
     // created(){
     //     console.log(this.lastItem);

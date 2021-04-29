@@ -49753,19 +49753,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     CAP: 1,
     citta: '',
     provincia: '',
-    stato: 'Italia'
+    stato: 'Italia',
+    advancedSearch: false
   },
   // created(){
   //     console.log(this.lastItem);
   // },
   mounted: function mounted() {
-<<<<<<< HEAD
-    this.slider(); // this.aptLink();
-    // console.log(this.route);
-
-=======
     this.slider();
->>>>>>> main
     this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
     this.loadVisitors();
     this.prova();
@@ -50015,13 +50010,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\BOOLEAN\Classe24\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> main
+__webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
