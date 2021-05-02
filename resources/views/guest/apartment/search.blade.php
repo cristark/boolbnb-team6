@@ -29,24 +29,24 @@
                         <div class="src_box">
                             <div class="row">
                                 <label for="SrcBeds">Numero letti</label>
-                                <input name="num_beds" type="number" id="SrcBeds" value="1" min="1">
+                                <input name="num_beds" type="number" id="SrcBeds" v-model="num_beds" min="1">
                             </div>
     
                             <div class="row">
                                 <label for="SrcRooms">Numero stanze</label>
-                                <input name="num_rooms" type="number" id="SrcRooms" value="1" min="1">
+                                <input name="num_rooms" type="number" id="SrcRooms" v-model="num_rooms" min="1">
                             </div>
                         </div>
 
                         <div class="src_box">
                             <div class="row">
                                 <label for="SrcBaths">Numero bagni</label>
-                                <input name="num_baths" type="number" id="SrcBaths" value="1" min="1">
+                                <input name="num_baths" type="number" id="SrcBaths" v-model="num_baths" min="1">
                             </div>
     
                             <div class="row">
                                 <label for="SrcMq">Metri quadrati</label>
-                                <input name="num_mq" type="number" id="SrcMq" value="1" min="1">
+                                <input name="num_mq" type="number" id="SrcMq" v-model="num_mq" min="1">
                             </div>
 
                             <div class="row">
@@ -60,9 +60,9 @@
                         <div class="src_box services">
                             @foreach ($services as $service)
                                 <div class="form-check">
-                                    <input value="{{ $service->id }}" type="checkbox" id="services" name="services[]">
+                                    <input value="{{ $service->id }}" type="checkbox" id="services" name="services[]" v-model="services" >
                                     <label for="services">
-                                        {{$service->name}}
+                                        {{ $service->name}}
                                     </label>
                                 </div>
                             @endforeach

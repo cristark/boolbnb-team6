@@ -107,13 +107,24 @@ const app = new Vue({
         pippo: 0,
         route: '/apartment/',
         contatore: 0,
+
+        // punti geografici
         via: '',
         numero_civico:1,
         CAP: 1,
         citta: '',
         provincia: '',
         stato:'Italia',
+
+        // ricerca avanzata
         advancedSearch: false,
+        num_beds: 1,
+        num_rooms: 1,
+        num_baths:1,
+        num_mq: 1,
+        services:[],
+
+        // info prenotazioni
         nightPrice: '',
         nights: 1,
         adults: 1,
