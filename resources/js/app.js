@@ -103,10 +103,17 @@ const app = new Vue({
         indirizzo:'',
         latitude:0,
         longitude:0,
+        
+        // array
         array_slider: [],
+        array_services: [],
+
+
         pippo: 0,
         route: '/apartment/',
         contatore: 0,
+
+
 
         // punti geografici
         via: '',
@@ -137,6 +144,7 @@ const app = new Vue({
     // },
     mounted() {
         this.slider();
+        this.getServiceAll();
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         this.loadVisitors();
         this.prova();
@@ -301,8 +309,6 @@ const app = new Vue({
             // }
             window.location.href = '/apartment/' + this.array_slider[index].slug;
         },
-
-
         slider(){
             
             axios.get('http://localhost:8000/api/slider')
@@ -374,7 +380,16 @@ const app = new Vue({
 
             console.log(this.pippo, 'io sono pippo');
             console.log(container, 'container');
-        }
+        },
+        getServiceAll(){
+            
+            axios.get('http://localhost:8000/api/serviceList')
+            .then( response => {
+                this.array_services = response.data.services;
+                console.log('servicesList');
+                console.log(this.array_services);
+            })
+        }, 
     }
 });
 

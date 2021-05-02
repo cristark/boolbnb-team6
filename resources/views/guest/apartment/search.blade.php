@@ -18,7 +18,7 @@
             {{-- BOX RISULTATI RICERCA APPARTAMENTI --}}
             <div class="search_box">
 
-                <div class="adv_search clearfix" :class="(advancedSearch == true) ? 'active' : ''">
+                <div class="adv_search clearfix" :class="(advancedSearch == true) ? 'active' : ''" style="height: 360px">
                     <h3 v-on:click="showSrc">Ricerca avanzata</h3>
                     <form action="{{ route('searchAvanced') }}" method="GET">
                         @csrf
@@ -58,14 +58,12 @@
 
                         <h4>Servizi disponibili</h4>
                         <div class="src_box services">
-                            @foreach ($services as $service)
-                                <div class="form-check">
-                                    <input value="{{ $service->id }}" type="checkbox" id="services" name="services[]" v-model="services" >
+                                <div class="form-check" v-for="service in array_services">
+                                    <input value="@{{ service.id }}" type="checkbox" id="services" name="services[]" v-model="services" >
                                     <label for="services">
-                                        {{ $service->name}}
+                                        @{{ service.name}}
                                     </label>
                                 </div>
-                            @endforeach
                         </div>
                         <button type="submit" class="src_btn">Cerca</button>
                     </form>
