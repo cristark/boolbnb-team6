@@ -129,7 +129,7 @@ const app = new Vue({
         num_rooms: 1,
         num_baths:1,
         num_mq: 1,
-        services:[],
+        checkedServices:[],
 
         // info prenotazioni
         nightPrice: '',

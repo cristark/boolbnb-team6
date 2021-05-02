@@ -58,8 +58,8 @@
 
                         <h4>Servizi disponibili</h4>
                         <div class="src_box services">
-                                <div class="form-check" v-for="service in array_services">
-                                    <input value="@{{ service.id }}" type="checkbox" id="services" name="services[]" v-model="services" >
+                                <div class="form-check" v-for="service in array_services" :key="service.id">
+                                    <input :value='service' type="checkbox" id="services" name="services[]" v-model="checkedServices" >
                                     <label for="services">
                                         @{{ service.name}}
                                     </label>
