@@ -3,7 +3,7 @@ require('./bootstrap');
 // var Chart = require('chart.js');
 // const $ = require('jquery');
 // window.axios = require('axios');
-import Vue from 'vue';
+import Vue from 'vue/dist/vue.js';
 // import Chart from 'chart.js/auto';
 import axios from 'axios';
 
