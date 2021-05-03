@@ -390,13 +390,16 @@ const app = new Vue({
             })
         },
         getResultSearchAdvanced(){
-
+            
+            // variabile appoggio servizio array
             var servicesSelect = [];
+
+            // riduzione servizi array a solo id
             this.checkedServices.forEach(serviceSelect => {
                 servicesSelect.push(serviceSelect['id'])
             });
-            // console.log(servicesSelect);
             
+            // chiamata ricerca avanzata
             axios.get('http://localhost:8000/api/ResultSearchAdvanced', {params:{
                 'city' : window.city.trim(),
                 'num_beds' :this.num_beds,
