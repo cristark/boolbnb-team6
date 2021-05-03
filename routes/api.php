@@ -35,4 +35,6 @@ Route::get('/slider' , 'Api\SliderController@index');
 
 Route::get('/serviceList' , 'Api\ServicesList@serviziLista');
 
+Route::get('/ResultSearchAdvanced' , 'Api\ResultSearchAdvanced@filter');
+
 Route::get('/prezzo/{slug}' , 'Api\ShowPrice@mostraPrezzo');
