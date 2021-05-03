@@ -11,6 +11,7 @@ use App\Apartment;
 
 class ResultSearchAdvanced extends Controller
 {
+    // filtro avanzato
     public function filter(Request $request) {
 
         // data input

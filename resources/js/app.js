@@ -136,7 +136,7 @@ const app = new Vue({
         nightPrice: '',
         nights: 1,
         adults: 1,
-        childrens: 0
+        childrens: 0,
 
     },
     // created(){
@@ -144,13 +144,13 @@ const app = new Vue({
 
     // },
     mounted() {
+        this.getResultSearch();
         this.slider();
         this.getServiceAll();
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         this.loadVisitors();
         this.prova();
         this.showPrice();
-        console.log(this.nights);
     },
     methods: {
         prova(){
@@ -411,6 +411,19 @@ const app = new Vue({
             .then( response => {
                 this.array_apt_filter = response.data;
                 console.log(this.array_apt_filter);
+            })
+            .catch(error => {
+                console.log(error)
+            });
+        },
+        getResultSearch(){
+
+            // chiamata apartamenti city
+            axios.get('http://localhost:8000/api/ResultSearch', {params:{
+                'city' : window.city.trim(),
+            }})
+            .then( response => {
+                this.array_apt_filter = response.data;
             })
             .catch(error => {
                 console.log(error)

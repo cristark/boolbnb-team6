@@ -35,6 +35,10 @@ Route::get('/slider' , 'Api\SliderController@index');
 
 Route::get('/serviceList' , 'Api\ServicesList@serviziLista');
 
+// ricerca API
+Route::get('/ResultSearch' , 'Api\ResultSearch@cityApartment');
+
+// ricerca avanzata API
 Route::get('/ResultSearchAdvanced' , 'Api\ResultSearchAdvanced@filter');
 
 Route::get('/prezzo/{slug}' , 'Api\ShowPrice@mostraPrezzo');
