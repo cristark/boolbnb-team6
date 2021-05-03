@@ -128,6 +128,8 @@
                     ?>
                 </p>
 
+                @{{mappasearch()}}
+
                 {{-- SCRIPT PER TESTING --}}
                 {{-- <script>
 

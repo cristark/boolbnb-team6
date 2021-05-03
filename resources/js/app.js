@@ -150,8 +150,6 @@ const app = new Vue({
         this.loadVisitors();
         this.getResultSearch();
         this.getServiceAll();
-        this.mappasearch();
-        this.mappashow();
         this.showPrice();
     },
     methods: {
@@ -164,10 +162,12 @@ const app = new Vue({
             var latitude = document.getElementById("dom-lat").textContent;
             latitude = latitude.replace(' ',"");
             latitude = parseFloat(latitude);
+            console.log(latitude);
 
             var longitude = document.getElementById("dom-lon").textContent;
             longitude = longitude.replace(' ',"");
             longitude = parseFloat(longitude);
+            console.log(longitude)
 
             // centro della mappa
             var HQ = { lat: latitude, lng: longitude }
@@ -188,15 +188,12 @@ const app = new Vue({
         mappasearch(){
 
             var apartments = document.getElementById("dom-ap").textContent;
-            
-            var city = document.getElementById("dom-city").textContent;
-            city = city.replace(' ',"").trim();
 
             // trasforma stringa a array json
             var apartments = JSON.parse(apartments);
     
                     axios
-                        .get('https://api.tomtom.com/search/2/geocode/'+city+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
+                        .get('https://api.tomtom.com/search/2/geocode/'+this.city+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
                         .then( response  => {
                             // centro della mappa
                             var HQ = response.data.results[0].position;

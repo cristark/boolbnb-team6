@@ -4,12 +4,6 @@
 
 @section('content')
 
-    <p id="dom-city-start" style="display: none;">
-        <?php echo $city ?> 
-    </p>
-
-    @{{setCity()}}
-
     <div class="main_container show_user_apt">
 
         <div class="back_btn">
@@ -164,7 +158,9 @@
                     <?php
                         echo $lon = $apartment->longitude; 
                     ?>
-                </div> 
+                </div>
+
+                @{{mappashow()}}
             </div>
         </section>
     </div>
