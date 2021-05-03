@@ -72,9 +72,9 @@
 
                     {{-- IMMAGINE APPARTAMENTO --}}
                     <div class="apt_img">
-                        {{-- <a href="{{route('guest.apartment.show', $apartment->slug)}}"> --}}
+                        <a :href="'/apartment/'+apartment.slug">
                             <img :src="apartment.main_img" alt="apartment.title}}">
-                        {{-- </a> --}}
+                        </a>
                     </div>
 
                         {{-- DIVIDER --}}
@@ -86,10 +86,9 @@
 
                         {{-- DESCRIZIONE APPARTAMENTO --}}
                         <div class="apt_description">
-                            {{-- <a href="{{route('guest.apartment.show', $apartment->slug)}}"> --}}
-                                {{-- <h4>@{{$apartment.title}}</h4>
-                            </a> --}}
-                            <h4>@{{apartment.title}}</h4>
+                            <a :href="'/apartment/'+apartment.slug">
+                                <h4>@{{apartment.title}}</h4>
+                            </a>
                             <p class="views">32 visualizzazioni</p>
 
                             <p class="rooms">
