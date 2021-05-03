@@ -149,6 +149,7 @@ const app = new Vue({
         this.getServiceAll();
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         this.loadVisitors();
+        this.mappasearch();
         this.mappashow();
         this.showPrice();
     },
@@ -185,10 +186,41 @@ const app = new Vue({
         // mappa show fixata senza script su html, ma necessari  div passaggio data
         mappasearch(){
 
-            // var latitude = 45.47471690049049;
-            // var longitudine = 9.149657968695827;
+            var apartments = document.getElementById("dom-ap").textContent;
+            
+            var city = document.getElementById("dom-city").textContent;
+            city = city.replace(' ',"").trim();
 
-           
+            // trasforma stringa a array json
+            var apartments = JSON.parse(apartments);
+    
+                    axios
+                        .get('https://api.tomtom.com/search/2/geocode/'+city+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
+                        .then( response  => {
+                            // centro della mappa
+                            var HQ = response.data.results[0].position;
+                            
+
+                            // visualizzazione della mappa
+                            var map = tt.map({
+                                key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
+                                container: 'mapSearch',
+                                center: HQ,
+                                zoom: 14
+                            });
+
+
+                            // crea maker per ogni posizioni (latitudine e longitudine)
+                            apartments.forEach( apartment => {
+
+                                var position = { lat: apartment.latitude, lng: apartment.longitude }
+                                
+                                // aggiungi maker sulla mappa
+                                var marker = new tt.Marker().setLngLat(position).addTo(map);
+
+                            });
+                        })
+                        .catch(error => console.error('error city', error));
 
         },
         // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
@@ -205,7 +237,7 @@ const app = new Vue({
             this.advancedSearch = !this.advancedSearch;
         },
 
-        // mappa
+        // ??????????????????????????????
         tomtom()
         {
             axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?',{ 
