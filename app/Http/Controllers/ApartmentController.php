@@ -65,7 +65,8 @@ class ApartmentController extends Controller
             $data = [
                 'apartment' => $apartment,
                 'images' => $img,
-                'visite_totali' => $contatore
+                'visite_totali' => $contatore,
+                'city' => $apartment->city,
             ];
 
 

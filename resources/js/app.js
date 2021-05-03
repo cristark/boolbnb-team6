@@ -81,6 +81,7 @@ const app = new Vue({
                 img: 'https://images.unsplash.com/photo-1527152272644-1af27a5c00cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
             }
         ],
+        city:'',
         mainMenu: false,
         ricerca: "",
         ricercaToUpper: "",
@@ -144,11 +145,11 @@ const app = new Vue({
 
     // },
     mounted() {
-        this.getResultSearch();
         this.slider();
-        this.getServiceAll();
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         this.loadVisitors();
+        this.getResultSearch();
+        this.getServiceAll();
         this.mappasearch();
         this.mappashow();
         this.showPrice();
@@ -356,8 +357,10 @@ const app = new Vue({
         },
 
         // ??????????????????
-        setIndirizzo(andress){
-            this.indirizzo = andress;
+        setCity(){
+            var city = document.getElementById("dom-city-start").textContent;
+            city = city.replace(' ',"").trim();
+            this.city = city;
         },
 
         // ????????????????????????
@@ -467,7 +470,7 @@ const app = new Vue({
             
             // chiamata ricerca avanzata
             axios.get('http://localhost:8000/api/ResultSearchAdvanced', {params:{
-                'city' : window.city.trim(),
+                'city' : this.city,
                 'num_beds' :this.num_beds,
                 'num_rooms' :this.num_rooms,
                 'num_baths' :this.num_baths,
@@ -485,12 +488,9 @@ const app = new Vue({
 
         // inizializzazione appartamenti search
         getResultSearch(){
-            
-            if(window.city != null){
-                
                 // chiamata apartamenti city
                 axios.get('http://localhost:8000/api/ResultSearch', {params:{
-                    'city' : window.city.trim(),
+                    'city' : this.city,
                 }})
                 .then( response => {
                     this.array_apt_filter = response.data;
@@ -498,7 +498,7 @@ const app = new Vue({
                 .catch(error => {
                     console.log(error)
                 });
-            }
+            
         },
     }
 });

@@ -3,6 +3,13 @@
 @section('title', 'BoolBnB | Appartamenti trovati')
 
 @section('content')
+
+    <p id="dom-city-start" style="display: none;">
+        <?php echo $city ?> 
+    </p>
+
+    @{{setCity()}}
+
     <div class="main_container">
 
         <div class="back_btn">
