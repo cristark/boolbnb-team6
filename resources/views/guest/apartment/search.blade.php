@@ -20,33 +20,31 @@
 
                 <div class="adv_search clearfix" :class="(advancedSearch == true) ? 'active' : ''" style="height: 360px">
                     <h3 v-on:click="showSrc">Ricerca avanzata</h3>
-                    <form action="{{ route('searchAvanced') }}" method="GET">
-                        @csrf
-                        @method('GET')
+                    <div >
 
                         <h4>Caratteristiche minime stanze</h4>
 
                         <div class="src_box">
                             <div class="row">
                                 <label for="SrcBeds">Numero letti</label>
-                                <input name="num_beds" type="number" id="SrcBeds" v-model="num_beds" min="1">
+                                <input name="num_beds" type="number" id="SrcBeds" v-model="num_beds" min="1" v-on:change='getResultSearchAdvanced()'>
                             </div>
     
                             <div class="row">
                                 <label for="SrcRooms">Numero stanze</label>
-                                <input name="num_rooms" type="number" id="SrcRooms" v-model="num_rooms" min="1">
+                                <input name="num_rooms" type="number" id="SrcRooms" v-model="num_rooms" min="1" v-on:change='getResultSearchAdvanced()'>
                             </div>
                         </div>
 
                         <div class="src_box">
                             <div class="row">
                                 <label for="SrcBaths">Numero bagni</label>
-                                <input name="num_baths" type="number" id="SrcBaths" v-model="num_baths" min="1">
+                                <input name="num_baths" type="number" id="SrcBaths" v-model="num_baths" min="1" v-on:change='getResultSearchAdvanced()'>
                             </div>
     
                             <div class="row">
                                 <label for="SrcMq">Metri quadrati</label>
-                                <input name="num_mq" type="number" id="SrcMq" v-model="num_mq" min="1">
+                                <input name="num_mq" type="number" id="SrcMq" v-model="num_mq" min="1" v-on:change='getResultSearchAdvanced()'>
                             </div>
 
                             <div class="row">
@@ -58,26 +56,26 @@
 
                         <h4>Servizi disponibili</h4>
                         <div class="src_box services">
-                                <div class="form-check" v-for="service in array_services" :key="service.id">
-                                    <input :value='service' type="checkbox" id="services" name="services[]" v-model="checkedServices" >
-                                    <label for="services">
-                                        @{{ service.name}}
-                                    </label>
-                                </div>
+                            <div class="form-check" v-for="service in array_services" :key="service.id">
+                                <input :value='service' type="checkbox" id="services" name="services[]" v-model="checkedServices" v-on:change='getResultSearchAdvanced()'>
+                                <label for="services">
+                                    @{{ service.name}}
+                                </label>
+                            </div>
                         </div>
-                        <button type="submit" class="src_btn">Cerca</button>
-                    </form>
+                        
+                        <button class="src_btn" v-on:click='getResultSearchAdvanced()'>Avvia ricerca avanzata</button>
+                    </div>
                 </div>
 
-                @foreach ($apartments as $apartment)    
-                    <div class="box">
+                <div class="box" v-for="apartment in array_apt_filter">
 
-                        {{-- IMMAGINE APPARTAMENTO --}}
-                        <div class="apt_img">
-                            <a href="{{route('guest.apartment.show', $apartment->slug)}}">
-                                <img src="{{$apartment->main_img}}" alt="{{$apartment->title}}">
-                            </a>
-                        </div>
+                    {{-- IMMAGINE APPARTAMENTO --}}
+                    <div class="apt_img">
+                        {{-- <a href="{{route('guest.apartment.show', $apartment->slug)}}"> --}}
+                            <img :src="apartment.main_img" alt="apartment.title}}">
+                        {{-- </a> --}}
+                    </div>
 
                         {{-- DIVIDER --}}
                         <div class="divider">
@@ -88,20 +86,22 @@
 
                         {{-- DESCRIZIONE APPARTAMENTO --}}
                         <div class="apt_description">
-                            <a href="{{route('guest.apartment.show', $apartment->slug)}}">
-                                <h4>{{$apartment->title}}</h4>
-                            </a>
+                            {{-- <a href="{{route('guest.apartment.show', $apartment->slug)}}"> --}}
+                                {{-- <h4>@{{$apartment.title}}</h4>
+                            </a> --}}
+                            <h4>@{{apartment.title}}</h4>
                             <p class="views">32 visualizzazioni</p>
 
-                            <p class="rooms">{{$apartment->mq}} mq - {{$apartment->num_rooms}} stanze - {{$apartment->num_beds}} letti - {{$apartment->num_baths}} bagni</p>
+                            <p class="rooms">
+                                @{{apartment.mq}} mq - @{{apartment.num_rooms}} stanze - @{{apartment.num_beds}} letti - @{{apartment.num_baths}} bagni
+                            </p>
 
                             <div class="price_box">
                                 <p>Prezzo di una notte in appartamento</p>
-                                <h3>{{intval($apartment->price)}} €</h3>
+                                <h3>@{{parseInt(apartment.price)}} €</h3>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                </div>
             </div>
     
             {{-- MAPPA --}}

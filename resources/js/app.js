@@ -107,6 +107,7 @@ const app = new Vue({
         // array
         array_slider: [],
         array_services: [],
+        array_apt_filter: [],
 
 
         pippo: 0,
@@ -187,10 +188,8 @@ const app = new Vue({
         },
         tomtom()
         {
-            axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?',
-            {
-                params: {
-                    
+            axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?',{ 
+                params: {  
                     limit: 1,
                     key: '3ZJWFcBWKUg3rC731Tp0W3ytemg6tt3O'
                     
@@ -389,6 +388,30 @@ const app = new Vue({
                 console.log('servicesList');
                 console.log(this.array_services);
             })
+        },
+        getResultSearchAdvanced(){
+
+            var servicesSelect = [];
+            this.checkedServices.forEach(serviceSelect => {
+                servicesSelect.push(serviceSelect['id'])
+            });
+            // console.log(servicesSelect);
+            
+            axios.get('http://localhost:8000/api/ResultSearchAdvanced', {params:{
+                'city' : window.city.trim(),
+                'num_beds' :this.num_beds,
+                'num_rooms' :this.num_rooms,
+                'num_baths' :this.num_baths,
+                'num_mq' : this.num_mq,
+                'checkedServices' : servicesSelect,
+            }})
+            .then( response => {
+                this.array_apt_filter = response.data;
+                console.log(this.array_apt_filter);
+            })
+            .catch(error => {
+                console.log(error)
+            });
         }, 
     }
 });
