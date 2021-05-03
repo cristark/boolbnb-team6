@@ -147,7 +147,7 @@
                 
                 <h4>{{$apartment->city}} - {{$apartment->province}} | {{$apartment->state}}</h4>
                 
-                {{-- questo solo per passaggio di valori --}}
+                {{-- necessari div per passaggio dati a --}}
                 <div id="dom-lat" class="hidden">
                     <?php
                         echo $lat = $apartment->latitude; 
@@ -157,36 +157,7 @@
                     <?php
                         echo $lon = $apartment->longitude; 
                     ?>
-                </div>
-                <script type="application/javascript">
-
-                    var latitude = document.getElementById("dom-lat").textContent;
-                    latitude = latitude.replace(' ',"");
-                    latitude = parseFloat(latitude);
-
-                    var longitudine = document.getElementById("dom-lon").textContent;
-                    longitude = longitudine.replace(' ',"");
-                    longitude = parseFloat(longitude);
-
-                    console.log(latitude);
-                    console.log(longitude);
-
-                    // centro della mappa
-                    // var HQ = { lat: latitude, lng: longitude }
-                    var HQ = { lat: 41.9071700, lng: 12.4650000}
-                    console.log(HQ);
-
-                    // visualizzazione della mappa
-                    var map = tt.map({
-                        key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
-                        container: 'map',
-                        center: HQ,
-                        zoom: 15
-                    });
-
-                    var marker = new tt.Marker().setLngLat(HQ).addTo(map);
-
-                </script>
+                </div> 
             </div>
         </section>
     </div>

@@ -149,17 +149,26 @@ const app = new Vue({
         this.getServiceAll();
         this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         this.loadVisitors();
-        this.prova();
+        this.mappashow();
         this.showPrice();
     },
     methods: {
-        prova(){
+        // mappa show fixata senza script su html, ma necessari  div passaggio data
+        mappashow(){
+
+            // var latitude = 45.47471690049049;
+            // var longitudine = 9.149657968695827;
 
             var latitude = document.getElementById("dom-lat").textContent;
-            var longitudine = document.getElementById("dom-lon").textContent;
+            latitude = latitude.replace(' ',"");
+            latitude = parseFloat(latitude);
+
+            var longitude = document.getElementById("dom-lon").textContent;
+            longitude = longitude.replace(' ',"");
+            longitude = parseFloat(longitude);
 
             // centro della mappa
-            var HQ = { lat: latitude, lng: longitudine }
+            var HQ = { lat: latitude, lng: longitude }
             console.log(HQ);
 
             // visualizzazione della mappa
@@ -171,6 +180,15 @@ const app = new Vue({
             });
 
             var marker = new tt.Marker().setLngLat(HQ).addTo(map);
+
+        },
+        // mappa show fixata senza script su html, ma necessari  div passaggio data
+        mappasearch(){
+
+            // var latitude = 45.47471690049049;
+            // var longitudine = 9.149657968695827;
+
+           
 
         },
         // FUNZIONE PER MOSTRARE/NASCONDERE MENU DROPDOWN HEADER
@@ -186,6 +204,8 @@ const app = new Vue({
         showSrc() {
             this.advancedSearch = !this.advancedSearch;
         },
+
+        // mappa
         tomtom()
         {
             axios.get('https://api.tomtom.com/search/2/search/' + this.citta + '.json?',{ 
@@ -202,6 +222,8 @@ const app = new Vue({
 
             });
         },
+
+        // ???????????????????????????
         showPrice() {
             axios.get('http://localhost:8000/api/prezzo/' + this.lastItem)
                 .then(result => {
