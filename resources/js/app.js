@@ -277,6 +277,8 @@ const app = new Vue({
 
                 });
         },
+
+        // get latitudine e longitudine da indirizzo automatico
         getPosition(){
             // this.andress = 'Corso Galileo Ferraris, 35, 10121 Torino TO';
             // axios.defaults.headers.common['X-Requested-With'];
@@ -298,9 +300,13 @@ const app = new Vue({
                 })
                 .catch(error => console.error('get position', error)); 
         },
+
+        // ??????????????????
         setIndirizzo(andress){
             this.indirizzo = andress;
         },
+
+        // ????????????????????????
         aptLink(index) {
             // console.log(index,'lo prendi il click');
             // if(index == this.array_slider[this.contatore]){
@@ -308,6 +314,8 @@ const app = new Vue({
             // }
             window.location.href = '/apartment/' + this.array_slider[index].slug;
         },
+        
+        // slider methods
         slider(){
             
             axios.get('http://localhost:8000/api/slider')
@@ -380,6 +388,8 @@ const app = new Vue({
             console.log(this.pippo, 'io sono pippo');
             console.log(container, 'container');
         },
+        
+        // lista servizi API
         getServiceAll(){
             
             axios.get('http://localhost:8000/api/serviceList')
@@ -389,6 +399,8 @@ const app = new Vue({
                 console.log(this.array_services);
             })
         },
+
+        // risultati filtro avanzato search
         getResultSearchAdvanced(){
             
             // variabile appoggio servizio array
@@ -416,6 +428,8 @@ const app = new Vue({
                 console.log(error)
             });
         },
+
+        // inizializzazione appartamenti search
         getResultSearch(){
             
             if(window.city != null){
