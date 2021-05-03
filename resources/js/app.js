@@ -417,17 +417,20 @@ const app = new Vue({
             });
         },
         getResultSearch(){
-
-            // chiamata apartamenti city
-            axios.get('http://localhost:8000/api/ResultSearch', {params:{
-                'city' : window.city.trim(),
-            }})
-            .then( response => {
-                this.array_apt_filter = response.data;
-            })
-            .catch(error => {
-                console.log(error)
-            });
+            
+            if(window.city != null){
+                
+                // chiamata apartamenti city
+                axios.get('http://localhost:8000/api/ResultSearch', {params:{
+                    'city' : window.city.trim(),
+                }})
+                .then( response => {
+                    this.array_apt_filter = response.data;
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+            }
         },
     }
 });
