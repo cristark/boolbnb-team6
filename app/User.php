@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected function apartments(){
         return $this->hasMany('App\Apartment');
     }
+
+    // preferiti
+    public function favorites(){
+        return $this->belongsToMany('App\Apartment');
+    }
 }

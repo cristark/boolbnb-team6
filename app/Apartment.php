@@ -33,6 +33,10 @@ class Apartment extends Model
     public function sponsors(){
         return $this->belongsToMany('App\Sponsor')->withPivot('end_date', 'status');
     }
+    // preferiti
+    public function favorites(){
+        return $this->belongsToMany('App\User');
+    }
     //relation with images 1
     public function images(){
         return $this->hasMany('App\Image');
