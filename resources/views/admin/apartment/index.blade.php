@@ -51,7 +51,16 @@
                 <div class="box-apartment">
                     <section class="box-left">
                         {{-- IMMAGINE APPARTAMENTO --}}
-                        <div class="box-ap-img">
+                        <div class="box-ap-img" style="position: relative;">
+
+                            <div class="see_box" style="position: absolute; padding:5px 10px; background-color:green;">
+                                @if ($apartment->active)   
+                                   <i class="far fa-eye"></i>
+                                @else
+                                    <i class="fas fa-eye-slash"></i>
+                                @endif
+                            </div>
+
                             @if (strpos($apartment->main_img, 'https') !== false)
                             <img src="{{ $apartment->main_img }}" alt="Anteprima img appartamento">
                             @else
