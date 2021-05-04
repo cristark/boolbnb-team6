@@ -188,10 +188,7 @@ const app = new Vue({
         // mappa show fixata senza script su html, ma necessari  div passaggio data
         mappasearch(){
 
-            var apartments = document.getElementById("dom-ap").textContent;
-
-            // trasforma stringa a array json
-            var apartments = JSON.parse(apartments);
+            var apartments = this.array_apt_filter;
     
                     axios
                         .get('https://api.tomtom.com/search/2/geocode/'+this.city+'.json?key=3Lb6xSAA2aORuhekPk7epa88Y9SpvSla')
@@ -205,7 +202,7 @@ const app = new Vue({
                                 key: '3Lb6xSAA2aORuhekPk7epa88Y9SpvSla',
                                 container: 'mapSearch',
                                 center: HQ,
-                                zoom: 14
+                                zoom: 11
                             });
 
 

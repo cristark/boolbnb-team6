@@ -133,11 +133,6 @@
                     // dd($apartments);
                 @endphp
                 {{-- questo solo per passaggio di valori --}}
-                <div id="dom-ap" style="display: none;">
-                    <?php
-                        echo json_encode ( $apartments);
-                    ?>
-                </div>
                 <p id="dom-city" style="display: none;">
                     <?php
                         echo $city; 
