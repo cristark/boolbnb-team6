@@ -61,7 +61,7 @@
                                 @endif
                             </div>
 
-                            @if ($apartment->active)   
+                            @if ($apartment->statusSponsor)   
                                 <div class="see_box" style="position: absolute; padding:5px 10px; background-color:green; right:0px">
                                    <i class="fas fa-ad"></i>
                                 </div>

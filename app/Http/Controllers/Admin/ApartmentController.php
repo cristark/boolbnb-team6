@@ -36,7 +36,19 @@ class ApartmentController extends Controller
         $users = User::where('id', Auth::id())->firstOrFail();
         // $apartments = Apartment::all();
 
-
+        // per ogni appartamento
+        foreach ($apartments as $apartment) {
+            // prendi sporsor ultimo
+            $sponsor = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->latest('end_date')->first();
+            
+            // check status
+            if( $sponsor != null ){
+                ( $sponsor->end_date > Carbon::now()) ? $apartment->statusSponsor = true : $statusSponsor = false ;
+            }
+            else {
+                $apartment->statusSponsor = false;
+            }
+        }
 
         $data = [
             'apartments' => $apartments,
