@@ -37,7 +37,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/00a45003-57fa-4c79-bb85-99a211e93367.jpg?im_w=960',
                 '41.90717',
                 '12.465',
-                '0',
+                '1',
                 'Italia',
                 '(RO)',
                 'Roma'
@@ -54,7 +54,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/ecf0d2f0-15c7-470c-8934-45d320b10a68.jpg?im_w=960',
                 '41.90793',
                 '12.46557',
-                '0',
+                '1',
                 'Italia',
                 '(RO)',
                 'Roma'
@@ -71,7 +71,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/d5196e9e-6b61-467c-9ba5-08addc1a1836.jpg?im_w=960',
                 '41.91455',
                 '12.46529',
-                '0',
+                '1',
                 'Italia',
                 '(RO)',
                 'Roma'
@@ -88,7 +88,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/57443d55-779e-4d82-8bce-184546c67fc7.jpg?im_w=1440',
                 '41.92127',
                 '12.46378',
-                '0',
+                '1',
                 'Italia',
                 '(RO)',
                 'Roma'
@@ -105,7 +105,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/5f0b83ad-c901-4b7e-922a-7c4e10e3fbc5.jpg?im_w=1200',
                 '40.86081',
                 '14.26787',
-                '0',
+                '1',
                 'Italia',
                 '(NA)',
                 'Napoli'
@@ -122,7 +122,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/22634951/506ff622_original.jpg?im_w=1200',
                 '40.86228',
                 '14.26985',
-                '0',
+                '1',
                 'Italia',
                 '(NA)',
                 'Napoli'
@@ -140,7 +140,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/1932543/91781983_original.jpg?im_w=1440',
                 '40.86482',
                 '14.27105',
-                '0',
+                '1',
                 'Italia',
                 '(FI)',
                 'Firenze'
@@ -157,7 +157,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/0417a1e4-3db2-4d26-a591-3c156d6c1ad7.jpg?im_w=1200',
                 '40.86764',
                 '14.26429',
-                '0',
+                '1',
                 'Italia',
                 '(NA)',
                 'Napoli'
@@ -174,7 +174,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/c931d94f-a8c2-48de-921e-86b2afa2ac95.jpg?im_w=1200',
                 '40.84708',
                 '14.26153',
-                '0',
+                '1',
                 'Italia',
                 '(NA)',
                 'Napoli'
@@ -191,7 +191,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/74c8e9fc-3411-4ebb-a72d-ab032f11d46c.jpg?im_w=1200',
                 '40.84868',
                 '14.26383',
-                '0',
+                '1',
                 'Italia',
                 '(NA)',
                 'Napoli'
@@ -208,7 +208,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/f83c7bcb-a141-4269-a9d9-e704438e73c4.jpg?im_w=1200',
                 '44.06474',
                 '12.58317',
-                '0',
+                '1',
                 'Italia',
                 '(RI)',
                 'Rimini'
@@ -225,7 +225,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/miso/Hosting-9019674/original/4bc77968-ed4c-4e0c-81c6-c41ce9966346.jpeg?im_w=1200',
                 '44.06469',
                 '12.58184',
-                '0',
+                '1',
                 'Italia',
                 '(RA)',
                 "Ragusa"
@@ -242,7 +242,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/427bfe4c-799c-4c43-8f9b-e7ca010a75f3.jpg?im_w=1200',
                 '44.06885',
                 '12.57731',
-                '0',
+                '1',
                 'Italia',
                 '(RA)',
                 'Ragusa'
@@ -260,7 +260,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/57c057aa-8bb9-4939-bd52-ac50546ac4b3.jpg?im_w=1200',
                 '43.771490',
                 '11.257578',
-                '0',
+                '1',
                 'Italia',
                 '(FI)',
                 'Firenze'
@@ -277,7 +277,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/55df51a3-442b-44c7-9552-c3aeef619acf.jpg?im_w=1200',
                 '44.06036',
                 '12.585',
-                '0',
+                '1',
                 'Italia',
                 '(LU)',
                 'Viareggio'
@@ -294,7 +294,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/90dc09f7-de36-426b-bef9-4a755cb41d9b.jpg?im_w=1200',
                 '45.47019',
                 '9.19407',
-                '0',
+                '1',
                 'Italia',
                 '(MI)',
                 'Milano'
@@ -311,7 +311,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/2b988165-34fd-488f-a295-2b27e853c8aa.jpg?im_w=1200',
                 '45.46948',
                 '9.19183',
-                '0',
+                '1',
                 'Italia',
                 '(MI)',
                 'Milano'
@@ -346,7 +346,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/e525fb71-38e3-4ea3-bff1-16b170034111.jpg?im_w=1200',
                 '45.46663',
                 '9.18753',
-                '0',
+                '1',
                 'Italia',
                 '(MI)',
                 'Milano'
@@ -363,7 +363,7 @@ class ApartmentSeeder extends Seeder
                 'https://a0.muscache.com/im/pictures/881470d2-d8c0-443f-8c3d-2128a6469ef4.jpg?im_w=1200',
                 '44.14192',
                 '12.23137',
-                '0',
+                '1',
                 'Italia',
                 '(SI)',
                 'Siena'
