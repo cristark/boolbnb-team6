@@ -61,6 +61,12 @@
                                 @endif
                             </div>
 
+                            @if ($apartment->active)   
+                                <div class="see_box" style="position: absolute; padding:5px 10px; background-color:green; right:0px">
+                                   <i class="fas fa-ad"></i>
+                                </div>
+                            @endif
+
                             @if (strpos($apartment->main_img, 'https') !== false)
                             <img src="{{ $apartment->main_img }}" alt="Anteprima img appartamento">
                             @else
