@@ -20,7 +20,8 @@ class ResultSearch extends Controller
 
         // // filtro appartamenti
         $apartments = DB::table('apartments')->where([
-            ['city', 'LIKE', '%'. $search_city .'%']
+            ['city', 'LIKE', '%'. $search_city .'%'],
+            ['active', 1]
         ])->get();
         
         return response()->json($apartments);

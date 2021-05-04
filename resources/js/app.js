@@ -132,6 +132,7 @@ const app = new Vue({
         num_baths:1,
         num_mq: 1,
         checkedServices:[],
+        radius: 20,
 
         // info prenotazioni
         nightPrice: '',
@@ -472,6 +473,7 @@ const app = new Vue({
                 'num_rooms' :this.num_rooms,
                 'num_baths' :this.num_baths,
                 'num_mq' : this.num_mq,
+                'radius' : this.radius,
                 'checkedServices' : servicesSelect,
             }})
             .then( response => {

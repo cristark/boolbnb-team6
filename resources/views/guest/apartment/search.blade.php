@@ -70,6 +70,20 @@
                                 </label>
                             </div>
                         </div>
+
+                        <h4>Distanza massima dal centro geografico della citta</h4>
+                        <div class="src_box">
+                            <div class="row">
+                                <label for="SrcBaths">Massima distanza dal centro</label>
+                                <label for="distance">Scegli la distanza massima:</label>
+                                <select id="distance" name="radius" v-on:change='getResultSearchAdvanced()' v-model="radius">
+                                    <option value="1">max 1 km</option>
+                                    <option value="7">max 7 km</option>
+                                    <option value="9">max 9 km</option>
+                                    <option value="20">max 20km</option>
+                                </select>
+                            </div>
+                        </div>
                         
                         <button class="src_btn" v-on:click='getResultSearchAdvanced()'>Avvia ricerca avanzata</button>
                     </div>
