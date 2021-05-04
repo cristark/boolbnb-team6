@@ -89,6 +89,8 @@
                     </div>
                 </div>
 
+                <p>Lista appartamenti attivi</p>
+
                 <div class="box" v-for="apartment in array_apt_filter">
 
                     {{-- IMMAGINE APPARTAMENTO --}}
