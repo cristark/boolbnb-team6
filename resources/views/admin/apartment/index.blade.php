@@ -16,7 +16,8 @@
 
     {{-- Notifica eliminazione post esistente --}}
     @if (session('status'))
-        <div class="alert alert-success">{{ session('status') }}</div>
+        <div class="" style="background-color: #baffba;
+    padding: 10px; border-radius: 10px; margin-top: 10px;" >{{ session('status') }}</div>
     @endif
 
     {{-- SEZIONE PRINCIPALE --}}
