@@ -110,8 +110,10 @@
                     <p>Share</p>
                 </div>
                 <div class="share_box border">
-                    <i class="fas fa-heart"></i>
-                    <p>Save</p>
+                    <a href="{{route('favorites.create', $apartment->slug)}}">
+                        <i class="fas fa-heart"></i>
+                        <p>Save</p>
+                    </a>
                 </div>
             </div>
         </section>

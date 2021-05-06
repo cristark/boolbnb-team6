@@ -53,5 +53,8 @@ Route::prefix('admin')
         Route::get('/payment/{apartment}', 'PaymentController@request')->name('richiesta-pagamento');
         Route::post('/payment/{apartment}', 'PaymentController@payment')->name('dati-pagamento');
         Route::get('/confirm', 'PaymentController@confirm')->name('conferma');
+        
+        Route::get('/favorites', 'FavoritesController@index')->name('favorites.index');
 
+        Route::get('/favorites/{slug}/create', 'FavoritesController@create')->name('favorites.create');
 });
