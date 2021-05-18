@@ -49754,7 +49754,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     citta: '',
     provincia: '',
     stato: 'Italia',
-    advancedSearch: false
+    advancedSearch: false,
+    nightPrice: '',
+    nights: 1,
+    adults: 1,
+    childrens: 0
   },
   // created(){
   //     console.log(this.lastItem);
@@ -49764,6 +49768,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     this.lastItem = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
     this.loadVisitors();
     this.prova();
+    this.showPrice();
+    console.log(this.nights);
   },
   methods: {
     prova: function prova() {
@@ -49810,25 +49816,31 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         console.log(_this.array_tom);
       });
     },
-    loadVisitors: function loadVisitors() {
+    showPrice: function showPrice() {
       var _this2 = this;
 
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/prezzo/' + this.lastItem).then(function (result) {
+        _this2.nightPrice = result.data.apartment.price;
+      });
+    },
+    loadVisitors: function loadVisitors() {
+      var _this3 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/statistiche/' + this.lastItem).then(function (result) {
-        _this2.array_visite = result.data.numero_visite;
-        _this2.array_visite_appartmenti = result.data.apartment;
+        _this3.array_visite = result.data.numero_visite;
+        _this3.array_visite_appartmenti = result.data.apartment;
 
-        _this2.array_visite.forEach(function (element) {
+        _this3.array_visite.forEach(function (element) {
           // console.log(element.totale, 'sono element');
-          console.log(element);
+          // console.log(element);
+          _this3.mesi.push(element.numero_mese);
 
-          _this2.mesi.push(element.numero_mese);
-
-          _this2.n_visite.push(element.totale); // console.log(this.n_visite);
+          _this3.n_visite.push(element.totale); // console.log(this.n_visite);
 
         });
 
-        var mesi = _this2.mesi;
-        var n_visite = _this2.n_visite;
+        var mesi = _this3.mesi;
+        var n_visite = _this3.n_visite;
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
           type: 'bar',
@@ -49854,7 +49866,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       });
     },
     getPosition: function getPosition() {
-      var _this3 = this;
+      var _this4 = this;
 
       // this.andress = 'Corso Galileo Ferraris, 35, 10121 Torino TO';
       // axios.defaults.headers.common['X-Requested-With'];
@@ -49866,11 +49878,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         }
       }).then(function (response) {
         // centro della mappa
-        console.log(response);
-        var point = response.data.results[0].position;
-        console.log(point);
-        _this3.latitude = point.lat;
-        _this3.longitude = point.lon;
+        // console.log(response);
+        var point = response.data.results[0].position; // console.log(point);
+
+        _this4.latitude = point.lat;
+        _this4.longitude = point.lon;
       })["catch"](function (error) {
         return console.error('get position', error);
       });
@@ -49886,11 +49898,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       window.location.href = '/apartment/' + this.array_slider[index].slug;
     },
     slider: function slider() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/slider').then(function (response) {
-        _this4.array_slider = response.data.apartmentSponsored;
-        console.log(_this4.array_slider[0]);
+        _this5.array_slider = response.data.apartmentSponsored;
+        console.log(_this5.array_slider[0]);
       });
     },
     nextImg: function nextImg() {
@@ -50010,8 +50022,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Boolean2\Final\mamp_public\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\programmazione\corso-boolean\mamp_public\finale\boolbnb-team6\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
